@@ -56,7 +56,7 @@ public class TestVarios {
     //
     @Test
     public void testGetCount() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
         Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
         System.out.println(rec);
     }

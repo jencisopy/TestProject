@@ -54,7 +54,7 @@ public class TestRefreshRow {
     
     @Test
     public void testRefreshRow() throws Exception{
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Usuario row = dao.find(Usuario.class,"PU1" ,14L);
         assertNotNull(row.getListaUsuarioMiembro().get(0));
         row = dao.refreshRow("PU1", row);

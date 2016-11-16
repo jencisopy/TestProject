@@ -63,7 +63,7 @@ public class TestDataService {
     
     //@Test
     public void testCheckData() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Usuario row = dao.find(Usuario.class,"PU1" ,14L);
         dataService.checkDataRow(row,"");
@@ -72,7 +72,7 @@ public class TestDataService {
     
     //@Test
     public void testCheckData2() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProjects-ear/TestProjects-ejb/UsuarioMiembroSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioMiembroSrv!py.com.oym.frame.logic.IDataServiceRemote");
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         List<UsuarioMiembro> rows = dao.findAll(UsuarioMiembro.class,"PU1");
         //rows.get(0).setUsuarioGrupo(null);
@@ -81,7 +81,7 @@ public class TestDataService {
 
     @Test
     public void testCheckData3() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         List<Usuario> rows = dao.findAll(Usuario.class,"PU1");
         rows.get(0).setOperacion(IDataRow.MODIFICAR);

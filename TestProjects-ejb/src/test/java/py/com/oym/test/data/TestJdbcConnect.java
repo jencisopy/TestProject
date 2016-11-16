@@ -5,19 +5,14 @@
  */
 package py.com.oym.test.data;
 
-import java.sql.Connection;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.data.IDBConnectFactory;
 import static py.com.oym.test.data.TestDataNativeQuery.context;
 
 /**

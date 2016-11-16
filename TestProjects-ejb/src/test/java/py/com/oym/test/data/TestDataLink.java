@@ -59,7 +59,7 @@ public class TestDataLink {
 
     //@Test
     public void test() throws NamingException, SessionError{
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         //IGenericDAO dao  = (IGenericDAO) context.lookup("/Maker-ear-9.5-SNAPSHOT/Maker-ejb-9.5-SNAPSHOT/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
 
         DataLink dataLink = new DataLink(dao);
@@ -77,7 +77,7 @@ public class TestDataLink {
     
     //@Test
     public void test2() throws NamingException, Exception{
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
 
         List<Object> result = dataLink.findByNativeQuery("select * from {schema}.empresa", null);
@@ -87,7 +87,7 @@ public class TestDataLink {
 
     @Test
     public void test3() throws NamingException, SessionError, Exception{
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
         Usuario usuario = dataLink.find(Usuario.class, 3L);
         System.out.println(usuario.getValue("empresa.nombre"));

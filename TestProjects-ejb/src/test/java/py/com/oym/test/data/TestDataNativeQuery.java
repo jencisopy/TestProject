@@ -122,7 +122,7 @@ public class TestDataNativeQuery {
 
     @Test
     public void testQuery() throws Exception {
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         query.select("{SCHEMa}.fn_iditem(iditem,item,idempresa) as item")

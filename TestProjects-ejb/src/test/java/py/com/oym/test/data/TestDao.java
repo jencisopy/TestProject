@@ -57,7 +57,7 @@ public class TestDao {
     //@Test
     public void testInstance() throws Exception {
 
-        IGenericDAORemote instance  = (IGenericDAORemote) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote instance  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         //String expResult = "Hola";
         //String result = instance.saludar();
         //assertEquals(expResult, result); 
@@ -75,7 +75,7 @@ public class TestDao {
     
     @Test
     public void testDao2() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Map<String, Object> params = new HashMap<>();
         params.put("idempresa", 98L);
         List<Object> list = dao.findByNativeQuery("PU2","select codigo, nombre from datos.item where idempresa = :idempresa", params, 10, 10);

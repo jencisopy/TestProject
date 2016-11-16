@@ -52,7 +52,7 @@ public class TestDicRela {
 
     @Test
     public void test() throws Exception {
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
         
         String entidades = "itemmovimiento a, itemmovimientodetalle b, vendedor";

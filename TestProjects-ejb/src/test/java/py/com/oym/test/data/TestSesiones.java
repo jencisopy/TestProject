@@ -59,7 +59,7 @@ public class TestSesiones {
 
     //@Test
     public void test() throws Exception {
-        ISessionsRemote sesiones  = (ISessionsRemote) context.lookup("/TestProject/TestProject-ejb/Sessions!py.com.oym.frame.sec.ISessionsRemote");
+        ISessionsRemote sesiones  = (ISessionsRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/Sessions!py.com.oym.frame.sec.ISessionsRemote");
         IUserSession userSession = sesiones.login("J", "");
         assertNotNull(userSession);
     }

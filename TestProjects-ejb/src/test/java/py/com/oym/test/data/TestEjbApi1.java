@@ -39,7 +39,7 @@ public class TestEjbApi1 {
 
         Properties jbossProperties = new Properties();
         InputStream inputStream;
-        inputStream = new FileInputStream("C:\\proyectos\\java\\oym\\TestProject\\TestProject-ejb\\test\\jboss-ejb-client.properties");
+        inputStream = new FileInputStream("C:\\proyectos\\java\\oym\\TestProjects\\TestProjects-ejb\\test\\jboss-ejb-client.properties");
         jbossProperties.load(inputStream);
         jbossProperties.put("remote.connection.default.username", "jenciso");
         jbossProperties.put("remote.connection.default.password", "Oym1282873");
@@ -73,7 +73,7 @@ public class TestEjbApi1 {
     
     @Test
     public void testGetCount() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("ejb:TestProject/TestProject-ejb//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("ejb:TestProjects-ear/TestProjects-ejb//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
         //IGenericDAO dao = (IGenericDAO) context.lookup("ejb:Maker-ear-9.5-SNAPSHOT/Maker-ejb-9.5-SNAPSHOT//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         System.out.println(rec);

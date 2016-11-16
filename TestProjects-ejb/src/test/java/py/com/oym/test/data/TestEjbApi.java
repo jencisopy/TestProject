@@ -72,7 +72,7 @@ public class TestEjbApi {
     
     //@Test
     public void testGetCount() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("ejb:TestProject/TestProject-ejb//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("ejb:TestProjects-ear/TestProjects-ejb//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
         //IGenericDAO dao = (IGenericDAO) context.lookup("ejb:Maker-ear-9.5-SNAPSHOT/Maker-ejb-9.5-SNAPSHOT//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         System.out.println(rec);
