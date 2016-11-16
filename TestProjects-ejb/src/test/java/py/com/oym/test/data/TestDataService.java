@@ -16,6 +16,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import py.com.oym.frame.data.IDataRow;
 import py.com.oym.frame.logic.IDataServiceRemote;
 import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.model.tables.Usuario;
@@ -56,25 +57,37 @@ public class TestDataService {
 
     @Test
     public void testInstance() throws Exception {
-        IDataServiceRemote instance  = (IDataServiceRemote) context.lookup("/TestProject/TestProject-ejb/DataService!py.com.oym.frame.data.IDataServiceRemote");
+        IDataServiceRemote instance  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/DataService!py.com.oym.frame.logic.IDataServiceRemote");
         assertNotNull(instance);
     }
     
     //@Test
     public void testCheckData() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProject/TestProject-ejb/UsuarioSrv!py.com.oym.frame.data.IDataServiceRemote");
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Usuario row = dao.find(Usuario.class,"PU1" ,14L);
         dataService.checkDataRow(row,"");
         assertTrue(dataService.checkUniqueKey(row, ""));
     }
     
-    @Test
+    //@Test
     public void testCheckData2() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProject/TestProject-ejb/UsuarioMiembroSrv!py.com.oym.frame.data.IDataServiceRemote");
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProjects-ear/TestProjects-ejb/UsuarioMiembroSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         List<UsuarioMiembro> rows = dao.findAll(UsuarioMiembro.class,"PU1");
         //rows.get(0).setUsuarioGrupo(null);
         assertTrue(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
     }    
+
+    @Test
+    public void testCheckData3() throws Exception {
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("//TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        List<Usuario> rows = dao.findAll(Usuario.class,"PU1");
+        rows.get(0).setOperacion(IDataRow.MODIFICAR);
+        dataService.checkDataRow(rows.get(0), "");
+        rows.get(0).setOperacion(IDataRow.BORRAR);
+        dataService.checkDataRow(rows.get(0), "");
+       
+    }        
 }

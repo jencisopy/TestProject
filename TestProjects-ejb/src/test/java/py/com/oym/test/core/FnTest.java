@@ -144,9 +144,24 @@ public class FnTest {
         Object val = ll.get(2);
         ll.set(2, (String) val + " Changed");
         System.out.println("ll after change: " + ll);
-
     }
 
+    @Test
+    public void testInList(){
+        int[] lista = {1,2,3};
+        int var1 = 1;
+        assertTrue(inList(var1,lista));
+    }
+    
+    public static boolean inList(Integer obj, int... list) {
+        for (Object e : list) {
+            if (obj.equals(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public Object toObject(Object source, Object target) {
         if (target instanceof String) {
             return String.valueOf(source);
