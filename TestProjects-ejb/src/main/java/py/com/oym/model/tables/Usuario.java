@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.apache.log4j.Logger;
@@ -25,7 +26,7 @@ import py.com.oym.frame.model.IUsuario;
 import py.com.oym.frame.model.IUsuarioMiembro;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario",uniqueConstraints=@UniqueConstraint(columnNames={"codigo"}))
 public class Usuario extends DataRow implements IUsuario {
     private static final long serialVersionUID = 1L;
     private static Logger logger = Logger.getLogger(Usuario.class);
@@ -256,8 +257,11 @@ public class Usuario extends DataRow implements IUsuario {
     @Override
     public int hashCode() {
         int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.idusuario);
         return hash;
     }
+
+
 
     @Override
     public boolean equals(Object obj) {

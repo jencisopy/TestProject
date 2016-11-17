@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import py.com.oym.frame.data.DataRow;
 import py.com.oym.frame.model.IUsuarioMiembro;
 import py.com.oym.frame.model.IUsuario;
@@ -27,11 +26,11 @@ public class UsuarioMiembro extends DataRow implements IUsuarioMiembro {
     @Column(name = "idusuariomiembro")
     private Long idusuariomiembro;
     
-    @JoinColumn(name = "idmiembro", referencedColumnName = "idusuario")
+    @JoinColumn(name = "idmiembro", referencedColumnName = "idusuario",nullable = false)
     @ManyToOne(optional = false)
     private Usuario usuarioMiembro;
 
-    @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
+    @JoinColumn(name = "idusuario", referencedColumnName = "idusuario",nullable = false)
     @ManyToOne(optional = false)
     private Usuario usuarioGrupo;
     

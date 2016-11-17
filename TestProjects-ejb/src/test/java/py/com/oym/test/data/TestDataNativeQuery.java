@@ -5,6 +5,7 @@
  */
 package py.com.oym.test.data;
 
+import java.util.List;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -16,6 +17,7 @@ import org.junit.Test;
 import py.com.oym.frame.data.IGenericDAORemote;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.data.DataNativeQuery;
+import py.com.oym.frame.data.IDataQueryModel;
 
 /**
  *

@@ -17,12 +17,13 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import py.com.oym.frame.data.DataRow;
 
 @Entity
-@Table(name = "pais")
+@Table(name = "pais",uniqueConstraints=@UniqueConstraint(columnNames={"idempresa","codigo"}))
 public class Pais extends DataRow implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -63,7 +64,7 @@ public class Pais extends DataRow implements Serializable {
     @Column(name = "appuser")
     private String appuser;
     
-    @JoinColumn(name = "idregion", referencedColumnName = "idregion")
+    @JoinColumn(name = "idregion", referencedColumnName = "idregion",nullable = false)
     @ManyToOne(optional = true)
     private Region region;
     

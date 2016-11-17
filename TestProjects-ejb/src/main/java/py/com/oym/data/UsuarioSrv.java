@@ -26,7 +26,7 @@ public class UsuarioSrv extends DataService {
                 operacion = {IDataRow.AGREGAR,
                              IDataRow.MODIFICAR,
                              IDataRow.BORRAR}) 
-    public IErrorReg validCodigo(Usuario row, String sessionId){
+    public IErrorReg checkCodigo(Usuario row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo");
         return errorReg;
@@ -34,7 +34,7 @@ public class UsuarioSrv extends DataService {
 
     @CheckMethod(fieldName = "codigo",
                 operacion = {IDataRow.BORRAR}) 
-    public IErrorReg validCodigo2(Usuario row, String sessionId){
+    public IErrorReg checkCodigo2(Usuario row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo2");
         return errorReg;
@@ -52,6 +52,5 @@ public class UsuarioSrv extends DataService {
     protected String getPersistentUnit(String sessionId){
         return DBManager.CATALOGO;
     }
-    
-    
+
 }
