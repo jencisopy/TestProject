@@ -122,7 +122,7 @@ public class TestDataNativeQuery {
         System.out.println(query.getQuerySentence());
     }
 
-    @Test
+    //@Test
     public void testQuery() throws Exception {
         IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
@@ -140,6 +140,31 @@ public class TestDataNativeQuery {
 //    @Test
 //    public void testFilterExpr() {
 //    }
+
+    @Test
+    public void testQuery2() throws Exception {
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        DataLink dataLink = new DataLink(dao);
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+//        List<IDataQueryModel>
+//            data = query.select("datos.fn_iditem(iditem,item,idempresa) as item")
+//                    .from("datos.itemmovimiento")
+//                    .where("vendedor = :vendedor")
+//                    .addParam("vendedor","001")                
+//                    .orderBy("item")
+//                    .execQuery();
+
+        List<IDataQueryModel>
+            data = query.select("x.item as productos")
+                    .from("datos.itemmovimientodetalle_view x")
+                    .orderBy("x.item")
+                    .execQuery(6,5);
+        
+        System.out.println(query.getQuerySentence());
+        System.out.println(data.size());
+        System.out.println(data.get(0).getColumn("productos"));
+        System.out.println(data.get(0).getColumn(1));        
+    }
     
     @After
     public void tearDown() {

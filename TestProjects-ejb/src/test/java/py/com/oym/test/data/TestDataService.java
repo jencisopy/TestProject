@@ -155,7 +155,7 @@ public class TestDataService {
         //assertFalse(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
     }    
 
-    @Test
+    //@Test
     // Chequeo de los foreignkeys
     public void testCheckData7() throws Exception {
         IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioMiembroSrv!py.com.oym.frame.logic.IDataServiceRemote");
@@ -169,4 +169,16 @@ public class TestDataService {
         assertTrue(errors.isEmpty());
         //assertFalse(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
     }
+    
+    @Test
+    // Chequeo de los foreignkeys y 
+    public void testCheckData8() throws Exception {
+        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/PaisSrv!py.com.oym.frame.logic.IDataServiceRemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        List<Pais> rows = dao.findAll(Pais.class,"PU2");
+        Pais pais = rows.get(0);
+        pais.setRegion(null);
+        rows.get(0).setOperacion(IDataRow.MODIFICAR);
+        dataService.checkDataRow(pais, sessionId);
+    }    
  }

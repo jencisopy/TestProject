@@ -17,7 +17,7 @@
         <maven.min.version>3.0.0</maven.min.version>
         <version.junit>4.11</version.junit>
         <version.javaee_api>7.0</version.javaee_api>
-        <oym.frame.version>6.0.8-SNAPSHOT</oym.frame.version>
+        <oym.frame.version>6.0.9-SNAPSHOT</oym.frame.version>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
@@ -27,10 +27,28 @@
 
     <repositories>
         <repository>
-            <id>nexus</id>
+            <id>oym-snapshots</id>
             <name>OyM Maven Repository</name>
             <url>http://agente.oym.com.py:8001/nexus/content/repositories/snapshots/</url>
-            <layout>default</layout>
+            <layout>default</layout>            
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>            
+        </repository>
+        <repository>
+            <id>oym-releases</id>
+            <name>OyM Maven Repository</name>
+            <url>http://agente.oym.com.py:8001/nexus/content/repositories/releases/</url>
+            <layout>default</layout>                        
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>            
         </repository>
     </repositories>
     
