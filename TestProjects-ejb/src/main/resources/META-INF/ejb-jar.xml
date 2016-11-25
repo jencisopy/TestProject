@@ -59,9 +59,17 @@
         </session>
         <session>
             <ejb-name>SecManager</ejb-name>
-            <ejb-class>py.com.oym.frame.sec.SecManagers</ejb-class>                                                
+            <ejb-class>py.com.oym.frame.sec.SecManager</ejb-class>                                                
             <business-local>py.com.oym.frame.sec.ISecManager</business-local>
             <business-remote>py.com.oym.frame.sec.ISecManagerRemote</business-remote>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session>                
+        <session>
+            <ejb-name>LogManager</ejb-name>
+            <ejb-class>py.com.oym.frame.log.LogManager</ejb-class>                                                
+            <business-local>py.com.oym.frame.log.ILogManager</business-local>
+            <business-remote>py.com.oym.frame.log.ILogManagerRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>                

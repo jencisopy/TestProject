@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IDicMensaje;
+import py.com.oym.frame.model.IAppMessages;
 
 /**
  *
@@ -32,7 +32,7 @@ import py.com.oym.frame.model.IDicMensaje;
 @Table(name = "dic_mensaje", uniqueConstraints = {
                                 @UniqueConstraint(columnNames = {"nro"})})
 @XmlRootElement
-public class DicMensaje extends DataRow implements IDicMensaje {
+public class DicMensaje extends DataRow implements IAppMessages {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -79,81 +79,69 @@ public class DicMensaje extends DataRow implements IDicMensaje {
     }
 
     @Override
-    public Long getIdmensaje() {
+    public Long getIdmessage() {
         return idmensaje;
     }
 
-    @Override
-    public void setIdmensaje(Long idmensaje) {
-        this.idmensaje = idmensaje;
+    public void setIdmessage(Long idmessage) {
+        this.idmensaje = idmessage;
     }
 
     @Override
-    public Long getNro() {
+    public Long getNumber() {
         return nro;
     }
 
-    @Override
-    public void setNro(Long nro) {
-        this.nro = nro;
+    public void setNumber(Long number) {
+        this.nro = number;
     }
 
     @Override
-    public String getDescripcion() {
+    public String getText() {
         return descripcion;
     }
 
-    @Override
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.descripcion = description;
     }
 
     @Override
-    public String getExplicacion() {
+    public String getExplanation() {
         return explicacion;
     }
 
-    @Override
-    public void setExplicacion(String explicacion) {
-        this.explicacion = explicacion;
+    public void setExplanation(String explanation) {
+        this.explicacion = explanation;
     }
 
-    @Override
     public Date getFechamodificacion() {
         return fechamodificacion;
     }
 
-    @Override
     public void setFechamodificacion(Date fechamodificacion) {
         this.fechamodificacion = fechamodificacion;
     }
 
-    @Override
     public Date getFechacreacion() {
         return fechacreacion;
     }
 
-    @Override
     public void setFechacreacion(Date fechacreacion) {
         this.fechacreacion = fechacreacion;
     }
 
-    @Override
     public Date getFechareplicacion() {
         return fechareplicacion;
     }
 
-    @Override
     public void setFechareplicacion(Date fechareplicacion) {
         this.fechareplicacion = fechareplicacion;
     }
 
-    @Override
     public String getAppuser() {
         return appuser;
     }
 
-    @Override
     public void setAppuser(String appuser) {
         this.appuser = appuser;
     }
@@ -183,7 +171,7 @@ public class DicMensaje extends DataRow implements IDicMensaje {
             return false;
         }
         DicMensaje other = (DicMensaje) o;
-        return (this.nro.equals(other.getNro())); 
+        return (this.nro.equals(other.getNumber())); 
     }
 
     @Override

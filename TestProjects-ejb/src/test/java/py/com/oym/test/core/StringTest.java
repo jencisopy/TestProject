@@ -6,6 +6,7 @@
 package py.com.oym.test.core;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,6 +16,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import py.com.oym.frame.util.Fn;
+import py.com.oym.frame.util.Strings;
 
 /**
  *
@@ -41,7 +44,7 @@ public class StringTest {
     public void tearDown() {
     }
 
-    @Test
+    //@Test
     public void test() {
         String str = "fn_idvendedor(0,1,1) as vendedor, fn_iditem(0,1,1) as item";
         //System.out.println(str.replaceAll("(.*?)",""));
@@ -133,9 +136,16 @@ public class StringTest {
         }
     }
     
-    //@Test
+    @Test
     public void testSubstring(){
         String var = "Enero";
         System.out.println(var.substring(0, 3));
+    }
+    
+    @Test
+    public void testStringToDate(){
+        Date var = new Date();
+        System.out.println(Strings.dateToString(var));
+        System.out.println(Fn.toString(var, "yyyyMMdd"));        
     }
 }

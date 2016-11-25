@@ -15,8 +15,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.IGenericDAORemote;
 import py.com.oym.frame.error.ErrorManager;
+import py.com.oym.frame.log.ILogManager;
 
 /**
  *
@@ -54,15 +54,15 @@ public class TestError {
     
     @Test
     public void test1() throws NamingException{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        ILogManager logManager  = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
         ErrorManager errorMngr = new ErrorManager();
-        assertNotNull(errorMngr.getErrorMessage(50001,dao));
+        assertNotNull(errorMngr.getErrorMessage(50001,logManager));
     }
 
     @Test
     public void test2() throws NamingException{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        ILogManager logManager  = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
         ErrorManager errorMngr = new ErrorManager();
-        assertNotNull(errorMngr.getErrorReg(50001,"", dao));
+        assertNotNull(errorMngr.getErrorReg(50001,"", logManager));
     } 
 }
