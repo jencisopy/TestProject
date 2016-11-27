@@ -28,9 +28,9 @@ import py.com.oym.frame.data.DataSet;
 import py.com.oym.frame.data.IDataObject;
 import py.com.oym.frame.data.IDataSet;
 import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.frame.error.SessionError;
-import py.com.oym.frame.sec.ISecManager;
-import py.com.oym.frame.sec.IUserSession;
+import py.com.oym.frame.exceptions.SessionError;
+import py.com.oym.frame.security.ISecManager;
+import py.com.oym.frame.security.IUserSession;
 
 /**
  *
@@ -55,7 +55,7 @@ public class TestDatos3 {
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);           
         
-        ISecManager secMngr = (ISecManager)context.lookup("/ItBox-1.0//SecManager!py.com.oym.frame.sec.ISecManagerRemote");
+        ISecManager secMngr = (ISecManager)context.lookup("/ItBox-1.0//SecManager!py.com.oym.frame.security.ISecManagerRemote");
         
         dao  = (IGenericDAO) context.lookup("/ItBox-1.0//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
 //        dao.sqlExec("PU2", "delete from {schema}.bx_index where codigo = '002';", null);                

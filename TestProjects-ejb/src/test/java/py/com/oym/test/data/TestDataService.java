@@ -19,12 +19,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.logic.IDataServiceRemote;
-import py.com.oym.frame.logic.IDataService;
+import py.com.oym.frame.services.IDataServiceRemote;
+import py.com.oym.frame.services.IDataService;
 import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.error.IErrorReg;
-import py.com.oym.frame.sec.ISecManager;
-import py.com.oym.frame.sec.IUserSession;
+import py.com.oym.frame.security.ISecManager;
+import py.com.oym.frame.security.IUserSession;
 import py.com.oym.model.tables.Pais;
 import py.com.oym.model.tables.Usuario;
 import py.com.oym.model.tables.UsuarioMiembro;
@@ -50,7 +50,7 @@ public class TestDataService {
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
         
-        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.sec.ISecManagerRemote");
+        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
         
         IUserSession userSession = secMngr.createSession("J", "", 98L);        
         sessionId = userSession.getSessionId();
@@ -101,10 +101,10 @@ public class TestDataService {
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         
         List<Usuario> rows = dao.findAll(Usuario.class,"PU1");
-        rows.get(0).setOperacion(IDataRow.MODIFICAR);
+        rows.get(0).setOperation(IDataRow.MODIFICAR);
         usuarioSrv.checkDataRow(rows.get(0), "");
         
-        rows.get(0).setOperacion(IDataRow.BORRAR);
+        rows.get(0).setOperation(IDataRow.BORRAR);
         usuarioSrv.checkDataRow(rows.get(0), "");
        
     }        
@@ -115,7 +115,7 @@ public class TestDataService {
         IDataService usuarioSrv  = (IDataService) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.logic.IDataServiceRemote");
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         List<Usuario> rows = dao.findAll(Usuario.class,"PU1");
-        usuarioSrv.update(rows.get(0), sessionId);
+        usuarioSrv.merge(rows.get(0), sessionId);
         //dataService.checkDataRow(rows.get(0), "");
        
     }        
@@ -130,15 +130,15 @@ public class TestDataService {
         usuario.setIdusuario(0L);
         Map<String, IErrorReg> errors;
 
-        usuario.setOperacion(IDataRow.MODIFICAR);
+        usuario.setOperation(IDataRow.MODIFICAR);
         errors = usuarioSrv.checkDataRow(usuario, sessionId);
         assertFalse(errors.isEmpty());
         
-        usuario.setOperacion(IDataRow.AGREGAR);        
+        usuario.setOperation(IDataRow.AGREGAR);        
         errors = usuarioSrv.checkDataRow(usuario, sessionId);
         assertFalse(errors.isEmpty());
 
-        usuario.setOperacion(IDataRow.BORRAR);        
+        usuario.setOperation(IDataRow.BORRAR);        
         errors = usuarioSrv.checkDataRow(usuario, sessionId);
         assertTrue(errors.isEmpty());
         
@@ -150,7 +150,7 @@ public class TestDataService {
         IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/DataService!py.com.oym.frame.logic.IDataServiceRemote");
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         List<Pais> rows = dao.findAll(Pais.class,"PU2");
-        rows.get(0).setOperacion(IDataRow.MODIFICAR);
+        rows.get(0).setOperation(IDataRow.MODIFICAR);
         dataService.checkDataRow(rows.get(0), sessionId);
         //assertFalse(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
     }    
@@ -163,7 +163,7 @@ public class TestDataService {
         List<UsuarioMiembro> rows = dao.findAll(UsuarioMiembro.class,"PU1");
         UsuarioMiembro usuarioMiembro = rows.get(0);
         //usuarioMiembro.setUsuarioGrupo(null);
-        usuarioMiembro.setOperacion(IDataRow.MODIFICAR);
+        usuarioMiembro.setOperation(IDataRow.MODIFICAR);
         
         Map<String, IErrorReg> errors = dataService.checkDataRow(rows.get(0), sessionId);
         assertTrue(errors.isEmpty());
@@ -178,7 +178,7 @@ public class TestDataService {
         List<Pais> rows = dao.findAll(Pais.class,"PU2");
         Pais pais = rows.get(0);
         pais.setRegion(null);
-        rows.get(0).setOperacion(IDataRow.MODIFICAR);
+        rows.get(0).setOperation(IDataRow.MODIFICAR);
         dataService.checkDataRow(pais, sessionId);
     }    
  }

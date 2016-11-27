@@ -6,7 +6,7 @@
 package py.com.oym.data;
 
 import py.com.oym.frame.data.DBManager;
-import py.com.oym.frame.logic.DataService;
+import py.com.oym.frame.services.DataService;
 
 /**
  *

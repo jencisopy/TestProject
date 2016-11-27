@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import py.com.oym.frame.annotation.CheckMethod;
 import py.com.oym.frame.data.DBManager;
 import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.logic.DataService;
+import py.com.oym.frame.services.DataService;
 import py.com.oym.frame.error.ErrorReg;
 import py.com.oym.frame.error.IErrorReg;
 import py.com.oym.model.tables.Usuario;

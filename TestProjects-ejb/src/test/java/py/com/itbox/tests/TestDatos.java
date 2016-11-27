@@ -24,7 +24,7 @@ import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.error.SessionError;
+import py.com.oym.frame.exceptions.SessionError;
 import py.com.itbox.model.tables.BxCampo;
 import py.com.itbox.model.tables.BxDocumentotipo;
 import py.com.itbox.model.tables.BxIndex;
@@ -83,7 +83,7 @@ public class TestDatos {
     }
 
     //@Test
-    public void test() throws NamingException, SessionError{
+    public void test() throws NamingException, SessionError, Exception{
         IDataNativeQuery query = dataLink.newDataNativeQuery();
         
         List<IDataQueryModel> result = query.select("idempresa, nombre").
@@ -104,7 +104,7 @@ public class TestDatos {
         bxCampo.setIdempresa(10L);
         bxCampo.setNombre("Nro.Str");
         bxCampo.setTipo("C");
-        bxCampo.setOperacion(IDataRow.AGREGAR);
+        bxCampo.setOperation(IDataRow.AGREGAR);
         
         IDataSet dataSet = new DataSet();
         dataSet.add("bxcampo", bxCampo);
@@ -125,7 +125,7 @@ public class TestDatos {
         bxRepositorio.setInactivo(false);
         bxRepositorio.setPath1("/servidor/path1");
         bxRepositorio.setPath2("/servidor/path2");
-        bxRepositorio.setOperacion(IDataRow.AGREGAR);
+        bxRepositorio.setOperation(IDataRow.AGREGAR);
         
         assertTrue(dao.update("PU2", bxRepositorio,"").isSuccessFul());
     }
@@ -145,7 +145,7 @@ public class TestDatos {
 //        
 //        bxPlantilla.setInactivo(false);        
 //        bxPlantilla.setFechamodificacion(new java.util.Date());
-//        bxPlantilla.setOperacion((Integer)1);
+//        bxPlantilla.setOperation((Integer)1);
 //        String queryString = "select o from BxPlantilla o where idempresa = 10 and codigo = '001'";
 //        dao.update("PU2", bxPlantilla);
 //        bxPlantilla = dao.findByQuery(BxPlantilla.class, "PU2", queryString, null);
@@ -159,7 +159,7 @@ public class TestDatos {
 //        bxPlantillaDetalle.setOrden(1);
 //        bxPlantillaDetalle.setValorDefecto("xx");
 //        bxPlantillaDetalle.setFechamodificacion(new java.util.Date());
-//        bxPlantillaDetalle.setOperacion(1);
+//        bxPlantillaDetalle.setOperation(1);
 //
 //        
 //        dao.update("PU2", bxPlantillaDetalle);
@@ -177,7 +177,7 @@ public class TestDatos {
         bxPlantilla.setNombre("PLANTILLA 1");
         
         bxPlantilla.setInactivo(false);        
-        bxPlantilla.setOperacion(IDataRow.AGREGAR);
+        bxPlantilla.setOperation(IDataRow.AGREGAR);
 
         String queryString = "select o from BxCampo o where idempresa = 10 and codigo = '001'";
         BxCampo bxCampo = dao.findByQuery(BxCampo.class, "PU2", queryString, null);
@@ -186,14 +186,14 @@ public class TestDatos {
         bxPlantillaDetalle.setBxCampo(bxCampo);
         bxPlantillaDetalle.setOrden(1);
         bxPlantillaDetalle.setValorDefecto("xx");
-        bxPlantillaDetalle.setOperacion(IDataRow.AGREGAR);
+        bxPlantillaDetalle.setOperation(IDataRow.AGREGAR);
         
         BxPlantilladetalle bxPlantillaDetalle2 = new BxPlantilladetalle();
         bxPlantillaDetalle2.setBxPlantilla(bxPlantilla);
         bxPlantillaDetalle2.setBxCampo(bxCampo);
         bxPlantillaDetalle2.setOrden(2);
         bxPlantillaDetalle2.setValorDefecto("xx");
-        bxPlantillaDetalle2.setOperacion(IDataRow.AGREGAR);
+        bxPlantillaDetalle2.setOperation(IDataRow.AGREGAR);
         
         List<BxPlantilladetalle> list = new ArrayList();
         list.add(bxPlantillaDetalle);
@@ -219,7 +219,7 @@ public class TestDatos {
         bxDoc.setNombre("STR");
         bxDoc.setFolder("folder");
         
-        bxDoc.setOperacion(IDataRow.AGREGAR);
+        bxDoc.setOperation(IDataRow.AGREGAR);
     
         String queryString = "select o from BxPlantilla o where idempresa = 10 and codigo = '001'";
         BxPlantilla bxPlantilla = dao.findByQuery(BxPlantilla.class, "PU2", queryString, null);
@@ -245,7 +245,7 @@ public class TestDatos {
         bxIndex.setNrodoc(212333L);
         bxIndex.setFechadoc(new Date());
         bxIndex.setAnho(2016L);
-        bxIndex.setOperacion(IDataRow.AGREGAR);
+        bxIndex.setOperation(IDataRow.AGREGAR);
     
         String queryString = "select o from BxDocumentotipo o where idempresa = 10 and codigo = '001'";
         BxDocumentotipo bxDoc = dao.findByQuery(BxDocumentotipo.class, "PU2", queryString, null);

@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.frame.sec.ISecManager;
+import py.com.oym.frame.security.ISecManager;
 
 /**
  *
@@ -38,7 +38,7 @@ public class TestUserMember {
         p.put(Context.SECURITY_CREDENTIALS, "Oym1282873");
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);           
-        secMngr = (ISecManager)context.lookup("/ItBox-1.0-SNAPSHOT//SecManager!py.com.oym.frame.sec.ISecManagerRemote");
+        secMngr = (ISecManager)context.lookup("/ItBox-1.0-SNAPSHOT//SecManager!py.com.oym.frame.security.ISecManagerRemote");
     }
     
     @AfterClass

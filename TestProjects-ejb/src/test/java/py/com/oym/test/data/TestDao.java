@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.persistence.Query;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -68,7 +67,7 @@ public class TestDao {
     
     //@Test
     public void testDao() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         System.out.println(dao.getDataEngine("PU1"));
         System.out.println(dao.getSchema("PU1"));
     }    

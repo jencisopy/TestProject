@@ -31,7 +31,7 @@ import py.com.oym.frame.data.DataSet;
 import py.com.oym.frame.data.IDataRow;
 import py.com.oym.frame.data.IDataSet;
 import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.frame.error.SessionError;
+import py.com.oym.frame.exceptions.SessionError;
 
 /**
  *
@@ -86,7 +86,7 @@ public class TestDatos2 {
         bxCampo.setIdempresa(10L);
         bxCampo.setNombre("Nro.Str");
         bxCampo.setTipo("C");
-        bxCampo.setOperacion(IDataRow.AGREGAR);
+        bxCampo.setOperation(IDataRow.AGREGAR);
 
         //Repositorio
         BxRepositorio bxRepositorio = new BxRepositorio();
@@ -96,7 +96,7 @@ public class TestDatos2 {
         bxRepositorio.setInactivo(false);
         bxRepositorio.setPath1("/servidor/path1");
         bxRepositorio.setPath2("/servidor/path2");
-        bxRepositorio.setOperacion((Integer)1);
+        bxRepositorio.setOperation((Integer)1);
         
         IDataSet dataSet = new DataSet();
         dataSet.add("bxcampo", bxCampo);
@@ -114,7 +114,7 @@ public class TestDatos2 {
         bxPlantilla.setCodigo("001");
         bxPlantilla.setNombre("PLANTILLA 1");
         bxPlantilla.setInactivo(false);        
-        bxPlantilla.setOperacion(IDataRow.AGREGAR);
+        bxPlantilla.setOperation(IDataRow.AGREGAR);
         //Plantilladetalle
         String queryString = "select o from BxCampo o where idempresa = 10 and codigo = '001'";
         BxCampo bxCampo = dao.findByQuery(BxCampo.class, "PU2", queryString, null);
@@ -123,14 +123,14 @@ public class TestDatos2 {
         bxPlantillaDetalle.setBxCampo(bxCampo);
         bxPlantillaDetalle.setOrden(1);
         bxPlantillaDetalle.setValorDefecto("xx");
-        bxPlantillaDetalle.setOperacion(IDataRow.AGREGAR);
+        bxPlantillaDetalle.setOperation(IDataRow.AGREGAR);
 
         BxPlantilladetalle bxPlantillaDetalle2 = new BxPlantilladetalle();
         bxPlantillaDetalle2.setBxPlantilla(bxPlantilla);
         bxPlantillaDetalle2.setBxCampo(bxCampo);
         bxPlantillaDetalle2.setOrden(2);
         bxPlantillaDetalle2.setValorDefecto("xx");
-        bxPlantillaDetalle2.setOperacion(IDataRow.AGREGAR);
+        bxPlantillaDetalle2.setOperation(IDataRow.AGREGAR);
         
         List<BxPlantilladetalle> list = new ArrayList();
         list.add(bxPlantillaDetalle);
@@ -154,7 +154,7 @@ public class TestDatos2 {
         bxCampo.setIdempresa(10L);
         bxCampo.setNombre("Nro.Str");
         bxCampo.setTipo("C");
-        bxCampo.setOperacion(IDataRow.AGREGAR);
+        bxCampo.setOperation(IDataRow.AGREGAR);
         //Repositorio
         BxRepositorio bxRepositorio = new BxRepositorio();
         bxRepositorio.setCodigo("001");
@@ -163,14 +163,14 @@ public class TestDatos2 {
         bxRepositorio.setInactivo(false);
         bxRepositorio.setPath1("/servidor/path1");
         bxRepositorio.setPath2("/servidor/path2");
-        bxRepositorio.setOperacion((Integer)1);
+        bxRepositorio.setOperation((Integer)1);
         //Plantilla
         BxPlantilla bxPlantilla = new BxPlantilla();
         bxPlantilla.setIdempresa(10L);
         bxPlantilla.setCodigo("001");
         bxPlantilla.setNombre("PLANTILLA 1");
         bxPlantilla.setInactivo(false);        
-        bxPlantilla.setOperacion((Integer)1);
+        bxPlantilla.setOperation((Integer)1);
         //Plantilladetalle
         String queryString = "select o from BxCampo o where idempresa = 10 and codigo = '001'";
         bxCampo = dao.findByQuery(BxCampo.class, "PU2", queryString, null);
@@ -179,14 +179,14 @@ public class TestDatos2 {
         bxPlantillaDetalle.setBxCampo(bxCampo);
         bxPlantillaDetalle.setOrden(1);
         bxPlantillaDetalle.setValorDefecto("xx");
-        bxPlantillaDetalle.setOperacion(1);
+        bxPlantillaDetalle.setOperation(1);
 
         BxPlantilladetalle bxPlantillaDetalle2 = new BxPlantilladetalle();
         bxPlantillaDetalle2.setBxPlantilla(bxPlantilla);
         bxPlantillaDetalle2.setBxCampo(bxCampo);
         bxPlantillaDetalle2.setOrden(2);
         bxPlantillaDetalle2.setValorDefecto("xx");
-        bxPlantillaDetalle2.setOperacion(1);
+        bxPlantillaDetalle2.setOperation(1);
         
         List<BxPlantilladetalle> list = new ArrayList();
         list.add(bxPlantillaDetalle);
@@ -198,7 +198,7 @@ public class TestDatos2 {
         bxDoc.setIdempresa(10L);
         bxDoc.setCodigo("001");
         bxDoc.setNombre("STR");
-        bxDoc.setOperacion((Integer)1);
+        bxDoc.setOperation((Integer)1);
         queryString = "select o from BxPlantilla o where idempresa = 10 and codigo = '001'";
         bxPlantilla = dao.findByQuery(BxPlantilla.class, "PU2", queryString, null);
         bxDoc.setBxPlantilla(bxPlantilla);
@@ -214,7 +214,7 @@ public class TestDatos2 {
         bxIndex.setFileresultpdf("prueba.pdf");
         bxIndex.setNrolote(1L);
         bxIndex.setNrotrabajo(1L);
-        bxIndex.setOperacion((Integer)1);
+        bxIndex.setOperation((Integer)1);
         queryString = "select o from BxDocumentotipo o where idempresa = 10 and codigo = '001'";
         bxDoc = dao.findByQuery(BxDocumentotipo.class, "PU2", queryString, null);
         bxIndex.setBxRepositorio(bxDoc.getBxRepositorio());

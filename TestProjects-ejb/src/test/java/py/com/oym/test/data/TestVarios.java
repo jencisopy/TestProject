@@ -73,7 +73,7 @@ public class TestVarios {
     
     //@Test
     public void testParam() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
+        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
         DataLink dataLink = new DataLink(dao);
         Long rec = dataLink.getCount2("select * FROM {schema}.usuario where disable = :true", null);
         System.out.println(rec);

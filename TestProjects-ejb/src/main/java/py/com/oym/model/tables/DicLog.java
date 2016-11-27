@@ -306,13 +306,13 @@ public class DicLog extends DataRow implements ILogRecord {
     }
 
     @Override
-    public String getObjectElement() {
+    public String getObjectField() {
         return objetoelemento;
     }
 
     @Override
-    public void setObjectElement(String objectElement) {
-        this.objetoelemento = objectElement;
+    public void setObjectField(String objectField) {
+        this.objetoelemento = objectField;
     }
 
     @Override

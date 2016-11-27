@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 import py.com.oym.frame.error.ErrorReg;
 import py.com.oym.frame.error.IErrorReg;
 import py.com.oym.frame.log.ILogManager;
-import py.com.oym.frame.sec.ISecManager;
-import py.com.oym.frame.sec.IUserSession;
+import py.com.oym.frame.security.ISecManager;
+import py.com.oym.frame.security.IUserSession;
 import py.com.oym.model.tables.DicLog;
 import py.com.oym.frame.model.ILogRecord;
 
@@ -45,7 +45,7 @@ public class TestLog {
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
 
-        ISecManager secMngr = (ISecManager) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.sec.ISecManagerRemote");
+        ISecManager secMngr = (ISecManager) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
 
         userSession = secMngr.createSession("J", "", 98L);
     }

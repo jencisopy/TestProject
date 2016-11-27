@@ -18,10 +18,9 @@ import org.junit.Test;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.data.IGenericDAO;
 import static py.com.oym.test.data.TestDataNativeQuery.context;
-import py.com.oym.frame.sec.ISecManagerRemote;
-import py.com.oym.frame.sec.ISessionsRemote;
-import py.com.oym.frame.sec.IUserSession;
-import py.com.oym.frame.sec.UserSession;
+import py.com.oym.frame.security.ISecManagerRemote;
+import py.com.oym.frame.security.ISessionsRemote;
+import py.com.oym.frame.security.IUserSession;
 
 
 /**
@@ -59,7 +58,7 @@ public class TestSesiones {
 
     //@Test
     public void test() throws Exception {
-        ISessionsRemote sesiones  = (ISessionsRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/Sessions!py.com.oym.frame.sec.ISessionsRemote");
+        ISessionsRemote sesiones  = (ISessionsRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/Sessions!py.com.oym.frame.security.ISessionsRemote");
         IUserSession userSession = sesiones.login("J", "");
         assertNotNull(userSession);
     }
@@ -67,7 +66,7 @@ public class TestSesiones {
   
     //@Test
     public void testLogin() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProject/TestProject-ejb/SecManager!py.com.oym.frame.sec.ISecManagerRemote");
+        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
         assertNotNull(sesiones);                
         IUserSession userSession = sesiones.login2("webuser", "123456");
         assertNotNull(userSession);        
@@ -78,7 +77,7 @@ public class TestSesiones {
     
     //@Test
     public void testCreateSession() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProject/TestProject-ejb/SecManager!py.com.oym.frame.sec.ISecManagerRemote");
+        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
         IUserSession userSesion = sesiones.createSession("webuser", "123456",98L);
         if (userSesion.getError() != null){
             System.out.println(userSesion.getError().getMessage());
@@ -90,10 +89,10 @@ public class TestSesiones {
     
     //@Test
     public void testDataLink() throws Exception {
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
-        IUserSession userSession = new UserSession();
-        dataLink.setUserSession(userSession);
+        //IUserSession userSession = new UserSession();
+        //dataLink.setUserSession(userSession);
         
         List<Object> result = dataLink.findByNativeQuery("select * from {schema}.empresa", null);
         assertNotNull(result);
@@ -101,8 +100,8 @@ public class TestSesiones {
     
     @Test
     public void testDataLink2() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProject/TestProject-ejb/SecManager!py.com.oym.frame.sec.ISecManagerRemote");        
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProject/TestProject-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");        
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao); 
         
         IUserSession userSession = sesiones.createSession("webuser", "123456",98L);

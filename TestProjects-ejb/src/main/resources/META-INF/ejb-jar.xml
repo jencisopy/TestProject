@@ -30,38 +30,38 @@
         </session>
         <session>
             <ejb-name>DataService</ejb-name>
-            <ejb-class>py.com.oym.frame.logic.DataService</ejb-class>                                                
-            <business-local>py.com.oym.frame.logic.IDataService</business-local>
-            <business-remote>py.com.oym.frame.logic.IDataServiceRemote</business-remote>
+            <ejb-class>py.com.oym.frame.services.DataService</ejb-class>                                                
+            <business-local>py.com.oym.frame.services.IDataService</business-local>
+            <business-remote>py.com.oym.frame.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>UsuarioSrv</ejb-name>
             <ejb-class>py.com.oym.data.UsuarioSrv</ejb-class>                                                
-            <business-local>py.com.oym.frame.logic.IDataService</business-local>
-            <business-remote>py.com.oym.frame.logic.IDataServiceRemote</business-remote>
+            <business-local>py.com.oym.frame.services.IDataService</business-local>
+            <business-remote>py.com.oym.frame.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>UsuarioMiembroSrv</ejb-name>
             <ejb-class>py.com.oym.data.UsuarioMiembroSrv</ejb-class>                                                
-            <business-local>py.com.oym.frame.logic.IDataService</business-local>
-            <business-remote>py.com.oym.frame.logic.IDataServiceRemote</business-remote>
+            <business-local>py.com.oym.frame.services.IDataService</business-local>
+            <business-remote>py.com.oym.frame.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>Sessions</ejb-name>
-            <ejb-class>py.com.oym.frame.sec.Sessions</ejb-class>
+            <ejb-class>py.com.oym.frame.security.Sessions</ejb-class>
             <session-type>Singleton</session-type>
         </session>
         <session>
             <ejb-name>SecManager</ejb-name>
-            <ejb-class>py.com.oym.frame.sec.SecManager</ejb-class>                                                
-            <business-local>py.com.oym.frame.sec.ISecManager</business-local>
-            <business-remote>py.com.oym.frame.sec.ISecManagerRemote</business-remote>
+            <ejb-class>py.com.oym.frame.security.SecManager</ejb-class>                                                
+            <business-local>py.com.oym.frame.security.ISecManager</business-local>
+            <business-remote>py.com.oym.frame.security.ISecManagerRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>                

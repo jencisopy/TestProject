@@ -22,7 +22,7 @@ import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.error.SessionError;
+import py.com.oym.frame.exceptions.SessionError;
 import py.com.oym.model.tables.Usuario;
 
 /**
@@ -58,7 +58,7 @@ public class TestDataLink {
     }
 
     //@Test
-    public void test() throws NamingException, SessionError{
+    public void test() throws NamingException, SessionError, Exception{
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         //IGenericDAO dao  = (IGenericDAO) context.lookup("/Maker-ear-9.5-SNAPSHOT/Maker-ejb-9.5-SNAPSHOT/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
 
