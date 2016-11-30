@@ -24,7 +24,7 @@ import py.com.oym.frame.data.IDataQueryModel;
  * @author jenci_000
  */
 public class TestDataNativeQuery {
-    static Context context;
+    static private Context context;
     DataNativeQuery query;    
     
     public TestDataNativeQuery() {

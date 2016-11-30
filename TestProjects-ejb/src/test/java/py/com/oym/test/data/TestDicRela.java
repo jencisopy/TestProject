@@ -14,15 +14,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.data.DataLink;
-import static py.com.oym.test.data.TestDataNativeQuery.context;
+import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *
  * @author jenci_000
  */
 public class TestDicRela {
+    static private Context context;    
     
     public TestDicRela() {
     }

@@ -21,10 +21,10 @@ import py.com.itbox.model.tables.BxCampo;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.data.DataObject;
 import py.com.oym.frame.data.IDataObject;
-import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.exceptions.SessionError;
 import py.com.oym.frame.security.ISecManager;
 import py.com.oym.frame.security.IUserSession;
+import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *
@@ -52,13 +52,13 @@ public class TestDatos4 {
         ISecManager secMngr = (ISecManager)context.lookup("/ItBox-1.0//SecManager!py.com.oym.frame.security.ISecManagerRemote");
         
         dao  = (IGenericDAO) context.lookup("/ItBox-1.0//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-//        dao.sqlExec("PU2", "delete from {schema}.bx_index where codigo = '002';", null);                
-//        dao.sqlExec("PU2", "delete from {schema}.bx_documentotipo where codigo = '002';", null);                
-//        dao.sqlExec("PU2", "delete from {schema}.bx_plantilla where codigo = '002';", null);        
-//        dao.sqlExec("PU2", "delete from {schema}.bx_repositorio where codigo = '002';", null);                        
-//        dao.sqlExec("PU2", "delete from {schema}.bx_campo where codigo = '002';", null);        
+//        dao.sqlExec("PU2", "remove from {schema}.bx_index where codigo = '002';", null);                
+//        dao.sqlExec("PU2", "remove from {schema}.bx_documentotipo where codigo = '002';", null);                
+//        dao.sqlExec("PU2", "remove from {schema}.bx_plantilla where codigo = '002';", null);        
+//        dao.sqlExec("PU2", "remove from {schema}.bx_repositorio where codigo = '002';", null);                        
+//        dao.sqlExec("PU2", "remove from {schema}.bx_campo where codigo = '002';", null);        
         
-        IUserSession userSession = secMngr.createSession("J", "", 10L);
+        IUserSession userSession = secMngr.createSession("J", "", 10L, null);
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
     }

@@ -47,7 +47,7 @@ public class TestLog {
 
         ISecManager secMngr = (ISecManager) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
 
-        userSession = secMngr.createSession("J", "", 98L);
+        userSession = secMngr.createSession("J", "", 98L, null);
     }
 
     @AfterClass

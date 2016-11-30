@@ -22,12 +22,12 @@ import javax.validation.constraints.Size;
 import org.apache.log4j.Logger;
 import py.com.oym.frame.data.DataRow;
 import py.com.oym.frame.model.IDicPermisoEmpresa;
-import py.com.oym.frame.model.IUsuario;
-import py.com.oym.frame.model.IUsuarioMiembro;
+import py.com.oym.frame.model.IUser;
+import py.com.oym.frame.model.IUserMember;
 
 @Entity
 @Table(name = "usuario",uniqueConstraints=@UniqueConstraint(columnNames={"codigo"}))
-public class Usuario extends DataRow implements IUsuario {
+public class Usuario extends DataRow implements IUser {
     private static final long serialVersionUID = 1L;
     private static Logger logger = Logger.getLogger(Usuario.class);
     
@@ -225,12 +225,12 @@ public class Usuario extends DataRow implements IUsuario {
     }
     
     @Override
-    public List<IUsuarioMiembro> getListaUsuarioMiembro() {
-        return (List<IUsuarioMiembro>) (List<?>)listaUsuarioMiembro;
+    public List<IUserMember> getListaUsuarioMiembro() {
+        return (List<IUserMember>) (List<?>)listaUsuarioMiembro;
     }
 
     @Override
-    public void setListaUsuarioMiembro(List<IUsuarioMiembro> listaUsuarioMiembro) {
+    public void setListaUsuarioMiembro(List<IUserMember> listaUsuarioMiembro) {
         this.listaUsuarioMiembro = (List<UsuarioMiembro>) (List<?>)listaUsuarioMiembro;
     }
 

@@ -16,11 +16,10 @@ import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.data.IGenericDAO;
-import static py.com.oym.test.data.TestDataNativeQuery.context;
 import py.com.oym.frame.security.ISecManagerRemote;
 import py.com.oym.frame.security.ISessionsRemote;
 import py.com.oym.frame.security.IUserSession;
+import py.com.oym.frame.data.IGenericDAO;
 
 
 /**
@@ -28,6 +27,7 @@ import py.com.oym.frame.security.IUserSession;
  * @author Jorge Enciso
  */
 public class TestSesiones {
+    static private Context context;    
     
     public TestSesiones() {
     }
@@ -78,13 +78,23 @@ public class TestSesiones {
     //@Test
     public void testCreateSession() throws Exception {
         ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
-        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L);
+        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, null);
         if (userSesion.getError() != null){
             System.out.println(userSesion.getError().getMessage());
         }
         assertNotNull(userSesion.getSessionId());
         assertTrue(sesiones.isSesionIdValid(userSesion.getSessionId()));
         System.out.println(sesiones.getUserRol("J"));
+    }    
+
+    @Test
+    public void testSesionExpirada() throws Exception {
+        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, 0);
+        if (userSesion.getError() != null){
+            System.out.println(userSesion.getError().getMessage());
+        }
+        assertFalse(sesiones.isSesionIdValid(userSesion.getSessionId()));
     }    
     
     //@Test
@@ -98,13 +108,13 @@ public class TestSesiones {
         assertNotNull(result);
     }        
     
-    @Test
+    //@Test
     public void testDataLink2() throws Exception {
         ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");        
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao); 
         
-        IUserSession userSession = sesiones.createSession("webuser", "123456",98L);
+        IUserSession userSession = sesiones.createSession("webuser", "123456",98L, null);
         if (userSession.getError() != null){
             System.out.println(userSession.getError().getMessage());
         }

@@ -16,10 +16,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import py.com.oym.frame.data.IDataLink;
-import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.data.IGenericDAORemote;
 import py.com.oym.frame.web.remote.EjbApiRemote;
 import static py.com.oym.test.data.TestDao.context;
+import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *

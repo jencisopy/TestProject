@@ -17,20 +17,20 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static py.com.oym.test.data.TestDataNativeQuery.context;
+import py.com.oym.data.IUsuarioSrv;
 import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
-import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.exceptions.SessionError;
 import py.com.oym.model.tables.Usuario;
+import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *
  * @author jenci_000
  */
 public class TestDataLink {
-    
+    static private Context context;
     public TestDataLink() {
     }
     
@@ -57,7 +57,7 @@ public class TestDataLink {
     public void tearDown() {
     }
 
-    //@Test
+    @Test
     public void test() throws NamingException, SessionError, Exception{
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         //IGenericDAO dao  = (IGenericDAO) context.lookup("/Maker-ear-9.5-SNAPSHOT/Maker-ejb-9.5-SNAPSHOT/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
@@ -75,7 +75,7 @@ public class TestDataLink {
         assertNotNull(result);
     }
     
-    //@Test
+    @Test
     public void test2() throws NamingException, Exception{
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
@@ -90,7 +90,22 @@ public class TestDataLink {
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
         Usuario usuario = dataLink.find(Usuario.class, 3L);
-        System.out.println(usuario.getValue("empresa.nombre"));
-        assertNotNull(usuario.getValue("empresa.nombre"));
+        System.out.println(usuario.getValue("idempresa"));
+        assertNotNull(usuario.getValue("idempresa"));
+    }
+    
+    @Test
+    public void test4() throws NamingException, SessionError, Exception{
+        IUsuarioSrv dao  = (IUsuarioSrv)context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.data.IUsuarioSrvRemote");
+        DataLink dataLink = new DataLink(dao);
+        assertNotNull(dataLink.getDataService());
+        assertNotNull((IUsuarioSrv)dataLink.getDataService());
+    }
+    
+    @Test
+    public void test5() throws NamingException, SessionError, Exception{
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        DataLink dataLink = new DataLink(dao);
+        assertNull(dataLink.getDataService());
     }
 }

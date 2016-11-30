@@ -11,12 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IUsuarioMiembro;
-import py.com.oym.frame.model.IUsuario;
+import py.com.oym.frame.model.IUser;
+import py.com.oym.frame.model.IUserMember;
 
 @Entity
 @Table(name = "usuariomiembro")
-public class UsuarioMiembro extends DataRow implements IUsuarioMiembro {
+public class UsuarioMiembro extends DataRow implements IUserMember {
     
     private static final long serialVersionUID = 1L;
     
@@ -48,22 +48,22 @@ public class UsuarioMiembro extends DataRow implements IUsuarioMiembro {
     }
 
     @Override
-    public IUsuario getUsuarioMiembro() {
+    public IUser getUsuarioMiembro() {
         return usuarioMiembro;
     }
 
     @Override
-    public void setUsuarioMiembro(IUsuario usuarioMiembro) {
+    public void setUsuarioMiembro(IUser usuarioMiembro) {
         this.usuarioMiembro = (Usuario)usuarioMiembro;
     }
 
     @Override
-    public IUsuario getUsuarioGrupo() {
+    public IUser getUsuarioGrupo() {
         return usuarioGrupo;
     }
 
     @Override
-    public void setUsuarioGrupo(IUsuario usuarioGrupo) {
+    public void setUsuarioGrupo(IUser usuarioGrupo) {
         this.usuarioGrupo = (Usuario)usuarioGrupo;
     }
 

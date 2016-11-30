@@ -12,14 +12,14 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static py.com.oym.test.data.TestDataNativeQuery.context;
 
 /**
  *
  * @author jenci_000
  */
 public class TestJdbcConnect {
+    static private Context context;
+    
     public TestJdbcConnect(){
         
     }

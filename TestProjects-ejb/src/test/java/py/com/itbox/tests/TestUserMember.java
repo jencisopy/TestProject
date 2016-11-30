@@ -14,8 +14,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.security.ISecManager;
+import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *

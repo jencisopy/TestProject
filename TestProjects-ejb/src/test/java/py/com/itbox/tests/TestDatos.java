@@ -22,7 +22,6 @@ import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
-import py.com.oym.frame.data.IGenericDAO;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.exceptions.SessionError;
 import py.com.itbox.model.tables.BxCampo;
@@ -35,6 +34,7 @@ import py.com.itbox.model.tables.BxRepositorio;
 import py.com.oym.frame.data.DataSet;
 import py.com.oym.frame.data.IDataRow;
 import py.com.oym.frame.data.IDataSet;
+import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *
@@ -132,8 +132,8 @@ public class TestDatos {
     
 //    @Test
 //    public void testBxPlantillaAdd() throws NamingException, SessionError, Exception{
-//        dao.sqlExec("PU2", "delete from {schema}.bx_documentotipo;", null);        
-//        dao.sqlExec("PU2", "delete from {schema}.bx_plantilla;", null);
+//        dao.sqlExec("PU2", "remove from {schema}.bx_documentotipo;", null);        
+//        dao.sqlExec("PU2", "remove from {schema}.bx_plantilla;", null);
 //        
 //        List<BxPlantilla> bxPlantillaList = dao.findListByQuery("PU2","select o from BxPlantilla o",null);
 //        assertNotNull(bxPlantillaList);
