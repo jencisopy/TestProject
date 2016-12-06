@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.data.IUsuarioSrv;
+import net.makerapp.services.IUsuarioSrv;
 import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.data.DataLink;

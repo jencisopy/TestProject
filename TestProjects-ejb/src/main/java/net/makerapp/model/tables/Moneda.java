@@ -1,18 +1,19 @@
-package py.com.oym.model.tables;
+package net.makerapp.model.tables;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Objects;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,32 +22,41 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import py.com.oym.frame.data.DataRow;
 
-@Cacheable()
 @Entity
-@Table(name = "region", 
-        uniqueConstraints = { @UniqueConstraint(columnNames = 
-                                               { "idempresa", "codigo"}) })
-@SequenceGenerator(name = "SOME_SEQUENCE", allocationSize = 1, sequenceName = "SOME_SEQUENCE")
-public class Region extends DataRow implements Serializable {
-    private static final Long serialVersionUID = 1L;
+@Table(name = "moneda",uniqueConstraints=@UniqueConstraint(columnNames={"idempresa","codigo"}))
+public class Moneda  extends DataRow implements Serializable {
+    private static final long serialVersionUID = 1L; 
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SOME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idregion", unique=true)
-    private Long idregion;
-        
+    @Column(name = "idmoneda")
+    private Long idmoneda;
+ 
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 4)
     @Column(name = "codigo")
     private String codigo;
     
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 30)
     @Column(name = "nombre")
     private String nombre;
+    
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cambio")
+    private BigDecimal cambio;
+    
+    @Column(name = "decimalpoint")
+    private Short decimalpoint;
+    
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "observacion")
+    private String observacion;
     
     @Column(name = "fechamodificacion")
     @Temporal(TemporalType.TIMESTAMP)
@@ -55,20 +65,23 @@ public class Region extends DataRow implements Serializable {
     @Size(max = 32)
     @Column(name = "appuser")
     private String appuser;
+
+    @OneToMany(mappedBy = "moneda")
+    private List<Pais> paises;
     
-    @NotNull
+    //@JoinColumn(name = "idempresa", referencedColumnName = "idempresa")
     @Column(name = "idempresa")    
     private Long idempresa;
 
-    public Region() {
+    public Moneda() {
     }
 
-    public Long getIdregion() {
-        return idregion;
+    public Long getIdmoneda() {
+        return idmoneda;
     }
 
-    public void setIdregion(Long idregion) {
-        this.idregion = idregion;
+    public void setIdmoneda(Long idmoneda) {
+        this.idmoneda = idmoneda;
     }
 
     public String getCodigo() {
@@ -90,16 +103,37 @@ public class Region extends DataRow implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre.trim();
+        this.nombre = nombre;
+    }
+
+    public BigDecimal getCambio() {
+        return cambio;
+    }
+
+    public void setCambio(BigDecimal cambio) {
+        this.cambio = cambio;
+    }
+
+    public Short getDecimalpoint() {
+        return decimalpoint;
+    }
+
+    public void setDecimalpoint(Short decimalpoint) {
+        this.decimalpoint = decimalpoint;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 
     public Date getFechamodificacion() {
         return fechamodificacion;
     }
 
-    public void setFechamodificacion(Date fechamodificacion) {
-        this.fechamodificacion = fechamodificacion;
-    }
 
     public String getAppuser() {
         return appuser;
@@ -109,6 +143,10 @@ public class Region extends DataRow implements Serializable {
         this.appuser = appuser;
     }
 
+    public List<Pais> getPaises() {
+        return paises;
+    }
+
     public Long getIdempresa() {
         return idempresa;
     }
@@ -116,7 +154,6 @@ public class Region extends DataRow implements Serializable {
     public void setIdempresa(Long idempresa) {
         this.idempresa = idempresa;
     }
-  
     
     @PrePersist
     public void prePersist() {
@@ -130,26 +167,25 @@ public class Region extends DataRow implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.idregion);
+        int hash = 0;
+        hash += (idmoneda != null ? idmoneda.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object object) {
+        if (!(object instanceof Moneda)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        Moneda other = (Moneda) object;
+        if ((this.idmoneda == null && other.idmoneda != null) || (this.idmoneda != null && !this.idmoneda.equals(other.idmoneda))) {
             return false;
         }
-        final Region other = (Region) obj;
-        return Objects.equals(this.idregion, other.idregion);
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Region{" + "idregion=" + idregion + ", codigo=" + codigo + ", nombre=" + nombre + '}';
+        return "py.com.oym.model.Moneda[ idmoneda=" + idmoneda + " ]";
     }
-
 }

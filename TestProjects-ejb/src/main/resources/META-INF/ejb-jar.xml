@@ -19,6 +19,11 @@
                 <persistence-context-ref-name>persistence/pu2</persistence-context-ref-name>
                 <persistence-unit-name>PU2</persistence-unit-name>
             </persistence-context-ref>
+            
+            <persistence-context-ref>
+                <persistence-context-ref-name>persistence/webresource</persistence-context-ref-name>
+                <persistence-unit-name>WEBRESOURCE</persistence-unit-name>
+            </persistence-context-ref>
         </session>
         <session>
             <ejb-name>GenericDAO</ejb-name>
@@ -38,7 +43,7 @@
         </session>
         <session>
             <ejb-name>UsuarioSrv</ejb-name>
-            <ejb-class>py.com.oym.data.UsuarioSrv</ejb-class>                                                
+            <ejb-class>net.makerapp.services.UsuarioSrv</ejb-class>                                                
             <business-local>py.com.oym.frame.services.IDataService</business-local>
             <business-remote>py.com.oym.frame.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
@@ -46,7 +51,7 @@
         </session>
         <session>
             <ejb-name>UsuarioMiembroSrv</ejb-name>
-            <ejb-class>py.com.oym.data.UsuarioMiembroSrv</ejb-class>                                                
+            <ejb-class>net.makerapp.services.UsuarioMiembroSrv</ejb-class>                                                
             <business-local>py.com.oym.frame.services.IDataService</business-local>
             <business-remote>py.com.oym.frame.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package py.com.oym.data;
+package net.makerapp.services;
 
 import py.com.oym.frame.data.DBManager;
 import py.com.oym.frame.services.DataService;

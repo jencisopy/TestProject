@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import py.com.oym.frame.data.DataExpression;
 
 /**
@@ -44,7 +45,8 @@ public class TextDataExpression {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    //@Test
+    @Test
+    @Ignore    
     public void test() {
         DataExpression sentence = new DataExpression();
         Map<String, String> params = new HashMap<>();
@@ -57,7 +59,8 @@ public class TextDataExpression {
         System.out.println(result);
     }
     
-    //@Test
+    @Test
+    @Ignore
     public void test2() {
         DataExpression sentence = new DataExpression();
         sentence.addExpression("pedro = {var1}", "var1","pp2");
@@ -67,6 +70,7 @@ public class TextDataExpression {
     }    
     
     @Test
+    //@Ignore
     public void test3() {
         DataExpression sentence = new DataExpression();
         sentence.openParenthesis();                
@@ -80,7 +84,7 @@ public class TextDataExpression {
         sentence.openParenthesis();        
         sentence.addExpression("fecha = :fecha");
         sentence.addExpression("logico = {true}");                        
-        sentence.closeParenthesis();        
+        sentence.closeParenthesis();      
         
         String result = sentence.getSentence();
         System.out.println(result);

@@ -24,11 +24,11 @@ import py.com.oym.frame.services.IDataService;
 import py.com.oym.frame.error.IErrorReg;
 import py.com.oym.frame.security.ISecManager;
 import py.com.oym.frame.security.IUserSession;
-import py.com.oym.model.tables.Pais;
+import net.makerapp.model.tables.Pais;
 import py.com.oym.model.tables.Usuario;
 import py.com.oym.model.tables.UsuarioMiembro;
 import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.model.tables.Moneda;
+import net.makerapp.model.tables.Moneda;
 
 /**
  *

@@ -1,4 +1,4 @@
-package py.com.oym.model.tables;
+package net.makerapp.model.tables;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

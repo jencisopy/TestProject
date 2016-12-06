@@ -25,7 +25,7 @@ import py.com.oym.frame.data.IGenericDAORemote;
  * @author jenci_000
  */
 public class TestDao {
-    static Context context;
+    private static Context context;
 
     public TestDao() {
     }

@@ -14,10 +14,16 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.IGenericDAORemote;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.data.DataNativeQuery;
+import py.com.oym.frame.data.IDataExpression;
+import py.com.oym.frame.data.IDataLink;
 import py.com.oym.frame.data.IDataQueryModel;
+import py.com.oym.frame.data.IGenericDAO;
+import py.com.oym.frame.security.ISecManager;
+import py.com.oym.frame.security.IUserSession;
 
 /**
  *
@@ -25,6 +31,7 @@ import py.com.oym.frame.data.IDataQueryModel;
  */
 public class TestDataNativeQuery {
     static private Context context;
+    static private IDataLink dataLink;
     DataNativeQuery query;    
     
     public TestDataNativeQuery() {
@@ -38,19 +45,28 @@ public class TestDataNativeQuery {
         p.put(Context.SECURITY_PRINCIPAL, "jenciso");
         p.put(Context.SECURITY_CREDENTIALS, "Oym1282873");
         p.put("jboss.naming.client.ejb.context", true);
-        context = new InitialContext(p);        
+        context = new InitialContext(p);   
+        
+        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        
+        IUserSession userSession = secMngr.createSession("J", "", 98L, null);
+        dataLink = new DataLink(dao);
+        dataLink.setUserSession(userSession);
+        
     }
 
     @Before
     public void setUp() {
     }
     
-    //@Test
+    @Test
     public void testExpr() {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();        
         System.out.println("\nCOLUMN EXPR");        
         System.out.println("===========");    
         query.select(""
-                + "SELECT 	a.idctacte, a.ctacte, a.ctactenombre, a.moneda, \n" +
+                + "a.idctacte, a.ctacte, a.ctactenombre, a.moneda, \n" +
                     "a.fecha, a.ruc, ctacte.telefonoctacte as telefono,\n" +
                     "a.rubro, a.rubronombre,a.subrubro,a.subrubronombre, \n" +
                     "a.iddocumento, a.iddocumentotipo,\n" +
@@ -122,17 +138,20 @@ public class TestDataNativeQuery {
         System.out.println(query.getQuerySentence());
     }
 
-    //@Test
+    @Test
     public void testQuery() throws Exception {
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        DataLink dataLink = new DataLink(dao);
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
-        query.select("{SCHEMa}.fn_iditem(iditem,item,idempresa) as item")
-            .from("{schema}.itemmovimiento")
-            .where("vendedor = :vendedor")
-            .orderBy("item")
-            .addParam("vendedor","001")
-            .createQuery();
+        List<IDataQueryModel> data = 
+            query.select("{SCHEMa}.fn_iditem(b.iditem,b.item,a.idempresa) as item")
+                .from("itemmovimiento_view a")
+                .join("itemmovimientodetalle_view b, vendedor")
+                .where("vendedor = :vendedor")
+                .orderBy("item")
+                .addParam("vendedor","001")
+                .execQuery();
+
+        System.out.println("\nTESTQUERY");
+        System.out.println("================");
         
         System.out.println(query.getQuerySentence());
     }
@@ -141,7 +160,7 @@ public class TestDataNativeQuery {
 //    public void testFilterExpr() {
 //    }
 
-    @Test
+    //@Test
     public void testQuery2() throws Exception {
         IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         DataLink dataLink = new DataLink(dao);
@@ -164,6 +183,95 @@ public class TestDataNativeQuery {
         System.out.println(data.size());
         System.out.println(data.get(0).getColumn("productos"));
         System.out.println(data.get(0).getColumn(1));        
+    }
+
+    @Test
+    public void testQuery3() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+
+        query.select("a.nro")
+                .from("itemmovimiento a")
+                .join("itemmovimiento a, itemmovimientodetalle b, vendedor")
+                .where("vendedor.codigo = :vendedor")
+                .orderBy("")
+                .createQuery();
+
+        System.out.println("\nTESTQUERY3");
+        System.out.println("================");
+        
+        System.out.println(query.getQuerySentence());
+    }
+
+    @Test
+    public void testQuery4() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+
+        query.select("a.nro")
+                .from("itemmovimiento a, itemmovimientodetalle b, vendedor")
+                .where("vendedor.codigo = :vendedor")
+                .orderBy("")
+                .createQuery();
+        
+        System.out.println("\nTESTQUERY4");
+        System.out.println("================");
+        
+        System.out.println(query.getQuerySentence());
+        System.out.println(query.getEntityExpr());        
+    }
+
+    @Test
+    public void testQuery5() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+
+        query.select("nro")
+                .from("{schema}.itemmovimiento")
+                .where("vendedor.codigo = :vendedor")
+                .orderBy("")
+                .createQuery();
+        
+        System.out.println("\nTESTQUERY5");
+        System.out.println("================");
+
+        System.out.println(query.getQuerySentence());
+        System.out.println(query.getEntityExpr());
+    }
+
+    @Test
+    public void testQuery6() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+
+        query.select("nro")
+                .from("itemmovimiento")
+                .where("vendedor.codigo = :vendedor")
+                .orderBy("")
+                .createQuery();
+        
+        System.out.println("\nTESTQUERY6");
+        System.out.println("================");
+
+        System.out.println(query.getQuerySentence());
+        System.out.println(query.getEntityExpr());
+    }
+
+    @Test
+    public void testQuery7() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+        IDataExpression exprFilter = new DataExpression();
+        exprFilter.addExpression("vendedor = :vendedor");
+        exprFilter.addExpression("ctacte = :ctacte");        
+        exprFilter.addSentenceParam("vendedor", "001");
+        exprFilter.addSentenceParam("ctacte", "001");        
+        
+        query.select("nro")
+                .from("itemmovimientob_view")
+                .where(exprFilter)
+                .orderBy("")
+                .createQuery();
+        
+        System.out.println("\nTESTQUERY7");
+        System.out.println("================");
+
+        System.out.println(query.getQuerySentence());
     }
     
     @After
