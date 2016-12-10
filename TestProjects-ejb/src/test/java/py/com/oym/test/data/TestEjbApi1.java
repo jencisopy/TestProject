@@ -10,17 +10,11 @@ import java.io.InputStream;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import org.jboss.ejb.client.ContextSelector;
-import org.jboss.ejb.client.EJBClientConfiguration;
-import org.jboss.ejb.client.EJBClientContext;
-import org.jboss.ejb.client.PropertiesBasedEJBClientConfiguration;
-import org.jboss.ejb.client.remoting.ConfigBasedEJBClientContextSelector;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import py.com.oym.frame.data.IDataLink;
 import py.com.oym.frame.data.IGenericDAORemote;
 
 /**
@@ -32,26 +26,26 @@ public class TestEjbApi1 {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        Properties jndiProperties = new Properties();
-        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-
-        context = new InitialContext(jndiProperties);
-
-        Properties jbossProperties = new Properties();
-        InputStream inputStream;
-        inputStream = new FileInputStream("C:\\proyectos\\java\\oym\\TestProjects\\TestProjects-ejb\\test\\jboss-ejb-client.properties");
-        jbossProperties.load(inputStream);
-        jbossProperties.put("remote.connection.default.username", "jenciso");
-        jbossProperties.put("remote.connection.default.password", "Oym1282873");
-
-        final EJBClientConfiguration ejbClientConfiguration = new PropertiesBasedEJBClientConfiguration(jbossProperties);
-
-        // EJB client context selection is based on selectors. So let's create a ConfigBasedEJBClientContextSelector which uses our EJBClientConfiguration created in previous step
-        final ContextSelector<EJBClientContext> ejbClientContextSelector = new ConfigBasedEJBClientContextSelector(ejbClientConfiguration);
-
-        // Now let's setup the EJBClientContext to use this selector
-        EJBClientContext.setSelector(ejbClientContextSelector);
-        
+//        Properties jndiProperties = new Properties();
+//        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+//
+//        context = new InitialContext(jndiProperties);
+//
+//        Properties jbossProperties = new Properties();
+//        InputStream inputStream;
+//        inputStream = new FileInputStream("C:\\proyectos\\java\\oym\\TestProjects\\TestProjects-ejb\\test\\jboss-ejb-client.properties");
+//        jbossProperties.load(inputStream);
+//        jbossProperties.put("remote.connection.default.username", "jenciso");
+//        jbossProperties.put("remote.connection.default.password", "Oym1282873");
+//
+//        final EJBClientConfiguration ejbClientConfiguration = new PropertiesBasedEJBClientConfiguration(jbossProperties);
+//
+//        // EJB client context selection is based on selectors. So let's create a ConfigBasedEJBClientContextSelector which uses our EJBClientConfiguration created in previous step
+//        final ContextSelector<EJBClientContext> ejbClientContextSelector = new ConfigBasedEJBClientContextSelector(ejbClientConfiguration);
+//
+//        // Now let's setup the EJBClientContext to use this selector
+//        EJBClientContext.setSelector(ejbClientContextSelector);
+//        
     }
     
     @AfterClass

@@ -72,9 +72,10 @@ public class TestSqlDataReport {
         IDataExpression filters = new DataExpression();
         filters.addExpression("confirmado = {true}");
         
-        sqlDataReport.setColumns("fecha");
-        sqlDataReport.setEntities("itemmovimiento a, itemmovimientodetalle b");
-        sqlDataReport.setEntity("itemmovimiento");
+        sqlDataReport.setColumns("fecha, vendedor.codigo as vendedor, b.iditem");
+        sqlDataReport.setEntitiesToJoin("itemmovimiento a");
+        sqlDataReport.setEntityException("vendedor ven");
+        sqlDataReport.setEntityRoot("itemmovimiento");
         sqlDataReport.setWhereFilter(filters);
 
         sqlDataReport.SqlSentenceCreate();

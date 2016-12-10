@@ -15,7 +15,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import py.com.oym.frame.data.DataExpression;
-import py.com.oym.frame.data.IGenericDAORemote;
 import py.com.oym.frame.data.DataLink;
 import py.com.oym.frame.data.DataNativeQuery;
 import py.com.oym.frame.data.IDataExpression;
@@ -162,8 +161,8 @@ public class TestDataNativeQuery {
 
     //@Test
     public void testQuery2() throws Exception {
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        DataLink dataLink = new DataLink(dao);
+        //IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        //DataLink dataLink = new DataLink(dao);
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 //        List<IDataQueryModel>
 //            data = query.select("datos.fn_iditem(iditem,item,idempresa) as item")

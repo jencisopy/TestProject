@@ -8,9 +8,6 @@ package py.com.oym.test.data;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import org.jboss.ejb.client.EJBClientContext;
-import org.jboss.ejb.client.PropertiesBasedEJBClientConfiguration;
-import org.jboss.ejb.client.remoting.ConfigBasedEJBClientContextSelector;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,7 +29,7 @@ public class TestEjbApi {
     @BeforeClass
     public static void setUpClass() throws Exception {
         Properties props = new Properties();
-        props.put(context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+        props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
         props.put( "org.jboss.ejb.client.scoped.context", "true" );
 
         // props.put("endpoint.name", "client-endpoint");

@@ -7,7 +7,9 @@ package py.com.oym.test.core;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.After;
@@ -16,8 +18,18 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import py.com.oym.frame.data.DataNativeQuery;
+import py.com.oym.frame.data.IDataLink;
+import py.com.oym.frame.data.IDataNativeQuery;
+import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.util.Fn;
 import py.com.oym.frame.util.Strings;
+import static py.com.oym.frame.util.Strings.convertToList;
+import static py.com.oym.frame.util.Strings.inString;
+import static py.com.oym.frame.util.Strings.isNullorEmpty;
+import static py.com.oym.frame.util.Strings.left;
+import static py.com.oym.frame.util.Strings.substring;
+import static py.com.oym.frame.util.Fn.iif;
 
 /**
  *
@@ -136,16 +148,87 @@ public class StringTest {
         }
     }
     
-    @Test
+    //@Test
     public void testSubstring(){
         String var = "Enero";
         System.out.println(var.substring(0, 3));
     }
     
-    @Test
+    //@Test
     public void testStringToDate(){
         Date var = new Date();
         System.out.println(Strings.dateToString(var));
         System.out.println(Fn.toString(var, "yyyyMMdd"));        
+    }
+    
+    //@Test
+    public void testSubstr(){
+        String var = "Enero";
+        System.out.println(Strings.substr(var,0,10));
+        System.out.println(Strings.substr(var,1));        
+    }
+    
+    //@Test
+    public void testInString(){
+        String comodinIni = ",(. ";
+        String comodinFin = ".";
+        String expresion = "c.item, b.item";
+        String search = "b";
+        assertTrue(Strings.inString(comodinIni, search, comodinFin, expresion));
+
+        expresion = "c.item,c.item from datos.itemmovimiento_view c";
+        search = "ITEMMOVIMIENTO_VIEW";
+        comodinFin = "., *)";
+        assertTrue(Strings.inString(comodinIni, search, comodinFin, expresion));
+        
+    }
+    
+    @Test
+    public void testEntityRelationList(){    
+        EntitiesToRelation prueba = new EntitiesToRelation();
+        String lista = prueba.get("itemmovimiento", 
+                                    "itemmovimiento a, itemmovimientodetalle b", 
+                                    "select a.*", 0, "");
+        System.out.println(lista);
+    }
+    
+    
+    class EntitiesToRelation{
+        String listEntities="";
+        String track="";
+        private String get(String mainEntity, String entityAlias, String sentence,
+                            int level, String processList){
+            if (level == 0){
+                listEntities = "";
+                track = "";
+            }
+            if (level == 10){
+                return listEntities;
+            }
+            if (isNullorEmpty(processList)){
+                processList = "";
+            }
+            mainEntity = mainEntity.toLowerCase().trim();
+            sentence = sentence.toLowerCase();
+            track += mainEntity+",";
+            if (!isNullorEmpty(entityAlias)){
+                // Generar expresiones separadas por coma
+                List<String> tokenList = convertToList(entityAlias,",");
+                for (String token:tokenList){
+                    // Determinar valor de la entidad y del alisa
+                    String entity = left(token,token.indexOf(" ")).toLowerCase().trim();
+                    String alias = substring(token,token.indexOf(" ")+1).toLowerCase().trim();
+                    // Ver si existe el alias en la expresion de sentencia
+                    if (inString(",(. ",alias,".",sentence)){
+                        // Agregar a la lista de entidades si no se encuentra ya
+                        if (!inString(",(. ",entity,"., *)",this.listEntities)){
+                            this.listEntities += 
+                                    iif(!this.listEntities.isEmpty(),", ","") + entity+" "+alias;
+                        }
+                    }
+                }
+            }
+            return listEntities;
+        }
     }
 }
