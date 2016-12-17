@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>py.com.oym</groupId>
     <artifactId>TestProjects</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>TestProjects</name>
     <modules>
@@ -13,13 +13,13 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.min.version>1.7</java.min.version>
+        <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
         <version.junit>4.11</version.junit>
         <version.javaee_api>7.0</version.javaee_api>
-        <oym.frame.version>6.0.9-SNAPSHOT</oym.frame.version>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <oym.frame.version>6.0.10-SNAPSHOT</oym.frame.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <prerequisites>
         <maven>${maven.min.version}</maven>
