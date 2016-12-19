@@ -9,9 +9,6 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -20,7 +17,7 @@ import py.com.oym.frame.log.ILogManager;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class TestError {
     static Context context;    
@@ -39,19 +36,6 @@ public class TestError {
         context = new InitialContext(p);
     }
 
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    
     @Test
     public void test1() throws NamingException{
         ILogManager logManager  = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");

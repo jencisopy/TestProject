@@ -8,73 +8,31 @@ package py.com.oym.test.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.DataLink;
+import org.junit.Test;
 import py.com.oym.frame.data.DataNativeQuery;
 import py.com.oym.frame.data.IDataLink;
-import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
-import py.com.oym.frame.data.IGenericDAO;
 import static py.com.oym.frame.util.Strings.isNullorEmpty;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
-public class TestDicRela {
-
-    static private Context context;
-
+public class TestDicRela extends TestClass{
     public TestDicRela() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-        Properties p = new Properties();
-        p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-        p.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
-        p.put(Context.SECURITY_PRINCIPAL, "jenciso");
-        p.put(Context.SECURITY_CREDENTIALS, "Oym1282873");
-        p.put("jboss.naming.client.ejb.context", true);
-        context = new InitialContext(p);
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
     }
 
     //@Test
     public void test() throws Exception {
-        IGenericDAO dao = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        DataLink dataLink = new DataLink(dao);
-
         String entidades = "itemmovimiento a, itemmovimientodetalle b, vendedor";
         String result = dataLink.getEntitiesRelation(entidades, "", "datos");
         assertFalse(result.isEmpty());
         System.out.println(result);
-
     }
 
     @Test
     public void testDic() throws Exception {
-        IGenericDAO dao = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        DataLink dataLink = new DataLink(dao);
         EntitiesRelation dic = new EntitiesRelation();
         List<IDataQueryModel> data = dic.get(dataLink, "itemmovimiento", "");
         assertNotNull(data);
@@ -92,7 +50,7 @@ public class TestDicRela {
                         + "expresion_externa     as expr2,"
                         + "tiporelacion          as typeRela,"
                         + "'*-1'                 as relation "
-                        + "from {schema}.Dic_TablaRelacion "
+                        + "from {schemacatalog}.Dic_TablaRelacion "
                         + "where externa    = :entity "
                         + "and   incluir    = {true}";
             }
@@ -102,7 +60,7 @@ public class TestDicRela {
                         + "expresion_externa     as expr2,"
                         + "tiporelacion          as typeRela,"
                         + "'1-*'                 as relation "
-                        + "from {schema}.Dic_TablaRelacion "
+                        + "from {schemacatalog}.Dic_TablaRelacion "
                         + "where principal  = :entity "
                         + "and   incluir    = {true}";
             }

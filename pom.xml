@@ -81,7 +81,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Oym-frame-data</artifactId>
+            <artifactId>Oym-frame-business</artifactId>
             <version>${oym.frame.version}</version>
             <classifier>javadoc</classifier>                                    
         </dependency>

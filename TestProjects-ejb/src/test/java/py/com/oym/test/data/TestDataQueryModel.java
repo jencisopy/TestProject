@@ -18,27 +18,11 @@ import py.com.oym.frame.data.IDataQueryModel;
  *
  * @author Jorge Enciso
  */
-public class TestDataNativeModel {
+public class TestDataQueryModel {
     
-    public TestDataNativeModel() {
+    public TestDataQueryModel() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     @Test
     public void test() {
         IDataQueryModel data = new DataQueryModel(); 

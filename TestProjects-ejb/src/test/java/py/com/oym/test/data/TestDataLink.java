@@ -27,9 +27,9 @@ import py.com.oym.frame.data.IGenericDAO;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
-public class TestDataLink {
+public class TestDataLink{
     static private Context context;
     public TestDataLink() {
     }
@@ -45,18 +45,6 @@ public class TestDataLink {
         context = new InitialContext(p);           
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     @Test
     public void test() throws NamingException, SessionError, Exception{
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");

@@ -38,12 +38,7 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.2.5.Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>dom4j</groupId>
-                    <artifactId>dom4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <scope>provided</scope>            
         </dependency>
         
        
@@ -55,6 +50,12 @@
             <version>4.3.6.Final</version>
         </dependency>        
         -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>4.0</version>
+            <scope>provided</scope>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -66,6 +67,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <skipTests>true</skipTests>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>

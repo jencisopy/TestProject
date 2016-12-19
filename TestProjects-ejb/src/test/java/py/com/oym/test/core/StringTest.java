@@ -7,21 +7,11 @@ package py.com.oym.test.core;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.DataNativeQuery;
-import py.com.oym.frame.data.IDataLink;
-import py.com.oym.frame.data.IDataNativeQuery;
-import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.util.Fn;
 import py.com.oym.frame.util.Strings;
 import static py.com.oym.frame.util.Strings.convertToList;
@@ -38,22 +28,6 @@ import static py.com.oym.frame.util.Fn.iif;
 public class StringTest {
 
     public StringTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
     }
 
     //@Test

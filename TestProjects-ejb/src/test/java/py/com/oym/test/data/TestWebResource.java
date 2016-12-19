@@ -21,7 +21,7 @@ import py.com.oym.frame.ws.resources.remote.WebResource;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class TestWebResource {
     static private Context context; 
@@ -66,28 +66,28 @@ public class TestWebResource {
     }
     
     @Test
-    // Prueba de crear y cerrar sesión
+    /** Prueba de crear y cerrar sesión */
     public void testWebResource2() throws Exception {
         IWebResource webResource = new WebResource();        
         ISecManager secManager = 
-              (ISecManager)webResource.getSecManager("ejb:TestProjects-ear/TestProjects-ejb//SecManager!py.com.oym.frame.security.ISecManagerRemote");
+              (ISecManager)webResource.getSecManager("ejb:TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
         IUserSession userSession = secManager.createSession("J", "", 98L, null);
         assertNotNull(userSession);
         secManager.logout(userSession);
     }
     
     @Test
-    // Prueba de Buscar registros
+    /** Prueba de Buscar registros */
     public void testWebResource3() throws Exception {
     }
 
     @Test
-    // Prueba de count
+    /** Prueba de count */
     public void testWebResource4() throws Exception {
     }
 
     @Test
-    // Prueba grabación
+    /** Prueba grabación */
     public void testWebResource5() throws Exception {
     }
 }

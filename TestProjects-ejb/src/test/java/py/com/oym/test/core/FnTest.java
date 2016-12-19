@@ -5,10 +5,7 @@
  */
 package py.com.oym.test.core;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.SortedSet;
@@ -22,31 +19,15 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class FnTest {
 
     public FnTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     @Test
-    public void hello() {
+    public void test1() {
         //Long result=1L;
         //result = (Long)toObject((Integer)1,(Long)1L);
         String codigo = "hola";

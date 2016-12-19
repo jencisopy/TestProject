@@ -7,10 +7,6 @@ package py.com.oym.test.data;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import py.com.oym.frame.data.DataQueryModel;
@@ -18,32 +14,13 @@ import py.com.oym.frame.data.IDataQueryModel;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class TextDataModelIndexOf {
     
     public TextDataModelIndexOf() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void text1() {
         List<IDataQueryModel> lista = new ArrayList();

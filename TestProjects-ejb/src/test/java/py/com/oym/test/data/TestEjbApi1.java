@@ -5,11 +5,7 @@
  */
 package py.com.oym.test.data;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Properties;
 import javax.naming.Context;
-import javax.naming.InitialContext;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,7 +15,7 @@ import py.com.oym.frame.data.IGenericDAORemote;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class TestEjbApi1 {
     private static Context context;
@@ -69,8 +65,6 @@ public class TestEjbApi1 {
     public void testGetCount() throws Exception{
         IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("ejb:TestProjects-ear/TestProjects-ejb//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
-        //IGenericDAO dao = (IGenericDAO) context.lookup("ejb:Maker-ear-9.5-SNAPSHOT/Maker-ejb-9.5-SNAPSHOT//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         System.out.println(rec);
     }
-    
 }

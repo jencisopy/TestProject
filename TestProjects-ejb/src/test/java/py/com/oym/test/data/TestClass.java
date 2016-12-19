@@ -13,26 +13,23 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.data.IDataExpression;
 import py.com.oym.frame.data.IDataLink;
 import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.frame.report.SqlDataReport;
 import py.com.oym.frame.security.ISecManager;
 import py.com.oym.frame.security.IUserSession;
+import static py.com.oym.test.data.TestDataService.sessionId;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
-public class TestSqlDataReport {
-    static private Context context; 
-    static private IDataLink dataLink;
+public class TestClass {
+    static protected Context context; 
+    static protected IDataLink dataLink;
+    static String sessionId;    
     
-    public TestSqlDataReport() {
+    public TestClass() {
     }
     
     @BeforeClass
@@ -47,7 +44,8 @@ public class TestSqlDataReport {
         
         ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
         IUserSession userSession = secMngr.createSession("J", "", 98L, null);        
-
+        sessionId = userSession.getSessionId();
+        
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
@@ -65,21 +63,4 @@ public class TestSqlDataReport {
     public void tearDown() {
     }
 
-    @Test
-    public void testSqlDataReport1() {
-        SqlDataReport sqlDataReport = new SqlDataReport(dataLink);
-
-        IDataExpression filters = new DataExpression();
-        filters.addExpression("confirmado = {true}");
-        
-        sqlDataReport.setColumns("fecha, vendedor.codigo as vendedor, b.iditem");
-        sqlDataReport.setEntitiesToJoin("itemmovimiento a");
-        sqlDataReport.setEntityException("vendedor ven");
-        sqlDataReport.setEntityRoot("itemmovimiento");
-        sqlDataReport.setWhereFilter(filters);
-
-        sqlDataReport.SqlSentenceCreate();
-        System.out.println(sqlDataReport.getSqlSentence());
-        assertNotEquals(sqlDataReport.getSqlSentence(), "");
-    }
 }
