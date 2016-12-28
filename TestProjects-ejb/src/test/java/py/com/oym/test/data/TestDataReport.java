@@ -28,14 +28,36 @@ public class TestDataReport extends TestClass {
         IDataExpression filters = new DataExpression();
         filters.addExpression("confirmado = {true}");
         
-        sqlDataReport.setColumns("fecha, vendedor.codigo as vendedor, b.iditem");
-        sqlDataReport.setEntitiesToJoin("itemmovimiento a");
-        sqlDataReport.setEntitiesAlias("vendedor ven");
-        sqlDataReport.setEntityRoot("itemmovimiento");
+        // Define propiedades
+        sqlDataReport.setColumnsGroup1("vendedor.codigo as vendedor, vendedor.nombre as vendedornombre");
+        sqlDataReport.setColumnsGroup2("item.codigo as item, item.nombre as itemnombre");
+        sqlDataReport.setColumns("a.fecha, a.gravado, a.exento, a.impuesto");
+        sqlDataReport.setEntityRoot("itemmovimiento");        
+        sqlDataReport.setEntitiesToJoin("");
+        sqlDataReport.setEntitiesAlias("itemmovimiento a, itemmovimientodetalle b");
         sqlDataReport.setWhereFilter(filters);
+        sqlDataReport.setOrderBy("vendedor.codigo, vendedor.nombre");
 
+        // Crea la sentencia
         sqlDataReport.sqlSentenceCreate();
+        
         System.out.println(sqlDataReport.getSqlSentence());
         assertNotEquals(sqlDataReport.getSqlSentence(), "");
     }
+    
+    /**
+     *      SqlGetData (vfp)      DataReport (java)
+     * ------------------------------------------------
+     *       campocorte1    --> columnGroup1
+     *       campocorte2    --> columnGroup2 
+     *       columnas       --> columns
+     *       listaTablas    --> entitiesToJoin
+     *       excepciones    --> entitiesAlias
+     *       entidadprincipal  --> entityRoot
+     *       condicion      --> whereFilter
+     *       ordenar        --> orderBy
+     *       agrupar        --> groupBy
+     *       sentenciaSql   --> sqlSentence
+     * 
+     */
 }

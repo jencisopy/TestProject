@@ -142,7 +142,7 @@ public class StringTest {
         System.out.println(Strings.substr(var,1));        
     }
     
-    //@Test
+    @Test
     public void testInString(){
         String comodinIni = ",(. ";
         String comodinFin = ".";
@@ -150,14 +150,21 @@ public class StringTest {
         String search = "b";
         assertTrue(Strings.inString(comodinIni, search, comodinFin, expresion));
 
+        /*
         expresion = "c.item,c.item from datos.itemmovimiento_view c";
         search = "ITEMMOVIMIENTO_VIEW";
+        comodinFin = "., *)";
+        assertTrue(Strings.inString(comodinIni, search, comodinFin, expresion));
+        */
+        comodinIni = ",( ";
+        expresion = "c.impuesto ";
+        search = "impuesto";
         comodinFin = "., *)";
         assertTrue(Strings.inString(comodinIni, search, comodinFin, expresion));
         
     }
     
-    @Test
+    //@Test
     public void testEntityRelationList(){    
         EntitiesToRelation prueba = new EntitiesToRelation();
         String lista = prueba.get("itemmovimiento", 

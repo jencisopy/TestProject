@@ -45,7 +45,7 @@ public class TextDataExpression {
     }    
     
     @Test
-    //@Ignore
+    @Ignore
     public void test3() {
         DataExpression sentence = new DataExpression();
         sentence.openParenthesis();                
@@ -64,4 +64,19 @@ public class TextDataExpression {
         String result = sentence.getSentence();
         System.out.println(result);
     }        
+    
+    @Test
+    public void test4() {
+        DataExpression sentence = new DataExpression();
+        sentence.addExpression("pedro = {var1}",null, "", "1");
+        sentence.addExpression("juan between '{var1}' and '{var2}'", "var1","pp2","var2","pp2");
+        String result = sentence.getSentence();
+        System.out.println("==============");
+        System.out.println(result);
+        System.out.println("==============");        
+        result = sentence.getSentence("1");
+        System.out.println(result);
+        System.out.println("==============");
+    }    
+    
 }

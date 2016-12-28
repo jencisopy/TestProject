@@ -36,9 +36,9 @@ public class TestDicRela extends TestClass{
         EntitiesRelation dic = new EntitiesRelation();
         List<IDataQueryModel> data = dic.get(dataLink, "itemmovimiento", "");
         assertNotNull(data);
-        for (IDataQueryModel row:data){
+        data.forEach((row) -> {
             System.out.println(row.getColumn("entity"));
-        }
+        });
     }
 
     class EntitiesRelation {
