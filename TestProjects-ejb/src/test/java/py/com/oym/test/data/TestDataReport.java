@@ -5,10 +5,12 @@
  */
 package py.com.oym.test.data;
 
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.IDataExpression;
+import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.report.DataReport;
 
 
@@ -22,7 +24,7 @@ public class TestDataReport extends TestClass {
     
 
     @Test
-    public void testSqlDataReport1() {
+    public void testSqlDataReport1() throws Exception {
         DataReport sqlDataReport = new DataReport(dataLink);
 
         IDataExpression filters = new DataExpression();
@@ -40,6 +42,9 @@ public class TestDataReport extends TestClass {
 
         // Crea la sentencia
         sqlDataReport.sqlSentenceCreate();
+        /*
+        List<IDataQueryModel> result = sqlDataReport.sqlSentenceExecute();
+        */
         
         System.out.println(sqlDataReport.getSqlSentence());
         assertNotEquals(sqlDataReport.getSqlSentence(), "");

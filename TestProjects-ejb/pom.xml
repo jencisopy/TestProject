@@ -38,9 +38,7 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.2.5.Final</version>
-            <scope>provided</scope>            
         </dependency>
-        
        
         <!-- Para log de Hibernate -->
         <!--
@@ -54,7 +52,6 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>sqljdbc4</artifactId>
             <version>4.0</version>
-            <scope>provided</scope>
         </dependency>        
     </dependencies>
 
@@ -67,7 +64,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <skipTests>true</skipTests>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>

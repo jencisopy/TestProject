@@ -6,6 +6,7 @@
 package py.com.oym.test.data;
 
 import java.util.List;
+import java.util.Map;
 import org.junit.Test;
 import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.DataNativeQuery;
@@ -43,7 +44,7 @@ public class TestDataNativeQuery extends TestClass{
         
         System.out.println("\nENTITY EXPR");
         System.out.println("===========");        
-        query.from("itemmovimiento, itemmovimientodetalle");
+        query.from("itemmovimiento a, itemmovimientodetalle b");
         lista = query.getEntityList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -56,6 +57,11 @@ public class TestDataNativeQuery extends TestClass{
         for (String lista1 : lista) {
             System.out.println(lista1);
         }
+        System.out.println("\nSENTENCE PARAM");
+        System.out.println("================");
+        for (Map.Entry<String,Object> entry:query.getQueryParams().entrySet()){
+            System.out.println(entry.getKey()+"="+entry.getValue().toString());
+        }        
         
 //        System.out.println("\nQUERY PARAM");
 //        System.out.println("=============");
@@ -104,9 +110,10 @@ public class TestDataNativeQuery extends TestClass{
     public void testQuery() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         List<IDataQueryModel> data = 
-            query.select("{SCHEMa}.fn_iditem(b.iditem,b.item,a.idempresa) as item")
+            query.select("{SCHEMa}.fn_iditem(b.iditem,b.item,a.idempresa,'P') as item")
                 .from("itemmovimiento_view a")
-                .join("itemmovimientodetalle_view b, vendedor")
+                .join("itemmovimientodetalle_view b","a.iditemmovimiento = b.iditemmovimiento")
+                .join("vendedor", "a.idvendedor = vendedor.idvendedor")
                 .where("vendedor = :vendedor")
                 .orderBy("item")
                 .addParam("vendedor","001")
@@ -114,11 +121,15 @@ public class TestDataNativeQuery extends TestClass{
 
         System.out.println("\nTESTQUERY");
         System.out.println("================");
-        
         System.out.println(query.getQuerySentence());
+        System.out.println("\nSENTENCE PARAM");
+        System.out.println("================");
+        query.getQueryParams().entrySet().forEach((entry) -> {
+            System.out.println(entry.getKey()+"="+entry.getValue().toString());
+        });
     }
 
-    //@Test
+    @Test
     public void testQuery2() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 //        List<IDataQueryModel>
@@ -147,7 +158,8 @@ public class TestDataNativeQuery extends TestClass{
 
         query.select("a.nro")
                 .from("itemmovimiento a")
-                .join("itemmovimiento a, itemmovimientodetalle b, vendedor")
+                .join("itemmovimientodetalle b","a.iditemmovimiento = b.iditemmovimiento")
+                .leftJoin("vendedor","a.idvendedor = vendedor.idvendedor") 
                 .where("vendedor.codigo = :vendedor")
                 .orderBy("")
                 .createQuery();
@@ -158,7 +170,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
 
-    @Test
+    //@Test
     public void testQuery4() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -175,7 +187,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getEntityExpr());        
     }
 
-    @Test
+    //@Test
     public void testQuery5() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -192,7 +204,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getEntityExpr());
     }
 
-    @Test
+    //@Test
     public void testQuery6() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -209,14 +221,14 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getEntityExpr());
     }
 
-    @Test
+    //@Test
     public void testQuery7() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         IDataExpression exprFilter = new DataExpression();
         exprFilter.addExpression("vendedor = :vendedor");
         exprFilter.addExpression("ctacte = :ctacte");        
         exprFilter.addSentenceParam("vendedor", "001");
-        exprFilter.addSentenceParam("ctacte", "001");        
+        exprFilter.addSentenceParam("ctacte", "001");     
         
         query.select("nro")
                 .from("itemmovimientob_view")
