@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
+<XML>
+        <AG_LOG entidad="ag_log">
+                <FIELDS>
+                        <IDLOG clase="FIELD" src="file://clases.xml" sololectura=".T." autonumber=".T." elemento="ag_log" tipo="I" width="4" decimal="0" funcionupdate="?idlog" primarykey=".t."/>
+                </FIELDS>
+        </AG_LOG>
+        <AG_LOG_VIEW clase="AG_LOG" vista="ag_log_view" tablalista="">
+                <FIELDS/>
+                <SELECTCMD>
+                       select ag_log.*,ag_nodo.observacion
+                       from &lt;&lt;cSchema&gt;&gt;.ag_log ag_log
+                       left outer join &lt;&lt;cSchema&gt;&gt;.ag_nodo ag_nodo on ag_log.nodo = ag_nodo.nodo
+                </SELECTCMD>
+                <FOREIGNKEYREFERENCES/>
+                <SCRIPT language="TSQL">create view catalogo.ag_log_view as
+select * from catalogo.ag_log
+</SCRIPT>
+        </AG_LOG_VIEW>
+</XML>

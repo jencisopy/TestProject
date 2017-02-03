@@ -27,4 +27,10 @@ public class StringTest3 {
         System.out.println(Strings.substring(msg, 0,50));
         System.out.println(Strings.substring(msg, 0,50).length());
     }
+    
+    @Test
+    public void test2(){
+        
+    }
+    
 }
