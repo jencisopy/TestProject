@@ -182,13 +182,6 @@ public class Pais extends DataRow implements Serializable {
         fechamodificacion = new Date();
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.idpais);
-        return hash;
-    }
-
     public Long getIdempresa() {
         return idempresa;
     }

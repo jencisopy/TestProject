@@ -4,7 +4,7 @@
     <parent>
         <artifactId>TestProjects</artifactId>
         <groupId>py.com.oym</groupId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <groupId>py.com.oym</groupId>
@@ -50,6 +50,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.2.5.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
        
         <!-- Para log de Hibernate -->

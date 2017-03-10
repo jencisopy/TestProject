@@ -32,9 +32,9 @@ import static py.com.oym.frame.util.Strings.*;
  *
  * @author Jorge Enciso
  */
-public class XmlJDom {
+public class XmlJDomBak {
 
-    private static final Logger LOGGER = Logger.getLogger(XmlJDom.class);
+    private static final Logger LOGGER = Logger.getLogger(XmlJDomBak.class);
 
     /**
      * En esta propiedad se le asignará el objeto XMLDOM.
@@ -55,7 +55,7 @@ public class XmlJDom {
      */
     private Exception exception;
 
-    public XmlJDom() {
+    public XmlJDomBak() {
     }
 
     public boolean isInfoProperty() {
@@ -177,7 +177,7 @@ public class XmlJDom {
                 // Si existe en cache
                 if (document != null) {
                     // Traer solo del elementpath
-                    document = new Document(JDom.selectSingleNode(document, elementPath).clone());
+                    document = new Document(JDomBak.selectSingleNode(document, elementPath).clone());
                     processed = true;
                 } // Si no existe en cache buscar el texto xml
                 else {
@@ -190,7 +190,7 @@ public class XmlJDom {
                 if (isNullorEmpty((String) xml)) {
                     return null;
                 }
-                document = JDom.loadXml((String) xml);
+                document = JDomBak.loadXml((String) xml);
             } else if (xml instanceof Document) {
                 document = (Document) xml;
             }
@@ -201,7 +201,7 @@ public class XmlJDom {
         // Si se heredará el texto de las clases
         if (!notInherit) {
             Element node = document.getRootElement();
-            String xmlText = JDom.getXmlText(node);
+            String xmlText = JDomBak.getXmlText(node);
             // Si existe elementos que derivan de clases
             // TODO corregir findString("clase",xmlText.toLowerCase()) > 0
             if (!isNullorEmpty(node.getAttributeValue("clase")) || findString("clase", xmlText.toLowerCase()) > 0) {
@@ -231,7 +231,7 @@ public class XmlJDom {
             System.out.println("===========================================");
             System.out.println(className+"-----"+src.trim());
             System.out.println("===========================================");
-            System.out.println(JDom.getXmlText(node));
+            System.out.println(JDomBak.getXmlText(node));
          */
         return node;
     }
@@ -299,11 +299,11 @@ public class XmlJDom {
             }
         }
         List<Element> children = node.getChildren();
-        String xmlNodo = JDom.getXmlText(node);
+        String xmlNodo = JDomBak.getXmlText(node);
         for (int i = 0; i < children.size(); i++) {
             Element nodeChild = children.get(i);
             if (findString("clase", xmlNodo.toLowerCase()) > 0) {
-                Document dom = getObject(src, JDom.getXmlText(nodeChild), "", false);
+                Document dom = getObject(src, JDomBak.getXmlText(nodeChild), "", false);
                 node.removeChild(nodeChild.getName());
                 node.addContent(i, dom.getRootElement().clone());
             }
@@ -321,14 +321,14 @@ public class XmlJDom {
             // Si no se encontro en el cache y no se tiene el texto xml
             if (document == null && isNullorEmpty(xml)) {
                 xml = findObject(xmlPath);
-                document = JDom.loadXml(xml);
+                document = JDomBak.loadXml(xml);
                 addToCache(xmlPath, document);
             } // Si se tiene el texto xml
             else if (!isNullorEmpty(xml)) {
-                document = JDom.loadXml(xml);
+                document = JDomBak.loadXml(xml);
             }
             if (!isNullorEmpty(elementPath)) {
-                document = new Document(JDom.selectSingleNode(document, elementPath).clone());
+                document = new Document(JDomBak.selectSingleNode(document, elementPath).clone());
             }
             XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
             return outputter.outputString(document);
@@ -384,7 +384,7 @@ public class XmlJDom {
      */
     public Boolean createElement(String elementName, String nodePath) {
         try {
-            Element element = JDom.createElement(xmlDom, elementName, nodePath);
+            Element element = JDomBak.createElement(xmlDom, elementName, nodePath);
             return (element != null);
         } catch (Exception ex) {
             ErrorManager.showError(ex, LOGGER);
@@ -401,7 +401,7 @@ public class XmlJDom {
      */
     public boolean removeElement(String nodePath) {
         try {
-            boolean result = JDom.removeElement(xmlDom, nodePath);
+            boolean result = JDomBak.removeElement(xmlDom, nodePath);
             return result;
         } catch (Exception ex) {
             ErrorManager.showError(ex, LOGGER);
@@ -420,7 +420,7 @@ public class XmlJDom {
      */
     public String getPropertyValue(String property, String nodePath) {
         try {
-            String attributeValue = JDom.getPropertyValue(xmlDom, property, nodePath);
+            String attributeValue = JDomBak.getPropertyValue(xmlDom, property, nodePath);
             return attributeValue;
         } catch (Exception ex) {
             ErrorManager.showError(ex, LOGGER);
@@ -441,7 +441,7 @@ public class XmlJDom {
      */
     public boolean setPropertyValue(String value, String property, String nodePath) {
         try {
-            return JDom.setPropertyValue(xmlDom, value, property, nodePath);
+            return JDomBak.setPropertyValue(xmlDom, value, property, nodePath);
         } catch (Exception ex) {
             ErrorManager.showError(ex, LOGGER);
             exception = ex;

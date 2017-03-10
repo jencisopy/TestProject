@@ -15,7 +15,7 @@
 
 package py.com.oym.test.xml;
 
-import py.com.oym.test.xml.XmlJDom;
+import py.com.oym.test.xml.XmlJDomBak;
 
 
 /**
@@ -27,7 +27,7 @@ public final class Permisos {
     public String objeto  = "";
     public int objetotipo = 0;
     public String permisosxml= "";
-    public XmlJDom permisos   = null;
+    public XmlJDomBak permisos   = null;
 
     public boolean checkPermiso(String usuario,String objeto, short objetotipo,String accion){
         return true;

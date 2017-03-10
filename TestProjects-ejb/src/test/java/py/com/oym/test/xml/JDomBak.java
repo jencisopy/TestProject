@@ -28,8 +28,8 @@ import org.jdom2.xpath.XPathFactory;
  *
  * @author Jorge Enciso
  */
-public class JDom {
-    private static final Logger LOGGER = Logger.getLogger(JDom.class);
+public class JDomBak {
+    private static final Logger LOGGER = Logger.getLogger(JDomBak.class);
 
     /**
      * Crea y devuelve un documento DOM
@@ -170,7 +170,7 @@ public class JDom {
     public static String getPropertyValue(Document xmlDom, String property, String nodePath) throws Exception {
         Element node = selectSingleNode(xmlDom, nodePath);
         if (node != null) {
-            return JDom.getPropertyValue(property, node);
+            return JDomBak.getPropertyValue(property, node);
         }
         return null;
     }
@@ -205,7 +205,7 @@ public class JDom {
         if (node == null) {
             return false;
         }
-        return JDom.setPropertyValue(value, property, node);
+        return JDomBak.setPropertyValue(value, property, node);
     }
 
     /**

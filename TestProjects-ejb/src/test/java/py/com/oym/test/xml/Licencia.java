@@ -15,7 +15,7 @@
 
 package py.com.oym.test.xml;
 
-//import py.com.oym.test.xml.XmlJDom;
+//import py.com.oym.test.xml.XmlJDomBak;
 
 /**
  *
@@ -59,11 +59,11 @@ public final class Licencia {
         return "";
     }
 
-    private String generarLicClient(XmlJDom data, String claveActr, String idmaquina){
+    private String generarLicClient(XmlJDomBak data, String claveActr, String idmaquina){
         return "";
     }
 
-    private String generarLicSrv(XmlJDom data,String claveActivacion){
+    private String generarLicSrv(XmlJDomBak data,String claveActivacion){
         return "";
     }
 

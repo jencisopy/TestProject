@@ -7,7 +7,9 @@ package py.com.oym.test.core;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.Test;
@@ -43,19 +45,24 @@ public class StringTest {
         }
     }
 
-    //@Test
+    @Test
     public void test2() {
         String str = "this (#?anystring; is  #?anystring2jk;) test";
-        System.out.println(str.replaceAll("\\(.*?\\)", ""));
-
-        str = "I <strong>really</strong> want <strong>to get rid of the</strong> strong-tags!";
-        System.out.println(str.replaceAll("<.*?>", ""));
-
-        str = "I <strong>really</strong> want to get <strong>rid</strong> of the strong-tags!";
-        System.out.println(str.replaceAll("(<strong>).*?(</strong>)", ""));
-
-        str = "INI Galery something something.... jssdk FIN";
-        System.out.println(str.replaceAll("(Galery).*?(jssdk)", ""));
+//        System.out.println(str.replaceAll("\\(.*?\\)", ""));
+//
+//        str = "I <strong>really</strong> want <strong>to get rid of the</strong> strong-tags!";
+//        System.out.println(str.replaceAll("<.*?>", ""));
+//
+//        str = "I <strong>really</strong> want to get <strong>rid</strong> of the strong-tags!";
+//        System.out.println(str.replaceAll("(<strong>).*?(</strong>)", ""));
+//
+//        str = "INI Galery something something.... jssdk FIN";
+//        System.out.println(str.replaceAll("(Galery).*?(jssdk)", ""));
+        
+        str = "xx{valor}xx";
+        Map<String,String> params = new HashMap();
+        params.put("valor", "reemplazo");
+        System.out.println(Strings.textMerge(str, params ,"$#?"));
     }
 
     //@Test
@@ -114,12 +121,22 @@ public class StringTest {
         input.add("987-65-4321 (attack)");
         input.add("987-65-4321 ");
         input.add("192-83-7465");
+        input.add("xx${192-83-7465}xx");        
+        input.add("xx${192-83-7465}");                
+        input.add("${192-83-7465}");                        
 
         for (String ssn : input) {
             if (ssn.matches("^(\\d{3}-?\\d{2}-?\\d{4})$")) {
                 System.out.println("Found good SSN: " + ssn);
             }
         }
+        
+        for (String ssn : input) {
+            if (ssn.matches(".*(\\$\\{.*\\}).*")) {
+                System.out.println("Found good: " + ssn);
+            }
+        }
+        
     }
     
     //@Test
@@ -142,7 +159,7 @@ public class StringTest {
         System.out.println(Strings.substr(var,1));        
     }
     
-    @Test
+    //@Test
     public void testInString(){
         String comodinIni = ",(. ";
         String comodinFin = ".";

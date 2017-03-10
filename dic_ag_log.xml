@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
 <XML>
-        <AG_LOG entidad="ag_log">
+        <AG_LOG entidad="ag_log" clase="TABLE" src="file://dic_clases.xml">
                 <FIELDS>
-                        <IDLOG clase="FIELD" src="file://clases.xml" sololectura=".T." autonumber=".T." elemento="ag_log" tipo="I" width="4" decimal="0" funcionupdate="?idlog" primarykey=".t."/>
+                        <IDLOG0 clase="FIELD" src="file://clases.xml" sololectura=".T." autonumber=".T." elemento="ag_log" tipo="I" width="4" decimal="0" funcionupdate="?idlog" primarykey=".t."/>
                 </FIELDS>
         </AG_LOG>
         <AG_LOG_VIEW clase="AG_LOG" vista="ag_log_view" tablalista="">
-                <FIELDS/>
+                <FIELDS>
+					<IDLOG1 clase="FIELD" src="file://clases.xml" sololectura=".T." autonumber=".T." elemento="ag_log" tipo="I" width="4" decimal="0" funcionupdate="?idlog" primarykey=".t."/>				
+				</FIELDS>
                 <SELECTCMD>
                        select ag_log.*,ag_nodo.observacion
                        from &lt;&lt;cSchema&gt;&gt;.ag_log ag_log

@@ -3,12 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>py.com.oym</groupId>
     <artifactId>TestProjects</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>TestProjects</name>
     <modules>
         <module>TestProjects-ear</module>
         <module>TestProjects-ejb</module>
+        <module>TestProjects-jar</module>
     </modules>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
