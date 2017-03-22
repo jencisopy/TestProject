@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
+<EDICIONES>
+        <CORPORATIVO>
+                <THEME value="THEME3" file="themes.xml"/>
+                <SYSTEM appname="Maker Corporativo" splash="splashcorporativo.jpg" 
+                			splashbackcolor="=RGB(0,0,0)" splashstatuscolor="=RGB(255,255,255)" explorerpicture="explorer_maker.jpg"
+                			loginpicture="" terminales="" perfilrecursos="true" multiserver="true" cierreperiodos="true" multicosteo="true" auditoria="1" seguridad_x_entidad="true" tablerogerencial="true" copiardatosotraempresa="true" impuestos="true" gestionrepositoriodatos="true" politicactrl_x_deposito="true" politicadatos_x_deposito="true"/>
+                <DATOS empresa="" moneda="" ctacte="" sucursal="" deposito="" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="true" gestion_x_proyectos="true" edi="true" gestiondocumental="true"/>
+                <STOCK reserva="true" control_x_lote="true"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="true" retencionproveedor="true" gastosexportacion="true"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="true"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="true"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="true" hechauka="true" irp="true" asientodifcambio="true" activofijo="true"/>
+        </CORPORATIVO>
+        <BUSINESSONE>
+                <THEME value="THEME1"/>
+                <SYSTEM appname="Maker Business One" splash="splash_b1.jpg" 
+                				splashbackcolor="=RGB(0,0,0)" splashstatuscolor="=RGB(255,255,255)"  explorerpicture="explorer_maker.jpg"
+                				terminales="40" perfilrecursos="false" multiserver="false" cierreperiodos="true" multicosteo="true" auditoria="0" seguridad_x_entidad="false" tablerogerencial="true" copiardatosotraempresa="true" impuestos="true" gestionrepositoriodatos="true" politicactrl_x_deposito="true" politicadatos_x_deposito="true"/>
+                <DATOS empresa="" moneda="" sucursal="" deposito="" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="true" gestion_x_proyectos="true" edi="true" gestiondocumental="true"/>
+                <STOCK reserva="true" control_x_lote="true"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="true" retencionproveedor="true" gastosexportacion="true"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="true"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="true"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="true" hechauka="true" irp="true" asientodifcambio="true" activofijo="true"/>
+        </BUSINESSONE>
+        <SMALLBUSINESS>
+                <THEME value="THEME2"/>
+                <SYSTEM appname="MSB PYMES" splash="splash_msb.jpg" 
+                				splashbackcolor="=RGB(3,78,162)" splashstatuscolor="=RGB(255,255,255)"  explorerpicture="explorer_msb.jpg"                
+                				terminales="5" perfilrecursos="false" multiserver="false" cierreperiodos="false" multicosteo="false" auditoria="0" seguridad_x_entidad="false" tablerogerencial="false" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="false" politicadatos_x_deposito="false"/>
+                <DATOS empresa="5" moneda="1" sucursal="1" deposito="5" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="false" gestion_x_proyectos="false" edi="false" gestiondocumental="false"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="false" retencionproveedor="false" gastosexportacion="false"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="false"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="true"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="false" hechauka="false" irp="false" asientodifcambio="false" activofijo="false"/>
+        </SMALLBUSINESS>
+        <ESTUDIOCONTABLE>
+                <THEME value=""/>
+                <SYSTEM appname="Maker Estudios Contables" splash="splash_ec.jpg" 
+				                splashbackcolor="=RGB(0,0,0)" splashstatuscolor="=RGB(255,255,255)"  explorerpicture="explorer_maker.jpg"
+                				terminales="" perfilrecursos="false" multiserver="false" cierreperiodos="true" multicosteo="true" auditoria="0" seguridad_x_entidad="false" tablerogerencial="false" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="false" politicadatos_x_deposito="false"/>
+                <DATOS empresa="" moneda="" sucursal="" deposito="" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="true" gestion_x_proyectos="true" edi="false" gestiondocumental="true"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="true" retencionproveedor="true" gastosexportacion="true"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="false"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="false"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="true" hechauka="true" irp="true" asientodifcambio="true" activofijo="true"/>
+        </ESTUDIOCONTABLE>
+        <PROFESIONAL>
+                <THEME value=""/>
+                <SYSTEM appname="MSB Profesional" splash="splash_pro.jpg" terminales="1" perfilrecursos="false" multiserver="false" cierreperiodos="false" multicosteo="false" auditoria="0" seguridad_x_entidad="false" tablerogerencial="false" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="false" politicadatos_x_deposito="false"/>
+                <DATOS empresa="" moneda="" sucursal="" deposito="" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="false" gestion_x_proyectos="false" edi="false" gestiondocumental="false"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="false" retencionproveedor="true" gastosexportacion="false"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="false"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="false"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="false" hechauka="true" irp="true" asientodifcambio="false" activofijo="true"/>
+        </PROFESIONAL>
+        <PERSONAL>
+                <THEME value=""/>
+                <SYSTEM appname="MSB Personal" splash="splash_per.jpg" terminales="1" perfilrecursos="false" multiserver="false" cierreperiodos="false" multicosteo="false" auditoria="0" seguridad_x_entidad="false" tablerogerencial="false" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="false" politicadatos_x_deposito="false"/>
+                <DATOS empresa="5" moneda="1" sucursal="" deposito="" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="false" gestion_x_proyectos="false" edi="false" gestiondocumental="false"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="false" retencionproveedor="false" gastosexportacion="false"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="false"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="false"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="false" hechauka="false" irp="true" asientodifcambio="false" activofijo="false"/>
+        </PERSONAL>
+        <EDUCATIVA>
+                <THEME value=""/>
+                <SYSTEM appname="MSB Educación" splash="splash_edu.jpg" 
+                					splashbackcolor="=RGB(0,0,0)" splashstatuscolor="=RGB(255,255,255)"  explorerpicture="explorer_maker.jpg"                
+                					terminales="" licencia_no_comercial="1" perfilrecursos="false" multiserver="false" cierreperiodos="true" multicosteo="true" auditoria="0" seguridad_x_entidad="true" tablerogerencial="true" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="true" politicadatos_x_deposito="true"/>
+                <DATOS empresa="2" moneda="2" sucursal="" deposito="" empleado="" itemmovimiento="1000" ctactemovimiento="1000" bancomovimiento="1000" cajamovimiento="1000" ctbmovimiento="1000" empleadomovimiento="1000"/>
+                <OTROS gestion_x_unidadnegocios="true" gestion_x_proyectos="true" edi="false" gestiondocumental="false"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="true" retencionproveedor="true" gastosexportacion="true"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="true"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="true"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="true" hechauka="true" irp="true" asientodifcambio="true" activofijo="true"/>
+        </EDUCATIVA>
+        <JME_EDITION>
+                <THEME value=""/>
+                <SYSTEM appname="JME SYSTEM" splash="jme_splash.jpg" loginpicture="jme_login.jpg" terminales="1" perfilrecursos="false" multiserver="false" cierreperiodos="false" multicosteo="false" auditoria="0" seguridad_x_entidad="false" tablerogerencial="false" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="false" politicadatos_x_deposito="false"/>
+                <DATOS empresa="2" moneda="1" sucursal="1" deposito="5" empleado="" itemmovimiento="" ctactemovimiento="" bancomovimiento="" cajamovimiento="" ctbmovimiento="" empleadomovimiento=""/>
+                <OTROS gestion_x_unidadnegocios="false" gestion_x_proyectos="false" edi="false" gestiondocumental="false"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="false" retencionproveedor="false" gastosexportacion="false"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="false"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="true"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="false" hechauka="false" irp="false" asientodifcambio="false" activofijo="false"/>
+        </JME_EDITION>
+        <INTER_EDUCATIVA>
+                <THEME value=""/>
+                <SYSTEM appname="MSB Educación" splash="inter_splash.jpg" terminales="1" licencia_no_comercial="1" perfilrecursos="false" multiserver="false" cierreperiodos="true" multicosteo="true" auditoria="0" seguridad_x_entidad="true" tablerogerencial="true" copiardatosotraempresa="true" impuestos="false" gestionrepositoriodatos="false" politicactrl_x_deposito="true" politicadatos_x_deposito="true"/>
+                <DATOS empresa="2" moneda="2" sucursal="" deposito="" empleado="" itemmovimiento="1000" ctactemovimiento="1000" bancomovimiento="1000" cajamovimiento="1000" ctbmovimiento="1000" empleadomovimiento="1000"/>
+                <OTROS gestion_x_unidadnegocios="true" gestion_x_proyectos="true" edi="false" gestiondocumental="false"/>
+                <STOCK reserva="false" control_x_lote="false"/>
+                <PRODUCCION/>
+                <COMPRAS importacion="true" retencionproveedor="true" gastosexportacion="true"/>
+                <PROVEEDORES/>
+                <GESTIONINMOBILIARIA/>
+                <PARQUECEMENTERIO/>
+                <VENTAS proyeccionventas="true"/>
+                <CLIENTES/>
+                <TESORERIA anticipo="true"/>
+                <RECURSOSHUMANOS/>
+                <CONTABILIDAD presupuesto="true" hechauka="true" irp="true" asientodifcambio="true" activofijo="true"/>
+        </INTER_EDUCATIVA>
+</EDICIONES>

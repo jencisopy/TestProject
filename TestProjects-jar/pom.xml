@@ -9,7 +9,6 @@
         
     <groupId>py.com.oym</groupId>
     <artifactId>TestProjects-jar</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>TestProjects-jar</name>    
     

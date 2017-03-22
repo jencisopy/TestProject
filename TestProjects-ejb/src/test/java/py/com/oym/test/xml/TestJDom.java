@@ -20,7 +20,6 @@ import py.com.oym.frame.xml.JDom;
 import py.com.oym.frame.xml.XmlCache;
 import py.com.oym.frame.xml.XmlCacheKey;
 import py.com.oym.frame.xml.XmlJDom;
-import py.com.oym.frame.xml.XmlSearcher;
 import static py.com.oym.frame.xml.XmlSearcher.getJustPath;
 
 /**
@@ -123,7 +122,7 @@ public class TestJDom {
         System.out.println(doc.getFirstChild().getNodeName());
     }
 
-    //@Test
+    @Test
     public void testHerencia() {
         String documentPath = "file:///proyectos/java/oym/TestProjects/dic_ag_log.xml";
         XmlJDom document = new XmlJDom();

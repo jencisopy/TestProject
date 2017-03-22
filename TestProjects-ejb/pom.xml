@@ -9,7 +9,6 @@
 
     <groupId>py.com.oym</groupId>
     <artifactId>TestProjects-ejb</artifactId>
-    <version>${project.parent.version}</version>
     <packaging>ejb</packaging>
 
     <name>TestProjects-ejb</name>
@@ -39,6 +38,14 @@
             <version>1.1.6</version>
             <scope>test</scope>
         </dependency>
+
+         <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.11.0</version>
+            <scope>test</scope>            
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>

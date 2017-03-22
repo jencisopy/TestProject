@@ -92,5 +92,11 @@
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>        
+        <session>
+            <ejb-name>AppConfig</ejb-name>
+            <ejb-class>net.makerapp.config.AppConfig</ejb-class>
+            <business-remote>py.com.oym.frame.config.IAppConfig</business-remote>
+            <session-type>Singleton</session-type>
+        </session>
     </enterprise-beans>
 </ejb-jar>

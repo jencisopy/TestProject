@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
+<Configuration>
+	<Sistema nombre="Maker" version="9.5.0" edicion="Q09SUE9SQVRJVk8=" fileedicion="ediciones.xml" menu="MENU" helpfile="eMaker" fileSystem="MKFICHERO" licencia="2"/>
+	<Soporte nombre="OyM System Group" telefono="(595-21)554141 - 562514" email="soporte@oym.com.py"/>
+	<Ventas nombre="OyM System Group" telefono="(595-21)554141 - 562514" email="info@oym.com.py"/>
+	<DataSetting file="dataconfig.xml" catalogo="ConexionCatalogoSqlserver">
+	</DataSetting>
+	<SystemSetting>
+		<UpdateService auto="ON" downloadapplymode="MANUAL" appname="MAKER95" appver="950" updpath="=oApp.InitFilePath+'..\update'" updmirrorpath="=oApp.InitFilePath+'..\update\updmirror\'"/>
+		<Mkagent server="agente.oym.com.py" serverport="8181" nodo="000" localport="8182"/>
+	</SystemSetting>
+	<ClientSetting>
+		<MainForm name="maker"/>
+		<Autenticacion integrada="False" authwindowtrust="False" domain="" impersonate="True" modo="On" loginempresa="0"/>
+		<Menus filesystem="FICHEROMK" menu="MENU"/>
+		<Splash picture="splash12.jpg"/>
+		<Otros sincronizarfecha=".t." server="OYM-DEV-T03" licenciaaviso="90" status="5" security=".F." versionfox="09.00.0000.3504" checkcomponent="0" theme=""/>
+		<Licencia id="020.000"/>
+	</ClientSetting>
+</Configuration>

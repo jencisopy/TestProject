@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
+<Configuration>
+	<PROCEDURES>
+		<CONTROLES/>
+		<LIBLOGICAAPP/>
+		<LIBLOGICAITEM/>
+		<LIBLOGICAITEMPRODUCCION/>
+		<LIBLOGICACTACTE/>
+		<LIBLOGICACAJA/>
+		<LIBLOGICABANCO/>
+		<LIBLOGICACTB/>
+		<LIBLOGICAJOB/>
+		<LIBLOGICAACT/>
+		<LIBLOGICAARCH/>
+		<LIBLOGICATPV/>
+		<LIBLOGICAPLAYA/>
+		<LIBLOGICAGI/>
+		<LIBLOGICAGC/>
+		<LIBLOGICAGA/>
+		<LIBLOGICACRM/>
+		<LIBLOGICAAGENT/>
+	</PROCEDURES>
+	<CLASSLIB>
+		<CONTROLES/>
+		<MAKER/>
+		<MAKERITEM/>
+		<MAKERBANCO/>
+		<MAKERCAJA/>
+		<MAKERCTACTE/>
+		<MAKERCTB/>
+		<MAKERARCH/>
+		<MAKERTPV/>
+		<MAKERPLAYA/>
+		<MAKERGI/>
+		<MAKERGA/>
+		<MAKERGC/>
+		<JOB/>
+		<OLAP/>
+	</CLASSLIB>
+	<XMLCLASES>
+		<CLASES/>
+		<CLASEREPORT/>
+		<DIC_CLASES/>
+		<CLASEMAKER/>
+		<CLASEMAKERTPV/>
+		<CLASEREPORTMAKER/>
+	</XMLCLASES>
+	<INIT>
+		<EMPRESAPATH localpath=".f." path="=oApp.InitFilePath+'..\empresas'" path10="urbanizaciones" path11="urba" path06="oymsa" path55="parroquia_sanmiguel" path98="prueba" path40="karajallo"/>
+		<PICTUREPATH path="=oApp.InitFilePath+'..\empresas\imagenes'"/>
+		<SYSTEMSHAREDDIRECTORY location="=oApp.InitFilePath"/>
+		<PATHDIRECTORY path="..\clases\5.5\, framework55, clases, xml, xmlfxp, xmlreports, imagenes,imagenes\cursor, scripts, export, tools,log,forms,bin,reports,help,bin"/>
+		<XMLBINDIRECTORY path="xmlbin"/>
+	</INIT>
+</Configuration>

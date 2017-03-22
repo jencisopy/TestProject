@@ -9,7 +9,6 @@
 
     <groupId>py.com.oym</groupId>
     <artifactId>TestProjects-ear</artifactId>
-    <version>${project.parent.version}</version>
     <packaging>ear</packaging>
 
     <name>TestProjects-ear</name>
