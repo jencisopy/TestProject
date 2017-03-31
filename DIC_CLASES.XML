@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes" ?>
+<XML>
+	<NOMBRE		 clase="FIELD" src="file://clases.xml"/>
+
+	<IDITEM_FK1 clase="FIELD" src="file://clases.xml" tipo="N" width="12" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditem(?iditem,?codigo,?idempresa,?itemelemento)" primarykey=".t." foreignkey=".t." columnreference="iditem"/>
+	<IDCTACTE_PK clase="FIELD" src="file://clases.xml" tipo="N" width="12" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctacteb(?idctacte,?codigo,?escliente, ?esproveedor, ?idempresa)"/>
+	<IDCTACTE_FK clase="FIELD" src="file://clases.xml" tipo="N" width="12" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctacteb(?idctacte,?ctacte,?escliente, ?esproveedor, ?idempresa)"/>
+	<IDCTACTEPENDIENTEDETALLE_FK  clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctactependientedetalle(?idctactependientedetalle,?ctactependiente,?cuota,?cuotatipo)"/>	
+	<IDCTACTEMOVIMIENTODETALLE_PK clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctactemovimientodetalle(?idctactemovimientodetalle,?idnro,?ctactependiente,?cuota,?cuotatipo)"/>
+	<IDCTACTEMOVIMIENTOPLNDET_PK clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctactemovimientoplndet(?idctactemovimientoplndet,?idnro,?ctactependiente,?cuota,?cuotatipo)"/>	
+	<IDITEMACTIVOFIJONRO_PK clase="FIELD" src="file://clases.xml" sololectura=".T." tipo="N" width="12" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemactivofijonro(?iditemactivofijonro,?idempresa,?itemactivofijonro)" primarykey=".t." autonumber=".T."/>	
+	<IDCTACTEMOVIMIENTO_FK  clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctactemovimiento(?idctactemovimiento,?ctactemovimiento)" tipo="N" width="14" decimal="0" foreignkey=".t." columnreference="idctactemovimiento"/>
+	<IDCTACTEBANCOMOVIMIENTO_FK  clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctactebancomovimiento(?idctactebancomovimiento,?ctactebancomovimiento)" tipo="N" width="14" decimal="0" foreignkey=".t." columnreference="idctactebancomovimiento"/>	
+	<IDCTACTECHEQUE_FK      clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctactecheque(?idctactecheque,?ctactechequecuenta, ?banco,?idempresa,?ctactecheque)" tipo="N" width="14" decimal="0" foreignkey=".t."/>	
+	<IDITEMPRODUCTONRO_PK   clase="FIELD" src="file://clases.xml" sololectura=".T." tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemproductonro(?iditemproductonro, ?item, ?itemelemento, ?itemproductonro, ?idempresa)" primarykey=".t." autonumber=".T."/>	
+    <IDITEMPRODUCTONRO_FL   clase="FIELD" src="file://clases.xml" nulo=".t." funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemproductonro(?iditemproductonro, ?item, ?itemelemento, ?itemproductonro, ?idempresa)"/>
+    <IDBANCOMOVIMIENTO_FK   clase="FIELD" src="file://clases.xml" tipo="N" width="14" decimal="0" foreignkey=".t." columnreference="idbancomovimiento" uk_constraint_name="" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idbancomovimiento(?idbancomovimiento,?bancomovimiento)" nulo=".t."/>    
+	<IDCAJAMOVIMIENTO_FK    clase="FIELD" src="file://clases.xml" tipo="N" width="14" decimal="0" foreignkey=".t." columnreference="idcajamovimiento" uk_constraint_name=""  funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idcajamovimiento(?idcajamovimiento,?cajamovimiento)" nulo=".t."/>    
+	<IDCTBMOVIMIENTODETALLE_FK clase="FIELD" src="file://clases.xml" tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctbmovimientodetalle(?idctbmovimientodetalle,?ctbmovimiento,?idorden)" foreignkey=".t." columnreference="idctbmovimientodetalle" uk_constraint_name="" nulo=".t."/>    
+	<IDIMPUESTOITEMMOVIMIENTO_PK clase="FIELD" src="file://clases.xml" sololectura=".T." autonumber=".T."  tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idimpuestoitemmovimiento(?idimpuestoitemmovimiento,?impuesto,?iditemmovimientodetalle,?idnro,?idorden)" primarykey=".t."/>
+	<IDITEMMOVIMIENTO_FK   clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemmovimiento(?iditemmovimiento,?itemmovimiento)" tipo="N" width="14" decimal="0" foreignkey=".t." columnreference="iditemmovimiento"/>	
+	<IDITEMIMPORTACION_FK  clase="FIELD" src="file://clases.xml" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemimportacion(?iditemimportacion,?itemimportacion)" tipo="N" width="14" decimal="0" foreignkey=".t." columnreference="iditemimportacion"/>
+	<IDITEMIMPORTACIONCOMPRA_PK clase="FIELD" src="file://clases.xml" tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemimportacioncompra(?iditemimportacioncompra, ?itemimportacion, ?itemmovimiento)" primarykey=".t." sololectura=".T." autonumber=".T."/>
+	<IDCTBMOVIMIENTO_FK clase="FIELD" src="file://clases.xml" tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idctbmovimiento(?idctbmovimiento,?ctbmovimiento)" foreignkey=".t." columnreference="idctbmovimiento" nulo=".t."/>
+	<IDCAJALOG_FK  clase="FIELD" src="file://clases.xml"  tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idcajalog(?idcajalog,?caja,?idempresa,?cajalog)" foreignkey=".t." columnreference="idcajalog"/>
+	<IDCAJALOG2_FK clase="FIELD" src="file://clases.xml"  tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idcajalog(?idcajalog2,?cajadest,?idempresa,?cajalog2)" foreignkey=".t." columnreference="idcajalog"/>	
+	<IDITEMMOVPLN_FK clase="FIELD" src="file://clases.xml"  tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemmovpln(?iditemmovpln, ?itemmovpln)"  foreignkey=".t." columnreference="iditemmovpln"/>
+	<IDITEMMOVPLNITEMMOV_PK clase="FIELD" src="file://clases.xml" tipo="N" width="14" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_iditemmovplnitemmov(?iditemmovplnitemmov, ?itemmovpln, ?itemmovimiento)" primarykey=".t." sololectura=".T." autonumber=".T."/>	
+	<IDGI_LOTEVTA_FK clase="FIELD" src="file://clases.xml" tipo="N" width="12" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idgi_lotevta(?idgi_lotevta,?gi_lotevta,?idempresa)" foreignkey=".t." columnreference="idgi_lotevta"/>
+	<IDGC_PARCELAVTA_FK clase="FIELD" src="file://clases.xml" tipo="N" width="12" decimal="0" funcionupdate="&lt;&lt;cSchema&gt;&gt;.fn_idgc_parcelavta(?idgc_parcelavta,?gc_parcelavta,?idempresa)" foreignkey=".t." columnreference="idgc_parcelavta"/>
+
+	<AUDIT_UK clase="FIELD" src="file://clases.xml" tipo="C" width="15" decimal="0" nulo=".F."/>	
+	
+	<EXPRESIONFILTROS>
+		<E1     titulo="Todos               CTRL+T"          expresion=""/>	
+		<E2     titulo="Sin Datos          CTRL+0"      expresion="SIN DATOS"/>			
+	</EXPRESIONFILTROS>	
+
+	<EXPRESIONFILTROSMOV>
+		<E1     titulo="No Confirmados" expresion="confirmado = ?_Falso('datos')"/>	
+		<E2     titulo="Confirmados"    expresion="confirmado = ?_Verdadero('datos') and anulado = ?_Falso('datos')"/>
+		<E3     titulo="Anulados"       expresion="anulado = ?_Verdadero('datos')"/>					
+		<E4     titulo="Todos                 CTRL+T" expresion=""/>	
+		<E5     titulo="Sin Datos            CTRL+0" expresion="SIN DATOS"/>
+	</EXPRESIONFILTROSMOV>	
+
+	<EXPRESIONORDENFICHA select="E0">
+		<E0     titulo="Ninguno"  expresion=""/>					
+		<E1     titulo="Nombre"   expresion="nombre,codigo"/>				
+		<E2     titulo="Código"   expresion="codigo"/>	
+	</EXPRESIONORDENFICHA>	
+
+	<EXPRESIONORDEN select="E1">
+		<E1     titulo="Ninguno"   expresion=""/>				
+	</EXPRESIONORDEN>	
+
+	<EXPRESIONORDENDETALLE select="E1">
+		<E1     titulo="Ninguno"   expresion="idorden"/>				
+	</EXPRESIONORDENDETALLE>	
+
+	<TABLE>
+		<EXPRESIONFILTROS clase="EXPRESIONFILTROS">
+		</EXPRESIONFILTROS>		
+		<EXPRESIONORDEN   clase="EXPRESIONORDEN">
+		</EXPRESIONORDEN>		
+	</TABLE>	
+
+	<TABLEFICHA>
+		<FIELDS>
+		</FIELDS>		
+		<EXPRESIONORDEN   clase="EXPRESIONORDENFICHA" src="file://dic_clases.xml">
+		</EXPRESIONORDEN>		
+		<EXPRESIONFILTROS clase="EXPRESIONFILTROS">
+		</EXPRESIONFILTROS>		
+	</TABLEFICHA>	
+
+	<TABLEMOV>
+		<FIELDS>
+		</FIELDS>		
+		<EXPRESIONORDEN   clase="EXPRESIONORDEN" src="file://dic_clases.xml">
+		</EXPRESIONORDEN>		
+		<EXPRESIONFILTROS clase="EXPRESIONFILTROSMOV">
+		</EXPRESIONFILTROS>		
+	</TABLEMOV>	
+	<TABLEMOVDET>
+		<FIELDS>
+		</FIELDS>		
+		<EXPRESIONORDEN   clase="EXPRESIONORDENDETALLE" src="file://dic_clases.xml">
+		</EXPRESIONORDEN>		
+		<EXPRESIONFILTROS clase="EXPRESIONFILTROS">
+		</EXPRESIONFILTROS>		
+	</TABLEMOVDET>	
+</XML>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<XML>
+        <BODY clase="CNTRANGOCONTAINERMAKER" src="file://clasemaker.xml" documento="VENTAS" sqlgetdataclass="sp_itemmovimiento_operativo">
+                <RANGOS clase="RANGOS/ITEMVENTA_FECHANRO" src="file://clasemaker.xml"/>
+                <CRITERIOS>
+                        <CRITERIO1>
+                                <e1 h="Fecha de Factura" a="a.fecha"/>                        
+                                <e2 h="Nro. de Factura" a="a.idnro, a.documentotiponombre, a.fecha"/>
+                        </CRITERIO1>
+                        <CRITERIO2>
+                                <e1 h="Ninguno" a=""/>
+                                <e2 h="Código del Item" a="b.item, a.secuencia, a.nro "  f="1"/>
+                                <e3 h="Detallado por Nro" a="a.secuencia, a.nro, b.idorden, b.item"  f="1"/>
+								<e4 h="Cliente/SubCuenta" a="a.ctactenombre,a.ctacte,a.ctactesubnombre,a.secuencia, a.nro"/>
+								<e5 h="SubCuenta" a="a.ctactesubnombre,a.ctacte, a.secuencia, a.nro"/>								
+                        </CRITERIO2>
+                        <REPORTE2>
+                                <e1>itemventa_FECHANRO_OPERATIVO01</e1>
+                                <e2>itemventa_FECHANRO_OPERATIVO02</e2>
+                                <e3>itemventa_FECHANRO_OPERATIVO03</e3>
+                                <e4>itemventa_FECHANRO_OPERATIVO04</e4>                                
+                                <e5>itemventa_FECHANRO_OPERATIVO05</e5>                                                                
+                        </REPORTE2>
+                </CRITERIOS>
+                <VISTAPREVIA>
+                        <COLUMNAS_CORTE1>
+                                <e1>
+                                        <fecha col="ttod(fecha)" h="Fecha"/>
+                                        <nro h="Nro. Doc."/>
+                                        <documentotiponombre h="Tipo Doc."/>
+                                        <ctacte h="Cliente"/>
+                                        <ctactenombre h="Nombre Cliente"/>
+                                </e1>
+                                <e2>
+                                        <secuencia h="Sec."/>                                
+                                        <nro h="Nro. Doc."/>
+                                        <documentotiponombre h="Tipo Doc."/>
+                                        <fecha col="ttod(fecha)" h="Fecha"/>
+                                        <ctacte h="Cliente"/>
+                                        <ctactenombre h="Nombre Cliente"/>
+                                </e2>
+                        </COLUMNAS_CORTE1>
+                        <COLUMNAS_CORTE2>
+                                <e1/>
+                                <e2>
+                                        <item h="Item"/>
+                                        <itemnombre h="Descripción del Item"/>
+                                        <cantidad h="Cantidad" p="99,999,999,999.99"/>
+                                        <itemmedida h="Unidad"/>
+                                        <precioneto h="Precio Unitario" p="99,999,999,999.99"/>
+                                </e2>
+                                <e3>
+                                        <item h="Item"/>
+                                        <itemnombre h="Descripción del Item"/>
+                                        <cantidad h="Cantidad" p="99,999,999,999.99"/>
+                                        <itemmedida h="Unidad"/>
+                                        <precioneto h="Precio Unitario" p="99,999,999,999.99"/>
+                                </e3>
+                                <e4>
+                                        <ctactesub       h="SubCuenta"/>
+                                        <ctactesubnombre h="Nombre SubCuenta"/>
+                                </e4>
+                                <e5>
+                                        <ctactesub       h="SubCuenta"/>
+                                        <ctactesubnombre h="Nombre SubCuenta"/>
+                                </e5>
+                        </COLUMNAS_CORTE2>
+                        <COLUMNAS clase="VISTAPREVIA/COLUMNAS/ITEMMOV_DETALLADO" src="file://clasemaker.xml"/>
+                </VISTAPREVIA>
+                <SQLGETDATA>
+                        <CAMPOCORTE1>
+                                <e1>a.fecha, a.secuencia, a.nro, a.documentotiponombre</e1>                        
+                                <e2>a.secuencia, a.nro, a.documentotiponombre, a.fecha</e2>
+                        </CAMPOCORTE1>
+                        <CAMPOCORTE2>
+                                <e1/>
+                                <e2>b.item, b.itemnombre, b.itemelemento, b.itemproductonro, 
+                                		b.impuestoporc, b.impuestobaseimponible,
+                                        b.subtotal as subtotales,
+                                        b.impuesto as impuestos,
+                                        b.subtotal + b.impuesto as totales
+                                </e2>
+                                <e3>b.item, b.itemnombre, b.itemelemento, b.itemproductonro, 
+                                		b.impuestoporc, b.impuestobaseimponible,                                
+                                        b.subtotal as subtotales,
+                                        b.impuesto as impuestos,
+                                        b.subtotal + b.impuesto as totales
+                                </e3>
+                                <e4/>                                
+                                <e5/>                                                                
+                        </CAMPOCORTE2>
+                        <COLUMNAS>
+                                <e>a.idnro, a.iddocumento, a.secuencia, a.cambio,a.observacion, a.moneda, a.deposito, a.depositonombre,
+                                  a.sucursal, a.vendedor, a.vendedornombre, a.ctacte, a.ctactenombre, a.ctactesub, a.ctactesubnombre</e>
+                        </COLUMNAS>
+                </SQLGETDATA>
+        </BODY>
+</XML>

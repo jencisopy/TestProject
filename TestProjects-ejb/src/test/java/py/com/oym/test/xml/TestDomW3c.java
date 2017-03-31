@@ -30,6 +30,7 @@ import py.com.oym.frame.xml.XmlCacheKey;
 import py.com.oym.frame.xml.XmlDomW3c;
 
 import static org.junit.Assert.*;
+import py.com.oym.frame.util.Fn;
 
 
 
@@ -415,6 +416,39 @@ public class TestDomW3c {
         document.addConfigParam("path", "/proyectos/java/oym/TestProjects/");
         document.addConfigParam("pathtype", "FILE");
         boolean obj = document.config(documentPath, "", "/XML/AG_LOG_VIEW", false, null);
+        System.out.println(document.toString());
+        assertTrue(obj);
+    }
+
+    
+    @Test
+    public void testHerencia2() {
+        String documentPath = this.getClass().
+                getResource("/xml/itemventa_fechanro_operativo.xml").getFile();
+        File file = new File(documentPath);        
+        String path = file.getParent();
+        IXmlDom document = new XmlDomW3c();
+        Map<String, String> params = new HashMap();
+        params.put("path", path);
+        params.put("pathtype", "FILE");
+        params.put("encoding","UTF-8");
+        boolean obj = document.config(documentPath, "", "XML/BODY", false, params);
+        System.out.println(document.toString());
+        System.out.println(document.getPropertyValue("h","CRITERIOS/CRITERIO2/e2"));
+        String property = document.getPropertyValue("h","CRITERIOS/CRITERIO2/e2");
+        assertTrue(obj);
+        assertTrue(property.equals("Código del Item"));
+    }
+
+    //@Test
+    public void testHerencia3() {
+        String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
+        IXmlDom document = new XmlDomW3c();
+        document.addConfigParam("path", "C:/proyectos/java/oym/TestProjects/");
+        document.addConfigParam("pathtype", "FILE");
+        document.addConfigParam("encoding","UTF-8");
+
+        boolean obj = document.config(documentPath, "", "XML", false);
         System.out.println(document.toString());
         assertTrue(obj);
     }

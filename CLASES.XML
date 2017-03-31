@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<XML>
+	<EXPRESIONORDEN select="E1">
+		<E1     titulo="Ninguno"   expresion=""/>				
+	</EXPRESIONORDEN>	
+	<EXPRESIONFILTROS>
+		<E1     titulo="Todos                CTRL+T"      expresion=""/>	
+		<E2     titulo="Sin Datos          CTRL+0"      expresion="SIN DATOS"/>			
+	</EXPRESIONFILTROS>	
+	<TABLE>
+		<EXPRESIONFILTROS clase="EXPRESIONFILTROS">
+		</EXPRESIONFILTROS>		
+		<EXPRESIONORDEN   clase="EXPRESIONORDEN">
+		</EXPRESIONORDEN>		
+	</TABLE>	
+
+	<FIELD		nombre="" 
+				mascara="" 
+				defaultvalue="" 
+				funcionupdate="" 
+				sololectura=".F." 
+				primarykey=".F." 
+				uniquekey=".F." 
+				foreignkey=".F." 
+				validacion="" 
+				nulo=".f." 
+				validacionnroerror=""> 
+	</FIELD>			
+	
+	<FIELDKEY 	clase="FIELD" 
+				primarykey=".f." 
+				foreignkey=".t." 
+				autofuncionupdate=".t.">
+	</FIELDKEY>	
+	
+	<OBJETO visible=".t.">
+	</OBJETO>
+	
+	<CHK class="CHK" clase="OBJETO" caption="">
+	</CHK>
+
+	<CBO class="CBO" clase="OBJETO" caption="">
+	</CBO>
+
+	<CMD clase="OBJETO" objeto="" objetoelemento="" picture="">
+	</CMD>
+	
+	<CMDBAK clase="OBJETO" objeto="" objetoelemento="" picture=""  backcolor="=RGB(215,212,196)" disabledbackcolor="=RGB(215,212,196)">
+	</CMDBAK>
+	
+	
+	<IMG class="IMG" clase="OBJETO" picture="" stretch="0">
+	</IMG>
+
+	<CNT clase="OBJETO">
+	</CNT>
+
+	<LABEL clase="OBJETO">
+	</LABEL>
+
+	<LINEA clase="OBJETO">
+	</LINEA>
+
+	<TXTGRDEDIT clase="OBJETO" class="txtGrdEdit">
+	</TXTGRDEDIT>
+
+	<COLUMNA clase="OBJETO" class="columna" controlsource="" readonly=".t." fontsize="8" currentcontrol="texto" columnorder="" objeto="" objetoelemento="DETALLE" objetoexpresionfiltro="codigo = '&lt;&lt;this.value&gt;&gt;'">
+		<HEADER1 caption=""/>
+		<TEXTO   class="txtgrd"/>
+	</COLUMNA>
+
+	<GRILLAS clase="OBJETO" setear="ONDATABLOCK">
+	</GRILLAS>
+
+	<GRILLA clase="GRILLAS" activarbusqueda=".t." 
+			alloworder=".f."
+			activarteclafuncion=".t." 
+			buscar="this.parent.cntBuscar" 
+			memberclass="columna"
+			memberclasslibrary="controles.fxp"
+			autofit=".t."  scrollbars="2"
+			headerheight="24">
+	</GRILLA>
+
+	<GRILLA_01 clase="GRILLA" recordmark=".f.">
+	</GRILLA_01>
+
+
+	<IMGBOTONABM clase="IMG" class="imgbotonabm" objeto="" objetoelemento="" picture="botonn.jpg" propiedad=".t."  nuevaventana=".f.">
+		<PARAMETROS ventana="NAVEGADOR" accion="" modo="INDIVIDUAL"/>
+	</IMGBOTONABM>
+
+	<PAGE clase="OBJETO">
+	</PAGE>
+
+
+	<MARCO clase="OBJETO" class="MARCO">
+	</MARCO>
+
+	<CNTBUSCAR   clase="CNT" class="cntBuscar" anchors="Left,Botton"/>
+
+	<CNTBUSCAR01 clase="CNTBUSCAR" class="cntBuscar01" anchors="Left,Top,Right">
+		<LBLBUSCAR forecolor="=RGB(141,136,114)"/>
+		<TXTBUSCAR backcolor="=RGB(255,255,230)" enabled=".f."/>
+	</CNTBUSCAR01>
+		
+	<GRDFICHA clase="GRILLA_01">
+		<COLUMN1 clase="COLUMNA" controlsource="codigo" columnorder="1">
+			<HEADER1 caption="Código"/>
+		</COLUMN1>
+		<COLUMN2 clase="COLUMNA" controlsource="nombre" columnorder="2">
+			<HEADER1 caption="Nombre"/>
+		</COLUMN2>
+	</GRDFICHA>
+
+	<GRDLISTAR clase="GRILLA">
+		<COLUMN1 clase="COLUMNA" controlsource="nombre" columnorder="1">
+			<HEADER1 caption="Descripción"/>
+		</COLUMN1>
+		<COLUMN2 clase="COLUMNA" controlsource="codigo" columnorder="2">
+			<HEADER1 caption="Código"/>
+		</COLUMN2>
+	</GRDLISTAR>
+
+	<ABM clase="CNT" class="ABM1" top="3" left="0" anchor="0" allowsplit=".f."  objetoelemento="detalle">
+		<CMDAGREGAR    clase="CMD" teclafuncion="INS" picture="nuevo.bmp" tooltiptext="Pulse INS o CLICK para agregar registro" tag="Agregar"> 
+			<PARAMETROS accion="AGREGAR" modo="INDIVIDUAL"/>	
+		</CMDAGREGAR>
+		<CMDMODIFICAR  clase="CMD" teclafuncion="ENTER" picture="abrir01_c.bmp" tooltiptext="Pulse ENTER o CLICK para modificar el registro" tag="Modificar">
+			<PARAMETROS accion="MODIFICAR" modo="INDIVIDUAL"/>	
+		</CMDMODIFICAR>
+		<CMDBORRAR clase="CMD" teclafuncion="DEL" picture="borrar02_c.bmp" tag="Borrar">
+			<PARAMETROS accion="BORRAR" modo="INDIVIDUAL"/>
+		</CMDBORRAR>
+		<CMDORDENAR     clase="CMD" picture="ordenar.bmp"/>
+		<CMDFILTRAR     clase="CMD" picture="filtrar.bmp"/>
+		<CMDREQUERY     clase="CMD" teclafuncion="F5" picture="refresh.bmp" tooltiptext="Pulse F5 o CLICK para refrescar los datos" tag="Refrescar"/>		
+		<CMDIMPRIMIR    clase="CMD" picture="imprimir01_c.bmp" enabled=".f." objetoelemento="REPORTDATA"></CMDIMPRIMIR>
+		<CMDACTUALIZAR  clase="CMD" teclafuncion="F6"  picture="actualiza01_c.bmp"/>
+		<CMDDOCUMENTOLINK clase="CMD" picture="adjunto.bmp" disabledpicture="adjunto.bmp" enabled=".t."/>
+		<CMDOLAP        clase="CMD" picture="olap.bmp"></CMDOLAP>
+		<CMDCOPIARDESDE clase="CMD" picture="copiardesde.bmp" disabledpicture="copiardesde.bmp"></CMDCOPIARDESDE>		
+		<CMDUSERDATALOGVIEW clase="CMD" picture="userdatalogview.bmp" disabledpicture="userdatalogview.bmp"></CMDUSERDATALOGVIEW>
+		<CMDSALIR       clase="CMD" teclafuncion=""    picture="cerrar01_c.bmp"></CMDSALIR>	
+	</ABM>
+
+	<ABMDETALLE clase="ABM" visible=".f.">
+		<CMDAGREGAR    objetoelemento="" picture="nuevo.bmp"/>
+		<CMDMODIFICAR  objetoelemento="" picture="abrir01_c.bmp"/>
+		<CMDBORRAR     objetoelemento="" picture="borrar02_c.bmp"/>
+	</ABMDETALLE>
+
+	<ABM02 clase="ABM">
+		<CMDAGREGAR    clase="CMD"  enabled=".f." picture="nuevo.bmp"/>
+		<CMDMODIFICAR  clase="CMD"  enabled=".f." picture="abrir01_c.bmp" objetoelemento="detalle">
+			<PARAMETROS ventana="" accion="" modo="INDIVIDUAL"/>	
+		</CMDMODIFICAR>
+		<CMDBORRAR     clase="CMD" enabled=".f." picture="borrar02_c.bmp" objetoelemento="detalle"/>
+		<CMDIMPRIMIR   clase="CMD" enabled=".f." picture="imprimir01_c.bmp" objetoelemento="REPORTDATA"/>
+		<CMDACTUALIZAR clase="CMD" enabled=".f." picture="actualiza01_c.bmp"/>
+		<CMDORDENAR    clase="CMD" enabled=".f."/>		
+		<CMDFILTRAR    clase="CMD" enabled=".f."/>		
+		<CMDSALIR      clase="CMD" teclafuncion="ENTER" picture="cerrar01_c.bmp"/>
+	</ABM02>
+
+	<CNTDATABLOCK clase="CNT" class="CNTDATABLOCK" curadapterclass="" expresionfiltronro="1" nodataload=".f." borderwidth="0"/>
+	
+	<CNTDATABLOCKLISTA clase="CNTDATABLOCK">	
+		<SHP1 height="2" top="0"  backcolor="=RGB(99,97,97)"/>
+		<SHP2 height="1" top="2"  backcolor="=RGB(255,255,255)"/>		
+		<CNTBUSCAR clase="CNTBUSCAR01" top="3" visible=".t."/>	
+		<SHP3 height="2" top="26" backcolor="=RGB(128,128,128)"/>
+		<GRID1 top="28"/>
+	</CNTDATABLOCKLISTA>	
+
+	<CNTDATABLOCKCONTAINER  clase="CNT" class="CNTDATABLOCKCONTAINER" ventana="NAVEGADOR" modo="INDIVIDUAL"/>
+
+	<CNTDATABLOCKCONTAINER01  clase="CNTDATABLOCKCONTAINER"/>
+
+	<CNTDATABLOCKCONTAINER02  clase="CNTDATABLOCKCONTAINER"  anchor="15" class="CNTDATABLOCKCONTAINER02"/>
+
+	<CNTDATABLOCKCONTAINER0201  clase="CNTDATABLOCKCONTAINER" class="CNTDATABLOCKCONTAINER0201"/>
+
+	<CNTRANGOCONTAINER  clase="CNTDATABLOCKCONTAINER" class="CNTRANGOCONTAINER"/>
+
+	<CNTDATABLOCKCONTAINER05  clase="CNTDATABLOCKCONTAINER"  anchor="15" class="CNTDATABLOCKCONTAINER05"/>
+
+	<CNTREPORTDATA  clase="CNTDATABLOCKCONTAINER" class="CNTREPORTDATA" ventana="NORMAL" modo="INDIVIDUAL"/>
+
+	<CNTDATABLOCKCONTAINERAYUDA  clase="CNTDATABLOCKCONTAINER" class="CNTDATABLOCKCONTAINERAYUDA" height="=oThis.cntPrincipal.height"  ventana="AYUDA" modo="INDIVIDUAL" visible=".t.">
+		<CNTPRINCIPAL clase="CNTDATABLOCK">
+			<ABM clase="ABM02">
+			</ABM>
+			<TXTSELECCIONAR expresionclave="upper(nombre) like '&lt;&lt;UPPER(alltrim(this.value))&gt;&gt;%'"/>			
+			<CNTBUSCAR clase="CNTBUSCAR01"/>			
+			<GRID1 clase="GRDLISTAR"/>
+		</CNTPRINCIPAL>
+	</CNTDATABLOCKCONTAINERAYUDA>
+	
+	<OBJETOPROPIEDADES>
+		<E1  objeto="" objetoelemento="detalle" caption="Nuevo">
+			<PARAMETROS ventana="NAVEGADOR" accion="AGREGAR" modo="INDIVIDUAL"/>
+		</E1>	
+		<E2 objeto="" objetoelemento="detalle" caption="Nuevo Otra Ventana" nuevaventana=".t.">
+			<PARAMETROS accion="AGREGAR" ventana="NORMAL" modo="INDIVIDUAL"/>
+		</E2>
+		<E3  objeto="" objetoelemento="principal" caption="Abrir">
+			<PARAMETROS ventana="NAVEGADOR" accion="" modo="INDIVIDUAL"/>
+		</E3>
+		<E4  objeto="" objetoelemento="principal" caption="Abrir Nueva Ventana" nuevaventana=".t.">
+			<PARAMETROS ventana="NORMAL" accion="" modo="INDIVIDUAL"/>		
+		</E4>
+		<E5  objeto="" objetoelemento="PROPIEDAD" caption="Propiedades" nuevaventana=".t.">
+			<PARAMETROS ventana="NORMAL" accion="" modo="INDIVIDUAL"/>		
+		</E5>
+	</OBJETOPROPIEDADES>
+	
+	<CNTMAINPAGE clase="CNTDATABLOCKCONTAINER02" class="cntMainPage">
+		<IMGBOTON1 clase="IMG" picture="boton_gris.jpg" left="0" top="0"/>
+		<IMGBOTON2 clase="IMG" picture="boton_gris.jpg" left="=oThis.parent.imgboton1.width" top="0"/>
+		<IMGBOTON3 clase="IMG" picture="boton_gris.jpg" left="=oThis.parent.imgboton2.left + oThis.parent.imgboton2.width" top="0"/>		
+		<LABEL0 clase="LABEL" class="lblTitulo"  caption="Título" left="80"  top="55"/>
+		<LABEL1 clase="LABEL" class="lblTitulo2" caption="Título" left="100" top="190"/>
+		<LABEL2 clase="LABEL" class="lblTitulo2" caption="Título" left="100" top="290"/>
+		<LINEA0 clase="LINEA" class="line" height="0" width="=thisform.width" left="0" top="82"></LINEA0>
+		<LINEA1 clase="LINEA" class="line" height="0" width="=thisform.width" left="0" top="212"></LINEA1>
+		<LINEA2 clase="LINEA" class="line" height="0" width="=thisform.width" left="0" top="312"></LINEA2>
+		<IMGTITULO clase="IMG" picture="botonn.jpg" class="IMG" left="50" top="70"/>
+		<IMGNUEVO  clase="IMGBOTONABM" objeto="" objetoelemento="detalle" caption="Nuevo" left="70"  top="200">
+			<PARAMETROS accion="AGREGAR"/>
+		</IMGNUEVO>	
+		<IMGNUEVO2 clase="IMGBOTONABM" objeto="" objetoelemento="detalle" caption="Nuevo Otra Ventana" left="300" top="200" nuevaventana=".t.">
+			<PARAMETROS accion="AGREGAR" ventana="NORMAL" modo="INDIVIDUAL"/>
+		</IMGNUEVO2>
+		<IMGABRIR  clase="IMGBOTONABM" objeto="" objetoelemento="principal" caption="Abrir" left="70"  top="300"/>
+		<IMGABRIR2 clase="IMGBOTONABM" objeto="" objetoelemento="principal" caption="Abrir Nueva Ventana" left="300" top="300" nuevaventana=".t.">
+			<PARAMETROS ventana="NORMAL" modo="INDIVIDUAL"/>		
+		</IMGABRIR2>
+	</CNTMAINPAGE>	
+</XML>
