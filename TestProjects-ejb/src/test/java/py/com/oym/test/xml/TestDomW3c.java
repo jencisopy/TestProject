@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import py.com.oym.frame.xml.DomW3cParser;
@@ -421,7 +423,7 @@ public class TestDomW3c {
     }
 
     
-    @Test
+    //@Test
     public void testHerencia2() {
         String documentPath = this.getClass().
                 getResource("/xml/itemventa_fechanro_operativo.xml").getFile();
@@ -431,7 +433,7 @@ public class TestDomW3c {
         Map<String, String> params = new HashMap();
         params.put("path", path);
         params.put("pathtype", "FILE");
-        params.put("encoding","UTF-8");
+        //params.put("encoding","UTF-8");
         boolean obj = document.config(documentPath, "", "XML/BODY", false, params);
         System.out.println(document.toString());
         System.out.println(document.getPropertyValue("h","CRITERIOS/CRITERIO2/e2"));
@@ -452,5 +454,28 @@ public class TestDomW3c {
         System.out.println(document.toString());
         assertTrue(obj);
     }
-    
+
+    @Test
+    public void testGetElements() throws Exception {
+        String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
+        IXmlDom document = new XmlDomW3c();
+        
+        document.addConfigParam("path", "C:/proyectos/java/oym/TestProjects/");
+        document.addConfigParam("pathtype", "FILE");
+        document.addConfigParam("encoding","UTF-8");
+
+        boolean obj = document.config(documentPath, "", "XML", false);
+        System.out.println(document.toString());
+        
+        List<Element> elements = document.getChildren("XML/BODY/RANGOS/GRDRANGOS");
+        System.out.println("Cantidad de elementos: "+elements.size());
+        elements.forEach((element) -> {
+            try {
+                System.out.println(DomW3cParser.getXmlText(element));
+            } catch (TransformerException ex) {
+                Logger.getLogger(TestDomW3c.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        assertTrue(obj);
+    }
 }
