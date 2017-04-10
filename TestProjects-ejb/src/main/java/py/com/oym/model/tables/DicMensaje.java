@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IAppMessages;
+import py.com.oym.frame.model.IAppMessage;
 
 /**
  *
@@ -32,7 +32,7 @@ import py.com.oym.frame.model.IAppMessages;
 @Table(name = "dic_mensaje", uniqueConstraints = {
                                 @UniqueConstraint(columnNames = {"nro"})})
 @XmlRootElement
-public class DicMensaje extends DataRow implements IAppMessages {
+public class DicMensaje extends DataRow implements IAppMessage {
 
     private static final long serialVersionUID = 1L;
     @Id

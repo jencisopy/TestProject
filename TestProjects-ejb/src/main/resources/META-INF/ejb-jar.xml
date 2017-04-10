@@ -85,18 +85,29 @@
             <business-remote>py.com.oym.frame.xml.IXmlManagerRemote</business-remote>
             <session-type>Singleton</session-type>
         </session>
+        
+        <!--
         <session>        
             <ejb-name>XmlSearcher</ejb-name>
-            <ejb-class>py.com.oym.frame.xml.XmlFileObjectSearcher</ejb-class>
+            <ejb-class>py.com.oym.frame.xml.XmlResourceSearcher</ejb-class>
             <business-remote>py.com.oym.frame.xml.IXmlSearcher</business-remote>            
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>        
+        --> 
+        
         <session>
             <ejb-name>AppConfig</ejb-name>
             <ejb-class>net.makerapp.config.AppConfig</ejb-class>
             <business-remote>py.com.oym.frame.config.IAppConfig</business-remote>
             <session-type>Singleton</session-type>
         </session>
+        <session>
+            <ejb-name>AppResource</ejb-name>
+            <ejb-class>py.com.oym.frame.resources.AppResource</ejb-class>                                                
+            <business-remote>py.com.oym.frame.resources.IAppResource</business-remote>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session>                                                        
     </enterprise-beans>
 </ejb-jar>

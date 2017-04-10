@@ -71,7 +71,7 @@ public class TestDomW3c {
         System.out.println(DomW3cParser.getXmlText(document.getDocumentElement()));
     }
     
-    //@Test
+    @Test
     public void test2() throws Exception {
         IXmlDom document = new XmlDomW3c();
         Map<String, String> params = new HashMap();
@@ -113,13 +113,23 @@ public class TestDomW3c {
     }
     
     //@Test
-    // Test convertir texto a objeto DOM
+    // Test convertir file a objeto DOM
     public void test3() throws ParserConfigurationException, IOException, FileNotFoundException, SAXException, TransformerException {
         File file = new File("/proyectos/java/oym/TestProjects/clasemaker.xml");
         Document dom = DomW3cParser.loadXml(file);
         assertNotNull(dom);
         System.out.println(DomW3cParser.getXmlText(dom));
     }
+    
+    //@Test
+    // Test convertir a objeto DOM a partir de un pathfile
+    public void testDocumentPath() throws ParserConfigurationException, IOException, FileNotFoundException, SAXException, TransformerException {
+        IXmlDom xmlDom = new XmlDomW3c();
+        boolean obj = xmlDom.config("file:///proyectos/java/oym/TestProjects/clasemaker.xml", "", "", true);
+        assertTrue(obj);
+        System.out.println(xmlDom.getXml());
+    }
+    
     
     //@Test
     // Prueba creacion y borrado de elementos
@@ -455,7 +465,7 @@ public class TestDomW3c {
         assertTrue(obj);
     }
 
-    @Test
+    //@Test
     public void testGetElements() throws Exception {
         String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
         IXmlDom document = new XmlDomW3c();

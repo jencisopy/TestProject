@@ -11,6 +11,7 @@ import org.junit.Test;
 import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.DataNativeQuery;
 import py.com.oym.frame.data.IDataExpression;
+import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
 
 /**
@@ -23,7 +24,7 @@ public class TestDataNativeQuery extends TestClass{
     public TestDataNativeQuery() {
     }
     
-    @Test
+    //@Test
     public void testExpr() {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();        
         System.out.println("\nCOLUMN EXPR");        
@@ -106,7 +107,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
 
-    @Test
+    //@Test
     public void testQuery() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         List<IDataQueryModel> data = 
@@ -129,7 +130,7 @@ public class TestDataNativeQuery extends TestClass{
         });
     }
 
-    @Test
+    //@Test
     public void testQuery2() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 //        List<IDataQueryModel>
@@ -152,7 +153,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(data.get(0).getColumn(1));        
     }
 
-    @Test
+    //@Test
     public void testQuery3() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -241,4 +242,72 @@ public class TestDataNativeQuery extends TestClass{
 
         System.out.println(query.getQuerySentence());
     }
+    
+    //@Test
+    public void testQuery8() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+        
+        IDataNativeQuery subquery = (DataNativeQuery)dataLink.newDataNativeQuery();
+        subquery.select("idctacte, total")
+                .from("itemmovimiento");
+                
+        query.select("idctacte, sum(total) as total")
+                .from(subquery, "a")
+                .groupBy("idctacte")
+                .orderBy("")
+                .createQuery();
+
+        System.out.println("\nTESTQUERY8");
+        System.out.println("================");
+        
+        System.out.println(query.getQuerySentence());
+    }
+    
+    @Test
+    public void testQuery9() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+        
+        IDataNativeQuery subquery1 = (DataNativeQuery)dataLink.newDataNativeQuery();
+        IDataNativeQuery subquery2 = (DataNativeQuery)dataLink.newDataNativeQuery();
+        subquery1.select("idctacte, total")
+                .from("itemmovimiento");
+
+        subquery2.select("idctacte, total")
+                .from("itemmovimiento");
+        
+        query.select("idctacte, sum(total) as total")
+                .from(subquery1, "a")
+                .join(subquery2, "b", "a.idctacte = b.idctacte")
+                .groupBy("idctacte")
+                .orderBy("")
+                .createQuery();
+
+        System.out.println("\nTESTQUERY9");
+        System.out.println("================");
+        
+        System.out.println(query.getQuerySentence());
+    }
+
+    //@Test
+    public void testQuery10() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+        
+        IDataNativeQuery subquery1 = (DataNativeQuery)dataLink.newDataNativeQuery();
+        subquery1.select("idctacte, total")
+                .from("itemmovimiento");
+
+        
+        query.select("idctacte, sum(total) as total")
+                .from("ctactemovimiento a")
+                .join(subquery1, "b", "a.idctacte = b.idctacte")
+                .groupBy("idctacte")
+                .orderBy("")
+                .createQuery();
+
+        System.out.println("\nTESTQUERY10");
+        System.out.println("================");
+        
+        System.out.println(query.getQuerySentence());
+    }
+    
 }

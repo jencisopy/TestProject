@@ -31,8 +31,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IAppXmlSources;
 import static py.com.oym.frame.util.Strings.isNullorEmpty;
+import py.com.oym.frame.model.IAppXmlSource;
 
 /**
  *
@@ -41,7 +41,7 @@ import static py.com.oym.frame.util.Strings.isNullorEmpty;
 @Entity
 @Table(name = "appxmlsource")
 @XmlRootElement
-public class AppXmlSource extends DataRow implements IAppXmlSources {
+public class AppXmlSource extends DataRow implements IAppXmlSource {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)        
