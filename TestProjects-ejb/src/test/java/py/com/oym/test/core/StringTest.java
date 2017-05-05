@@ -45,7 +45,7 @@ public class StringTest {
         }
     }
 
-    @Test
+    //@Test
     public void test2() {
         String str = "this (#?anystring; is  #?anystring2jk;) test";
 //        System.out.println(str.replaceAll("\\(.*?\\)", ""));
@@ -157,6 +157,25 @@ public class StringTest {
         String var = "Enero";
         System.out.println(Strings.substr(var,0,10));
         System.out.println(Strings.substr(var,1));        
+    }
+    
+    @Test
+    public void testStringToList(){
+        String xx = "item_view.familia, item_view.familianombre, "
+                + "SUM(case when mes =  1 then subtotal else 000000000000.0000 end) as Mes1 ,"
+                + "SUM(case when mes =2 then subtotal else 000000000000.0000 end) as Mes2 ,"
+                + "SUM(case when mes =3 then subtotal else 000000000000.0000 end) as Mes3 ,"
+                + "SUM(case when mes =1 then subtotal else 000000000000.0000 end) as Mes4 ,"
+                + "SUM(case when mes =2 then subtotal else 000000000000.0000 end) as Mes5 ,"
+                + "SUM(case when mes =3 then subtotal else 000000000000.0000 end) as Mes6 ,"
+                + "SUM(case when mes =4 then subtotal else 000000000000.0000 end) as Mes7 ,"
+                + "SUM(case when mes =5 then subtotal else 000000000000.0000 end) as Mes8 ,"
+                + "SUM(case when mes =6 then subtotal else 000000000000.0000 end) as Mes9 ,"
+                + "SUM(case when mes =7 then subtotal else 000000000000.0000 end) as Mes10,"
+                + "SUM(case when mes =8 then subtotal else 000000000000.0000 end) as Mes11,"
+                + "SUM(case when mes =9 then subtotal else 000000000000.0000 end) as Mes12,"
+                + "SUM(subtotal) as subtotal,SUM(subtotal) as total";
+        List<String> list = Strings.stringToList(xx);
     }
     
     //@Test

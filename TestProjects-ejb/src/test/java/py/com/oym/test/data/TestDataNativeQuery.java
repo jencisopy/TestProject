@@ -7,12 +7,16 @@ package py.com.oym.test.data;
 
 import java.util.List;
 import java.util.Map;
+import javax.naming.NamingException;
 import org.junit.Test;
 import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.DataNativeQuery;
 import py.com.oym.frame.data.IDataExpression;
 import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
+import py.com.oym.frame.security.ISecManager;
+import py.com.oym.frame.security.IUserSession;
+import static py.com.oym.test.data.TestClass.context;
 
 /**
  *
@@ -263,7 +267,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
     
-    @Test
+    //@Test
     public void testQuery9() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         
@@ -310,4 +314,14 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
     
+    @Test
+    public void testEmpresaFilter() throws NamingException {
+        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        IUserSession userSession = secMngr.createSession("J", "", 6L, null);        
+        System.out.println(DataExpression.getEmpresaFilter(userSession,"a"));
+        System.out.println(DataExpression.getEmpresaAndPeriodoFilter(userSession));
+        userSession = secMngr.createSession("J", "", 1L, null);                
+        System.out.println(DataExpression.getEmpresaFilter(userSession,"a"));        
+        System.out.println(DataExpression.getEmpresaAndPeriodoFilter(userSession,"a"));        
+    }
 }

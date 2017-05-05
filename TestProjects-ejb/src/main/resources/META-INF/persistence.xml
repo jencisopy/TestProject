@@ -33,7 +33,24 @@
       <property name="oym.motordatos" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
-  
+
+  <persistence-unit name="PU3" transaction-type="JTA">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <jta-data-source>jdbc/Maker95TestDS</jta-data-source>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.use_sql_comments" value="true"/>
+      <property name="hibernate.archive.autodetection" value="class,hbm"/>
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+      <property name="wildfly.jpa.twophasebootstrap" value="false"/>
+      <property name="hibernate.default_schema" value="datos"/>
+      <property name="oym.motordatos" value="SQLSERVER"/>
+    </properties>
+  </persistence-unit>
+    
   <persistence-unit name="WEBRESOURCE" transaction-type="JTA">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>jdbc/Maker95DS</jta-data-source>

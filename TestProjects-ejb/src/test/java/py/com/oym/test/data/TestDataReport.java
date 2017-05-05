@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package py.com.oym.test.data;
 
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import py.com.oym.frame.data.DataExpression;
 import py.com.oym.frame.data.IDataExpression;
-import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.report.DataReport;
 
 
@@ -23,7 +16,7 @@ public class TestDataReport extends TestClass {
     }
     
 
-    @Test
+    //@Test
     public void testSqlDataReport1() throws Exception {
         DataReport sqlDataReport = new DataReport(dataLink);
 
@@ -41,9 +34,37 @@ public class TestDataReport extends TestClass {
         sqlDataReport.setOrderBy("vendedor.codigo, vendedor.nombre");
 
         // Crea la sentencia
-        sqlDataReport.sqlSentenceCreate();
+        sqlDataReport.createSqlSentence();
         /*
-        List<IDataQueryModel> result = sqlDataReport.sqlSentenceExecute();
+        List<IDataQueryModel> result = sqlDataReport.executeSqlSentence();
+        */
+        
+        System.out.println(sqlDataReport.getSqlSentence());
+        assertNotEquals(sqlDataReport.getSqlSentence(), "");
+    }
+
+    @Test
+    public void testSqlDataReport2() throws Exception {
+        DataReport sqlDataReport = new DataReport(dataLink);
+
+        IDataExpression filters = new DataExpression();
+        filters.addExpression("confirmado = {true}");
+        
+        // Define propiedades
+        
+        sqlDataReport.setColumnsGroup1("vendedor, vendedornombre");
+        sqlDataReport.setColumnsGroup2("");
+        sqlDataReport.setColumns("year(fecha) as anho, sum(gravado) as gravado");
+        sqlDataReport.setEntityRoot("itemmovimiento");        
+        sqlDataReport.setWhereFilter(filters);
+        sqlDataReport.setOrderBy("vendedor, vendedornombre");
+        String columns = sqlDataReport.getColumnsGroup1()+","+sqlDataReport.getColumns();
+        sqlDataReport.setGroupBy(sqlDataReport.createGroupBy(columns));
+
+        // Crea la sentencia
+        sqlDataReport.createSqlSentence();
+        /*
+        List<IDataQueryModel> result = sqlDataReport.executeSqlSentence();
         */
         
         System.out.println(sqlDataReport.getSqlSentence());
@@ -55,6 +76,7 @@ public class TestDataReport extends TestClass {
      * ------------------------------------------------
      *       campocorte1    --> columnGroup1
      *       campocorte2    --> columnGroup2 
+     *       campocorte3    --> columnGroup3
      *       columnas       --> columns
      *       listaTablas    --> entitiesToJoin
      *       excepciones    --> entitiesAlias

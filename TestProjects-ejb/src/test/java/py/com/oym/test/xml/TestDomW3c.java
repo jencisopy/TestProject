@@ -465,7 +465,7 @@ public class TestDomW3c {
         assertTrue(obj);
     }
 
-    //@Test
+    @Test
     public void testGetElements() throws Exception {
         String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
         IXmlDom document = new XmlDomW3c();
