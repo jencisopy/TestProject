@@ -8,7 +8,7 @@ package py.com.oym.test.data;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import py.com.oym.model.tables.Usuario;
-import py.com.oym.frame.data.IGenericDAO;
+import org.javabeanstack.data.IGenericDAO;
 
 /**
  *

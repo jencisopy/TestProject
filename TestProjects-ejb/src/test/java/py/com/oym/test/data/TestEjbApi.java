@@ -10,10 +10,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import py.com.oym.frame.data.IDataLink;
-import py.com.oym.frame.data.IGenericDAORemote;
+import org.javabeanstack.data.IDataLink;
+import org.javabeanstack.data.IGenericDAORemote;
 import py.com.oym.frame.web.remote.EjbApiRemote;
-import py.com.oym.frame.data.IGenericDAO;
+import org.javabeanstack.data.IGenericDAO;
 
 /**
  *

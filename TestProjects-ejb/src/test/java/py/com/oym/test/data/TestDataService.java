@@ -10,10 +10,11 @@ import java.util.Map;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.services.IDataServiceRemote;
-import py.com.oym.frame.services.IDataService;
-import py.com.oym.frame.error.IErrorReg;
+
+import org.javabeanstack.data.IDataRow;
+import org.javabeanstack.services.IDataServiceRemote;
+import org.javabeanstack.services.IDataService;
+import org.javabeanstack.error.IErrorReg;
 import net.makerapp.model.tables.Pais;
 import py.com.oym.model.tables.Usuario;
 import py.com.oym.model.tables.UsuarioMiembro;

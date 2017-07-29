@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import py.com.oym.frame.data.DataRow;
+
+import org.javabeanstack.data.DataRow;
 
 @Cacheable()
 @Entity

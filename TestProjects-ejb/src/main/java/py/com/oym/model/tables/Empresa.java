@@ -23,8 +23,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IEmpresa;
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.IEmpresa;
 
 /**
  *

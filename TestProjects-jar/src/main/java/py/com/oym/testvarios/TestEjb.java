@@ -9,11 +9,11 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import py.com.oym.frame.xml.IXmlSearcher;
+import org.javabeanstack.xml.IXmlSearcher;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class TestEjb {
     private Context context;

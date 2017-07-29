@@ -11,7 +11,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import py.com.oym.frame.data.IGenericDAORemote;
+import org.javabeanstack.data.IGenericDAORemote;
 
 /**
  *

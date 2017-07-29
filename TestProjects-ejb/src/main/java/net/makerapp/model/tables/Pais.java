@@ -17,13 +17,13 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import py.com.oym.frame.data.DataRow;
+
+import org.javabeanstack.data.DataRow;
 
 @Entity
-@Table(name = "pais",uniqueConstraints=@UniqueConstraint(columnNames={"idempresa","codigo"}))
+@Table(name = "pais")
 public class Pais extends DataRow implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -64,9 +64,9 @@ public class Pais extends DataRow implements Serializable {
     @Column(name = "appuser")
     private String appuser;
     
-    @JoinColumn(name = "idregion", referencedColumnName = "idregion",nullable = false)
+    @JoinColumn(name = "idregion", referencedColumnName = "idregion")
     @ManyToOne(optional = true)
-    private Region region;
+    private Region region = new Region();
     
     @JoinColumn(name = "idmoneda", referencedColumnName = "idmoneda")
     @ManyToOne
@@ -180,6 +180,13 @@ public class Pais extends DataRow implements Serializable {
     @PreUpdate
     public void preUpdate() {
         fechamodificacion = new Date();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.idpais);
+        return hash;
     }
 
     public Long getIdempresa() {

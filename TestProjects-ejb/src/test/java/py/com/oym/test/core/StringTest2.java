@@ -10,8 +10,9 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.util.Fn;
-import py.com.oym.frame.util.Strings;
+
+import org.javabeanstack.util.Fn;
+import org.javabeanstack.util.Strings;
 
 /**
  *

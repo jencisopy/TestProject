@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
 import org.w3c.dom.Document;
-import py.com.oym.frame.xml.DomW3cParser;
+import org.javabeanstack.xml.DomW3cParser;
 import javax.xml.transform.TransformerException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,15 +24,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import py.com.oym.frame.xml.IXmlCache;
-import py.com.oym.frame.xml.IXmlCacheKey;
-import py.com.oym.frame.xml.IXmlDom;
-import py.com.oym.frame.xml.XmlCache;
-import py.com.oym.frame.xml.XmlCacheKey;
-import py.com.oym.frame.xml.XmlDomW3c;
+import org.javabeanstack.xml.IXmlCache;
+import org.javabeanstack.xml.IXmlCacheKey;
+import org.javabeanstack.xml.IXmlDom;
+import org.javabeanstack.xml.XmlCache;
+import org.javabeanstack.xml.XmlCacheKey;
+import org.javabeanstack.xml.XmlDomW3c;
 
 import static org.junit.Assert.*;
-import py.com.oym.frame.util.Fn;
 
 
 

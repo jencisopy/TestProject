@@ -2,9 +2,10 @@ package py.com.oym.test.data;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.DataExpression;
-import py.com.oym.frame.data.IDataExpression;
-import py.com.oym.frame.report.DataReport;
+
+import org.javabeanstack.data.DataExpression;
+import org.javabeanstack.data.IDataExpression;
+import org.javabeanstack.report.DataReport;
 
 
 /**

@@ -7,11 +7,11 @@ package py.com.oym.config;
 
 import java.util.List;
 import org.junit.Test;
-import py.com.oym.frame.config.IAppConfig;
+import org.javabeanstack.config.IAppConfig;
 import py.com.oym.test.data.TestClass;
 import org.w3c.dom.Document;
-import py.com.oym.frame.model.IAppSystemParam;
-import py.com.oym.frame.xml.DomW3cParser;
+import org.javabeanstack.model.IAppSystemParam;
+import org.javabeanstack.xml.DomW3cParser;
 import static org.junit.Assert.*;
 
 

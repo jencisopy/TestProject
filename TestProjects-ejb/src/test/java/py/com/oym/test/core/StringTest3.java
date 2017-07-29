@@ -7,8 +7,9 @@ package py.com.oym.test.core;
 
 import java.util.List;
 import org.junit.Test;
-import py.com.oym.frame.util.Strings;
-import static py.com.oym.frame.util.Strings.stringToList;
+
+import org.javabeanstack.util.Strings;
+import static org.javabeanstack.util.Strings.stringToList;
 
 /**
  *

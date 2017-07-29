@@ -6,13 +6,14 @@
 package py.com.oym.test.dataclass;
 
 import java.util.Date;
+import org.javabeanstack.util.Dates;
 import org.junit.Test;
-import py.com.oym.frame.util.Fn;
-import static py.com.oym.frame.util.Strings.textMerge;
+
+import static org.javabeanstack.util.Strings.textMerge;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class TestRptCajaSaldo {
     private String sqlSentenceSaldo;
@@ -32,7 +33,7 @@ public class TestRptCajaSaldo {
 	*  2 Tranferencia
         */
         if (fecha == null){
-            fecha = Fn.today();
+            fecha = Dates.today();
         }
         
         String columns = 

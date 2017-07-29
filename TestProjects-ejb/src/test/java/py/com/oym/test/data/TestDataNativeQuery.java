@@ -9,14 +9,16 @@ import java.util.List;
 import java.util.Map;
 import javax.naming.NamingException;
 import org.junit.Test;
-import py.com.oym.frame.data.DataExpression;
-import py.com.oym.frame.data.DataNativeQuery;
-import py.com.oym.frame.data.IDataExpression;
-import py.com.oym.frame.data.IDataNativeQuery;
-import py.com.oym.frame.data.IDataQueryModel;
-import py.com.oym.frame.security.ISecManager;
-import py.com.oym.frame.security.IUserSession;
+
+import org.javabeanstack.data.DataExpression;
+import org.javabeanstack.data.DataNativeQuery;
+import org.javabeanstack.data.IDataExpression;
+import org.javabeanstack.data.IDataNativeQuery;
+import org.javabeanstack.data.IDataQueryModel;
+import org.javabeanstack.security.ISecManager;
+import org.javabeanstack.security.IUserSession;
 import py.com.oym.frame.data.DataUtil;
+
 import static py.com.oym.test.data.TestClass.context;
 
 /**

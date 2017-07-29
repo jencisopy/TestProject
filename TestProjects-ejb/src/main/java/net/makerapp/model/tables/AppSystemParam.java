@@ -14,7 +14,7 @@
  */
 package net.makerapp.model.tables;
 
-import py.com.oym.frame.model.IAppSystemParam;
+
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -31,7 +31,9 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import py.com.oym.frame.data.DataRow;
+
+import org.javabeanstack.model.IAppSystemParam;
+import org.javabeanstack.data.DataRow;
 
 
 /**

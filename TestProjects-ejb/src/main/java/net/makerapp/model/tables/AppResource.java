@@ -14,7 +14,6 @@
  */
 package net.makerapp.model.tables;
 
-import py.com.oym.frame.model.IAppResource;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -33,8 +32,10 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import py.com.oym.frame.data.DataRow;
-import static py.com.oym.frame.util.Strings.isNullorEmpty;
+
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.IAppResource;
+import static org.javabeanstack.util.Strings.isNullorEmpty;
 
 /**
  *
@@ -273,18 +274,15 @@ public class AppResource extends DataRow implements IAppResource {
     }
 
     
-    @Override
     public Date getFechacreacion() {
         return fechacreacion;
     }
 
-    @Override
     public Date getFechamodificacion() {
         return fechamodificacion;
     }
 
 
-    @Override
     public Date getFechareplicacion() {
         return fechareplicacion;
     }

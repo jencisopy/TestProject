@@ -5,22 +5,22 @@
  */
 package net.makerapp.services;
 
-import py.com.oym.frame.annotation.CheckMethod;
-import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.error.IErrorReg;
-import py.com.oym.frame.services.IDataService;
+import org.javabeanstack.annotation.CheckMethod;
+import org.javabeanstack.data.IDataRow;
+import org.javabeanstack.error.IErrorReg;
+import org.javabeanstack.services.IDataService;
 import py.com.oym.model.tables.Usuario;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public interface IUsuarioSrv extends IDataService{
 
-    @CheckMethod(fieldName = "codigo", operacion = {IDataRow.AGREGAR, IDataRow.MODIFICAR, IDataRow.BORRAR})
+    @CheckMethod(fieldName = "codigo", action = {IDataRow.AGREGAR, IDataRow.MODIFICAR, IDataRow.BORRAR})
     IErrorReg checkCodigo(Usuario row, String sessionId);
 
-    @CheckMethod(fieldName = "codigo", operacion = {IDataRow.BORRAR})
+    @CheckMethod(fieldName = "codigo", action = {IDataRow.BORRAR})
     IErrorReg checkCodigo2(Usuario row, String sessionId);
 
     @CheckMethod(fieldName = "nombre")

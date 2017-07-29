@@ -14,9 +14,10 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import py.com.oym.frame.security.ISecManager;
-import py.com.oym.frame.security.IUserSession;
-import py.com.oym.frame.ws.resources.IWebResource;
+
+import org.javabeanstack.security.ISecManager;
+import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.ws.resources.IWebResource;
 import py.com.oym.frame.ws.resources.remote.WebResource;
 
 /**

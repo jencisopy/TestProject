@@ -7,8 +7,8 @@ package py.com.oym.test.data;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.data.DataQueryModel;
-import py.com.oym.frame.data.IDataQueryModel;
+import org.javabeanstack.data.DataQueryModel;
+import org.javabeanstack.data.IDataQueryModel;
 
 /**
  *

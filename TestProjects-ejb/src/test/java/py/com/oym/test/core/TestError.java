@@ -12,8 +12,8 @@ import javax.naming.NamingException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.error.ErrorManager;
-import py.com.oym.frame.log.ILogManager;
+import org.javabeanstack.error.ErrorManager;
+import org.javabeanstack.log.ILogManager;
 
 /**
  *

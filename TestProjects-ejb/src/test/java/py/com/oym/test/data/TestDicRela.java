@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Map;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import py.com.oym.frame.data.DataNativeQuery;
-import py.com.oym.frame.data.IDataLink;
-import py.com.oym.frame.data.IDataQueryModel;
-import static py.com.oym.frame.util.Strings.isNullorEmpty;
+import org.javabeanstack.data.DataNativeQuery;
+import org.javabeanstack.data.IDataLink;
+import org.javabeanstack.data.IDataQueryModel;
+import static org.javabeanstack.util.Strings.isNullorEmpty;
 
 /**
  *

@@ -15,12 +15,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import net.makerapp.services.IUsuarioSrv;
-import py.com.oym.frame.data.IDataNativeQuery;
-import py.com.oym.frame.data.IDataQueryModel;
-import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.exceptions.SessionError;
+
+import org.javabeanstack.data.IDataNativeQuery;
+import org.javabeanstack.data.IDataQueryModel;
+import org.javabeanstack.data.DataLink;
+import org.javabeanstack.exceptions.SessionError;
+import org.javabeanstack.data.IGenericDAO;
+
 import py.com.oym.model.tables.Usuario;
-import py.com.oym.frame.data.IGenericDAO;
+
 
 /**
  *

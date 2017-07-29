@@ -14,14 +14,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.util.Fn;
-import py.com.oym.frame.util.Strings;
-import static py.com.oym.frame.util.Strings.convertToList;
-import static py.com.oym.frame.util.Strings.inString;
-import static py.com.oym.frame.util.Strings.isNullorEmpty;
-import static py.com.oym.frame.util.Strings.left;
-import static py.com.oym.frame.util.Strings.substring;
-import static py.com.oym.frame.util.Fn.iif;
+
+import org.javabeanstack.util.Strings;
+import org.javabeanstack.util.Dates;
+
+import static org.javabeanstack.util.Strings.convertToList;
+import static org.javabeanstack.util.Strings.inString;
+import static org.javabeanstack.util.Strings.isNullorEmpty;
+import static org.javabeanstack.util.Strings.left;
+import static org.javabeanstack.util.Strings.substring;
+import static org.javabeanstack.util.Fn.iif;
 
 /**
  *
@@ -149,7 +151,7 @@ public class StringTest {
     public void testStringToDate(){
         Date var = new Date();
         System.out.println(Strings.dateToString(var));
-        System.out.println(Fn.toString(var, "yyyyMMdd"));        
+        System.out.println(Dates.toString(var, "yyyyMMdd"));        
     }
     
     //@Test

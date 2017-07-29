@@ -8,10 +8,11 @@ package py.com.oym.test.xml;
 import javax.naming.NamingException;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-import py.com.oym.frame.xml.IXmlDom;
-import py.com.oym.frame.xml.IXmlManager;
-import py.com.oym.frame.xml.IXmlSearcher;
-import py.com.oym.frame.xml.XmlJDom;
+
+import org.javabeanstack.xml.IXmlDom;
+import org.javabeanstack.xml.IXmlManager;
+import org.javabeanstack.xml.IXmlSearcher;
+import org.javabeanstack.xml.XmlDomW3c;
 import py.com.oym.test.data.TestClass;
 
 /**
@@ -37,8 +38,9 @@ public class TestFileSearcher extends TestClass {
     }
 
     //@Test
+
     public void test2() throws NamingException {
-        IXmlDom xmlDom = new XmlJDom();
+        IXmlDom xmlDom = new XmlDomW3c();
         IXmlSearcher xmlSearcher;
         xmlSearcher = (IXmlSearcher) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlSearcher!py.com.oym.frame.xml.IXmlSearcher");
         String result = xmlSearcher.search(xmlDom,
@@ -46,6 +48,7 @@ public class TestFileSearcher extends TestClass {
         assertNotNull(result);
     }
 
+    
     @Test
     public void test3() {
         Thread thread1 = new Thread(new Thread1());

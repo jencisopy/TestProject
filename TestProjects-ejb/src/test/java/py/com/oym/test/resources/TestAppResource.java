@@ -9,8 +9,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import py.com.oym.frame.resources.IAppResource;
-import py.com.oym.frame.xml.IXmlDom;
+import org.javabeanstack.resources.IAppResource;
+import org.javabeanstack.xml.IXmlDom;
 import py.com.oym.test.generic.TestClass;
 
 /**

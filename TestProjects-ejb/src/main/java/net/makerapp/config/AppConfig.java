@@ -23,38 +23,37 @@ import javax.ejb.Startup;
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import py.com.oym.frame.config.AppGenericConfig;
-import py.com.oym.frame.error.ErrorManager;
-import py.com.oym.frame.util.Fn;
-import py.com.oym.frame.util.Strings;
-import py.com.oym.frame.xml.DomW3cParser;
+import org.javabeanstack.config.AppGenericConfig;
+import org.javabeanstack.error.ErrorManager;
+import org.javabeanstack.io.IOUtil;
+import org.javabeanstack.xml.DomW3cParser;
+import static org.javabeanstack.util.Strings.decode64;
 
 /**
  *
  * @author Jorge Enciso
  */
 //@Singleton
-//@Startup
+@Startup
 @Lock(LockType.READ)
-public class AppConfig extends AppGenericConfig {
-
+public class AppConfig extends AppGenericConfig{
     @PostConstruct
     public void init() {
         InputStream xml = null;
         //Buscar en resource/config archivos de configuración.
         try {
             //System        
-            xml = Fn.getResourceAsStream(getClass(), "/config/system.xml");
+            xml = IOUtil.getResourceAsStream(getClass(), "/config/system.xml");
             Document dom = DomW3cParser.loadXml(xml);
             config.put("SYSTEM", dom);
             String edicion = DomW3cParser.getPropertyValue(dom, "edicion", "/Configuration/Sistema");
-            edicion = Strings.decode64(edicion);
+            edicion = decode64(edicion);
             //Ediciones
-            xml = Fn.getResourceAsStream(getClass(), "/config/ediciones.xml");
+            xml = IOUtil.getResourceAsStream(getClass(), "/config/ediciones.xml");
             //Solo el nodo correspondiente a la edición.        
             dom = DomW3cParser.newDocument();
-            Element root = DomW3cParser.
-                    getElement(DomW3cParser.loadXml(xml), edicion);
+            Element root = (Element)DomW3cParser.
+                    selectSingleNode(DomW3cParser.loadXml(xml), edicion);
             dom.appendChild(dom.adoptNode(root.cloneNode(true)));
             config.put("EDICIONES", dom);
         } catch (Exception ex) {
@@ -64,3 +63,5 @@ public class AppConfig extends AppGenericConfig {
         }
     }
 }
+
+

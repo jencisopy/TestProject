@@ -8,8 +8,8 @@ package py.com.oym.test.data;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
-import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.data.IGenericDAORemote;
+import org.javabeanstack.data.DataLink;
+import org.javabeanstack.data.IGenericDAORemote;
 
 
 /**

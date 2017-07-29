@@ -16,9 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.model.IDicPermisoEmpresa;
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.IDicPermisoEmpresa;
 
 @Entity
 @Table(name = "dic_permisoempresa")

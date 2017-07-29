@@ -8,12 +8,12 @@ package net.makerapp.services;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import org.apache.log4j.Logger;
-import py.com.oym.frame.annotation.CheckMethod;
-import py.com.oym.frame.data.DBManager;
-import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.services.DataService;
-import py.com.oym.frame.error.ErrorReg;
-import py.com.oym.frame.error.IErrorReg;
+import org.javabeanstack.annotation.CheckMethod;
+import org.javabeanstack.data.DBManager;
+import org.javabeanstack.data.IDataRow;
+import org.javabeanstack.services.DataService;
+import org.javabeanstack.error.ErrorReg;
+import org.javabeanstack.error.IErrorReg;
 import py.com.oym.model.tables.Usuario;
 
 
@@ -26,7 +26,7 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
     private static final Logger LOGGER = Logger.getLogger(UsuarioSrv.class);
     
     @CheckMethod(fieldName = "codigo",
-                operacion = {IDataRow.AGREGAR,
+                 action   = {IDataRow.AGREGAR,
                              IDataRow.MODIFICAR,
                              IDataRow.BORRAR}) 
     @Override
@@ -37,7 +37,7 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
     }
 
     @CheckMethod(fieldName = "codigo",
-                operacion = {IDataRow.BORRAR}) 
+                 action = {IDataRow.BORRAR}) 
     @Override
     public IErrorReg checkCodigo2(Usuario row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 

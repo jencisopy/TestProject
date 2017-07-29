@@ -5,12 +5,12 @@
  */
 package net.makerapp.services;
 
-import py.com.oym.frame.data.DBManager;
-import py.com.oym.frame.services.DataService;
+import org.javabeanstack.data.DBManager;
+import org.javabeanstack.services.DataService;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public class UsuarioMiembroSrv extends DataService{
     @Override

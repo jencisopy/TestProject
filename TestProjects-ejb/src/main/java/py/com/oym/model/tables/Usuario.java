@@ -20,10 +20,10 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.apache.log4j.Logger;
-import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IDicPermisoEmpresa;
-import py.com.oym.frame.model.IUser;
-import py.com.oym.frame.model.IUserMember;
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.IDicPermisoEmpresa;
+import org.javabeanstack.model.IUser;
+import org.javabeanstack.model.IUserMember;
 
 @Entity
 @Table(name = "usuario",uniqueConstraints=@UniqueConstraint(columnNames={"codigo"}))

@@ -7,7 +7,7 @@ package net.makerapp.services;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 public interface IUsuarioSrvRemote extends IUsuarioSrv {
     

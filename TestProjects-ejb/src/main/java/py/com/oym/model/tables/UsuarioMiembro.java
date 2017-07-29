@@ -10,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IUser;
-import py.com.oym.frame.model.IUserMember;
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.IUser;
+import org.javabeanstack.model.IUserMember;
 
 @Entity
 @Table(name = "usuariomiembro")

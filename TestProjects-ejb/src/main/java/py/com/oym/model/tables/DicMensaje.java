@@ -21,8 +21,8 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.IAppMessage;
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.IAppMessage;
 
 /**
  *

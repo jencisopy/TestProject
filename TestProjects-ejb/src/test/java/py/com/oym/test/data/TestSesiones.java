@@ -8,11 +8,11 @@ package py.com.oym.test.data;
 import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.security.ISecManagerRemote;
-import py.com.oym.frame.security.ISessionsRemote;
-import py.com.oym.frame.security.IUserSession;
-import py.com.oym.frame.data.IGenericDAO;
+import org.javabeanstack.data.DataLink;
+import org.javabeanstack.security.ISecManagerRemote;
+import org.javabeanstack.security.ISessionsRemote;
+import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.data.IGenericDAO;
 
 
 /**

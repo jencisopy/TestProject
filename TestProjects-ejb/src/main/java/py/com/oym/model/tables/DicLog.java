@@ -22,8 +22,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import py.com.oym.frame.data.DataRow;
-import py.com.oym.frame.model.ILogRecord;
+import org.javabeanstack.data.DataRow;
+import org.javabeanstack.model.ILogRecord;
 
 /**
  *

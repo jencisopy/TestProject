@@ -9,18 +9,18 @@ import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import org.apache.log4j.Logger;
-import py.com.oym.frame.annotation.CheckMethod;
-import py.com.oym.frame.data.IDataRow;
-import py.com.oym.frame.error.ErrorReg;
-import py.com.oym.frame.error.IErrorReg;
-import py.com.oym.frame.services.DataService;
-import py.com.oym.frame.services.IDataServiceLocal;
-import py.com.oym.frame.services.IDataServiceRemote;
+import org.javabeanstack.annotation.CheckMethod;
+import org.javabeanstack.data.IDataRow;
+import org.javabeanstack.error.ErrorReg;
+import org.javabeanstack.error.IErrorReg;
+import org.javabeanstack.services.DataService;
+import org.javabeanstack.services.IDataServiceLocal;
+import org.javabeanstack.services.IDataServiceRemote;
 import py.com.oym.model.tables.Usuario;
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 @Stateless
 @Remote(IDataServiceRemote.class)
@@ -29,9 +29,9 @@ public class PaisSrv extends DataService{
     private static final Logger LOGGER = Logger.getLogger(PaisSrv.class);
     
     @CheckMethod(fieldName = "region",
-                operacion = {IDataRow.AGREGAR,
-                             IDataRow.MODIFICAR,
-                             IDataRow.BORRAR}) 
+                 action    = {IDataRow.AGREGAR,
+                              IDataRow.MODIFICAR,
+                              IDataRow.BORRAR}) 
     public IErrorReg checkRegion(Usuario row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo");

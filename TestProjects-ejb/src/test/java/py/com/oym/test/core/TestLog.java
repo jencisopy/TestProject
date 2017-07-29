@@ -12,13 +12,16 @@ import javax.naming.NamingException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import py.com.oym.frame.error.ErrorReg;
-import py.com.oym.frame.error.IErrorReg;
-import py.com.oym.frame.log.ILogManager;
-import py.com.oym.frame.security.ISecManager;
-import py.com.oym.frame.security.IUserSession;
+
+import org.javabeanstack.error.ErrorReg;
+import org.javabeanstack.error.IErrorReg;
+import org.javabeanstack.log.ILogManager;
+import org.javabeanstack.security.ISecManager;
+import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.model.ILogRecord;
+
 import py.com.oym.model.tables.DicLog;
-import py.com.oym.frame.model.ILogRecord;
+
 
 /**
  *

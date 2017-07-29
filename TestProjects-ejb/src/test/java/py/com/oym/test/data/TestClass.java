@@ -13,11 +13,12 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import py.com.oym.frame.data.DataLink;
-import py.com.oym.frame.data.IDataLink;
-import py.com.oym.frame.data.IGenericDAO;
-import py.com.oym.frame.security.ISecManager;
-import py.com.oym.frame.security.IUserSession;
+import org.javabeanstack.data.DataLink;
+import org.javabeanstack.data.IDataLink;
+import org.javabeanstack.data.IGenericDAO;
+import org.javabeanstack.security.ISecManager;
+import org.javabeanstack.security.IUserSession;
+
 import static py.com.oym.test.data.TestDataService.sessionId;
 
 /**
