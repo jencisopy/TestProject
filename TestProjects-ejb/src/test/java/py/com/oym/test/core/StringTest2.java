@@ -40,12 +40,12 @@ public class StringTest2 {
         }        
     }
     
-    @Test
+    //@Test
     public void test7(){
         String xx = "hola";
         System.out.println(Fn.inList(xx, "hola","que tal"));
     }
-    //@Test
+    @Test
     public void test4(){
         String expr = "fn_iditem(pp,yy,xx) as column1, fn_xx(xx,xx) as column2";
         List<String> lista = stringToList(expr);
@@ -57,7 +57,12 @@ public class StringTest2 {
         lista = stringToList(expr);
         for (int i=0;i < lista.size() ;i++){
             System.out.println(lista.get(i));
-        }        
+        }     
+        expr = "item, itemnombre, itemelemento,sum(cantidadpedido) as cantidadpedido,sum(cantidad) as cantidad,sum(cantidadbonificacion) as cantidadbonificacion,sum((kilos) as kilos,sum(pendiente) as pendiente,itemmedida,MAX(fecha) as ultmov,SUM(costo) as costome,SUM(costolocal / cotizacioninforme)    as costo,SUM(impuestolocal / cotizacioninforme) as impuesto,SUM(subtotallocal / cotizacioninforme) as subtotal,SUM((subtotallocal + impuestolocal) / cotizacioninforme) as total,0.00000 as porcentaje,monedainforme as moneda";
+        lista = stringToList(expr);
+        for (int i=0;i < lista.size() ;i++){
+            System.out.println(lista.get(i));
+        }     
     }
     
 //    @Test

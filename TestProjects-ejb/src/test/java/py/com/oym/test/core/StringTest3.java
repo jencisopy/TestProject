@@ -5,8 +5,10 @@
  */
 package py.com.oym.test.core;
 
+import java.util.List;
 import org.junit.Test;
 import py.com.oym.frame.util.Strings;
+import static py.com.oym.frame.util.Strings.stringToList;
 
 /**
  *
@@ -17,7 +19,7 @@ public class StringTest3 {
     public StringTest3() {
     }
     
-    @Test
+    //@Test
     public void test1(){
         String msg = "hola que tal";
         System.out.println(Strings.left(msg, 5));
@@ -30,7 +32,26 @@ public class StringTest3 {
     
     @Test
     public void test2(){
-        
+        String expr = "item, itemnombre, itemelemento,"
+                + "sum(cantidadpedido) as cantidadpedido,"
+                + "sum(cantidad) as cantidad,"
+                + "sum(cantidadbonificacion) as cantidadbonificacion,"
+                + "sum(kilos) as kilos,";
+                                                /*
+                + "sum(pendiente) as pendiente,"
+                + "itemmedida,MAX(fecha) as ultmov,"
+                + "SUM(costo) as costome,";
+
+                + "SUM(costolocal / cotizacioninforme)    as costo,"
+                + "SUM(impuestolocal / cotizacioninforme) as impuesto,"
+                + "SUM(subtotallocal / cotizacioninforme) as subtotal,"
+                + "SUM((subtotallocal + impuestolocal) / cotizacioninforme) as total,"
+                + "0.00000 as porcentaje,monedainforme as moneda";
+*/
+        List<String> lista = stringToList(expr);        
+        for (int i=0;i < lista.size() ;i++){
+            System.out.println(lista.get(i));
+        }     
     }
     
 }

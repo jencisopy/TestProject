@@ -16,6 +16,7 @@ import py.com.oym.frame.data.IDataNativeQuery;
 import py.com.oym.frame.data.IDataQueryModel;
 import py.com.oym.frame.security.ISecManager;
 import py.com.oym.frame.security.IUserSession;
+import py.com.oym.frame.data.DataUtil;
 import static py.com.oym.test.data.TestClass.context;
 
 /**
@@ -28,9 +29,25 @@ public class TestDataNativeQuery extends TestClass{
     public TestDataNativeQuery() {
     }
     
-    //@Test
+    @Test
     public void testExpr() {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();        
+        
+        query.select(""                  
+                + "b.monto - b.capital as interes,\n"
+                + "(case when b.fec_ven > b.ultpago then\n"
+                + "     {schema}.fn_getinteresmoratorio((CASE when b.saldoanterior <> 0 then b.saldoanterior when b.capital <> 0 then b.capital else b.monto end),b.fec_ven,:saldoFecha,a.tasamoratoria,a.tolerancia)\n"
+                + " else\n"
+                + "     {schema}.fn_getinteresmoratorio((CASE when b.saldoanterior <> 0 then b.saldoanterior when b.capital <> 0 then b.capital else b.monto end),b.ultpago,:saldoFecha,a.tasamoratoria,a.tolerancia)\n"
+                + " end) as interesmoratorio,\n"
+                + "b.interesdevengar,\n");
+                
+        String[] lista = query.getColumnList();
+        for (String lista1 : lista) {
+            System.out.println(lista1);
+        }
+                
+                
         System.out.println("\nCOLUMN EXPR");        
         System.out.println("===========");    
         query.select(""
@@ -42,7 +59,8 @@ public class TestDataNativeQuery extends TestClass{
                     "CASE when b.monto is NOT null then x.codigo else a.itemmovcondicion end  as itemmovcondicion,	\n" +
                     "CASE when a.ctacteafecta IN (1,3)  and b.monto is null then a.totalmonto when  a.ctacteafecta IN(1,3)  then b.monto else 00000000000.000  END  as debito,\n" +
                     "CASE when a.ctacteafecta IN (2) and b.monto is null then a.totalmonto when  a.ctacteafecta IN(2) then b.monto else 00000000000.000  END  as credito");
-        String[] lista = query.getColumnList();
+    
+        lista = query.getColumnList();
         for (String lista1 : lista) {
             System.out.println(lista1);
         }
@@ -314,14 +332,14 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
     
-    @Test
+    //@Test
     public void testEmpresaFilter() throws NamingException {
         ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
         IUserSession userSession = secMngr.createSession("J", "", 6L, null);        
-        System.out.println(DataExpression.getEmpresaFilter(userSession,"a"));
-        System.out.println(DataExpression.getEmpresaAndPeriodoFilter(userSession));
+        System.out.println(DataUtil.getEmpresaFilter(userSession,"a"));
+        System.out.println(DataUtil.getEmpresaAndPeriodoFilter(userSession));
         userSession = secMngr.createSession("J", "", 1L, null);                
-        System.out.println(DataExpression.getEmpresaFilter(userSession,"a"));        
-        System.out.println(DataExpression.getEmpresaAndPeriodoFilter(userSession,"a"));        
+        System.out.println(DataUtil.getEmpresaFilter(userSession,"a"));        
+        System.out.println(DataUtil.getEmpresaAndPeriodoFilter(userSession,"a"));        
     }
 }

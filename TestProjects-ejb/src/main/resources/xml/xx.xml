@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?><BODY clase="CNTRANGOCTACTEPENDIENTE" class="cntrangogi_ctactependiente" src="file://clasemaker.xml" documento="" sqlgetdataclass="sp_gi_ctactependiente_operativo" ventana="NAVEGADOR" modo="INDIVIDUAL" visible=".t.">
+    <MARCO>
+        <PGRANGO backcolor="=oApp.Theme.page_backcolor"/>
+        <PGSALIDA backcolor="=oApp.Theme.page_backcolor"/>
+        <PGARCHIVO backcolor="=oApp.Theme.page_backcolor"/>
+        <PGEMAIL backcolor="=oApp.Theme.page_backcolor"/>
+        <PGFIN backcolor="=oApp.Theme.page_backcolor"/>
+        <PAGE6 backcolor="=oApp.Theme.page_backcolor"/>
+        <PAGE7 backcolor="=oApp.Theme.page_backcolor"/>
+    </MARCO>
+    <RANGOS clase="RANGOS/GESTIONINMOBILIARIA" src="file://clasemaker.xml">
+        <GRDRANGOS lineas="10">
+            <e0 tabla="gi_fraccion" tipodato="N" c="codigo" a="gi_fraccion" h="Fracción" p="9999999999"/>
+            <e1 tabla="gi_fraccionnombre" c="nombre" a="gi_fraccionnombre" h="Nombre de la Fracción"/>
+            <e2 tabla="gi_manzana" c="codigo" a="gi_manzana" h="Manzana"/>
+            <e3 tabla="gi_lote" c="codigo" a="gi_lote" h="Lote"/>
+            <e4 tabla="cliente" c="codigo" a="a.ctacte" h="Código del Cliente"/>
+            <e5 tabla="cliente" c="ctactenombre" a="a.ctactenombre" h="Nombre del Cliente"/>
+            <e6 tabla="gi_fracciontipo" c="codigo" a="gi_fracciontipo" h="Tipo Fracción"/>
+            <e8 tabla="itemmovcondicion" c="codigo" a="a.itemmovcondicion" h="Plan Pagos"/>
+            <e9 tabla="" c="cuotatipo" a="a.cuotatipo" h="Tipo Cuota" p="99" tipodato="N"/>
+            <e10 tabla="vendedor" c="codigo" a="a.vendedor" h="Vendedor"/>
+            <e11 tabla="gi_lotevtatipo" c="codigo" a="a.gi_lotevtatipo" h="Tipo Vta."/>
+        </GRDRANGOS>
+    </RANGOS>
+    <CRITERIOS src="file://clasemaker.xml">
+        <CRITERIO1 clase="CRITERIO1/GI_FRACCION" src="file://clasemaker.xml">
+            <e1 h="Código Fracción" a="a.gi_fraccion, a.gi_fraccionnombre"/>
+            <e2 h="Nombre Fracción" a="a.gi_fraccionnombre, a.gi_fraccion"/>
+        </CRITERIO1>
+        <CRITERIO2>
+            <e1 h="Cliente" a="a.moneda, a.ctacte, a.gi_manzana, a.gi_lote, a.nro,a.cuota"/>
+            <e2 h="Lote " a="a.moneda, a.gi_manzana, a.gi_lote, a.nro,a.cuota"/>
+            <e3 h="Fecha de Documento" a="a.moneda, a.fecha, a.nro, a.cuota"/>
+            <e8 h="Vencimiento" a="a.moneda, a.fec_ven, a.nro, a.cuota"/>
+        </CRITERIO2>
+        <REPORTE2>
+            <e1>gi_pendiente_fraccion_operativo01</e1>
+            <e2>gi_pendiente_fraccion_operativo02</e2>
+            <e3>gi_pendiente_fraccion_operativo03</e3>
+            <e8>gi_pendiente_fraccion_operativo04</e8>
+        </REPORTE2>
+    </CRITERIOS>
+    <VISTAPREVIA src="file://clasemaker.xml">
+        <COLUMNAS_CORTE1 clase="VISTAPREVIA/CORTE1/GI" src="file://clasemaker.xml">
+            <e1>
+                <gi_fraccion h="Fracción"/>
+                <gi_fraccionnombre h="Nombre de la Fracción"/>
+                <gi_manzana h="Manzana"/>
+                <gi_lote h="Lote"/>
+            </e1>
+            <e2>
+                <gi_fraccionnombre h="Nombre de la Fracción"/>
+                <gi_fraccion h="Fracción"/>
+                <gi_manzana h="Manzana"/>
+                <gi_lote h="Lote"/>
+            </e2>
+        </COLUMNAS_CORTE1>
+        <COLUMNAS_CORTE2>
+            <e1>
+                <ctacte h="Cliente"/>
+                <ctactenombre h="Nombre del Cliente"/>
+            </e1>
+            <e2>
+                <nro h="Nº Documento"/>
+            </e2>
+            <e3>
+                <fecha col="ttod(fecha)" h="Fecha"/>
+            </e3>
+            <e8>
+                <fec_ven col="ttod(fec_ven)" h="Vencimiento"/>
+            </e8>
+        </COLUMNAS_CORTE2>
+        <COLUMNAS clase="VISTAPREVIA/COLUMNAS/GI_CTACTEPENDIENTE_OPERATIVO" src="file://clasemaker.xml">
+            <e>
+                <nro h="Nº Documento"/>
+                <fecha col="ttod(fecha)" h="Fecha"/>
+                <fec_ven col="ttod(fec_ven)" h="Vencimiento"/>
+                <fechaestcancel col="ttod(fechaestcancel)" h="Estimado"/>
+                <cuota col="alltrim(str(cuota))+'/'+ALLTRIM(STR(totalcuota))" h="Cuota"/>
+                <gi_fraccion h="Fracción"/>
+                <gi_fraccionnombre h="Nombre de la Fracción"/>
+                <gi_manzana h="Manzana"/>
+                <gi_lote h="Lote"/>
+                <ctacte h="Cliente"/>
+                <ctactenombre h="Nombre del Cliente"/>
+                <monto p="99,999,999,999.99"/>
+                <descuentopagoantic h="Descuento" p="99,999,999,999.99"/>
+                <saldo p="99,999,999,999.99"/>
+                <moneda/>
+                <cambio p="999,999"/>
+                <observacion h="Observación"/>
+            </e>
+        </COLUMNAS>
+    </VISTAPREVIA>
+    <SQLGETDATA src="file://clasemaker.xml">
+        <CAMPOCORTE1 clase="SQLGETDATA/CAMPOCORTE1/GI_FRACCION" src="file://clasemaker.xml">
+            <e1>a.gi_fraccion, a.gi_fraccionnombre</e1>
+            <e2>a.gi_fraccion, a.gi_fraccionnombre</e2>
+        </CAMPOCORTE1>
+        <CAMPOCORTE2>
+            <e1/>
+            <e2/>
+            <e3/>
+            <e8/>
+        </CAMPOCORTE2>
+        <COLUMNAS>
+            <e></e>
+        </COLUMNAS>
+    </SQLGETDATA>
+</BODY>
