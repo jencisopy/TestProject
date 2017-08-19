@@ -24,9 +24,11 @@ public class TestSesiones extends TestClass{
     public TestSesiones() {
     }
     
-    //@Test
+    @Test
     public void test() throws Exception {
-        ISessionsRemote sesiones  = (ISessionsRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/Sessions!py.com.oym.frame.security.ISessionsRemote");
+        ISessionsRemote sesiones  = 
+                (ISessionsRemote) context.lookup(jndiProject+"Sessions!org.javabeanstack.security.ISessionsRemote");
+        
         IUserSession userSession = sesiones.login("J", "");
         assertNotNull(userSession);
     }
@@ -34,7 +36,9 @@ public class TestSesiones extends TestClass{
   
     //@Test
     public void testLogin() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        ISecManagerRemote sesiones  = 
+                (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
+        
         assertNotNull(sesiones);                
         IUserSession userSession = sesiones.login2("webuser", "123456");
         assertNotNull(userSession);        
@@ -45,7 +49,9 @@ public class TestSesiones extends TestClass{
     
     //@Test
     public void testCreateSession() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        ISecManagerRemote sesiones  = 
+                (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
+        
         IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, null);
         if (userSesion.getError() != null){
             System.out.println(userSesion.getError().getMessage());
@@ -57,7 +63,9 @@ public class TestSesiones extends TestClass{
 
     //@Test
     public void testSesionExpirada() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        ISecManagerRemote sesiones  = 
+                (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
+        
         IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, 0);
         if (userSesion.getError() != null){
             System.out.println(userSesion.getError().getMessage());
@@ -67,7 +75,9 @@ public class TestSesiones extends TestClass{
     
     //@Test
     public void testDataLink() throws Exception {
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = 
+                (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
         DataLink dataLink1 = new DataLink(dao);
         //IUserSession userSession = new UserSession();
         //dataLink.setUserSession(userSession);
@@ -78,8 +88,12 @@ public class TestSesiones extends TestClass{
     
     //@Test
     public void testDataLink2() throws Exception {
-        ISecManagerRemote sesiones  = (ISecManagerRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");        
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        ISecManagerRemote sesiones  = 
+                (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");        
+        
+        IGenericDAO dao  = 
+                (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
         DataLink dataLink1 = new DataLink(dao); 
         
         IUserSession userSession = sesiones.createSession("webuser", "123456",98L, null);

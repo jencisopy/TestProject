@@ -47,7 +47,7 @@ public class TestDatos2 {
             
     public TestDatos2() {
     }
-    
+    /*
     @BeforeClass
     public static void setUpClass() throws Exception {
         Properties p = new Properties();
@@ -243,4 +243,5 @@ public class TestDatos2 {
 
         dao.update("PU2", dataSet,"");
     }
+    */
 }

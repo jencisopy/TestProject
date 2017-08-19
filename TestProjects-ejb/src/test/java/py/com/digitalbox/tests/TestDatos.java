@@ -50,7 +50,8 @@ public class TestDatos {
             
     public TestDatos() {
     }
-    
+}    
+/*    
     @BeforeClass
     public static void setUpClass() throws Exception {
         Properties p = new Properties();
@@ -69,6 +70,7 @@ public class TestDatos {
         dao.sqlExec("PU2", "delete from {schema}.bx_plantilla;", null);        
         dao.sqlExec("PU2", "delete from {schema}.bx_repositorio;", null);                        
         dao.sqlExec("PU2", "delete from {schema}.bx_campo;", null);        
+
         System.out.println("borrado de datos");
     }
     
@@ -269,3 +271,4 @@ public class TestDatos {
         assertTrue(dao.update("PU2", bxIndex,"").isSuccessFul());
     }
 }
+*/

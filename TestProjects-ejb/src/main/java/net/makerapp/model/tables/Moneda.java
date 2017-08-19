@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,13 +18,16 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.javabeanstack.data.DataRow;
 
 @Entity
-@Table(name = "moneda")
+@Table(name = "moneda", 
+        uniqueConstraints = { @UniqueConstraint(columnNames = 
+                                               { "idempresa", "codigo"}) })
 public class Moneda  extends DataRow implements Serializable {
     private static final long serialVersionUID = 1L; 
     
@@ -184,6 +188,16 @@ public class Moneda  extends DataRow implements Serializable {
         return true;
     }
 
+    @Override
+    public boolean equivalent(Object o) {
+        if (!(o instanceof Moneda)) {
+            return false;
+        }
+        Moneda obj = (Moneda) o;
+        return (this.codigo.trim().equals(obj.getCodigo().trim()) && 
+                Objects.equals(this.idempresa, obj.getIdempresa()));
+    }
+    
     @Override
     public String toString() {
         return "py.com.oym.model.Moneda[ idmoneda=" + idmoneda + " ]";

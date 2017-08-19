@@ -45,7 +45,7 @@ public class TestLog {
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
 
-        ISecManager secMngr = (ISecManager) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        ISecManager secMngr = (ISecManager) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");
 
         userSession = secMngr.createSession("J", "", 98L, null);
     }
@@ -53,27 +53,27 @@ public class TestLog {
 
     @Test
     public void test1() throws NamingException {
-        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
+        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.frame.log.ILogManagerRemote");
         assertNotNull(logManager);
     }
 
     @Test
     public void test2() throws NamingException {
-        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
+        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
         IErrorReg errorReg = new ErrorReg("PRUEBA DE ERROR", 10, "prueba");
         assertTrue(logManager.dbWrite(DicLog.class, errorReg, userSession));
     }
 
     @Test
     public void test3() throws NamingException {
-        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
+        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
         IErrorReg errorReg = new ErrorReg("PRUEBA DE ERROR2", 10, "prueba");
         assertTrue(logManager.dbWrite(DicLog.class, errorReg, userSession.getSessionId()));
     }
 
     @Test
     public void test4() throws NamingException {
-        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
+        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
         boolean result
                 = logManager.dbWrite(DicLog.class, userSession.getSessionId(),
                         "PRUEBA DE MENSAJE 3", "PRUEBA DE MENSAJE INFO",
@@ -84,7 +84,7 @@ public class TestLog {
 
     @Test
     public void test5() throws NamingException {
-        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
+        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
         ILogRecord dicLog = new DicLog();
         dicLog.setCategory(ILogRecord.CATEGORY_APP);
         dicLog.setLevel(ILogRecord.LEVEL_INFO);
@@ -95,59 +95,4 @@ public class TestLog {
         assertTrue(result);
     }
 
-    /*
-    public void testBak() {
-        String queryString;
-
-        queryString = "insert into {schema}.dic_log "
-                + "  (sesionid, fechahoracliente, maquina, idempresa, idusuario, nroerror, "
-                + "   nromensaje, mensaje, eleccion, otros, clase, tipo, objeto, "
-                + "   objetoelemento, nrolinea) "
-                + " values "
-                + "  (:sesionid, :fechahoracliente, :maquina, :idempresa, :idusuario, :nroerror, "
-                + "   :nromensaje, :mensaje, :eleccion, :otros, :clase, :tipo, :objeto, "
-                + "   :objetoelemento, :nrolinea) ";
-
-        Long idempresa = null;
-        Long idusuario = null;
-        String ipClient = "";
-        String sesionId = "NINGUNA";
-        String otros = "";
-
-        if (!Strings.isNullorEmpty(sessionId)) {
-            IUserSession userSession = sessions.getUserSession(sessionId);
-            if (userSession != null) {
-                idempresa = userSession.getIdEmpresa();
-                idusuario = userSession.getUser().getIdusuario();
-                ipClient = userSession.getIp();
-                sesionId = Strings.dateToString(userSession.getTimeLogin())
-                        + userSession.getUser().getCodigo().trim();
-            }
-        }
-        if (errorReg.getException() != null) {
-            otros = ErrorManager.getStackCause(errorReg.getException());
-        }
-
-        Map<String, Object> parameters = new HashMap();
-        parameters.put("sesionid", sesionId);
-        parameters.put("fechahoracliente", new Date());
-        parameters.put("maquina", ipClient);
-        parameters.put("idempresa", idempresa);
-        parameters.put("idusuario", idusuario);
-        parameters.put("nroerror", 0L);
-        parameters.put("nromensaje", errorReg.getErrorNumber());
-        parameters.put("mensaje", errorReg.getMessage());
-        parameters.put("eleccion", 0L);
-        parameters.put("otros", otros);
-        parameters.put("tipo", "E");
-        parameters.put("clase", "A");
-        parameters.put("objeto", "");
-        parameters.put("objetoelemento", errorReg.getFieldName());
-        parameters.put("nrolinea", 0L);
-
-        IErrorReg errorSql = dao.sqlExec(IDBManager.CATALOGO, queryString, parameters);
-        return errorSql == null;
-
-    }
-    */
 }

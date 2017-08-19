@@ -24,14 +24,14 @@ public class TestFileSearcher extends TestClass {
     //@Test
     public void testInstance() throws Exception {
         IXmlManager instance
-                = (IXmlManager) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlManager!py.com.oym.frame.xml.IXmlManagerRemote");
+                = (IXmlManager) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlManager!org.javabeanstack.xml.IXmlManagerRemote");
         assertNotNull(instance);
     }
 
     //@Test
     public void test1() throws Exception {
         IXmlManager xmlManager
-                = (IXmlManager) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlManager!py.com.oym.frame.xml.IXmlManagerRemote");
+                = (IXmlManager) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlManager!org.javabeanstack.xml.IXmlManagerRemote");
 
         assertNotNull(xmlManager.getXmlSearcher());
 
@@ -42,7 +42,7 @@ public class TestFileSearcher extends TestClass {
     public void test2() throws NamingException {
         IXmlDom xmlDom = new XmlDomW3c();
         IXmlSearcher xmlSearcher;
-        xmlSearcher = (IXmlSearcher) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlSearcher!py.com.oym.frame.xml.IXmlSearcher");
+        xmlSearcher = (IXmlSearcher) context.lookup("/TestProjects-ear/TestProjects-ejb/XmlSearcher!org.javabeanstack.xml.IXmlSearcher");
         String result = xmlSearcher.search(xmlDom,
                 "file:///proyectos/java/oym/TestProjects/clasemaker.xml");
         assertNotNull(result);

@@ -115,5 +115,4 @@ public class TestDatos4 {
         campo.revert(true);
         assertFalse(result);
     }
-    
 }

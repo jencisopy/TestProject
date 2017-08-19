@@ -19,6 +19,8 @@ import net.makerapp.model.tables.Pais;
 import py.com.oym.model.tables.Usuario;
 import py.com.oym.model.tables.UsuarioMiembro;
 import net.makerapp.model.tables.Moneda;
+import org.javabeanstack.data.IDBLinkInfo;
+import org.junit.Test;
 
 /**
  *
@@ -30,67 +32,45 @@ public class TestDataService extends TestClass{
 
     //@Test
     public void testInstance() throws Exception {
-        IDataServiceRemote instance  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/DataService!py.com.oym.frame.services.IDataServiceRemote");
+        IDataServiceRemote instance  = 
+                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
         assertNotNull(instance);
     }
 
-    /** Prueba control de los unique keys */
+    /** Prueba control de los unique keys
+     * @throws java.lang.Exception */
     //@Test
     public void testCheckUnique1() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.services.IDataServiceRemote");
-        Usuario row = dataService.find(Usuario.class,"PU1" ,14L);
+        IDataService dataService  = 
+                (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
+        Usuario row = dataService.find(Usuario.class,null ,14L);
         //dataService.checkDataRow(row,"");
         // Va a pasar la prueba porque es el mismo objeto
         assertTrue(dataService.checkUniqueKey(row, ""));
     }
 
-    /** Prueba control de los unique keys */
+    /** Prueba control de los unique keys
+     * @throws java.lang.Exception */
     //@Test    
     public void testCheckUnique2() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/DataService!py.com.oym.frame.services.IDataServiceRemote");
-        Moneda row = dataService.find(Moneda.class,"PU2" ,234L);
+        IDataServiceRemote dataService  = 
+                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
+        
+        IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();
+        Moneda row = dataService.find(Moneda.class,dbInfo ,234L);
         //dataService.checkDataRow(row,"");
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado
         assertTrue(dataService.checkUniqueKey(row, sessionId));
     }
-    
-    /** Prueba de chequeo de los foreignkeys */
-    //@Test    
-    public void testCheckForeignkey() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioMiembroSrv!py.com.oym.frame.services.IDataServiceRemote");
-        List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,"PU1");
-        //rows.get(0).setUsuarioGrupo(null);
-        assertTrue(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
-    }    
 
-    /** Prueba de ejecución del metodo de chequeo de acuerdo al tipo de operación.*/
-    //@Test    
-    public void testCheckData3() throws Exception {
-        IDataService usuarioSrv  = (IDataService) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.services.IDataServiceRemote");
-        
-        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,"PU1");
-        rows.get(0).setOperation(IDataRow.MODIFICAR);
-        usuarioSrv.checkDataRow(rows.get(0), "");
-        
-        rows.get(0).setOperation(IDataRow.BORRAR);
-        usuarioSrv.checkDataRow(rows.get(0), "");
-    }        
-    
-    /** Prueba chequeo de datos */
-    //@Test    
-    public void testCheckData4() throws Exception {
-        IDataService usuarioSrv  = (IDataService) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.services.IDataServiceRemote");
-        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,"PU1");
-        usuarioSrv.edit(rows.get(0), "");
-        //dataService.checkDataRow(rows.get(0), "");
-       
-    }        
-
-    /** Prueba unique key */
+    /** Prueba unique key
+     * @throws java.lang.Exception */
     //@Test    
     public void testCheckUniqueKey3() throws Exception {
-        IDataService usuarioSrv  = (IDataService) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioSrv!py.com.oym.frame.services.IDataServiceRemote");
-        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,"PU1");
+        IDataService usuarioSrv  = 
+                (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
+        
+        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
         Usuario usuario = rows.get(0);
         usuario.setIdusuario(0L);
         Map<String, IErrorReg> errors;
@@ -106,14 +86,66 @@ public class TestDataService extends TestClass{
         usuario.setOperation(IDataRow.BORRAR);        
         errors = usuarioSrv.checkDataRow(usuario, "");
         assertTrue(errors.isEmpty());
+        
+        usuario.setCodigo("xxxxxxx");
+        usuario.setOperation(IDataRow.AGREGAR);        
+        errors = usuarioSrv.checkDataRow(usuario, "");
+        assertTrue(errors.isEmpty());
+        
      }        
+    
+    /** Prueba de ejecución del metodo de chequeo de acuerdo al tipo de operación
+     * @throws java.lang.Exception
+     */
+    //@Test    
+    public void testCheckData3() throws Exception {
+        IDataService usuarioSrv  = 
+                (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
+        
+        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
+        rows.get(0).setOperation(IDataRow.MODIFICAR);
+        usuarioSrv.checkDataRow(rows.get(0), "");
+        
+        rows.get(0).setOperation(IDataRow.BORRAR);
+        usuarioSrv.checkDataRow(rows.get(0), "");
+    }        
+    
+    /** Prueba chequeo de datos
+     * @throws java.lang.Exception */
+    //@Test    
+    public void testCheckData4() throws Exception {
+        IDataService usuarioSrv  = 
+                (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
+        
+        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
+        usuarioSrv.edit(rows.get(0), "");
+        //dataService.checkDataRow(rows.get(0), "");
+       
+    }        
 
-    /** Chequeo de los foreignkeys */
+    /** Prueba de chequeo de los foreignkeys
+     * @throws java.lang.Exception */
+    @Test    
+    public void testCheckForeignkey() throws Exception {
+        IDataServiceRemote dataService  = 
+                (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
+        
+        List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
+        assertTrue(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
+        rows.get(0).setUsuarioGrupo(null);        
+        assertFalse(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));        
+    }    
+
+    /** Chequeo de los foreignkeys
+     * @throws java.lang.Exception */
     //@Test    
     public void testCheckForeignKey2() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/DataService!py.com.oym.frame.services.IDataServiceRemote");
+        IDataServiceRemote dataService  = 
+                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
+        
         Map<String, IErrorReg> errors;        
-        List<Pais> rows = dataService.findAll(Pais.class,"PU2");
+        IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();        
+        List<Pais> rows = dataService.findAll(Pais.class,dbInfo);
         rows.get(0).setOperation(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado        
         errors = dataService.checkDataRow(rows.get(0), sessionId);
@@ -121,10 +153,13 @@ public class TestDataService extends TestClass{
     }    
 
     //@Test        
-    /** Chequeo de los foreignkeys  */
+    /** Chequeo de los foreignkeys
+     * @throws java.lang.Exception */
     public void testCheckForeignKey3() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/UsuarioMiembroSrv!py.com.oym.frame.services.IDataServiceRemote");
-        List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,"PU1");
+        IDataServiceRemote dataService  = 
+                (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
+        
+        List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
         UsuarioMiembro usuarioMiembro = rows.get(0);
         usuarioMiembro.setOperation(IDataRow.MODIFICAR);
         
@@ -132,11 +167,15 @@ public class TestDataService extends TestClass{
         assertTrue(errors.isEmpty());
     }
     
-    //@Test
-    /** Chequeo de los foreignkeys  */
+    /** Chequeo de los foreignkeys
+     * @throws java.lang.Exception */
+    //@Test    
     public void testCheckForeignKey4() throws Exception {
-        IDataServiceRemote dataService  = (IDataServiceRemote) context.lookup("/TestProjects-ear/TestProjects-ejb/PaisSrv!py.com.oym.frame.services.IDataServiceRemote");
-        List<Pais> rows = dataService.findAll(Pais.class,"PU2");
+        IDataServiceRemote dataService  = 
+                (IDataServiceRemote) context.lookup(jndiProject+"PaisSrv!org.javabeanstack.services.IDataServiceRemote");
+        
+        IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();        
+        List<Pais> rows = dataService.findAll(Pais.class,dbInfo);
         Pais pais = rows.get(0);
         //pais.setRegion(null);
         pais.setOperation(IDataRow.MODIFICAR);

@@ -8,6 +8,7 @@ package py.com.oym.test.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.javabeanstack.data.IDBLinkInfo;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.javabeanstack.data.IGenericDAORemote;
@@ -21,31 +22,29 @@ public class TestDao extends TestClass{
     public TestDao() {
     }
 
-    //@Test
+    @Test
     public void testInstance() throws Exception {
-
-        IGenericDAORemote instance  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        //String expResult = "Hola";
-        //String result = instance.saludar();
-        //assertEquals(expResult, result); 
+        IGenericDAORemote instance  = 
+                (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         assertNotNull(instance);
-        //assertNotNull(dao2);
-
     }
     
-    //@Test
+    @Test
     public void testDao() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote dao  = 
+                (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         System.out.println(dao.getDataEngine("PU1"));
         System.out.println(dao.getSchema("PU1"));
     }    
     
     @Test
     public void testDao2() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote dao  = 
+                (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         Map<String, Object> params = new HashMap<>();
-        params.put("idempresa", 98L);
-        List<Object> list = dao.findByNativeQuery("PU2","select codigo, nombre from datos.item where idempresa = :idempresa", params, 10, 10);
+        params.put("idempresa", 2L);
+        IDBLinkInfo dbInfo = dataLink.getUserSession().getDbLinkInfo();
+        List<Object> list = dao.findByNativeQuery(dbInfo,"select codigo, nombre from datos.item where idempresa = :idempresa", params, 10, 10);
         assertNotNull(list);
-    }        
+    }
 }

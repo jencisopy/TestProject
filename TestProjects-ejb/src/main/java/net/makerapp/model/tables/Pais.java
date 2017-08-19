@@ -17,13 +17,16 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.javabeanstack.data.DataRow;
 
 @Entity
-@Table(name = "pais")
+@Table(name = "pais", 
+        uniqueConstraints = { @UniqueConstraint(columnNames = 
+                                               { "idempresa", "codigo"}) })
 public class Pais extends DataRow implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -212,6 +215,16 @@ public class Pais extends DataRow implements Serializable {
         return true;
     }
 
+    @Override
+    public boolean equivalent(Object o) {
+        if (!(o instanceof Pais)) {
+            return false;
+        }
+        Pais obj = (Pais) o;
+        return (this.codigo.trim().equals(obj.getCodigo().trim()) && 
+                Objects.equals(this.idempresa, obj.getIdempresa()));
+    }
+    
     @Override
     public String toString() {
         return "Pais{" + "idpais=" + idpais + ", codigo=" + codigo + ", nombre=" + nombre + ", noedit=" + noedit + ", latitud=" + latitud + ", Longitud=" + Longitud + '}';

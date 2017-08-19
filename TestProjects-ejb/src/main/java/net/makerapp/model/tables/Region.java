@@ -149,6 +149,16 @@ public class Region extends DataRow implements Serializable {
     }
 
     @Override
+    public boolean equivalent(Object o) {
+        if (!(o instanceof Region)) {
+            return false;
+        }
+        Region obj = (Region) o;
+        return (this.codigo.trim().equals(obj.getCodigo().trim()) && 
+                Objects.equals(this.idempresa, obj.getIdempresa()));
+    }
+    
+    @Override
     public String toString() {
         return "Region{" + "idregion=" + idregion + ", codigo=" + codigo + ", nombre=" + nombre + '}';
     }

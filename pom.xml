@@ -19,7 +19,7 @@
         <version.junit>4.11</version.junit>
         <version.javaee_api>7.0</version.javaee_api>
         <oym.frame.version>6.1.0-SNAPSHOT</oym.frame.version>
-        <javabeanstack.frame>1.0.0-SNAPSHOT</javabeanstack.frame>
+        <javabeanstack.frame>1.1.0-SNAPSHOT</javabeanstack.frame>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>

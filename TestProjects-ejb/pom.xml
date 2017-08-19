@@ -47,6 +47,19 @@
         </dependency>
         
         <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>JavaBeanStack-Business</artifactId>
+            <type>jar</type>
+            <version>${javabeanstack.frame}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>JavaBeanStack-Core</artifactId>
+            <type>jar</type>
+            <version>${javabeanstack.frame}</version>
+        </dependency>
+        
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>

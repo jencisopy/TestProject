@@ -30,13 +30,14 @@
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
+      <property name="hibernate.id.new_generator_mappings" value="false"/>            
       <property name="oym.motordatos" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
 
   <persistence-unit name="PU3" transaction-type="JTA">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <jta-data-source>jdbc/Maker95TestDS</jta-data-source>
+    <jta-data-source>jdbc/Maker95Test1DS</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"/>
@@ -47,6 +48,7 @@
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
+      <property name="hibernate.id.new_generator_mappings" value="false"/>            
       <property name="oym.motordatos" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
@@ -64,6 +66,7 @@
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
+      <property name="hibernate.id.new_generator_mappings" value="false"/>            
       <property name="oym.motordatos" value="SQLSERVER"/>
     </properties>
   </persistence-unit>

@@ -22,13 +22,13 @@ import static org.junit.Assert.*;
 public class TestConfig extends TestClass {
     //@Test
     public void test1() throws Exception{
-        IAppConfig appConfig  = (IAppConfig) context.lookup("/TestProjects-ear/TestProjects-ejb/AppConfig!py.com.oym.frame.config.IAppConfig");
+        IAppConfig appConfig  = (IAppConfig) context.lookup("/TestProjects-ear/TestProjects-ejb/AppConfig!org.javabeanstack.config.IAppConfig");
         assertNotNull(appConfig);
     }
     
     //@Test
     public void test2() throws Exception{
-        IAppConfig appConfig  = (IAppConfig) context.lookup("/TestProjects-ear/TestProjects-ejb/AppConfig!py.com.oym.frame.config.IAppConfig");
+        IAppConfig appConfig  = (IAppConfig) context.lookup("/TestProjects-ear/TestProjects-ejb/AppConfig!org.javabeanstack.config.IAppConfig");
         assertNotNull(appConfig);
         
         String attr = appConfig.getProperty("nombre", "System", "Sistema");
@@ -43,7 +43,7 @@ public class TestConfig extends TestClass {
     
     @Test
     public void test3() throws Exception{
-        IAppConfig appConfig  = (IAppConfig) context.lookup("/TestProjects-ear/TestProjects-ejb/AppConfig!py.com.oym.frame.config.IAppConfig");
+        IAppConfig appConfig  = (IAppConfig) context.lookup("/TestProjects-ear/TestProjects-ejb/AppConfig!org.javabeanstack.config.IAppConfig");
         assertNotNull(appConfig);
         
         IAppSystemParam param = appConfig.getSystemParam("Passwordminchar");

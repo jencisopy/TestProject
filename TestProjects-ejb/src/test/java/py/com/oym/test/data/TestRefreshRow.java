@@ -22,10 +22,12 @@ public class TestRefreshRow extends TestClass{
   
     @Test
     public void testRefreshRow() throws Exception{
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        Usuario row = dao.find(Usuario.class,"PU1" ,14L);
+        IGenericDAO dao  = 
+                (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
+        Usuario row = dao.find(Usuario.class,null ,14L);
         assertNotNull(row.getListaUsuarioMiembro().get(0));
-        row = dao.refreshRow("PU1", row);
+        row = dao.refreshRow(null, row);
         System.out.println(row.getNombre());        
         System.out.println(row.getListaUsuarioMiembro().get(0));
         assertNotNull(row.getListaUsuarioMiembro().get(0));

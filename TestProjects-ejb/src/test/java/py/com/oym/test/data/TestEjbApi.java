@@ -54,8 +54,8 @@ public class TestEjbApi {
 
     //@Test
     public void testGetCount() throws Exception {
-        IGenericDAORemote dao = (IGenericDAORemote) context.lookup("ejb:TestProjects-ear/TestProjects-ejb//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
+        IGenericDAORemote dao = (IGenericDAORemote) context.lookup("ejb:TestProjects-ear/TestProjects-ejb//GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        Long rec = dao.getCount(null, "select o FROM Empresa o", null);
         System.out.println(rec);
     }
 
@@ -64,8 +64,8 @@ public class TestEjbApi {
         String appName = "TestProjects-ear";
         String moduleName = "TestProjects-ejb";
 
-        IGenericDAO dao = (IGenericDAO) context.lookup("ejb:" + appName + "/" + moduleName + "//GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
-        Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
+        IGenericDAO dao = (IGenericDAO) context.lookup("ejb:" + appName + "/" + moduleName + "//GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        Long rec = dao.getCount(null, "select o FROM Empresa o", null);
         System.out.println(rec);
     }
 

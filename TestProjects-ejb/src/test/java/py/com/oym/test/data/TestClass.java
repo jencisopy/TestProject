@@ -29,6 +29,7 @@ public class TestClass {
     static protected Context context; 
     static protected IDataLink dataLink;
     static String sessionId;    
+    static String jndiProject = "/TestProjects-ear/TestProjects-ejb/";
     
     public TestClass() {
     }
@@ -38,16 +39,18 @@ public class TestClass {
         Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
         p.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
+        //TODO cambiar credenciales
         p.put(Context.SECURITY_PRINCIPAL, "jenciso");
         p.put(Context.SECURITY_CREDENTIALS, "Oym1282873");
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
         
-        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
-        IUserSession userSession = secMngr.createSession("J", "", 98L, null);        
+        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");
+        //TODO cambiar a empresas tests
+        IUserSession userSession = secMngr.createSession("J", "", 2L, null);        
         sessionId = userSession.getSessionId();
         
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
     }

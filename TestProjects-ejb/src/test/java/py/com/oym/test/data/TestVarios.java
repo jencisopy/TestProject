@@ -24,8 +24,10 @@ public class TestVarios extends TestClass{
 
     //@Test
     public void testGetCount() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");        
-        Long rec = dao.getCount("PU1", "select o FROM Empresa o", null);
+        IGenericDAORemote dao  = 
+                (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
+        Long rec = dao.getCount(null, "select o FROM Empresa o", null);
         System.out.println(rec);
     }
 
@@ -41,7 +43,9 @@ public class TestVarios extends TestClass{
     
     //@Test
     public void testParam() throws Exception{
-        IGenericDAORemote dao  = (IGenericDAORemote) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");
+        IGenericDAORemote dao  = 
+                (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
         DataLink dataLink1 = new DataLink(dao);
         Long rec = dataLink1.getCount2("select * FROM {schema}.usuario where disable = :true", null);
         System.out.println(rec);

@@ -43,7 +43,9 @@ public class TestDataNativeQuery extends TestClass{
                 + "     {schema}.fn_getinteresmoratorio((CASE when b.saldoanterior <> 0 then b.saldoanterior when b.capital <> 0 then b.capital else b.monto end),b.ultpago,:saldoFecha,a.tasamoratoria,a.tolerancia)\n"
                 + " end) as interesmoratorio,\n"
                 + "b.interesdevengar,\n");
-                
+
+        System.out.println("\nCOLUMN EXPR1");        
+        System.out.println("===========");    
         String[] lista = query.getColumnList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -131,7 +133,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
 
-    //@Test
+    @Test
     public void testQuery() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         List<IDataQueryModel> data = 
@@ -152,9 +154,11 @@ public class TestDataNativeQuery extends TestClass{
         query.getQueryParams().entrySet().forEach((entry) -> {
             System.out.println(entry.getKey()+"="+entry.getValue().toString());
         });
+        System.out.println("");
+        System.out.println("");
     }
 
-    //@Test
+    @Test
     public void testQuery2() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 //        List<IDataQueryModel>
@@ -171,13 +175,15 @@ public class TestDataNativeQuery extends TestClass{
                     .orderBy("x.item")
                     .execQuery(6,5);
         
+        System.out.println("TESTQUERY2");
+        System.out.println("====================");
         System.out.println(query.getQuerySentence());
         System.out.println(data.size());
         System.out.println(data.get(0).getColumn("productos"));
         System.out.println(data.get(0).getColumn(1));        
     }
 
-    //@Test
+    @Test
     public void testQuery3() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -195,7 +201,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
 
-    //@Test
+    @Test
     public void testQuery4() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -212,7 +218,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getEntityExpr());        
     }
 
-    //@Test
+    @Test
     public void testQuery5() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -229,7 +235,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getEntityExpr());
     }
 
-    //@Test
+    @Test
     public void testQuery6() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
 
@@ -246,7 +252,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getEntityExpr());
     }
 
-    //@Test
+    @Test
     public void testQuery7() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         IDataExpression exprFilter = new DataExpression();
@@ -267,7 +273,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
     
-    //@Test
+    @Test
     public void testQuery8() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         
@@ -287,7 +293,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
     
-    //@Test
+    @Test
     public void testQuery9() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         
@@ -312,7 +318,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(query.getQuerySentence());
     }
 
-    //@Test
+    @Test
     public void testQuery10() throws Exception {
         query = (DataNativeQuery)dataLink.newDataNativeQuery();
         
@@ -336,7 +342,9 @@ public class TestDataNativeQuery extends TestClass{
     
     //@Test
     public void testEmpresaFilter() throws NamingException {
-        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!py.com.oym.frame.security.ISecManagerRemote");
+        ISecManager secMngr = 
+                (ISecManager)context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
+        
         IUserSession userSession = secMngr.createSession("J", "", 6L, null);        
         System.out.println(DataUtil.getEmpresaFilter(userSession,"a"));
         System.out.println(DataUtil.getEmpresaAndPeriodoFilter(userSession));
