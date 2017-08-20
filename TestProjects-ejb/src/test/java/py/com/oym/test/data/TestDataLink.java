@@ -57,7 +57,9 @@ public class TestDataLink  extends TestClass{
                 (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         DataLink dataLinkTest = new DataLink(dao);
 
-        List<Object> result = dataLinkTest.findByNativeQuery("select * from {schema}.empresa", null);
+        List<Object> result = 
+                dataLinkTest.findByNativeQuery("select * from {schema}.empresa", null);
+        
         assertNotNull(result);
         
     }
@@ -66,6 +68,7 @@ public class TestDataLink  extends TestClass{
     public void test3() throws NamingException, SessionError, Exception{
         IGenericDAO dao  = 
                 (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
         DataLink dataLinkTest = new DataLink(dao);
         Usuario usuario = dataLinkTest.find(Usuario.class, 3L);
         System.out.println(usuario.getValue("idempresa"));
@@ -76,6 +79,7 @@ public class TestDataLink  extends TestClass{
     public void test4() throws NamingException, SessionError, Exception{
         IUsuarioSrv dao  = 
                 (IUsuarioSrv)context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
+        
         DataLink dataLinkTest = new DataLink(dao);
         assertNotNull(dataLinkTest.getDataService());
         assertNotNull((IUsuarioSrv)dataLinkTest.getDataService());
@@ -85,6 +89,7 @@ public class TestDataLink  extends TestClass{
     public void test5() throws NamingException, SessionError, Exception{
         IGenericDAO dao  = 
                 (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        
         DataLink dataLinkTests = new DataLink(dao);
         assertNull(dataLinkTests.getDataService());
     }

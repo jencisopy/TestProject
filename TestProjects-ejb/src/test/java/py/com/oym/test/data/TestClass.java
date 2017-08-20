@@ -45,12 +45,12 @@ public class TestClass {
         p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
         
-        ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");
+        ISecManager secMngr = (ISecManager)context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
         //TODO cambiar a empresas tests
         IUserSession userSession = secMngr.createSession("J", "", 2L, null);        
         sessionId = userSession.getSessionId();
         
-        IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        IGenericDAO dao  = (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
     }
