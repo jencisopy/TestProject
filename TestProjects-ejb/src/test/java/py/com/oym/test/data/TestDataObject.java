@@ -8,16 +8,20 @@ package py.com.oym.test.data;
 import javax.naming.NamingException;
 import net.makerapp.model.tables.Pais;
 import net.makerapp.model.tables.Region;
+import org.javabeanstack.data.DataLink;
 import org.javabeanstack.data.DataSet;
 import org.javabeanstack.data.IDataObject;
 import org.javabeanstack.data.IDataSet;
 import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.exceptions.SessionError;
+import org.javabeanstack.security.ISecManager;
+import org.javabeanstack.security.IUserSession;
 import static org.junit.Assert.assertTrue;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import py.com.oym.frame.data.DataObject;
+import static py.com.oym.test.data.TestClass.context;
 
 /**
  *
@@ -43,6 +47,7 @@ public class TestDataObject extends TestClass {
         assertTrue(result);        
     }
     
+    
     //@Test
     public void test2BorrarData() throws NamingException, SessionError, Exception{
         System.out.println("2"); 
@@ -62,7 +67,7 @@ public class TestDataObject extends TestClass {
     
     
     
-    @Test
+    //@Test
     public void test3AddData() throws NamingException, SessionError, Exception{
         System.out.println("3"); 
         //Region
@@ -88,7 +93,7 @@ public class TestDataObject extends TestClass {
         assertTrue(result);        
     }
     
-    @Test
+    //@Test
     public void test4BorrarData() throws NamingException, SessionError, Exception{
         System.out.println("4"); 
         boolean result;
@@ -114,4 +119,35 @@ public class TestDataObject extends TestClass {
         assertTrue(result);
     }
     
+    //@Test
+    public void test5DBFilter() throws NamingException, SessionError, Exception{
+        System.out.println("5"); 
+        //Region
+        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        String filter = region.getDAO()
+                            .getUserSession()
+                            .getDBFilter()
+                            .getFilterExpr(region.getType(), "");
+        System.out.println(filter);
+        region.open();        
+        assertTrue(filter.contains("idempresa"));
+    }
+    
+    @Test
+    public void test6DBFilter() throws NamingException, SessionError, Exception{
+        System.out.println("6"); 
+        
+        ISecManager secMngr = (ISecManager)context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
+        IUserSession userSession = secMngr.createSession("J", "", 50L, null);        
+        sessionId = userSession.getSessionId();
+        IGenericDAO dao  = (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        dataLink = new DataLink(dao);
+        dataLink.setUserSession(userSession);
+        
+        //Region
+        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        region.open();        
+        System.out.println(region.getFilter());        
+        assertTrue(region.getSelectCmd().contains("IN("));
+    }    
 }

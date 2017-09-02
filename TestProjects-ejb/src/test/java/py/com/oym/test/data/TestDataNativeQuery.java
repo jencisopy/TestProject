@@ -33,6 +33,8 @@ public class TestDataNativeQuery extends TestClass{
     
     @Test
     public void testExpr() {
+        System.out.println("\nTESTEXPR");
+        System.out.println("==========================");
         query = (DataNativeQuery)dataLink.newDataNativeQuery();        
         
         query.select(""                  
@@ -45,7 +47,8 @@ public class TestDataNativeQuery extends TestClass{
                 + "b.interesdevengar,\n");
 
         System.out.println("\nCOLUMN EXPR1");        
-        System.out.println("===========");    
+        System.out.println("===========");  
+        System.out.println(query.getColumnExpr());
         String[] lista = query.getColumnList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -63,15 +66,17 @@ public class TestDataNativeQuery extends TestClass{
                     "CASE when b.monto is NOT null then x.codigo else a.itemmovcondicion end  as itemmovcondicion,	\n" +
                     "CASE when a.ctacteafecta IN (1,3)  and b.monto is null then a.totalmonto when  a.ctacteafecta IN(1,3)  then b.monto else 00000000000.000  END  as debito,\n" +
                     "CASE when a.ctacteafecta IN (2) and b.monto is null then a.totalmonto when  a.ctacteafecta IN(2) then b.monto else 00000000000.000  END  as credito");
-    
+
+        System.out.println(query.getColumnExpr()+"\n");        
         lista = query.getColumnList();
         for (String lista1 : lista) {
             System.out.println(lista1);
         }
         
         System.out.println("\nENTITY EXPR");
-        System.out.println("===========");        
+        System.out.println("===========");
         query.from("itemmovimiento a, itemmovimientodetalle b");
+        System.out.println(query.getEntityExpr()+"\n");         
         lista = query.getEntityList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -106,6 +111,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println("\nORDER EXPR");
         System.out.println("===========");
         query.orderBy("b.item, c.vendedor");
+        System.out.println(query.getOrderExpr()+"\n");
         lista = query.getOrderList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -114,6 +120,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println("\nGROUP EXPR");
         System.out.println("===========");
         query.groupBy("item, vendedor");
+        System.out.println(query.getGroupExpr()+"\n");        
         lista = query.getGroupList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -122,6 +129,7 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println("\nHAVING EXPR");
         System.out.println("===========");
         query.having("COUNT(*) > 0");
+        System.out.println(query.getFilterGroupExpr()+"\n");        
         lista = query.getFilterGroupExprList();
         for (String lista1 : lista) {
             System.out.println(lista1);
@@ -154,6 +162,17 @@ public class TestDataNativeQuery extends TestClass{
         query.getQueryParams().entrySet().forEach((entry) -> {
             System.out.println(entry.getKey()+"="+entry.getValue().toString());
         });
+        
+        System.out.println("\nENTITY EXPR");
+        System.out.println("===========");
+        System.out.println(query.getEntityExpr()+"\n");         
+        String[] lista = query.getEntityList();
+        for (String lista1 : lista) {
+            System.out.println(lista1);
+        }
+        System.out.println("\nFROM EXPR");
+        System.out.println("===========");
+        System.out.println(query.getFromExpr());
         System.out.println("");
         System.out.println("");
     }
@@ -352,4 +371,20 @@ public class TestDataNativeQuery extends TestClass{
         System.out.println(DataUtil.getEmpresaFilter(userSession,"a"));        
         System.out.println(DataUtil.getEmpresaAndPeriodoFilter(userSession,"a"));        
     }
+    
+    @Test
+    public void testDBFilter() throws Exception {
+        query = (DataNativeQuery)dataLink.newDataNativeQuery();
+        
+        query.select("codigo, nombre")
+                .from("moneda a")
+                .createQuery();
+
+
+        System.out.println("\nTESTDBFILTER");
+        System.out.println("================");
+        
+        System.out.println(query.getQuerySentence());
+    }
+    
 }

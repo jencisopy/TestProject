@@ -53,6 +53,7 @@ public class TestClass {
         IGenericDAO dao  = (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
+        dataLink.getUserSession().getDBFilter().setModelPackagePath("net.makerapp.model");        
     }
     
     @AfterClass
