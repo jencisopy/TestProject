@@ -17,11 +17,11 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.javabeanstack.data.DataRow;
-import org.javabeanstack.model.IDicPermisoEmpresa;
+import org.javabeanstack.model.IAppCompanyAllowed;
 
 @Entity
 @Table(name = "dic_permisoempresa")
-public class DicPermisoEmpresa extends DataRow implements IDicPermisoEmpresa {
+public class DicPermisoEmpresa extends DataRow implements IAppCompanyAllowed {
     
     private static final long serialVersionUID = 1L;
     
@@ -69,62 +69,58 @@ public class DicPermisoEmpresa extends DataRow implements IDicPermisoEmpresa {
     }
 
     @Override
-    public Long getIdusuario() {
+    public Long getIduser() {
         return idusuario;
     }
 
     @Override
-    public void setIdusuario(Long idusuario) {
+    public void setIduser(Long idusuario) {
         this.idusuario = idusuario;
     }
 
     @Override
-    public Long getIdempresa() {
+    public Long getIdcompany() {
         return idempresa;
     }
 
     @Override
-    public void setIdempresa(Long idempresa) {
+    public void setIdcompany(Long idempresa) {
         this.idempresa = idempresa;
     }
 
 
     @Override
-    public boolean getPermitir() {
+    public boolean getAllow() {
         return permitir;
     }
 
     @Override
-    public void setPermitir(boolean permitir) {
+    public void setAllow(boolean permitir) {
         this.permitir = permitir;
     }
 
     @Override
-    public boolean getNegar() {
+    public boolean getDeny() {
         return negar;
     }
 
     @Override
-    public void setNegar(boolean negar) {
+    public void setDeny(boolean negar) {
         this.negar = negar;
     }
 
-    @Override
     public Date getFechacreacion() {
         return fechacreacion;
     }
 
-    @Override
     public void setFechacreacion(Date fechacreacion) {
         this.fechacreacion = fechacreacion;
     }
 
-    @Override
     public Date getFechamodificacion() {
         return fechamodificacion;
     }
 
-    @Override
     public void setFechamodificacion(Date fechamodificacion) {
         this.fechamodificacion = fechamodificacion;
     }

@@ -28,6 +28,7 @@ import static py.com.oym.test.data.TestDataService.sessionId;
 public class TestClass {
     static protected Context context; 
     static protected IDataLink dataLink;
+    static protected IDataLink dataLinkCat;
     static String sessionId;    
     static String jndiProject = "/TestProjects-ear/TestProjects-ejb/";
     
@@ -51,9 +52,11 @@ public class TestClass {
         sessionId = userSession.getSessionId();
         
         IGenericDAO dao  = (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        dataLinkCat = new DataLink(dao);
+        
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
-        dataLink.getUserSession().getDBFilter().setModelPackagePath("net.makerapp.model");        
+        //dataLink.getUserSession().getDBFilter().setModelPackagePath("net.makerapp.model.tables;net.makerapp.model.views");
     }
     
     @AfterClass

@@ -216,47 +216,38 @@ public class AppSystemParam extends DataRow implements IAppSystemParam {
         this.valueChar = valueChar;
     }
 
-    @Override
     public Date getFechacreacion() {
         return fechacreacion;
     }
 
 
-    @Override
     public Date getFechamodificacion() {
         return fechamodificacion;
     }
 
-    @Override
     public Date getFechareplicacion() {
         return fechareplicacion;
     }
 
-    @Override
     public void setFechareplicacion(Date fechareplicacion) {
         this.fechareplicacion = fechareplicacion;
     }
 
-    @Override
     public String getFirma() {
         return firma;
     }
 
-    @Override
     public void setFirma(String firma) {
         this.firma = firma;
     }
 
-    @Override
     public String getAppuser() {
         return appuser;
     }
 
-    @Override
     public void setAppuser(String appuser) {
         this.appuser = appuser;
     }
-
 
     @Override
     public String toString() {

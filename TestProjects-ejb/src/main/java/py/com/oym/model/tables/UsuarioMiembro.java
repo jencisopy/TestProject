@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IUser;
 import org.javabeanstack.model.IUserMember;
@@ -26,11 +27,11 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
     @Column(name = "idusuariomiembro")
     private Long idusuariomiembro;
     
-    @JoinColumn(name = "idmiembro", referencedColumnName = "idusuario",nullable = false)
+    @JoinColumn(name = "idmiembro", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
     private Usuario usuarioMiembro;
 
-    @JoinColumn(name = "idusuario", referencedColumnName = "idusuario",nullable = false)
+    @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
     private Usuario usuarioGrupo;
     
@@ -38,32 +39,32 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
     }
 
     @Override
-    public Long getIdusuariomiembro() {
+    public Long getIdusermember() {
         return idusuariomiembro;
     }
 
     @Override
-    public void setIdusuariomiembro(Long idusuariomiembro) {
+    public void setIdusermember(Long idusuariomiembro) {
         this.idusuariomiembro = idusuariomiembro;
     }
 
     @Override
-    public IUser getUsuarioMiembro() {
+    public IUser getUserMember() {
         return usuarioMiembro;
     }
 
     @Override
-    public void setUsuarioMiembro(IUser usuarioMiembro) {
+    public void setUserMember(IUser usuarioMiembro) {
         this.usuarioMiembro = (Usuario)usuarioMiembro;
     }
 
     @Override
-    public IUser getUsuarioGrupo() {
+    public IUser getUserGroup() {
         return usuarioGrupo;
     }
 
     @Override
-    public void setUsuarioGrupo(IUser usuarioGrupo) {
+    public void setUserGroup(IUser usuarioGrupo) {
         this.usuarioGrupo = (Usuario)usuarioGrupo;
     }
 
@@ -91,4 +92,14 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
     public String toString() {
         return "UsuarioMiembro{" + "idusuariomiembro=" + idusuariomiembro + "}";
     }
+
+    @Override
+    public boolean equivalent(Object o) {
+        if (!(o instanceof UsuarioMiembro)) {
+            return false;
+        }
+        UsuarioMiembro obj = (UsuarioMiembro) o;
+        return (this.idusuariomiembro.equals(obj.getIdusermember())); 
+    }
+    
 }

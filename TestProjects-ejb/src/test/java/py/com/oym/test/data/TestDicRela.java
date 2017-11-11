@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.javabeanstack.data.DataNativeQuery;
 import org.javabeanstack.data.IDataLink;
 import org.javabeanstack.data.IDataQueryModel;
+import org.javabeanstack.model.IAppTablesRelation;
 import static org.javabeanstack.util.Strings.isNullorEmpty;
 
 /**
@@ -32,6 +33,16 @@ public class TestDicRela extends TestClass{
     }
 
     @Test
+    public void testAppTablesRelation() throws Exception {
+        Map<String, Object> params = new HashMap();
+        params.put("entityPK", "itemmovimiento" );
+        params.put("entityFK", "itemmovimientodetalle");        
+        
+        List<IAppTablesRelation> data = dataLinkCat.findListByNamedQuery("AppTablesRelation.findByEntity", params);
+        assertFalse(data.isEmpty());
+    }
+    
+    //@Test
     public void testDic() throws Exception {
         EntitiesRelation dic = new EntitiesRelation();
         List<IDataQueryModel> data = dic.get(dataLink, "itemmovimiento", "");

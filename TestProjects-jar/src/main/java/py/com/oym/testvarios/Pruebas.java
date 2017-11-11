@@ -5,7 +5,6 @@
  */
 package py.com.oym.testvarios;
 
-
 /**
  *
  * @author Jorge Enciso
@@ -23,14 +22,15 @@ public class Pruebas {
 
 
     static class Threads implements Runnable {
+
         @Override
         public void run() {
             try {
-                TestEjb test = new TestEjb();                
+                TestEjb test = new TestEjb();
                 for (int i = 0; i < 10; i++) {
                     test.test();
                     Thread.sleep(100);
-                    System.out.println(Thread.currentThread().getName() + "-" + i);                    
+                    System.out.println(Thread.currentThread().getName() + "-" + i);
                 }
             } catch (Exception exp) {
                 Thread.currentThread().interrupt();

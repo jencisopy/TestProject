@@ -205,22 +205,22 @@ public class DicLog extends DataRow implements ILogRecord {
     }
 
     @Override
-    public Long getIdempresa() {
+    public Long getIdcompany() {
         return idempresa;
     }
 
     @Override
-    public void setIdempresa(Long idempresa) {
+    public void setIdcompany(Long idempresa) {
         this.idempresa = idempresa;
     }
 
     @Override    
-    public Long getIdusuario() {
+    public Long getIduser() {
         return idusuario;
     }
 
     @Override    
-    public void setIdusuario(Long idusuario) {
+    public void setIduser(Long idusuario) {
         this.idusuario = idusuario;
     }
 

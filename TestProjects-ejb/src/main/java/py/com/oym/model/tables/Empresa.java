@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package py.com.oym.model.tables;
 
 import java.util.Date;
@@ -10,8 +5,6 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -23,8 +16,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 import org.javabeanstack.data.DataRow;
-import org.javabeanstack.model.IEmpresa;
+import org.javabeanstack.model.IAppCompany;
 
 /**
  *
@@ -55,10 +49,10 @@ import org.javabeanstack.model.IEmpresa;
     @NamedQuery(name = "Empresa.findByFechareplicacion", query = "SELECT e FROM Empresa e WHERE e.fechareplicacion = :fechareplicacion"),
     @NamedQuery(name = "Empresa.findByFirma", query = "SELECT e FROM Empresa e WHERE e.firma = :firma"),
     @NamedQuery(name = "Empresa.findByAppuser", query = "SELECT e FROM Empresa e WHERE e.appuser = :appuser")})
-public class Empresa extends DataRow implements IEmpresa {
+public class Empresa extends DataRow implements IAppCompany {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)    
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)    
     @Basic(optional = false)
     @NotNull
     @Column(name = "idempresa")
@@ -126,7 +120,6 @@ public class Empresa extends DataRow implements IEmpresa {
     @OneToMany(mappedBy = "idempresagrupo")
     private List<Empresa> empresaList;
 
-
     @Column(name = "idempresagrupo")
     private Long idempresagrupo;
 
@@ -143,92 +136,92 @@ public class Empresa extends DataRow implements IEmpresa {
     }
 
     @Override
-    public Long getIdempresa() {
+    public Long getIdcompany() {
         return idempresa;
     }
 
     @Override
-    public void setIdempresa(Long idempresa) {
+    public void setIdcompany(Long idempresa) {
         this.idempresa = idempresa;
     }
 
     @Override
-    public Long getIdempresamask() {
+    public Long getIdcompanymask() {
         return idempresamask;
     }
 
     @Override
-    public void setIdempresamask(Long idempresamask) {
+    public void setIdcompanymask(Long idempresamask) {
         this.idempresamask = idempresamask;
     }
 
     @Override
-    public Long getIdperiodo() {
+    public Long getIdperiod() {
         return idperiodo;
     }
 
     @Override
-    public void setIdperiodo(Long idperiodo) {
+    public void setIdperiod(Long idperiodo) {
         this.idperiodo = idperiodo;
     }
 
     @Override
-    public String getNombre() {
+    public String getName() {
         return nombre;
     }
 
     @Override
-    public void setNombre(String nombre) {
+    public void setName(String nombre) {
         this.nombre = nombre;
     }
 
     @Override
-    public String getRazonsocial() {
+    public String getSocialName() {
         return razonsocial;
     }
 
     @Override
-    public void setRazonsocial(String razonsocial) {
+    public void setSocialName(String razonsocial) {
         this.razonsocial = razonsocial;
     }
 
     @Override
-    public String getDireccion() {
+    public String getAddress() {
         return direccion;
     }
 
     @Override
-    public void setDireccion(String direccion) {
+    public void setAddress(String direccion) {
         this.direccion = direccion;
     }
 
     @Override
-    public String getTelefono() {
+    public String getTelephoneNumber() {
         return telefono;
     }
 
     @Override
-    public void setTelefono(String telefono) {
+    public void setTelephoneNumber(String telefono) {
         this.telefono = telefono;
     }
 
     @Override
-    public String getRuc() {
+    public String getTaxId() {
         return ruc;
     }
 
     @Override
-    public void setRuc(String ruc) {
+    public void setTaxId(String ruc) {
         this.ruc = ruc;
     }
 
     @Override
-    public String getDatos() {
+    public String getPersistentUnit() {
         return datos;
     }
 
     @Override
-    public void setDatos(String datos) {
+    public void setPersistentUnit(String datos) {
         this.datos = datos;
     }
 
@@ -263,71 +256,64 @@ public class Empresa extends DataRow implements IEmpresa {
     }
 
     @Override
-    public String getMotordatos() {
+    public String getDbengine() {
         return motordatos;
     }
 
     @Override
-    public void setMotordatos(String motordatos) {
+    public void setDbengine(String motordatos) {
         this.motordatos = motordatos;
     }
 
     @Override
-    public String getPais() {
+    public String getCountry() {
         return pais;
     }
 
     @Override
-    public void setPais(String pais) {
+    public void setCountry(String pais) {
         this.pais = pais;
     }
 
     @Override
-    public String getEmpresarubro() {
+    public String getCompanyActivity() {
         return empresarubro;
     }
 
     @Override
-    public void setEmpresarubro(String empresarubro) {
+    public void setCompanyActivity(String empresarubro) {
         this.empresarubro = empresarubro;
     }
 
-    @Override
     public Date getFechacreacion() {
         return fechacreacion;
     }
 
-    @Override
     public void setFechacreacion(Date fechacreacion) {
         this.fechacreacion = fechacreacion;
     }
 
-    @Override
     public Date getFechamodificacion() {
         return fechamodificacion;
     }
 
-    @Override
+
     public void setFechamodificacion(Date fechamodificacion) {
         this.fechamodificacion = fechamodificacion;
     }
 
-    @Override
     public Date getFechareplicacion() {
         return fechareplicacion;
     }
 
-    @Override
     public void setFechareplicacion(Date fechareplicacion) {
         this.fechareplicacion = fechareplicacion;
     }
 
-    @Override
     public String getFirma() {
         return firma;
     }
 
-    @Override
     public void setFirma(String firma) {
         this.firma = firma;
     }
@@ -344,22 +330,22 @@ public class Empresa extends DataRow implements IEmpresa {
 
     @XmlTransient
     @Override
-    public List<IEmpresa> getEmpresaList() {
-        return (List<IEmpresa>)(List<?>)empresaList;
+    public List<IAppCompany> getCompanyList() {
+        return (List<IAppCompany>)(List<?>)empresaList;
     }
 
     @Override
-    public void setEmpresaList(List<IEmpresa> empresaList) {
+    public void setCompanyList(List<IAppCompany> empresaList) {
         this.empresaList = (List<Empresa>)(List<?>)empresaList;
     }
 
     @Override
-    public Long getIdempresagrupo() {
+    public Long getIdcompanygroup() {
         return idempresagrupo;
     }
 
     @Override
-    public void setIdempresagrupo(Long idempresagrupo) {
+    public void setIdcompanygroup(Long idempresagrupo) {
         this.idempresagrupo = idempresagrupo;
     }
 
@@ -386,4 +372,14 @@ public class Empresa extends DataRow implements IEmpresa {
     public String toString() {
         return "py.com.oym.model.Empresa[ idempresa=" + idempresa + " ]";
     }
+
+    @Override
+    public boolean equivalent(Object o) {
+        if (!(o instanceof Empresa)) {
+            return false;
+        }
+        Empresa obj = (Empresa) o;
+        return (this.idempresa.equals(obj.getIdcompany())); 
+    }
+    
 }

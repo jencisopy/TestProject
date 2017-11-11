@@ -48,14 +48,12 @@
         
         <dependency>
             <groupId>org.javabeanstack</groupId>
-            <artifactId>JavaBeanStack-Business</artifactId>
-            <type>jar</type>
+            <artifactId>business</artifactId>
             <version>${javabeanstack.frame}</version>
         </dependency>
         <dependency>
             <groupId>org.javabeanstack</groupId>
-            <artifactId>JavaBeanStack-Core</artifactId>
-            <type>jar</type>
+            <artifactId>core</artifactId>
             <version>${javabeanstack.frame}</version>
         </dependency>
         
@@ -85,12 +83,13 @@
             <artifactId>hibernate-infinispan</artifactId>
             <version>4.3.6.Final</version>
         </dependency>        
-        -->
+
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>sqljdbc4</artifactId>
             <version>4.0</version>
         </dependency>        
+        -->        
     </dependencies>
 
     <build>

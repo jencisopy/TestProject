@@ -8,6 +8,7 @@
 	<SystemSetting>
 		<UpdateService auto="ON" downloadapplymode="MANUAL" appname="MAKER95" appver="950" updpath="=oApp.InitFilePath+'..\update'" updmirrorpath="=oApp.InitFilePath+'..\update\updmirror\'"/>
 		<Mkagent server="agente.oym.com.py" serverport="8181" nodo="000" localport="8182"/>
+                <ClassInfo packagepathmodel="net.makerapp.model.tables;net.makerapp.model.views"/>
 	</SystemSetting>
 	<ClientSetting>
 		<MainForm name="maker"/>

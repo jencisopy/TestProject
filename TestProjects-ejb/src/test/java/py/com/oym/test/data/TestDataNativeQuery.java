@@ -386,5 +386,4 @@ public class TestDataNativeQuery extends TestClass{
         
         System.out.println(query.getQuerySentence());
     }
-    
 }

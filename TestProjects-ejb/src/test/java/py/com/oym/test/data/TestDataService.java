@@ -72,23 +72,23 @@ public class TestDataService extends TestClass{
         
         List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
         Usuario usuario = rows.get(0);
-        usuario.setIdusuario(0L);
+        usuario.setIduser(0L);
         Map<String, IErrorReg> errors;
 
-        usuario.setOperation(IDataRow.MODIFICAR);
+        usuario.setAction(IDataRow.MODIFICAR);
         errors = usuarioSrv.checkDataRow(usuario, "");
         assertFalse(errors.isEmpty());
         
-        usuario.setOperation(IDataRow.AGREGAR);        
+        usuario.setAction(IDataRow.AGREGAR);        
         errors = usuarioSrv.checkDataRow(usuario, "");
         assertFalse(errors.isEmpty());
 
-        usuario.setOperation(IDataRow.BORRAR);        
+        usuario.setAction(IDataRow.BORRAR);        
         errors = usuarioSrv.checkDataRow(usuario, "");
         assertTrue(errors.isEmpty());
         
-        usuario.setCodigo("xxxxxxx");
-        usuario.setOperation(IDataRow.AGREGAR);        
+        usuario.setLogin("xxxxxxx");
+        usuario.setAction(IDataRow.AGREGAR);        
         errors = usuarioSrv.checkDataRow(usuario, "");
         assertTrue(errors.isEmpty());
         
@@ -103,10 +103,10 @@ public class TestDataService extends TestClass{
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
         
         List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
-        rows.get(0).setOperation(IDataRow.MODIFICAR);
+        rows.get(0).setAction(IDataRow.MODIFICAR);
         usuarioSrv.checkDataRow(rows.get(0), "");
         
-        rows.get(0).setOperation(IDataRow.BORRAR);
+        rows.get(0).setAction(IDataRow.BORRAR);
         usuarioSrv.checkDataRow(rows.get(0), "");
     }        
     
@@ -132,7 +132,7 @@ public class TestDataService extends TestClass{
         
         List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
         assertTrue(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
-        rows.get(0).setUsuarioGrupo(null);        
+        rows.get(0).setUserGroup(null);        
         assertFalse(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));        
     }    
 
@@ -146,7 +146,7 @@ public class TestDataService extends TestClass{
         Map<String, IErrorReg> errors;        
         IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();        
         List<Pais> rows = dataService.findAll(Pais.class,dbInfo);
-        rows.get(0).setOperation(IDataRow.MODIFICAR);
+        rows.get(0).setAction(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado        
         errors = dataService.checkDataRow(rows.get(0), sessionId);
         assertTrue(errors.isEmpty());
@@ -161,7 +161,7 @@ public class TestDataService extends TestClass{
         
         List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
         UsuarioMiembro usuarioMiembro = rows.get(0);
-        usuarioMiembro.setOperation(IDataRow.MODIFICAR);
+        usuarioMiembro.setAction(IDataRow.MODIFICAR);
         
         Map<String, IErrorReg> errors = dataService.checkDataRow(rows.get(0), sessionId);
         assertTrue(errors.isEmpty());
@@ -178,7 +178,7 @@ public class TestDataService extends TestClass{
         List<Pais> rows = dataService.findAll(Pais.class,dbInfo);
         Pais pais = rows.get(0);
         //pais.setRegion(null);
-        pais.setOperation(IDataRow.MODIFICAR);
+        pais.setAction(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado                
         Map<String, IErrorReg> errors = dataService.checkDataRow(pais, sessionId);
         assertTrue(errors.isEmpty());

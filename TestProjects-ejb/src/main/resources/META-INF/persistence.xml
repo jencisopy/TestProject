@@ -13,7 +13,7 @@
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="catalogo"/>
-      <property name="oym.motordatos" value="SQLSERVER"/>
+      <property name="jbs.dbengine" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
 
@@ -31,7 +31,7 @@
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
       <property name="hibernate.id.new_generator_mappings" value="false"/>            
-      <property name="oym.motordatos" value="SQLSERVER"/>
+      <property name="jbs.dbengine" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
 
@@ -49,7 +49,7 @@
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
       <property name="hibernate.id.new_generator_mappings" value="false"/>            
-      <property name="oym.motordatos" value="SQLSERVER"/>
+      <property name="jbs.dbengine" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
     
@@ -67,7 +67,7 @@
       <property name="wildfly.jpa.twophasebootstrap" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
       <property name="hibernate.id.new_generator_mappings" value="false"/>            
-      <property name="oym.motordatos" value="SQLSERVER"/>
+      <property name="jbs.dbengine" value="SQLSERVER"/>
     </properties>
   </persistence-unit>
   
@@ -84,7 +84,7 @@
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
       <property name="hibernate.id.new_generator_mappings" value="false"/>
       <property name="hibernate.default_schema" value="datos"/>
-      <property name="oym.motordatos" value="POSTGRES"/>
+      <property name="jbs.dbengine" value="POSTGRES"/>
     </properties>
   </persistence-unit>
   -->

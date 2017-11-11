@@ -31,8 +31,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.apache.log4j.Logger;
 import org.javabeanstack.data.DataRow;
-import org.javabeanstack.model.IDicPermisoEmpresa;
 import org.javabeanstack.util.Dates;
+import org.javabeanstack.model.IAppCompanyAllowed;
 
 @Entity
 @Table(name = "bx_usuario_view")
@@ -222,11 +222,11 @@ public class BxUsuario extends DataRow  {
         this.idempresa = idempresa;
     }
 
-    public List<IDicPermisoEmpresa> getDicPermisoEmpresaList() {
+    public List<IAppCompanyAllowed> getDicPermisoEmpresaList() {
         return null;
     }
 
-    public void setDicPermisoEmpresaList(List<IDicPermisoEmpresa> dicPermisoEmpresaList) {
+    public void setDicPermisoEmpresaList(List<IAppCompanyAllowed> dicPermisoEmpresaList) {
         //this.dicPermisoEmpresaList = (List<DicPermisoEmpresa>)(List<?>)dicPermisoEmpresaList;
     }
 
