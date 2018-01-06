@@ -97,7 +97,7 @@
             <transaction-type>Container</transaction-type>                                                
         </session>        
         --> 
-        
+
         <session>
             <ejb-name>AppConfig</ejb-name>
             <ejb-class>net.makerapp.config.AppConfig</ejb-class>

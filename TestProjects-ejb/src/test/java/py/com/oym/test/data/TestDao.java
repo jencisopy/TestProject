@@ -8,6 +8,7 @@ package py.com.oym.test.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.makerapp.model.views.EmpresaparamView;
 import org.javabeanstack.data.IDBLinkInfo;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -43,8 +44,15 @@ public class TestDao extends TestClass{
                 (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         Map<String, Object> params = new HashMap<>();
         params.put("idempresa", 2L);
-        IDBLinkInfo dbInfo = dataLink.getUserSession().getDbLinkInfo();
-        List<Object> list = dao.findByNativeQuery(dbInfo,"select codigo, nombre from datos.item where idempresa = :idempresa", params, 10, 10);
+        List<Object> list = dao.findByNativeQuery(sessionId,"select codigo, nombre from datos.item where idempresa = :idempresa", params, 10, 10);
+        assertNotNull(list);
+    }
+    
+    @Test
+    public void testDao3() throws Exception{
+        IGenericDAORemote dao  = 
+                (IGenericDAORemote) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
+        List<EmpresaparamView> list = dao.find(EmpresaparamView.class, sessionId);
         assertNotNull(list);
     }
 }

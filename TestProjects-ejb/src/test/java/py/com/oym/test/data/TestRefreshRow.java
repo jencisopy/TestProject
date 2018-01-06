@@ -25,7 +25,7 @@ public class TestRefreshRow extends TestClass{
         IGenericDAO dao  = 
                 (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         
-        Usuario row = dao.find(Usuario.class,null ,14L);
+        Usuario row = dao.findById(Usuario.class,null ,14L);
         assertNotNull(row.getUserMemberList().get(0));
         row = dao.refreshRow(null, row);
         System.out.println(row.getFullName());        

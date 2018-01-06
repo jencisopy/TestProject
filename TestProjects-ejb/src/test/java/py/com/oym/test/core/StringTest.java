@@ -154,7 +154,7 @@ public class StringTest {
         System.out.println(Dates.toString(var, "yyyyMMdd"));        
     }
     
-    //@Test
+    @Test
     public void testSubstr(){
         String var = "Enero";
         System.out.println(Strings.substr(var,0,10));

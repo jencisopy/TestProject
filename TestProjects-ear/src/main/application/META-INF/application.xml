@@ -3,7 +3,7 @@
     <display-name>TestProjects-ear</display-name>
     <application-name>TestProjects-ear</application-name>
     <module>
-        <ejb>TestProjects-ejb-1.1.0-SNAPSHOT.jar</ejb>
+        <ejb>TestProjects-ejb-1.2.0-SNAPSHOT.jar</ejb>
     </module>
     <library-directory>lib</library-directory>
 </application> 

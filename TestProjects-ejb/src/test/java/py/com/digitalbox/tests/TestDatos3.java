@@ -165,7 +165,7 @@ public class TestDatos3 {
         plantillaDet.insertRow();
         
         String queryString = "select o from BxCampo o where idempresa = 10 and codigo = '002'";
-        BxCampo bxCampo = dataLink.findByQuery(BxCampo.class, queryString, null);
+        BxCampo bxCampo = dataLink.findByQuery(queryString, null);
         ((BxPlantilladetalle)plantillaDet.getRow()).setBxPlantilla((BxPlantilla)plantilla.getRow());
         
         plantillaDet.setField("bxcampo",bxCampo);

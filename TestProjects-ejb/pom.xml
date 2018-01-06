@@ -4,7 +4,7 @@
     <parent>
         <artifactId>TestProjects</artifactId>
         <groupId>py.com.oym</groupId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>1.2.0-SNAPSHOT</version>
     </parent>
 
     <groupId>py.com.oym</groupId>
@@ -45,18 +45,36 @@
             <version>2.11.0</version>
             <scope>test</scope>            
         </dependency>
+        <!--JavaBeanStack FrameWork-->        
+        <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>jbs-interfaces</artifactId>
+            <version>${javabeanstack.frame}</version>
+        </dependency>
         
         <dependency>
             <groupId>org.javabeanstack</groupId>
-            <artifactId>business</artifactId>
+            <artifactId>jbs-core</artifactId>
             <version>${javabeanstack.frame}</version>
         </dependency>
         <dependency>
             <groupId>org.javabeanstack</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>jbs-core</artifactId>
             <version>${javabeanstack.frame}</version>
+            <classifier>javadoc</classifier>
         </dependency>
         
+        <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>jbs-business</artifactId>
+            <version>${javabeanstack.frame}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Oym-frame-business</artifactId>
+            <version>${oym.frame.version}</version>
+        </dependency>   
+                
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>

@@ -87,7 +87,7 @@ public class TestDatos5 {
         campo.setCodigo("codigo");
         campo.setIdempresa(10L);
 
-        BxCampo camporesult = dataLink.findByUk(BxCampo.class, campo);
+        BxCampo camporesult = dataLink.findByUk(campo);
         if (camporesult != null) {
             result = false;
         }
@@ -113,7 +113,7 @@ public class TestDatos5 {
         BxCampo campo = new BxCampo();
         campo.setCodigo("12345");
         campo.setIdempresa(10L);
-        BxCampo camporesult = dataLink.findByUk(BxCampo.class, campo);
+        BxCampo camporesult = dataLink.findByUk(campo);
         IDataResult resultado;
         if (camporesult != null) {
             camporesult.setNombre("CodigoUpdated");
@@ -131,7 +131,7 @@ public class TestDatos5 {
         BxCampo campo = new BxCampo();
         campo.setCodigo("codigo");
         campo.setIdempresa(10L);
-        BxCampo camporesult = dataLink.findByQuery(BxCampo.class,"select o from BxCampo o where o.codigo='12345' and o.idempresa=10",null);
+        BxCampo camporesult = dataLink.findByQuery("select o from BxCampo o where o.codigo='12345' and o.idempresa=10",null);
         if (camporesult != null) {
             assertTrue(true);
         } else {
@@ -145,7 +145,7 @@ public class TestDatos5 {
         BxCampo campo = new BxCampo();
         campo.setCodigo("codigo");
         campo.setIdempresa(10L);
-        BxCampo camporesult = dataLink.findByQuery(BxCampo.class,"select o from BxCampo o where o.codigo='12345' and o.idempresa=10",null);
+        BxCampo camporesult = dataLink.findByQuery("select o from BxCampo o where o.codigo='12345' and o.idempresa=10",null);
         IDataResult resultado;
         if (camporesult != null) {
             resultado = dataLink.remove(camporesult);

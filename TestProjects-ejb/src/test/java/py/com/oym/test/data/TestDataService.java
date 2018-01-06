@@ -43,10 +43,10 @@ public class TestDataService extends TestClass{
     public void testCheckUnique1() throws Exception {
         IDataService dataService  = 
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
-        Usuario row = dataService.find(Usuario.class,null ,14L);
+        Usuario row = dataService.findById(Usuario.class,null ,14L);
         //dataService.checkDataRow(row,"");
         // Va a pasar la prueba porque es el mismo objeto
-        assertTrue(dataService.checkUniqueKey(row, ""));
+        assertTrue(dataService.checkUniqueKey("", row));
     }
 
     /** Prueba control de los unique keys
@@ -56,40 +56,39 @@ public class TestDataService extends TestClass{
         IDataServiceRemote dataService  = 
                 (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
         
-        IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();
-        Moneda row = dataService.find(Moneda.class,dbInfo ,234L);
+        Moneda row = dataService.findById(Moneda.class,sessionId ,234L);
         //dataService.checkDataRow(row,"");
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado
-        assertTrue(dataService.checkUniqueKey(row, sessionId));
+        assertTrue(dataService.checkUniqueKey(sessionId, row));
     }
 
     /** Prueba unique key
      * @throws java.lang.Exception */
-    //@Test    
+    @Test    
     public void testCheckUniqueKey3() throws Exception {
         IDataService usuarioSrv  = 
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
         
-        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
+        List<Usuario> rows = usuarioSrv.find(Usuario.class,null);
         Usuario usuario = rows.get(0);
         usuario.setIduser(0L);
         Map<String, IErrorReg> errors;
 
         usuario.setAction(IDataRow.MODIFICAR);
-        errors = usuarioSrv.checkDataRow(usuario, "");
-        assertFalse(errors.isEmpty());
+        errors = usuarioSrv.checkDataRow("", usuario);
+        assertTrue(errors.isEmpty());
         
         usuario.setAction(IDataRow.AGREGAR);        
-        errors = usuarioSrv.checkDataRow(usuario, "");
+        errors = usuarioSrv.checkDataRow("", usuario);
         assertFalse(errors.isEmpty());
 
         usuario.setAction(IDataRow.BORRAR);        
-        errors = usuarioSrv.checkDataRow(usuario, "");
+        errors = usuarioSrv.checkDataRow("", usuario);
         assertTrue(errors.isEmpty());
         
         usuario.setLogin("xxxxxxx");
         usuario.setAction(IDataRow.AGREGAR);        
-        errors = usuarioSrv.checkDataRow(usuario, "");
+        errors = usuarioSrv.checkDataRow("", usuario);
         assertTrue(errors.isEmpty());
         
      }        
@@ -104,10 +103,10 @@ public class TestDataService extends TestClass{
         
         List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
         rows.get(0).setAction(IDataRow.MODIFICAR);
-        usuarioSrv.checkDataRow(rows.get(0), "");
+        usuarioSrv.checkDataRow("", rows.get(0));
         
         rows.get(0).setAction(IDataRow.BORRAR);
-        usuarioSrv.checkDataRow(rows.get(0), "");
+        usuarioSrv.checkDataRow("", rows.get(0));
     }        
     
     /** Prueba chequeo de datos
@@ -118,22 +117,22 @@ public class TestDataService extends TestClass{
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
         
         List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
-        usuarioSrv.edit(rows.get(0), "");
+        usuarioSrv.merge("", rows.get(0));
         //dataService.checkDataRow(rows.get(0), "");
        
     }        
 
     /** Prueba de chequeo de los foreignkeys
      * @throws java.lang.Exception */
-    @Test    
+    //@Test    
     public void testCheckForeignkey() throws Exception {
         IDataServiceRemote dataService  = 
                 (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
         
         List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
-        assertTrue(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));
+        assertTrue(dataService.checkForeignKey("",rows.get(0),"usuariogrupo"));
         rows.get(0).setUserGroup(null);        
-        assertFalse(dataService.checkForeignKey(rows.get(0),"usuariogrupo",""));        
+        assertFalse(dataService.checkForeignKey("", rows.get(0),"usuariogrupo"));        
     }    
 
     /** Chequeo de los foreignkeys
@@ -144,11 +143,10 @@ public class TestDataService extends TestClass{
                 (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
         
         Map<String, IErrorReg> errors;        
-        IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();        
-        List<Pais> rows = dataService.findAll(Pais.class,dbInfo);
+        List<Pais> rows = dataService.find(Pais.class,sessionId);
         rows.get(0).setAction(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado        
-        errors = dataService.checkDataRow(rows.get(0), sessionId);
+        errors = dataService.checkDataRow(sessionId, rows.get(0));
         assertTrue(errors.isEmpty());
     }    
 
@@ -163,7 +161,7 @@ public class TestDataService extends TestClass{
         UsuarioMiembro usuarioMiembro = rows.get(0);
         usuarioMiembro.setAction(IDataRow.MODIFICAR);
         
-        Map<String, IErrorReg> errors = dataService.checkDataRow(rows.get(0), sessionId);
+        Map<String, IErrorReg> errors = dataService.checkDataRow(sessionId, rows.get(0));
         assertTrue(errors.isEmpty());
     }
     
@@ -174,13 +172,12 @@ public class TestDataService extends TestClass{
         IDataServiceRemote dataService  = 
                 (IDataServiceRemote) context.lookup(jndiProject+"PaisSrv!org.javabeanstack.services.IDataServiceRemote");
         
-        IDBLinkInfo dbInfo = dataService.getUserSession(sessionId).getDbLinkInfo();        
-        List<Pais> rows = dataService.findAll(Pais.class,dbInfo);
+        List<Pais> rows = dataService.find(Pais.class, sessionId);
         Pais pais = rows.get(0);
         //pais.setRegion(null);
         pais.setAction(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado                
-        Map<String, IErrorReg> errors = dataService.checkDataRow(pais, sessionId);
+        Map<String, IErrorReg> errors = dataService.checkDataRow(sessionId, pais);
         assertTrue(errors.isEmpty());
     }    
  }
