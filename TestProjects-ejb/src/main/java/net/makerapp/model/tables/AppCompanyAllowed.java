@@ -1,28 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package py.com.oym.model.tables;
+package net.makerapp.model.tables;
 
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.Entity; 
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IAppCompanyAllowed;
 
 @Entity
 @Table(name = "dic_permisoempresa")
-public class DicPermisoEmpresa extends DataRow implements IAppCompanyAllowed {
-    
+public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
     private static final long serialVersionUID = 1L;
     
 
@@ -65,7 +59,7 @@ public class DicPermisoEmpresa extends DataRow implements IAppCompanyAllowed {
     private String appuser;
     
 
-    public DicPermisoEmpresa() {
+    public AppCompanyAllowed() {
     }
 
     @Override
@@ -134,27 +128,4 @@ public class DicPermisoEmpresa extends DataRow implements IAppCompanyAllowed {
     public void setAppuser(String appuser) {
         this.appuser = appuser;
     }
-
-/*
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (dicPermisoEmpresaPK != null ? dicPermisoEmpresaPK.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof DicPermisoEmpresa)) {
-            return false;
-        }
-        DicPermisoEmpresa other = (DicPermisoEmpresa) object;
-        return (this.dicPermisoEmpresaPK != null || other.dicPermisoEmpresaPK == null) && (this.dicPermisoEmpresaPK == null || this.dicPermisoEmpresaPK.equals(other.dicPermisoEmpresaPK));
-    }
-
-    @Override
-    public String toString() {
-        return "DicPermisoempresa{" + "dicPermisoempresaPK=" + dicPermisoEmpresaPK + ", permitir=" + permitir + ", negar=" + negar + ", fechacreacion=" + fechacreacion + ", fechamodificacion=" + fechamodificacion + ", appuser=" + appuser + '}';
-    }
-*/
 }

@@ -16,7 +16,7 @@ import org.javabeanstack.error.IErrorReg;
 import org.javabeanstack.services.DataService;
 import org.javabeanstack.services.IDataServiceLocal;
 import org.javabeanstack.services.IDataServiceRemote;
-import py.com.oym.model.tables.Usuario;
+import net.makerapp.model.tables.AppUser;
 
 /**
  *
@@ -32,7 +32,7 @@ public class PaisSrv extends DataService{
                  action    = {IDataRow.AGREGAR,
                               IDataRow.MODIFICAR,
                               IDataRow.BORRAR}) 
-    public IErrorReg checkRegion(Usuario row, String sessionId){
+    public IErrorReg checkRegion(AppUser row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo");
         return errorReg;

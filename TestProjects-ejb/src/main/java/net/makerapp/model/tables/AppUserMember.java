@@ -1,4 +1,4 @@
-package py.com.oym.model.tables;
+package net.makerapp.model.tables;
 
 import java.util.Objects; 
 import javax.persistence.Basic;
@@ -12,12 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.javabeanstack.data.DataRow;
-import org.javabeanstack.model.IUser;
-import org.javabeanstack.model.IUserMember;
+import org.javabeanstack.model.IAppUser;
+import org.javabeanstack.model.IAppUserMember;
 
 @Entity
 @Table(name = "usuariomiembro")
-public class UsuarioMiembro extends DataRow implements IUserMember {
+public class AppUserMember extends DataRow implements IAppUserMember {
     
     private static final long serialVersionUID = 1L;
     
@@ -29,13 +29,13 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
     
     @JoinColumn(name = "idmiembro", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
-    private Usuario usuarioMiembro;
+    private AppUser usuarioMiembro;
 
     @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
-    private Usuario usuarioGrupo;
+    private AppUser usuarioGrupo;
     
-    public UsuarioMiembro() {
+    public AppUserMember() {
     }
 
     @Override
@@ -49,23 +49,23 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
     }
 
     @Override
-    public IUser getUserMember() {
+    public IAppUser getUserMember() {
         return usuarioMiembro;
     }
 
     @Override
-    public void setUserMember(IUser usuarioMiembro) {
-        this.usuarioMiembro = (Usuario)usuarioMiembro;
+    public void setUserMember(IAppUser usuarioMiembro) {
+        this.usuarioMiembro = (AppUser)usuarioMiembro;
     }
 
     @Override
-    public IUser getUserGroup() {
+    public IAppUser getUserGroup() {
         return usuarioGrupo;
     }
 
     @Override
-    public void setUserGroup(IUser usuarioGrupo) {
-        this.usuarioGrupo = (Usuario)usuarioGrupo;
+    public void setUserGroup(IAppUser usuarioGrupo) {
+        this.usuarioGrupo = (AppUser)usuarioGrupo;
     }
 
 
@@ -84,7 +84,7 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UsuarioMiembro other = (UsuarioMiembro) obj;
+        final AppUserMember other = (AppUserMember) obj;
         return Objects.equals(this.idusuariomiembro, other.idusuariomiembro);
     }
 
@@ -95,10 +95,10 @@ public class UsuarioMiembro extends DataRow implements IUserMember {
 
     @Override
     public boolean equivalent(Object o) {
-        if (!(o instanceof UsuarioMiembro)) {
+        if (!(o instanceof AppUserMember)) {
             return false;
         }
-        UsuarioMiembro obj = (UsuarioMiembro) o;
+        AppUserMember obj = (AppUserMember) o;
         return (this.idusuariomiembro.equals(obj.getIdusermember())); 
     }
     

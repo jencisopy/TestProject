@@ -14,7 +14,7 @@ import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.services.DataService;
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
-import py.com.oym.model.tables.Usuario;
+import net.makerapp.model.tables.AppUser;
 
 
 /**
@@ -30,7 +30,7 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
                              IDataRow.MODIFICAR,
                              IDataRow.BORRAR}) 
     @Override
-    public IErrorReg checkCodigo(Usuario row, String sessionId){
+    public IErrorReg checkCodigo(AppUser row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo");
         return errorReg;
@@ -39,7 +39,7 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
     @CheckMethod(fieldName = "codigo",
                  action = {IDataRow.BORRAR}) 
     @Override
-    public IErrorReg checkCodigo2(Usuario row, String sessionId){
+    public IErrorReg checkCodigo2(AppUser row, String sessionId){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo2");
         return errorReg;
@@ -47,7 +47,7 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
     
     @CheckMethod(fieldName = "nombre")     
     @Override
-    public IErrorReg checkNombre(Usuario row, String sessionId){
+    public IErrorReg checkNombre(AppUser row, String sessionId){
         IErrorReg errorReg = new ErrorReg();
         LOGGER.info("IN checkNombre");
         //errorReg.setMessage("prueba de error");

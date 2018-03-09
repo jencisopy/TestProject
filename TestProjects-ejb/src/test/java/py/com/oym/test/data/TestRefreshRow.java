@@ -7,7 +7,7 @@ package py.com.oym.test.data;
 
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-import py.com.oym.model.tables.Usuario;
+import net.makerapp.model.tables.AppUser;
 import org.javabeanstack.data.IGenericDAO;
 
 /**
@@ -25,7 +25,7 @@ public class TestRefreshRow extends TestClass{
         IGenericDAO dao  = 
                 (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         
-        Usuario row = dao.findById(Usuario.class,null ,14L);
+        AppUser row = dao.findById(AppUser.class,null ,14L);
         assertNotNull(row.getUserMemberList().get(0));
         row = dao.refreshRow(null, row);
         System.out.println(row.getFullName());        

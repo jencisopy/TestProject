@@ -1,4 +1,4 @@
-package py.com.oym.model.tables;
+package net.makerapp.model.tables;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,21 +19,19 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.apache.commons.io.IOUtils;
 
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.io.IOUtil;
-import org.javabeanstack.model.IUser;
-import org.javabeanstack.model.IUserMember;
 import org.javabeanstack.model.IAppCompanyAllowed;
+import org.javabeanstack.model.IAppUser;
+import org.javabeanstack.model.IAppUserMember;
 
 @Entity
-@Table(name = "usuario",
-        uniqueConstraints = { @UniqueConstraint(columnNames = {"codigo"})})
-public class Usuario extends DataRow implements IUser {
+@Table(name = "usuario")
+public class AppUser extends DataRow implements IAppUser {
 
     private static final long serialVersionUID = 1L;
 
@@ -102,20 +100,17 @@ public class Usuario extends DataRow implements IUser {
     @Column(name = "avatar")
     private byte[] avatar;
 
-    @Transient
-    private String avatarAsString = "";
-
     @Column(name = "fechamodificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechamodificacion;
 
     @OneToMany(mappedBy = "usuarioMiembro")
-    private List<UsuarioMiembro> listaUsuarioMiembro = new ArrayList<>();
+    private List<AppUserMember> listaUsuarioMiembro = new ArrayList<>();
 
     @Column(name = "idempresa")
     private Long idempresa;
 
-    public Usuario() {
+    public AppUser() {
     }
 
     @Override
@@ -268,13 +263,13 @@ public class Usuario extends DataRow implements IUser {
     }
 
     @Override
-    public List<IUserMember> getUserMemberList() {
-        return (List<IUserMember>) (List<?>) listaUsuarioMiembro;
+    public List<IAppUserMember> getUserMemberList() {
+        return (List<IAppUserMember>) (List<?>) listaUsuarioMiembro;
     }
 
     @Override
-    public void setUserMemberList(List<IUserMember> listaUsuarioMiembro) {
-        this.listaUsuarioMiembro = (List<UsuarioMiembro>) (List<?>) listaUsuarioMiembro;
+    public void setUserMemberList(List<IAppUserMember> listaUsuarioMiembro) {
+        this.listaUsuarioMiembro = (List<AppUserMember>) (List<?>) listaUsuarioMiembro;
     }
 
     @Override
@@ -314,7 +309,7 @@ public class Usuario extends DataRow implements IUser {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Usuario other = (Usuario) obj;
+        final AppUser other = (AppUser) obj;
         if (!Objects.equals(this.idusuario, other.idusuario)) {
             return false;
         }
@@ -323,10 +318,10 @@ public class Usuario extends DataRow implements IUser {
 
     @Override
     public boolean equivalent(Object o) {
-        if (!(o instanceof Usuario)) {
+        if (!(o instanceof AppUser)) {
             return false;
         }
-        Usuario obj = (Usuario) o;
+        AppUser obj = (AppUser) o;
         return (this.codigo.trim().equals(obj.getLogin().trim()));
     }
 
@@ -345,35 +340,6 @@ public class Usuario extends DataRow implements IUser {
         this.avatar = avatar;
     }
 
-    @Override
-    public String getAvatarAsString() {
-        if ("".equals(avatarAsString)) {
-            if (this.avatar != null) {
-                avatarAsString = Base64.getEncoder().encodeToString(this.avatar);
-            } else {
-//                ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-//                String imagePath = externalContext.getRealPath("") + File.separator + "resources" + "/ultima-layout/images/userlogo.png";               
-                //File file = new File(imagePath);
-                try (InputStream imageData = IOUtil.getResourceAsStream(getClass(), "/images/userlogo.png")) {
-                    // Reading a Image file from file system
-//                    byte imageData[] = new byte[(int) file.length()];
-//                    imageData.read(imageData);
-                    byte[] bytes = IOUtils.toByteArray(imageData);
-                    avatarAsString = Base64.getEncoder().encodeToString(bytes);
-                } catch (FileNotFoundException e) {
-                    System.out.println("Image not found" + e);
-                } catch (IOException ioe) {
-                    System.out.println("Exception while reading the Image " + ioe);
-                }
-            }
-        }
-        return avatarAsString;
-    }
-
-    @Override
-    public void setAvatarAsString(String avatarAsString) {
-        this.avatarAsString = avatarAsString;
-    }
 
     public String getEmail1() {
         return email1;

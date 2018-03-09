@@ -16,8 +16,8 @@ import org.javabeanstack.services.IDataServiceRemote;
 import org.javabeanstack.services.IDataService;
 import org.javabeanstack.error.IErrorReg;
 import net.makerapp.model.tables.Pais;
-import py.com.oym.model.tables.Usuario;
-import py.com.oym.model.tables.UsuarioMiembro;
+import net.makerapp.model.tables.AppUser;
+import net.makerapp.model.tables.AppUserMember;
 import net.makerapp.model.tables.Moneda;
 import org.javabeanstack.data.IDBLinkInfo;
 import org.junit.Test;
@@ -43,7 +43,7 @@ public class TestDataService extends TestClass{
     public void testCheckUnique1() throws Exception {
         IDataService dataService  = 
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
-        Usuario row = dataService.findById(Usuario.class,null ,14L);
+        AppUser row = dataService.findById(AppUser.class,null ,14L);
         //dataService.checkDataRow(row,"");
         // Va a pasar la prueba porque es el mismo objeto
         assertTrue(dataService.checkUniqueKey("", row));
@@ -69,8 +69,8 @@ public class TestDataService extends TestClass{
         IDataService usuarioSrv  = 
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
         
-        List<Usuario> rows = usuarioSrv.find(Usuario.class,null);
-        Usuario usuario = rows.get(0);
+        List<AppUser> rows = usuarioSrv.find(AppUser.class,null);
+        AppUser usuario = rows.get(0);
         usuario.setIduser(0L);
         Map<String, IErrorReg> errors;
 
@@ -101,7 +101,7 @@ public class TestDataService extends TestClass{
         IDataService usuarioSrv  = 
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
         
-        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
+        List<AppUser> rows = usuarioSrv.findAll(AppUser.class,null);
         rows.get(0).setAction(IDataRow.MODIFICAR);
         usuarioSrv.checkDataRow("", rows.get(0));
         
@@ -116,7 +116,7 @@ public class TestDataService extends TestClass{
         IDataService usuarioSrv  = 
                 (IDataService) context.lookup(jndiProject+"UsuarioSrv!net.makerapp.services.IUsuarioSrvRemote");
         
-        List<Usuario> rows = usuarioSrv.findAll(Usuario.class,null);
+        List<AppUser> rows = usuarioSrv.findAll(AppUser.class,null);
         usuarioSrv.merge("", rows.get(0));
         //dataService.checkDataRow(rows.get(0), "");
        
@@ -129,7 +129,7 @@ public class TestDataService extends TestClass{
         IDataServiceRemote dataService  = 
                 (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
         
-        List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
+        List<AppUserMember> rows = dataService.findAll(AppUserMember.class,null);
         assertTrue(dataService.checkForeignKey("",rows.get(0),"usuariogrupo"));
         rows.get(0).setUserGroup(null);        
         assertFalse(dataService.checkForeignKey("", rows.get(0),"usuariogrupo"));        
@@ -157,8 +157,8 @@ public class TestDataService extends TestClass{
         IDataServiceRemote dataService  = 
                 (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
         
-        List<UsuarioMiembro> rows = dataService.findAll(UsuarioMiembro.class,null);
-        UsuarioMiembro usuarioMiembro = rows.get(0);
+        List<AppUserMember> rows = dataService.findAll(AppUserMember.class,null);
+        AppUserMember usuarioMiembro = rows.get(0);
         usuarioMiembro.setAction(IDataRow.MODIFICAR);
         
         Map<String, IErrorReg> errors = dataService.checkDataRow(sessionId, rows.get(0));

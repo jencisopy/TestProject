@@ -15,12 +15,12 @@ import static org.junit.Assert.*;
 
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
-import org.javabeanstack.log.ILogManager;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.IUserSession;
-import org.javabeanstack.model.ILogRecord;
 
 import py.com.oym.model.tables.DicLog;
+import org.javabeanstack.model.IAppLogRecord;
+import org.javabeanstack.log.ILogManager;
 
 
 /**
@@ -77,7 +77,7 @@ public class TestLog {
         boolean result
                 = logManager.dbWrite(DicLog.class, userSession.getSessionId(),
                         "PRUEBA DE MENSAJE 3", "PRUEBA DE MENSAJE INFO",
-                        100, ILogRecord.CATEGORY_APP, ILogRecord.LEVEL_ERROR, "xx", "xx1",
+                        100, IAppLogRecord.CATEGORY_APP, IAppLogRecord.LEVEL_ERROR, "xx", "xx1",
                         0, 0);
         assertTrue(result);
     }
@@ -85,9 +85,9 @@ public class TestLog {
     @Test
     public void test5() throws NamingException {
         ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
-        ILogRecord dicLog = new DicLog();
-        dicLog.setCategory(ILogRecord.CATEGORY_APP);
-        dicLog.setLevel(ILogRecord.LEVEL_INFO);
+        IAppLogRecord dicLog = new DicLog();
+        dicLog.setCategory(IAppLogRecord.CATEGORY_APP);
+        dicLog.setLevel(IAppLogRecord.LEVEL_INFO);
         dicLog.setMessage("PRUEBA MENSAJE 4");
         dicLog.setMessageInfo("PRUEBA MENSAJE INFO");
 

@@ -16,6 +16,8 @@ import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.services.IDataService;
+import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -133,7 +135,7 @@ public class TestDataObject extends TestClass {
         assertTrue(filter.contains("idempresa"));
     }
     
-    @Test
+    //@Test
     public void test6DBFilter() throws NamingException, SessionError, Exception{
         System.out.println("6"); 
         
@@ -150,4 +152,22 @@ public class TestDataObject extends TestClass {
         System.out.println(region.getFilter());        
         assertTrue(region.getSelectCmd().contains("IN("));
     }    
+    
+    @Test
+    public void test7getData() throws NamingException, SessionError, Exception{
+        System.out.println("7"); 
+        IDataService dataservice  = 
+                (IDataService) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
+        
+        //Region
+        dataLink.setDao(dataservice);
+        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        region.open();
+        Assert.assertNotNull(region.getDataRows());        
+        
+        region.setOrder("codigo desc");
+        region.setFilter("codigo = '01'");
+        region.requery();
+        Assert.assertNotNull(region.getDataRows());        
+    }
 }

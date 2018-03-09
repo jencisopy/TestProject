@@ -1,4 +1,4 @@
-package py.com.oym.model.tables;
+package net.makerapp.model.tables;
 
 import java.util.Date;
 import java.util.List;
@@ -27,29 +27,8 @@ import org.javabeanstack.model.IAppCompany;
 @Entity
 @Table(name = "empresa")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e"),
-    @NamedQuery(name = "Empresa.findByIdempresa", query = "SELECT e FROM Empresa e WHERE e.idempresa = :idempresa"),
-    @NamedQuery(name = "Empresa.findByIdempresamask", query = "SELECT e FROM Empresa e WHERE e.idempresamask = :idempresamask"),
-    @NamedQuery(name = "Empresa.findByIdperiodo", query = "SELECT e FROM Empresa e WHERE e.idperiodo = :idperiodo"),
-    @NamedQuery(name = "Empresa.findByNombre", query = "SELECT e FROM Empresa e WHERE e.nombre = :nombre"),
-    @NamedQuery(name = "Empresa.findByRazonsocial", query = "SELECT e FROM Empresa e WHERE e.razonsocial = :razonsocial"),
-    @NamedQuery(name = "Empresa.findByDireccion", query = "SELECT e FROM Empresa e WHERE e.direccion = :direccion"),
-    @NamedQuery(name = "Empresa.findByTelefono", query = "SELECT e FROM Empresa e WHERE e.telefono = :telefono"),
-    @NamedQuery(name = "Empresa.findByRuc", query = "SELECT e FROM Empresa e WHERE e.ruc = :ruc"),
-    @NamedQuery(name = "Empresa.findByDatos", query = "SELECT e FROM Empresa e WHERE e.datos = :datos"),
-    @NamedQuery(name = "Empresa.findByMenu", query = "SELECT e FROM Empresa e WHERE e.menu = :menu"),
-    @NamedQuery(name = "Empresa.findByFilesystem", query = "SELECT e FROM Empresa e WHERE e.filesystem = :filesystem"),
-    @NamedQuery(name = "Empresa.findByLogo", query = "SELECT e FROM Empresa e WHERE e.logo = :logo"),
-    @NamedQuery(name = "Empresa.findByMotordatos", query = "SELECT e FROM Empresa e WHERE e.motordatos = :motordatos"),
-    @NamedQuery(name = "Empresa.findByPais", query = "SELECT e FROM Empresa e WHERE e.pais = :pais"),
-    @NamedQuery(name = "Empresa.findByEmpresarubro", query = "SELECT e FROM Empresa e WHERE e.empresarubro = :empresarubro"),
-    @NamedQuery(name = "Empresa.findByFechacreacion", query = "SELECT e FROM Empresa e WHERE e.fechacreacion = :fechacreacion"),
-    @NamedQuery(name = "Empresa.findByFechamodificacion", query = "SELECT e FROM Empresa e WHERE e.fechamodificacion = :fechamodificacion"),
-    @NamedQuery(name = "Empresa.findByFechareplicacion", query = "SELECT e FROM Empresa e WHERE e.fechareplicacion = :fechareplicacion"),
-    @NamedQuery(name = "Empresa.findByFirma", query = "SELECT e FROM Empresa e WHERE e.firma = :firma"),
-    @NamedQuery(name = "Empresa.findByAppuser", query = "SELECT e FROM Empresa e WHERE e.appuser = :appuser")})
-public class Empresa extends DataRow implements IAppCompany {
+public class AppCompany extends DataRow implements IAppCompany {
+
     private static final long serialVersionUID = 1L;
     @Id
 //    @GeneratedValue(strategy=GenerationType.IDENTITY)    
@@ -87,9 +66,9 @@ public class Empresa extends DataRow implements IAppCompany {
     @Size(max = 50)
     @Column(name = "filesystem")
     private String filesystem;
-    @Size(max = 100)
-    @Column(name = "logo")
-    private String logo;
+
+    @Column(name = "logo2")
+    private byte[] logo2;
     @Size(max = 50)
     @Column(name = "motordatos")
     private String motordatos;
@@ -99,8 +78,7 @@ public class Empresa extends DataRow implements IAppCompany {
     @Size(max = 10)
     @Column(name = "empresarubro")
     private String empresarubro;
-    
-    
+
     @Column(name = "fechacreacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechacreacion;
@@ -118,19 +96,19 @@ public class Empresa extends DataRow implements IAppCompany {
     private String appuser;
 
     @OneToMany(mappedBy = "idempresagrupo")
-    private List<Empresa> empresaList;
+    private List<AppCompany> empresaList;
 
     @Column(name = "idempresagrupo")
     private Long idempresagrupo;
 
-    public Empresa() {
+    public AppCompany() {
     }
 
-    public Empresa(Long idempresa) {
+    public AppCompany(Long idempresa) {
         this.idempresa = idempresa;
     }
 
-    public Empresa(Long idempresa, String nombre) {
+    public AppCompany(Long idempresa, String nombre) {
         this.idempresa = idempresa;
         this.nombre = nombre;
     }
@@ -245,15 +223,6 @@ public class Empresa extends DataRow implements IAppCompany {
         this.filesystem = filesystem;
     }
 
-    @Override
-    public String getLogo() {
-        return logo;
-    }
-
-    @Override
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
 
     @Override
     public String getDbengine() {
@@ -297,7 +266,6 @@ public class Empresa extends DataRow implements IAppCompany {
         return fechamodificacion;
     }
 
-
     public void setFechamodificacion(Date fechamodificacion) {
         this.fechamodificacion = fechamodificacion;
     }
@@ -328,15 +296,26 @@ public class Empresa extends DataRow implements IAppCompany {
         this.appuser = appuser;
     }
 
+    
+    @Override
+    public byte[] getLogo() {
+        return logo2;
+    }
+
+    @Override
+    public void setLogo(byte[] logo) {
+        this.logo2 = logo;
+    }
+    
     @XmlTransient
     @Override
     public List<IAppCompany> getCompanyList() {
-        return (List<IAppCompany>)(List<?>)empresaList;
+        return (List<IAppCompany>) (List<?>) empresaList;
     }
 
     @Override
     public void setCompanyList(List<IAppCompany> empresaList) {
-        this.empresaList = (List<Empresa>)(List<?>)empresaList;
+        this.empresaList = (List<AppCompany>) (List<?>) empresaList;
     }
 
     @Override
@@ -358,10 +337,10 @@ public class Empresa extends DataRow implements IAppCompany {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof Empresa)) {
+        if (!(object instanceof AppCompany)) {
             return false;
         }
-        Empresa other = (Empresa) object;
+        AppCompany other = (AppCompany) object;
         if ((this.idempresa == null && other.idempresa != null) || (this.idempresa != null && !this.idempresa.equals(other.idempresa))) {
             return false;
         }
@@ -375,11 +354,11 @@ public class Empresa extends DataRow implements IAppCompany {
 
     @Override
     public boolean equivalent(Object o) {
-        if (!(o instanceof Empresa)) {
+        if (!(o instanceof AppCompany)) {
             return false;
         }
-        Empresa obj = (Empresa) o;
-        return (this.idempresa.equals(obj.getIdcompany())); 
+        AppCompany obj = (AppCompany) o;
+        return (this.idempresa.equals(obj.getIdcompany()));
     }
-    
+
 }

@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.javabeanstack.data.DataRow;
-import org.javabeanstack.model.ILogRecord;
+import org.javabeanstack.model.IAppLogRecord;
 
 /**
  *
@@ -42,7 +42,7 @@ import org.javabeanstack.model.ILogRecord;
     , @NamedQuery(name = "DicLog.findByNromensaje", query = "SELECT d FROM DicLog d WHERE d.nromensaje = :nromensaje")
     , @NamedQuery(name = "DicLog.findByClase", query = "SELECT d FROM DicLog d WHERE d.clase = :clase")
     , @NamedQuery(name = "DicLog.findByTipo", query = "SELECT d FROM DicLog d WHERE d.tipo = :tipo")})
-public class DicLog extends DataRow implements ILogRecord {
+public class DicLog extends DataRow implements IAppLogRecord {
 
     private static final long serialVersionUID = 1L;
     @Id
