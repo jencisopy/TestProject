@@ -1,10 +1,6 @@
 package net.makerapp.model.tables;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -15,19 +11,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.apache.commons.io.IOUtils;
-
 import org.javabeanstack.data.DataRow;
-import org.javabeanstack.io.IOUtil;
 import org.javabeanstack.model.IAppCompanyAllowed;
 import org.javabeanstack.model.IAppUser;
 import org.javabeanstack.model.IAppUserMember;
+import org.javabeanstack.util.Dates;
 
 @Entity
 @Table(name = "usuario")
@@ -39,29 +35,29 @@ public class AppUser extends DataRow implements IAppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idusuario")
-    private Long idusuario;
+    private Long iduser;
 
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "codigo")
-    private String codigo;
+    private String code;
 
     @Basic(optional = false)
     @NotNull(message = "Debe ingresar el nombre de usuario")
     @Size(min = 1, max = 50)
     @Column(name = "nombre")
-    private String nombre;
+    private String fullName;
 
     @Column(name = "clave")
-    private String clave;
+    private String pass;
 
     @Transient
-    private String clave2;
+    private String passConfirm;
 
     @Size(max = 50)
     @Column(name = "descripcion")
-    private String descripcion;
+    private String description;
 
     @Size(max = 100)
     @Column(name = "email1")
@@ -88,14 +84,14 @@ public class AppUser extends DataRow implements IAppUser {
 
     @Column(name = "expira")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date expira;
+    private Date expiredDate;
 
     @Size(max = 2)
     @Column(name = "rol")
     private String rol;
 
     @Column(name = "tipo")
-    private Short tipo;
+    private Short type;
 
     @Column(name = "avatar")
     private byte[] avatar;
@@ -104,101 +100,101 @@ public class AppUser extends DataRow implements IAppUser {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechamodificacion;
 
-    @OneToMany(mappedBy = "usuarioMiembro")
+    @OneToMany(mappedBy = "usermember")
     private List<AppUserMember> listaUsuarioMiembro = new ArrayList<>();
 
     @Column(name = "idempresa")
-    private Long idempresa;
+    private Long idcompany;
 
     public AppUser() {
     }
 
     @Override
     public Long getIduser() {
-        return idusuario;
+        return iduser;
     }
 
     @Override
     public void setIduser(Long idusuario) {
-        this.idusuario = idusuario;
+        this.iduser = idusuario;
     }
 
     @Override
     public String getLogin() {
-        if (codigo != null) {
-            codigo = codigo.trim();
+        if (code != null) {
+            code = code.trim();
         }
-        return codigo;
+        return code;
     }
 
     @Override
     public void setLogin(String codigo) {
-        this.codigo = codigo;
+        this.code = codigo;
     }
 
     @Override
     public String getCode() {
-        if (codigo != null) {
-            codigo = codigo.trim();
+        if (code != null) {
+            code = code.trim();
         }
-        return codigo;
+        return code;
     }
 
     @Override
     public void setCode(String code) {
-        this.codigo = code;
+        this.code = code;
     }
 
     @Override
     public String getFullName() {
-        if (nombre != null) {
-            nombre = nombre.trim();
+        if (fullName != null) {
+            fullName = fullName.trim();
         }
-        return nombre;
+        return fullName;
     }
 
     @Override
     public void setFullName(String nombre) {
-        this.nombre = nombre;
+        this.fullName = nombre;
     }
 
     @Override
     public String getPass() {
-        if (clave != null) {
-            clave = clave.trim();
+        if (pass != null) {
+            pass = pass.trim();
         }
-        return clave;
+        return pass;
     }
 
     @Override
     public void setPass(String clave) {
-        this.clave = clave;
+        this.pass = clave;
     }
 
     @Override
     public String getPassConfirm() {
-        if (clave2 != null) {
-            clave2 = clave2.trim();
+        if (passConfirm != null) {
+            passConfirm = passConfirm.trim();
         }
-        return clave2;
+        return passConfirm;
     }
 
     @Override
     public void setPassConfirm(String clave2) {
-        this.clave2 = clave2;
+        this.passConfirm = clave2;
     }
 
     @Override
     public String getDescription() {
-        if (descripcion != null) {
-            descripcion = descripcion.trim();
+        if (description != null) {
+            description = description.trim();
         }
-        return descripcion;
+        return description;
     }
 
     @Override
     public void setDescription(String descripcion) {
-        this.descripcion = descripcion;
+        this.description = descripcion;
     }
 
     @Override
@@ -213,12 +209,12 @@ public class AppUser extends DataRow implements IAppUser {
 
     @Override
     public Date getExpiredDate() {
-        return expira;
+        return expiredDate;
     }
 
     @Override
     public void setExpiredDate(Date expira) {
-        this.expira = expira;
+        this.expiredDate = expira;
     }
 
     @Override
@@ -246,12 +242,12 @@ public class AppUser extends DataRow implements IAppUser {
 
     @Override
     public Short getType() {
-        return tipo;
+        return type;
     }
 
     @Override
     public void setType(Short tipo) {
-        this.tipo = tipo;
+        this.type = tipo;
     }
 
     public Date getFechamodificacion() {
@@ -274,12 +270,12 @@ public class AppUser extends DataRow implements IAppUser {
 
     @Override
     public Long getIdcompany() {
-        return idempresa;
+        return idcompany;
     }
 
     @Override
     public void setIdcompany(Long idempresa) {
-        this.idempresa = idempresa;
+        this.idcompany = idempresa;
     }
 
     @Override
@@ -291,45 +287,7 @@ public class AppUser extends DataRow implements IAppUser {
     public void setAppCompanyAllowedList(List<IAppCompanyAllowed> dicPermisoEmpresaList) {
         //this.dicPermisoEmpresaList = (List<DicPermisoEmpresa>)(List<?>)dicPermisoEmpresaList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final AppUser other = (AppUser) obj;
-        if (!Objects.equals(this.idusuario, other.idusuario)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean equivalent(Object o) {
-        if (!(o instanceof AppUser)) {
-            return false;
-        }
-        AppUser obj = (AppUser) o;
-        return (this.codigo.trim().equals(obj.getLogin().trim()));
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "idusuario=" + idusuario + ", codigo=" + codigo + ", nombre=" + nombre + ", clave=" + clave + ", clave2=" + clave2 + ", descripcion=" + descripcion + ", disable=" + disable + ", expira=" + expira + ", rol=" + rol + ", tipo=" + tipo + '}';
-    }
-
+    
     @Override
     public byte[] getAvatar() {
         return avatar;
@@ -381,4 +339,51 @@ public class AppUser extends DataRow implements IAppUser {
         this.celular2 = celular2;
     }
     
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AppUser other = (AppUser) obj;
+        if (!Objects.equals(this.iduser, other.iduser)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean equivalent(Object o) {
+        if (!(o instanceof AppUser)) {
+            return false;
+        }
+        AppUser obj = (AppUser) o;
+        return (this.code.trim().equals(obj.getLogin().trim()));
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idusuario=" + iduser + ", codigo=" + code + ", nombre=" + fullName + ", clave=" + pass + ", clave2=" + passConfirm + ", descripcion=" + description + ", disable=" + disable + ", expira=" + expiredDate + ", rol=" + rol + ", tipo=" + type + '}';
+    }
+    
+    @PreUpdate
+    @PrePersist
+    public void preUpdate() {
+        fechamodificacion = new Date();
+        if (expiredDate == null){
+            expiredDate = Dates.toDate("31/12/9999");
+        }
+    }    
 }

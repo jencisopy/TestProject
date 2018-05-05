@@ -90,7 +90,7 @@ public class TestDatos3 {
         boolean result;
         
         //Plantilla
-        IDataObject<BxPlantilla, IGenericDAO> plantilla = new DataObject(BxPlantilla.class, null, dataLink, null);
+        IDataObject plantilla = new DataObject(BxPlantilla.class, null, dataLink, null);
         plantilla.open();
         if (plantilla.find("codigo", "002")){
             plantilla.deleteRow();
@@ -99,7 +99,7 @@ public class TestDatos3 {
         }                
         
         //Repositorio
-        IDataObject<BxRepositorio, IGenericDAO> repositorio = new DataObject(BxRepositorio.class, null, dataLink, null);
+        IDataObject repositorio = new DataObject(BxRepositorio.class, null, dataLink, null);
         repositorio.open();
         if (repositorio.find("codigo", "002")){
             repositorio.deleteRow();
@@ -108,7 +108,7 @@ public class TestDatos3 {
         }        
         
         //Campo        
-        IDataObject<BxCampo,IGenericDAO> campo = new DataObject(BxCampo.class, null, dataLink, null);
+        IDataObject campo = new DataObject(BxCampo.class, null, dataLink, null);
         campo.open();
         campo.find("codigo", "002");
         campo.deleteRow();
@@ -123,7 +123,7 @@ public class TestDatos3 {
     public void test1AddData() throws NamingException, SessionError, Exception{
         System.out.println("2"); 
         //Campo        
-        IDataObject<BxCampo, IGenericDAO> campo = new DataObject(BxCampo.class, null, dataLink, null);
+        IDataObject campo = new DataObject(BxCampo.class, null, dataLink, null);
         campo.open();
         campo.insertRow();
         campo.setField("codigo","002");
@@ -152,7 +152,7 @@ public class TestDatos3 {
     public void test2AddBxPlantilla() throws Exception{
         System.out.println("3");         
         //Plantilla
-        IDataObject<BxPlantilla, IGenericDAO> plantilla = new DataObject(BxPlantilla.class, null, dataLink, null);
+        IDataObject plantilla = new DataObject(BxPlantilla.class, null, dataLink, null);
         plantilla.open();
         plantilla.insertRow();
         plantilla.setField("codigo","002");
@@ -160,7 +160,7 @@ public class TestDatos3 {
         plantilla.setField("inactivo",false);        
 
         //Plantilladetalle
-        IDataObject<BxPlantilladetalle, IGenericDAO> plantillaDet = new DataObject(BxPlantilladetalle.class, null, dataLink, null);
+        IDataObject plantillaDet = new DataObject(BxPlantilladetalle.class, null, dataLink, null);
         plantillaDet.open();
         plantillaDet.insertRow();
         

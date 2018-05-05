@@ -6,9 +6,9 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,46 +20,47 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IAppCompany;
 
+
 /**
  *
  * @author Jorge Enciso
  */
 @Entity
-@Table(name = "empresa")
+@Table(name = "empresa") 
 @XmlRootElement
 public class AppCompany extends DataRow implements IAppCompany {
-
     private static final long serialVersionUID = 1L;
     @Id
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)    
     @Basic(optional = false)
     @NotNull
     @Column(name = "idempresa")
-    private Long idempresa;
+    private Long idcompany;
+    
+
     @Column(name = "idempresamask")
-    private Long idempresamask;
+    private Long idcompanymask;
     @Column(name = "idperiodo")
-    private Long idperiodo;
+    private Long idperiod;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "nombre")
-    private String nombre;
+    private String name;
     @Size(max = 50)
     @Column(name = "razonsocial")
-    private String razonsocial;
+    private String socialName;
     @Size(max = 50)
     @Column(name = "direccion")
-    private String direccion;
+    private String address;
     @Size(max = 50)
     @Column(name = "telefono")
-    private String telefono;
+    private String telephoneNumber;
     @Size(max = 11)
     @Column(name = "ruc")
-    private String ruc;
+    private String taxId;
     @Size(max = 50)
     @Column(name = "datos")
-    private String datos;
+    private String persistentUnit;
     @Size(max = 50)
     @Column(name = "menu")
     private String menu;
@@ -71,13 +72,13 @@ public class AppCompany extends DataRow implements IAppCompany {
     private byte[] logo2;
     @Size(max = 50)
     @Column(name = "motordatos")
-    private String motordatos;
+    private String dbengine;
     @Size(max = 4)
     @Column(name = "pais")
-    private String pais;
+    private String country;
     @Size(max = 10)
     @Column(name = "empresarubro")
-    private String empresarubro;
+    private String companyActivity;
 
     @Column(name = "fechacreacion")
     @Temporal(TemporalType.TIMESTAMP)
@@ -95,112 +96,112 @@ public class AppCompany extends DataRow implements IAppCompany {
     @Column(name = "appuser")
     private String appuser;
 
-    @OneToMany(mappedBy = "idempresagrupo")
+    @OneToMany(mappedBy = "idcompanygroup")
     private List<AppCompany> empresaList;
 
     @Column(name = "idempresagrupo")
-    private Long idempresagrupo;
+    private Long idcompanygroup;
 
     public AppCompany() {
     }
 
     public AppCompany(Long idempresa) {
-        this.idempresa = idempresa;
+        this.idcompany = idempresa;
     }
 
     public AppCompany(Long idempresa, String nombre) {
-        this.idempresa = idempresa;
-        this.nombre = nombre;
+        this.idcompany = idempresa;
+        this.name = nombre;
     }
 
     @Override
     public Long getIdcompany() {
-        return idempresa;
+        return idcompany;
     }
 
     @Override
     public void setIdcompany(Long idempresa) {
-        this.idempresa = idempresa;
+        this.idcompany = idempresa;
     }
 
     @Override
     public Long getIdcompanymask() {
-        return idempresamask;
+        return idcompanymask;
     }
 
     @Override
     public void setIdcompanymask(Long idempresamask) {
-        this.idempresamask = idempresamask;
+        this.idcompanymask = idempresamask;
     }
 
     @Override
     public Long getIdperiod() {
-        return idperiodo;
+        return idperiod;
     }
 
     @Override
     public void setIdperiod(Long idperiodo) {
-        this.idperiodo = idperiodo;
+        this.idperiod = idperiodo;
     }
 
     @Override
     public String getName() {
-        return nombre;
+        return name;
     }
 
     @Override
     public void setName(String nombre) {
-        this.nombre = nombre;
+        this.name = nombre;
     }
 
     @Override
     public String getSocialName() {
-        return razonsocial;
+        return socialName;
     }
 
     @Override
     public void setSocialName(String razonsocial) {
-        this.razonsocial = razonsocial;
+        this.socialName = razonsocial;
     }
 
     @Override
     public String getAddress() {
-        return direccion;
+        return address;
     }
 
     @Override
     public void setAddress(String direccion) {
-        this.direccion = direccion;
+        this.address = direccion;
     }
 
     @Override
     public String getTelephoneNumber() {
-        return telefono;
+        return telephoneNumber;
     }
 
     @Override
     public void setTelephoneNumber(String telefono) {
-        this.telefono = telefono;
+        this.telephoneNumber = telefono;
     }
 
     @Override
     public String getTaxId() {
-        return ruc;
+        return taxId;
     }
 
     @Override
     public void setTaxId(String ruc) {
-        this.ruc = ruc;
+        this.taxId = ruc;
     }
 
     @Override
     public String getPersistentUnit() {
-        return datos;
+        return persistentUnit;
     }
 
     @Override
     public void setPersistentUnit(String datos) {
-        this.datos = datos;
+        this.persistentUnit = datos;
     }
 
     @Override
@@ -226,32 +227,32 @@ public class AppCompany extends DataRow implements IAppCompany {
 
     @Override
     public String getDbengine() {
-        return motordatos;
+        return dbengine;
     }
 
     @Override
     public void setDbengine(String motordatos) {
-        this.motordatos = motordatos;
+        this.dbengine = motordatos;
     }
 
     @Override
     public String getCountry() {
-        return pais;
+        return country;
     }
 
     @Override
     public void setCountry(String pais) {
-        this.pais = pais;
+        this.country = pais;
     }
 
     @Override
     public String getCompanyActivity() {
-        return empresarubro;
+        return companyActivity;
     }
 
     @Override
     public void setCompanyActivity(String empresarubro) {
-        this.empresarubro = empresarubro;
+        this.companyActivity = empresarubro;
     }
 
     public Date getFechacreacion() {
@@ -320,18 +321,18 @@ public class AppCompany extends DataRow implements IAppCompany {
 
     @Override
     public Long getIdcompanygroup() {
-        return idempresagrupo;
+        return idcompanygroup;
     }
 
     @Override
     public void setIdcompanygroup(Long idempresagrupo) {
-        this.idempresagrupo = idempresagrupo;
+        this.idcompanygroup = idempresagrupo;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idempresa != null ? idempresa.hashCode() : 0);
+        hash += (idcompany != null ? idcompany.hashCode() : 0);
         return hash;
     }
 
@@ -341,7 +342,7 @@ public class AppCompany extends DataRow implements IAppCompany {
             return false;
         }
         AppCompany other = (AppCompany) object;
-        if ((this.idempresa == null && other.idempresa != null) || (this.idempresa != null && !this.idempresa.equals(other.idempresa))) {
+        if ((this.idcompany == null && other.idcompany != null) || (this.idcompany != null && !this.idcompany.equals(other.idcompany))) {
             return false;
         }
         return true;
@@ -349,7 +350,7 @@ public class AppCompany extends DataRow implements IAppCompany {
 
     @Override
     public String toString() {
-        return "py.com.oym.model.Empresa[ idempresa=" + idempresa + " ]";
+        return "py.com.oym.model.Empresa[ idempresa=" + idcompany + " ]";
     }
 
     @Override
@@ -358,7 +359,12 @@ public class AppCompany extends DataRow implements IAppCompany {
             return false;
         }
         AppCompany obj = (AppCompany) o;
-        return (this.idempresa.equals(obj.getIdcompany()));
+        return (this.idcompany.equals(obj.getIdcompany()));
     }
 
+    @PreUpdate
+    @PrePersist
+    public void preUpdate() {
+        fechamodificacion = new Date();
+    }    
 }

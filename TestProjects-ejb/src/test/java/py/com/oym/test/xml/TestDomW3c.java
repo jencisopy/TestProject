@@ -70,7 +70,7 @@ public class TestDomW3c {
         System.out.println(DomW3cParser.getXmlText(document.getDocumentElement()));
     }
     
-    @Test
+    //@Test
     public void test2() throws Exception {
         IXmlDom document = new XmlDomW3c();
         Map<String, String> params = new HashMap();
@@ -426,7 +426,7 @@ public class TestDomW3c {
         IXmlDom document = new XmlDomW3c();
         document.addConfigParam("path", "/proyectos/java/oym/TestProjects/");
         document.addConfigParam("pathtype", "FILE");
-        boolean obj = document.config(documentPath, "", "/XML/AG_LOG_VIEW", false, null);
+        boolean obj = document.config(documentPath, "", "/XML/AG_LOG_VIEW", false);
         System.out.println(document.toString());
         assertTrue(obj);
     }
@@ -451,7 +451,7 @@ public class TestDomW3c {
         assertTrue(property.equals("Código del Item"));
     }
 
-    //@Test
+    @Test
     public void testHerencia3() {
         String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
         IXmlDom document = new XmlDomW3c();
@@ -464,7 +464,7 @@ public class TestDomW3c {
         assertTrue(obj);
     }
 
-    @Test
+    //@Test
     public void testGetElements() throws Exception {
         String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
         IXmlDom document = new XmlDomW3c();

@@ -136,6 +136,9 @@ public class AppResource extends DataRow implements IAppResource {
     @Column(name = "appuser")
     private String appuser;
 
+    @Column(name = "bdata")
+    private byte[] bdata;
+    
     public AppResource() {
     }
 
@@ -305,8 +308,17 @@ public class AppResource extends DataRow implements IAppResource {
         }
         return processtime.after(fechamodificacion);
     }
-    
 
+    public byte[] getBdata() {
+        return bdata;
+    }
+
+    public void setBdata(byte[] bdata) {
+        this.bdata = bdata;
+    }
+
+
+    
     @Override
     public String toString() {
         return "net.makerapp.model.tables.Appresource[ idappresource=" + idappresource + " ]";

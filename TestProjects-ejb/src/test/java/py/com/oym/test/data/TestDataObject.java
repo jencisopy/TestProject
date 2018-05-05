@@ -35,7 +35,7 @@ public class TestDataObject extends TestClass {
     public void test1AddData() throws NamingException, SessionError, Exception{
         System.out.println("1"); 
         //Region
-        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        IDataObject region = new DataObject(Region.class, null, dataLink, null);
         region.open();
         region.insertRow();
         region.setField("codigo","ZZZ");
@@ -56,7 +56,7 @@ public class TestDataObject extends TestClass {
         boolean result;
         
         //Campo        
-        IDataObject<Region,IGenericDAO> campo = new DataObject(Region.class, null, dataLink, null);
+        IDataObject campo = new DataObject(Region.class, null, dataLink, null);
         campo.open();
         campo.find("codigo", "ZZZ");
         campo.deleteRow();
@@ -73,7 +73,7 @@ public class TestDataObject extends TestClass {
     public void test3AddData() throws NamingException, SessionError, Exception{
         System.out.println("3"); 
         //Region
-        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        IDataObject region = new DataObject(Region.class, null, dataLink, null);
         region.open();
         region.insertRow();
         region.setField("codigo","ZZZ");
@@ -101,7 +101,7 @@ public class TestDataObject extends TestClass {
         boolean result;
         
         //Pais
-        IDataObject<Pais, IGenericDAO> pais = new DataObject(Pais.class, null, dataLink, null);
+        IDataObject pais = new DataObject(Pais.class, null, dataLink, null);
         pais.open();
         if (pais.find("codigo", "ZZZ")){
             pais.deleteRow();
@@ -110,7 +110,7 @@ public class TestDataObject extends TestClass {
         }        
         
         //Region        
-        IDataObject<Region,IGenericDAO> campo = new DataObject(Region.class, null, dataLink, null);
+        IDataObject campo = new DataObject(Region.class, null, dataLink, null);
         campo.open();
         campo.find("codigo", "ZZZ");
         campo.deleteRow();
@@ -125,7 +125,7 @@ public class TestDataObject extends TestClass {
     public void test5DBFilter() throws NamingException, SessionError, Exception{
         System.out.println("5"); 
         //Region
-        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        IDataObject region = new DataObject(Region.class, null, dataLink, null);
         String filter = region.getDAO()
                             .getUserSession()
                             .getDBFilter()
@@ -147,7 +147,7 @@ public class TestDataObject extends TestClass {
         dataLink.setUserSession(userSession);
         
         //Region
-        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        IDataObject region = new DataObject(Region.class, null, dataLink, null);
         region.open();        
         System.out.println(region.getFilter());        
         assertTrue(region.getSelectCmd().contains("IN("));
@@ -161,7 +161,7 @@ public class TestDataObject extends TestClass {
         
         //Region
         dataLink.setDao(dataservice);
-        IDataObject<Region, IGenericDAO> region = new DataObject(Region.class, null, dataLink, null);
+        IDataObject region = new DataObject(Region.class, null, dataLink, null);
         region.open();
         Assert.assertNotNull(region.getDataRows());        
         

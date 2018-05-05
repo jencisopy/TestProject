@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperTemplate PUBLIC "-//JasperReports//DTD Template//EN" "http://jasperreports.sourceforge.net/dtds/jaspertemplate.dtd">
+
+<jasperTemplate>
+	<style name="report_text" isDefault="true" forecolor="#000000" fontName="Times New Roman" fontSize="7"/>
+	<style name="report_line" fill="Solid">
+		<pen lineWidth="0.5" lineColor="#000000"/>
+	</style>
+	<style name="page_header_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box topPadding="0" bottomPadding="0">
+			<pen lineWidth="0.0" lineColor="#010101"/>
+			<topPen lineWidth="0.0" lineColor="#010101"/>
+			<leftPen lineWidth="0.0" lineColor="#010101"/>
+			<bottomPen lineWidth="0.0" lineColor="#010101"/>
+			<rightPen lineWidth="0.0" lineColor="#010101"/>
+		</box>
+	</style>
+	<style name="page_header_top_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box bottomPadding="0">
+			<bottomPen lineWidth="0.5" lineColor="#010101"/>
+		</box>
+	</style>
+	<style name="page_header_text" style="report_text" hAlign="Center" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_number" style="report_text" hAlign="Center" vAlign="Middle" pattern="#,##0.00" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_percentage" style="report_text" hAlign="Center" vAlign="Middle" pattern="#,##0.00;-#,##0.00" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_company" style="report_text" hAlign="Left" vAlign="Middle" markup="none" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_title1" style="report_text" hAlign="Center" vAlign="Middle" fontSize="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_title2" style="report_text" hAlign="Center" vAlign="Middle" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_title3" style="report_text" hAlign="Center" vAlign="Middle" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_header_title4" style="report_text" hAlign="Center" vAlign="Middle" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_header_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#010101"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="1.0" lineColor="#010101"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<style name="column_header_text" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_header_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_header_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_header_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_header_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_header_datetime" style="report_textt" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_bg_header" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_bg_footer" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="group1_text" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group1_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_bg_header" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_bg_footer" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_text" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group2_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_bg_header" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_bg_footer" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_text" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="group3_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" fontSize="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="detail_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+	</style>	
+	<style name="detail_text" style="report_text" hAlign="Left"  vAlign="Middle" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="detail_number" style="report_text" hAlign="Right"  vAlign="Middle" pattern="#,##0.00" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="detail_percentage" style="report_text" hAlign="Right"  vAlign="Middle" pattern="#,##0.00;-#,##0.00" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="detail_date" style="report_text" hAlign="Center"  vAlign="Middle" pattern="dd/MM/yyyy" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="detail_time" style="report_text" hAlign="Center"  vAlign="Middle" pattern="HH:mm:ss" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="detail_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH:mm:ss" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_footer_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#010101"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="1.0" lineColor="#010101"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<style name="column_footer_text" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_footer_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_footer_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_footer_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_footer_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="column_footer_datetime" style="report_textt" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_footer_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#010101"/>
+		</box>
+	</style>
+	<style name="page_footer_text" style="report_text" hAlign="Left" vAlign="Middle" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_footer_number" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_footer_percentage" style="report_text" hAlign="Left" vAlign="Middle" pattern="#,##0.00;-#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_footer_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_footer_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="page_footer_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="last_page_footer_bg" mode="Opaque">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#010101"/>
+		</box>
+	</style>
+	<style name="last_page_footer_text" style="report_text" hAlign="Center" vAlign="Middle" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="last_page_footer_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="last_page_footer_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="last_page_footer_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="last_page_footer_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="last_page_footer_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="summary_bg" mode="Opaque" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#010101"/>
+		</box>
+	</style>
+	<style name="summary_text" style="report_text" hAlign="Center" vAlign="Middle" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="summary_number" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="summary_percentage" style="report_text" hAlign="Right" vAlign="Middle" pattern="#,##0.00;-#,##0.00" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="summary_date" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="summary_time" style="report_text" hAlign="Center" vAlign="Middle" pattern="HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="summary_datetime" style="report_text" hAlign="Center" vAlign="Middle" pattern="dd/MM/yyyy HH.mm.ss" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+</jasperTemplate>

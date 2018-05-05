@@ -17,30 +17,27 @@ import org.javabeanstack.model.IAppCompanyAllowed;
 @Entity
 @Table(name = "dic_permisoempresa")
 public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
-    private static final long serialVersionUID = 1L;
-    
-
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "idusuario")
-    private Long idusuario;
+    private Long iduser;
 
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "idempresa")
-    private Long idempresa;
+    private Long idcompany;
     
     @Basic(optional = false)
     @NotNull
     @Column(name = "permitir")
-    private boolean permitir;
+    private boolean allow;
     
     @Basic(optional = false)
     @NotNull
     @Column(name = "negar")
-    private boolean negar;
+    private boolean deny;
     
     @Basic(optional = false)
     @NotNull
@@ -64,43 +61,43 @@ public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
 
     @Override
     public Long getIduser() {
-        return idusuario;
+        return iduser;
     }
 
     @Override
     public void setIduser(Long idusuario) {
-        this.idusuario = idusuario;
+        this.iduser = idusuario;
     }
 
     @Override
     public Long getIdcompany() {
-        return idempresa;
+        return idcompany;
     }
 
     @Override
     public void setIdcompany(Long idempresa) {
-        this.idempresa = idempresa;
+        this.idcompany = idempresa;
     }
 
 
     @Override
     public boolean getAllow() {
-        return permitir;
+        return allow;
     }
 
     @Override
     public void setAllow(boolean permitir) {
-        this.permitir = permitir;
+        this.allow = permitir;
     }
 
     @Override
     public boolean getDeny() {
-        return negar;
+        return deny;
     }
 
     @Override
     public void setDeny(boolean negar) {
-        this.negar = negar;
+        this.deny = negar;
     }
 
     public Date getFechacreacion() {

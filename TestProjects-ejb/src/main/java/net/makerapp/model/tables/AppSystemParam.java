@@ -249,6 +249,7 @@ public class AppSystemParam extends DataRow implements IAppSystemParam {
         this.appuser = appuser;
     }
 
+
     @Override
     public String toString() {
         return "net.makerapp.model.tables.Systemparam[ idsystemparam=" + idsystemparam + " ]";

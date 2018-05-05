@@ -50,38 +50,38 @@ public class AppXmlSource extends DataRow implements IAppXmlSource {
     @Basic(optional = false)
     @NotNull
     @Column(name = "idxmlsource")
-    private Long idxmlsource;
+    private Long idxmlSource;
 
     @Column(name = "idobjeto")
-    private Long idobjeto;
+    private Long idObjeto;
     
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "xmlname")
-    private String xmlname;
+    private String xmlName;
 
     @Size(max = 200)
     @Column(name = "xmlpath")
-    private String xmlpath;
+    private String xmlPath;
     
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
     @Column(name = "xmlsource")
-    private String xmlsource;
+    private String xmlSource;
     
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
     @Column(name = "xmlcompiled")
-    private String xmlcompiled;
+    private String xmlCompiled;
     
     @Column(name = "processtime")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date processtime;
+    private Date processTime;
     @Basic(optional = false)
     
     @Column(name = "referencetime")
@@ -110,87 +110,87 @@ public class AppXmlSource extends DataRow implements IAppXmlSource {
     }
 
     public AppXmlSource(Long idxmlsource) {
-        this.idxmlsource = idxmlsource;
+        this.idxmlSource = idxmlsource;
     }
 
     public AppXmlSource(Long idxmlsource, String xmlname, String xmlsource, String xmlcompile, Date fechacreacion, Date fechamodificacion) {
-        this.idxmlsource = idxmlsource;
-        this.xmlname = xmlname;
-        this.xmlsource = xmlsource;
-        this.xmlcompiled = xmlcompile;
+        this.idxmlSource = idxmlsource;
+        this.xmlName = xmlname;
+        this.xmlSource = xmlsource;
+        this.xmlCompiled = xmlcompile;
         this.fechacreacion = fechacreacion;
         this.fechamodificacion = fechamodificacion;
     }
 
     @Override
     public Long getIdXmlSource() {
-        return idxmlsource;
+        return idxmlSource;
     }
 
     @Override
     public void setIdXmlSource(Long idxmlsource) {
-        this.idxmlsource = idxmlsource;
+        this.idxmlSource = idxmlsource;
     }
 
     
     @Override
     public Long getIdObject() {
-        return idobjeto;
+        return idObjeto;
     }
 
     @Override
     public void setIdObject(Long idobjeto) {
-        this.idobjeto = idobjeto;
+        this.idObjeto = idobjeto;
     }
     
     @Override
     public String getXmlName() {
-        return xmlname;
+        return xmlName;
     }
 
     @Override
     public void setXmlName(String xmlname) {
-        this.xmlname = xmlname;
+        this.xmlName = xmlname;
     }
 
     @Override
     public String getXmlPath() {
-        return xmlpath;
+        return xmlPath;
     }
 
     @Override
     public void setXmlPath(String xmlPath) {
-        this.xmlpath = xmlPath;
+        this.xmlPath = xmlPath;
     }
     
     @Override
     public String getXmlSource() {
-        return xmlsource;
+        return xmlSource;
     }
 
     @Override
     public void setXmlSource(String xmlsource) {
-        this.xmlsource = xmlsource;
+        this.xmlSource = xmlsource;
     }
 
     @Override
     public String getXmlCompiled() {
-        return xmlcompiled;
+        return xmlCompiled;
     }
 
     @Override
     public void setXmlCompiled(String xmlcompile) {
-        this.xmlcompiled = xmlcompile;
+        this.xmlCompiled = xmlcompile;
     }
 
     @Override
     public Date getProcessTime() {
-        return processtime;
+        return processTime;
     }
 
     @Override
     public void setProcessTime(Date processtime) {
-        this.processtime = processtime;
+        this.processTime = processtime;
     }
     
     @Override
@@ -229,15 +229,15 @@ public class AppXmlSource extends DataRow implements IAppXmlSource {
 
     @Override
     public boolean isValid() {
-        if (isNullorEmpty(xmlcompiled)){
+        if (isNullorEmpty(xmlCompiled)){
             return false;
         }
-        return processtime.after(fechamodificacion);
+        return processTime.after(fechamodificacion);
     }
     
 
     @Override
     public String toString() {
-        return "net.makerapp.model.tables.Appxmlsource[ idxmlsource=" + idxmlsource + " ]";
+        return "net.makerapp.model.tables.Appxmlsource[ idxmlsource=" + idxmlSource + " ]";
     }
 }

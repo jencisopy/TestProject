@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.makerapp.model.views.EmpresaparamView;
-import org.javabeanstack.data.IDBLinkInfo;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.javabeanstack.data.IGenericDAORemote;

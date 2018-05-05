@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.4.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ctacte_ctactemovimiento_operativo03" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" resourceBundle="labels" uuid="5f4efb3a-7030-41c8-9659-2015384dbcb3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<property name="ireport.callouts" value="callouts.1.fg=0,0,0\ncallouts.1.text=Descripci\u00F3n\: EXTRACTO DE CLIENTES - SUBCUENTA\r\nAutor\: CLAUDIO C. CENTURI\u00D3N G.\r\n\r\n\r\n\ncallouts.1.bounds=-7,295,362,106\ncallouts.1.bg=255,255,0\n"/>
+	<template><![CDATA["template.jrtx"]]></template>
+	<style name="Text Default" isDefault="true" fontName="Times New Roman" fontSize="7"/>
+	<parameter name="title1_key" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title1" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title2_key" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title2" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title3_key" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title4_key" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title4" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="orderby" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["PROVEEDOR"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="startdate" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["01/01/2011"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="enddate" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["23/08/2011"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="style" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["default"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream" isForPrompting="false">
+		<parameterDescription><![CDATA["Aqui debe ir el logo de la empresa. Ej: logo.png"]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="company_name" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="user_name" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="query" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idempresa" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * ,0 as saldo
+			from (
+				SELECT 	a.idctacte, a.ctacte, a.ctactenombre,a.ruc, ctacte.telefonoctacte as telefono,
+				(CASE when q.idctactesub is NOT null then q.idctactesub else a.idctactesub end) as idctactesub,
+				(CASE when ctactesub.codigo is NOT null then ctactesub.codigo else a.ctactesub       end) as ctactesub,
+				(CASE when ctactesub.nombre is NOT null then ctactesub.nombre else a.ctactesubnombre end) as ctactesubnombre,
+				a.idnro,a.fecha, a.nro,a.moneda, a.cambio, q.nro as nrodoc,
+				a.iddocumento, a.iddocumentotipo,
+				a.documentonombre,a.documentotiponombre,a.observacion,
+				a.rubro, a.rubronombre,a.subrubro,a.subrubronombre,
+				a.confirmado, a.idempresa, a.anulado, ' ' as estado,
+							CASE when b.monto is NOT null then x.codigo else a.itemmovcondicion end  as itemmovcondicion,
+			CASE when a.ctacteafecta IN (-2)  and b.monto is null then a.totalmonto when  a.ctacteafecta IN(-2)  then b.monto else 00000000000.000  END  as debito,
+			CASE when a.ctacteafecta IN (-1,-3) and b.monto is null then a.totalmonto when  a.ctacteafecta IN(-1,-3) then b.monto else 00000000000.000  END  as credito
+				from DATOS.ctactemovimiento_view a
+				inner join DATOS.ctacte ctacte                        on a.idctacte = ctacte.idctacte
+				left outer join DATOS.ctactemovimientodetalle      b  on a.idctactemovimiento = b.idctactemovimiento
+				left outer join DATOS.ctactependientedetalle       p  on b.idctactependientedetalle = p.idctactependientedetalle
+				left outer join DATOS.ctactependiente              o  on p.idctactependiente = o.idctactependiente
+				left outer join DATOS.ctactemovimiento             q  on o.idctactemovimiento = q.idctactemovimiento
+				left outer join DATOS.ctactesub                       on q.idctactesub = ctactesub.idctactesub
+				left outer join DATOS.itemmovcondicion             x  on q.iditemmovcondicion = x.iditemmovcondicion
+				where a.ctacteafecta in (-2,-1,-3)
+				and a.fecha BETWEEN '2014-01-01 00:00:00' and '2017-12-31 23:59:59'
+				) x
+			where ((confirmado  = 1)) and ( (idempresa = 50) and confirmado  = 1 and anulado  = 0 )
+		SELECT idctacte, ctacte, ctactenombre, moneda, MAX(fecha) as fecha, ruc, telefono,
+			SUM(debito) as debito,
+			SUM(credito) as credito
+		from (
+				SELECT 	a.idctacte, a.ctacte, a.ctactenombre, a.moneda,p.saldo as saldo,
+					a.fecha, a.ruc, ctacte.telefonoctacte as telefono,
+					a.rubro, a.rubronombre,a.subrubro,a.subrubronombre,
+					a.iddocumento, a.iddocumentotipo,
+					a.confirmado, a.idempresa, a.anulado,
+							CASE when b.monto is NOT null then x.codigo else a.itemmovcondicion end  as itemmovcondicion,
+		CASE when a.ctacteafecta IN (-2)  and b.monto is null then a.totalmonto when  a.ctacteafecta IN(-2)  then b.monto else 00000000000.000  END  as debito,
+		CASE when a.ctacteafecta IN (-1,-3) and b.monto is null then a.totalmonto when  a.ctacteafecta IN(-1,-3) then b.monto else 00000000000.000  END  as credito
+				from DATOS.ctactemovimiento_view a
+				inner join  DATOS.ctacte ctacte on a.idctacte = ctacte.idctacte
+				left outer join DATOS.ctactemovimientodetalle      b  on a.idctactemovimiento = b.idctactemovimiento
+				left outer join DATOS.ctactependientedetalle       p  on b.idctactependientedetalle = p.idctactependientedetalle
+				left outer join DATOS.ctactependiente              o  on p.idctactependiente = o.idctactependiente
+				left outer join DATOS.ctactemovimiento             q  on o.idctactemovimiento = q.idctactemovimiento
+				left outer join DATOS.itemmovcondicion             x  on q.iditemmovcondicion = x.iditemmovcondicion
+				where a.fecha <= '2013-12-31 00:00:00'
+				and a.ctacteafecta in (-2,-1,-3)
+				 and ((a.confirmado  = 1)) and ( (a.idempresa = 50) and a.confirmado  = 1 and a.anulado  = 0 )
+			) x
+		group by idctacte, ctacte, ctactenombre, moneda,ruc, telefono
+order by idctacte]]>
+	</queryString>
+	<field name="idctacte" class="java.math.BigDecimal"/>
+	<field name="ctacte" class="java.lang.String"/>
+	<field name="ctactenombre" class="java.lang.String"/>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="idctactesub" class="java.math.BigDecimal"/>
+	<field name="ctactesub" class="java.lang.String"/>
+	<field name="ctactesubnombre" class="java.lang.String"/>
+	<field name="idnro" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
+	<field name="nro" class="java.lang.String"/>
+	<field name="moneda" class="java.lang.String"/>
+	<field name="cambio" class="java.math.BigDecimal"/>
+	<field name="nrodoc" class="java.lang.String"/>
+	<field name="iddocumento" class="java.lang.String"/>
+	<field name="iddocumentotipo" class="java.lang.String"/>
+	<field name="documentonombre" class="java.lang.String"/>
+	<field name="documentotiponombre" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="rubro" class="java.lang.String"/>
+	<field name="rubronombre" class="java.lang.String"/>
+	<field name="subcuenta" class="java.lang.String"/>
+	<field name="subcuentanombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="confirmado" class="java.lang.Boolean"/>
+	<field name="idempresa" class="java.math.BigDecimal"/>
+	<field name="anulado" class="java.lang.Boolean"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="itemmovcondicion" class="java.lang.String"/>
+	<field name="debito" class="java.math.BigDecimal"/>
+	<field name="credito" class="java.math.BigDecimal"/>
+	<field name="saldo" class="java.math.BigDecimal"/>
+	<variable name="APP_NAME" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[$R{lbl.app_name}]]></variableExpression>
+	</variable>
+	<variable name="USER_NAME" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{user_name} != null) ? $P{user_name} : ""]]></variableExpression>
+	</variable>
+	<variable name="REPORT_NAME" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[$P{JASPER_REPORT}.getName()]]></variableExpression>
+	</variable>
+	<variable name="REPORT_INFO" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[(!$V{USER_NAME}.isEmpty() ? msg($R{lbl.report_info}, $V{USER_NAME}, DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, $P{REPORT_LOCALE}).format(new Date())) : DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, $P{REPORT_LOCALE}).format(new Date()))]]></variableExpression>
+	</variable>
+	<variable name="COMPANY_NAME" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{company_name} != null) ? $P{company_name} : ""]]></variableExpression>
+	</variable>
+	<variable name="ORDERBY" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{orderby} != null) ? $P{orderby} : null]]></variableExpression>
+	</variable>
+	<variable name="TITLE1" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{title1} != null) ? $P{title1} : ($P{title1_key} != null) ? msg(str($P{title1_key}),null) : msg(str($P{JASPER_REPORT}.getName()+".title1"))]]></variableExpression>
+	</variable>
+	<variable name="TITLE2" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{title2} != null) ? $P{title2} : ($P{title2_key} != null) ? msg(str($P{title2_key}),null) : msg(str($P{JASPER_REPORT}.getName()+".title2"))]]></variableExpression>
+	</variable>
+	<variable name="TITLE3" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{title3} != null) ? $P{title3} : ($P{title3_key} != null) ? msg(str($P{title3_key}),null) : msg(str($P{JASPER_REPORT}.getName()+".title3"))]]></variableExpression>
+	</variable>
+	<variable name="TITLE4" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($P{title4} != null) ? $P{title4} : ($P{title4_key} != null) ? msg(str($P{title4_key}),null) : msg(str($P{JASPER_REPORT}.getName()+".title4"))]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="PAGE_X_OF_" class="java.lang.String" resetType="None" incrementType="Page">
+		<variableExpression><![CDATA[$R{lbl.pagina} + " " + $V{PAGE_NUMBER} + " " + $R{lbl.de} + "&nbsp;"]]></variableExpression>
+	</variable>
+	<variable name="debito" class="java.math.BigDecimal" resetType="Group" resetGroup="moneda" calculation="Sum">
+		<variableExpression><![CDATA[$F{debito}]]></variableExpression>
+	</variable>
+	<variable name="credito" class="java.math.BigDecimal" resetType="Group" resetGroup="moneda" calculation="Sum">
+		<variableExpression><![CDATA[$F{credito}]]></variableExpression>
+	</variable>
+	<variable name="saldo" class="java.math.BigDecimal" resetType="Group" resetGroup="moneda">
+		<variableExpression><![CDATA[$F{saldo}]]></variableExpression>
+	</variable>
+	<group name="ctacte" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{ctacte}+$F{ctactesub}]]></groupExpression>
+		<groupHeader>
+			<band height="3"/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="moneda" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{moneda}]]></groupExpression>
+		<groupHeader>
+			<band height="77">
+				<rectangle>
+					<reportElement mode="Opaque" x="26" y="62" width="543" height="15" backcolor="#E3E1E1" uuid="821e917a-16af-44f1-b3ec-76301bdacfc6"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement key="" mode="Opaque" x="25" y="8" width="270" height="15" backcolor="#E3E1E1" uuid="778afcd7-cc8f-4f41-a6b1-db8ea043d90a"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Opaque" x="295" y="8" width="78" height="15" backcolor="#E3E1E1" uuid="bc78b26e-366e-4b3d-b29d-807255fb4ead"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Opaque" x="373" y="8" width="140" height="15" backcolor="#E3E1E1" uuid="946a6eb6-9a9a-4042-9303-7324345ac63d"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Opaque" x="513" y="8" width="55" height="15" backcolor="#E3E1E1" uuid="26e357eb-93ab-43c5-93f9-d23df2745bf7"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="513" y="23" width="55" height="30" uuid="b68e1d50-77d8-41d1-8810-eac98ef90f85"/>
+				</rectangle>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="30" y="8" width="260" height="15" uuid="c0fcbfa9-90d9-477f-a0f7-f10da72347ca"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{cliente}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="300" y="8" width="68" height="15" uuid="96b17c68-15f3-4780-990c-c1001906e1f9"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{ruc}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="379" y="9" width="130" height="15" uuid="c3333724-dfb5-4e28-8481-240aaa4a7bf1"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{telefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="529" y="8" width="30" height="15" uuid="565fbdd8-aa87-4c50-9df0-8df25b2a252f"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{moneda}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="529" y="23" width="30" height="15" uuid="52a91c93-b821-423c-baa4-932b24366dff"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{moneda}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="506" y="62" width="56" height="15" uuid="75d31dfc-fdbc-43bc-bde6-de5f813bdba1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{cambio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="ctacte" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="379" y="24" width="130" height="15" uuid="c51d43e4-0fe3-4ba8-a7a1-8d5067279af8"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="ctacte" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="300" y="24" width="68" height="15" uuid="60c6dd11-fd03-4cb7-adf7-86e6da5d56ce"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{ruc}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Transparent" x="373" y="23" width="140" height="30" uuid="3d7c58f2-aa8c-4d10-be13-59b229b8763b"/>
+				</rectangle>
+				<rectangle>
+					<reportElement mode="Transparent" x="295" y="23" width="78" height="30" uuid="2cb6498f-00bf-4845-84e8-fb6180bfee4b"/>
+				</rectangle>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="92" y="24" width="200" height="15" uuid="84d0e75e-a941-49d3-b11d-53a3e1dd39c9"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{ctactenombre}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Transparent" x="90" y="23" width="205" height="30" uuid="147644c8-32e2-4a1b-bd4d-68d719a7db21"/>
+				</rectangle>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="28" y="23" width="62" height="15" uuid="7d773187-8542-46cc-a169-dbd00c47e478"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{ctacte}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Transparent" x="25" y="23" width="65" height="30" uuid="632a5b20-5e94-433f-8214-9c3c0b8fbf85"/>
+				</rectangle>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="69" y="62" width="120" height="15" uuid="4cf4e1b1-cf00-452f-9a02-3fe658ad4b29"/>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{tipo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="364" y="62" width="56" height="15" uuid="989d6477-1f51-4ee7-b6f8-15651a764390"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{credito}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="297" y="62" width="56" height="15" uuid="1dd3d6e2-19fe-483e-ac2a-9faf28dfd157"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{debito}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="430" y="62" width="56" height="15" uuid="3360f8aa-1618-4feb-8653-a607c03334e5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{saldo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="191" y="62" width="46" height="15" uuid="46ef1513-dfd7-4ad9-bb75-25bf55b33043"/>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{nro_cod}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="243" y="62" width="48" height="15" uuid="a189aa37-c1c7-4d76-8dae-d86f5ff22283"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{factura}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="495" y="62" width="1" height="15" uuid="d9dc431b-fdc2-4207-9168-72aabc9b0e3e">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="424" y="62" width="1" height="15" uuid="09725179-68d8-4140-9cf9-d003de2de900">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="359" y="62" width="1" height="15" uuid="80fd93b2-d0e1-46e3-8488-6ff30fbf0e33">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="292" y="62" width="1" height="15" uuid="2ac47f17-0428-4eeb-a055-2023e6211ca3">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="189" y="62" width="1" height="15" uuid="a88b1a11-542d-4aaa-a2fc-2fca724eeaf7">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="65" y="62" width="1" height="15" uuid="0501d309-4526-492a-9878-adb79e183fd9">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="28" y="62" width="34" height="15" uuid="0219131d-9c0f-4147-b968-1c1805369d64"/>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{fecha}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="239" y="62" width="1" height="14" uuid="0b5c8684-6029-45a7-b9d8-865ff4d52547">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="92" y="39" width="200" height="15" uuid="854aa0cc-722a-48cb-bbad-5db2b492597e"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{ctactesubnombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="28" y="38" width="62" height="15" uuid="2dca6da3-30ac-4b3f-87ae-a739bf87a543"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{ctactesub}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<rectangle>
+					<reportElement mode="Opaque" x="26" y="0" width="543" height="15" backcolor="#FFFFFF" uuid="f55219ba-05c2-4430-9b96-408205637e9b"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="296" y="0" width="56" height="15" uuid="60c6dd11-fd03-4cb7-adf7-86e6da5d56ce"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{debito}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="568" y="0" width="1" height="14" uuid="b3b13557-bafa-4da8-aa3c-454138a922f9">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="495" y="0" width="1" height="14" uuid="5656da98-54f8-419b-b9b8-83f50e25c82e">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="424" y="0" width="1" height="14" uuid="dc3f1314-aea4-4499-892e-b975b22b5899">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="359" y="0" width="1" height="14" uuid="43da6351-e7a6-4d66-81fa-c05032484a0d">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<line>
+					<reportElement x="292" y="0" width="1" height="14" uuid="a279d97c-7df2-40c9-854a-a6417a15b9ef">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="364" y="0" width="56" height="15" uuid="c51d43e4-0fe3-4ba8-a7a1-8d5067279af8"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{credito}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="430" y="0" width="56" height="15" uuid="9e0ce5f6-aa78-40d9-b83c-247974061830"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{saldo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="group2_text" positionType="Float" x="27" y="0" width="37" height="15" uuid="54321941-0d54-4dd6-aff0-1e88117b2bb2"/>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$R{lbl.total_en}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+					<reportElement style="group2_number" positionType="Float" x="66" y="0" width="30" height="15" uuid="99820c73-fccf-4c86-8068-683ec5e7fd5a"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$F{moneda}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement style="page_header_bg" x="0" y="0" width="572" height="71" uuid="01c34f0a-024d-47d3-8404-48a8e9dbf70a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<frame>
+					<reportElement style="page_header_top_bg" mode="Opaque" x="0" y="0" width="572" height="18" uuid="a1906040-6fc5-478b-a9cc-19c747266b71"/>
+					<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+						<reportElement style="page_header_company" x="0" y="0" width="295" height="18" uuid="b4f839cc-4182-48e6-8fa3-dad528f32aea"/>
+						<textElement markup="html"/>
+						<textFieldExpression><![CDATA[$V{COMPANY_NAME}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+						<reportElement style="page_header_text" x="534" y="0" width="38" height="18" uuid="03154631-0f72-41ea-8f65-fcb21cb3d065"/>
+						<textElement textAlignment="Left" verticalAlignment="Top" markup="html"/>
+						<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement style="page_header_text" x="379" y="0" width="155" height="18" uuid="66df7589-62d5-4b52-ad02-479622b648c3"/>
+						<textElement textAlignment="Right" verticalAlignment="Top" markup="html"/>
+						<textFieldExpression><![CDATA[$R{lbl.pagina} + " " + $V{PAGE_NUMBER} + " " + $R{lbl.de} + "&nbsp;"]]></textFieldExpression>
+					</textField>
+				</frame>
+				<image isUsingCache="true" evaluationTime="Auto">
+					<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="21" width="75" height="50" uuid="5248b57e-2750-49cf-a613-97bc94bd48a1"/>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+					<reportElement style="page_header_title1" positionType="Float" x="77" y="21" width="460" height="14" uuid="bb842093-6df0-40ae-bc61-883e8a26fe88"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TITLE1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+					<reportElement style="page_header_title2" positionType="Float" x="77" y="36" width="460" height="11" uuid="a89facff-04f1-4e58-8f62-2cc2b961367b">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TITLE2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+					<reportElement style="page_header_title3" positionType="Float" x="77" y="48" width="460" height="11" uuid="1f894355-5a59-4b2b-b39a-59c7927207a5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{TITLE3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report" isBlankWhenNull="true">
+					<reportElement style="page_header_title4" positionType="Float" x="77" y="60" width="460" height="11" uuid="fbbdcfee-0c16-4223-84f7-be482ab444ba"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{TITLE4}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<line>
+				<reportElement x="239" y="0" width="1" height="14" uuid="4e84becd-da1b-4ecb-80f1-c284dd6456bd">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="detail_text" positionType="Float" x="70" y="0" width="118" height="14" uuid="304252dc-4490-44fb-b337-0dc834824ac2"/>
+				<textElement verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{documentonombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="detail_number" positionType="Float" x="296" y="0" width="56" height="14" uuid="cdbbfd68-944f-42d4-b439-bd2f289e26ae"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{debito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="detail_number" positionType="Float" x="364" y="0" width="56" height="14" uuid="db0ce234-ab81-4090-bd46-e98a8af04325"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{credito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="detail_number" positionType="Float" x="430" y="0" width="56" height="14" uuid="8ec6fb56-e906-432a-9c95-4e831f448b6c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{saldo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" evaluationTime="Auto" isBlankWhenNull="true">
+				<reportElement style="detail_number" positionType="Float" x="506" y="0" width="56" height="14" uuid="5b4def0b-7747-4899-8983-a246ec6d0718"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{cambio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="detail_number" positionType="Float" x="191" y="0" width="46" height="14" uuid="76f88db4-6734-4240-aca4-d1ce52361ea8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{nro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="detail_number" positionType="Float" x="243" y="0" width="48" height="14" uuid="1c42ee46-1f98-4f86-a165-522206509b4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{nrodoc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yy" isBlankWhenNull="true">
+				<reportElement style="detail_text" positionType="Float" x="28" y="0" width="34" height="14" uuid="527d6037-b4b4-4185-9764-41737a30ae75"/>
+				<textElement verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="65" y="0" width="1" height="14" uuid="c50507a9-41bb-49c9-9b61-ea0e486f985b">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="189" y="0" width="1" height="14" uuid="4df69bbc-8f18-4c2f-b32d-105b87e1273d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="292" y="0" width="1" height="14" uuid="2091faf2-efa4-46b0-ad22-0cfb041e6ad4">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="359" y="0" width="1" height="14" uuid="b26101dd-aa3b-44ef-a516-0ba856c9dce4">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="424" y="0" width="1" height="14" uuid="d5b89a91-624b-452b-b841-a4852e393aca">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="495" y="0" width="1" height="14" uuid="dc30557c-df8a-44e5-96b9-885f7f05210e">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="26" y="0" width="1" height="14" uuid="d51f26b9-56ff-46e4-9726-bec2b002527f">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="568" y="0" width="1" height="14" uuid="d5ded319-5528-4c19-b961-073c3bd13217">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement style="page_footer_bg" positionType="Float" x="26" y="0" width="544" height="20" uuid="a0096cf5-e38f-4836-bd3a-a2c687c1d893"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="page_footer_text" positionType="Float" x="0" y="0" width="162" height="20" uuid="a0f5c4e8-9a55-465a-a488-c218fc48a9b1"/>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{APP_NAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="page_footer_text" positionType="Float" x="164" y="0" width="200" height="20" uuid="70a52f82-9863-4f0f-ae91-540294f75dce"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{REPORT_NAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="page_footer_text" positionType="Float" x="366" y="0" width="176" height="20" uuid="ee5d334d-148a-486c-90e9-48f0fc4382cc"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression><![CDATA[$V{REPORT_INFO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="33">
+			<frame>
+				<reportElement style="summary_bg" positionType="Float" x="25" y="0" width="542" height="16" uuid="fa4c9a92-3da6-478e-a4f9-2867db86b2af"/>
+				<box>
+					<bottomPen lineWidth="1.25"/>
+				</box>
+			</frame>
+			<textField>
+				<reportElement x="25" y="17" width="100" height="16" uuid="f4ad2378-4d68-4d04-8400-89a5c3e23eb1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{lbl.fin_informe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

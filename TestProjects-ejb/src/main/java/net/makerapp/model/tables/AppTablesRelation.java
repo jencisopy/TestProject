@@ -24,6 +24,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.javabeanstack.data.DataRow;
@@ -36,14 +37,14 @@ import org.javabeanstack.model.IAppTablesRelation;
 @Entity
 @Table(name = "dic_tablarelacion")
 @NamedQueries({
-    @NamedQuery(name = "AppTablesRelation.findAll", query = "SELECT d FROM DicTablarelacion d"),
+    @NamedQuery(name = "AppTablesRelation.findAll", query = "SELECT d FROM AppTablesRelation d"),
     @NamedQuery(name = "AppTablesRelation.findByEntity", query = 
-            "SELECT d FROM DicTablarelacion d "
-                    + "where principal = :entityPK "
-                    + "and externa = :entityFK "
-                    + "and incluir = true")
+            "SELECT d FROM AppTablesRelation d"
+                    + " where entityPK = :entityPK "
+                    + " and entityFK = :entityFK "
+                    + " and included = true")
                 })
-public class DicTablarelacion extends DataRow implements IAppTablesRelation {
+public class AppTablesRelation extends DataRow implements IAppTablesRelation {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -51,35 +52,36 @@ public class DicTablarelacion extends DataRow implements IAppTablesRelation {
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "externa")
-    private String externa;
+    private String entityFK;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "principal")
-    private String principal;
+    private String entityPK;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "expresion_externa")
-    private String expresionExterna;
+    private String fieldsFK;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "expresion_principal")
-    private String expresionPrincipal;
+    private String fieldsPK;
 
     @Column(name = "incluir")
-    private Boolean incluir;
+    private Boolean included;
     @Column(name = "marcado")
     private Boolean marcado;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tiporelacion")
-    private short tiporelacion;
+    private short relationType;
 
+    @Transient
     @Column(name = "fechacreacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechacreacion;
@@ -90,67 +92,67 @@ public class DicTablarelacion extends DataRow implements IAppTablesRelation {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechareplicacion;
 
-    public DicTablarelacion() {
+    public AppTablesRelation() {
     }
 
     @Override
     public String getEntityPK() {
-        return principal;
+        return entityPK;
     }
 
     @Override
     public String getFieldsPK() {
-        return this.expresionPrincipal;
+        return this.fieldsPK;
     }
 
     @Override
     public String getEntityFK() {
-        return externa;
+        return entityFK;
     }
 
     @Override
     public String getFieldsFK() {
-        return expresionExterna;
+        return fieldsFK;
     }
 
     @Override
     public void setEntityPK(String entity) {
-        this.principal = entity;
+        this.entityPK = entity;
     }
 
     @Override
     public void setFieldsPK(String fields) {
-        this.expresionPrincipal = fields;
+        this.fieldsPK = fields;
     }
 
     @Override
     public void setEntityFK(String entity) {
-        this.externa = entity;
+        this.entityFK = entity;
     }
 
     @Override
     public void setFieldsFK(String fields) {
-        this.expresionExterna = fields;
+        this.fieldsFK = fields;
     }
     
     @Override
     public boolean isIncluded() {
-        return incluir;
+        return included;
     }
 
     @Override
     public void setIncluded(boolean incluir) {
-        this.incluir = incluir;
+        this.included = incluir;
     }
 
     @Override
     public short getRelationType() {
-        return tiporelacion;
+        return relationType;
     }
 
     @Override
     public void setRelationType(short tiporelacion) {
-        this.tiporelacion = tiporelacion;
+        this.relationType = tiporelacion;
     }
 
     public Boolean getMarcado() {

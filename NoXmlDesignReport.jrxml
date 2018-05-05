@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NoXmlDesignReport" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="952d23b5-80da-4a40-b6ee-77d6479d6bfd">
+	<template><![CDATA["template.jrtx"]]></template>
+	<style name="Times_Normal" isDefault="true" fontName="Times New Roman" fontSize="12"/>
+	<style name="Times_Bold" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Times_Italic" fontName="Times New Roman" fontSize="12" isItalic="true"/>
+	<parameter name="ReportTitle" class="java.lang.String"/>
+	<parameter name="OrderByClause" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM Address $P!{OrderByClause}]]>
+	</queryString>
+	<field name="Id" class="java.lang.Integer"/>
+	<field name="FirstName" class="java.lang.String"/>
+	<field name="LastName" class="java.lang.String"/>
+	<field name="Street" class="java.lang.String"/>
+	<field name="City" class="java.lang.String"/>
+	<variable name="CityNumber" class="java.lang.Integer" resetType="Group" resetGroup="CityGroup" calculation="System">
+		<initialValueExpression><![CDATA[($V{CityNumber} != null)?(new Integer($V{CityNumber}.intValue() + 1)):(new Integer(1))]]></initialValueExpression>
+	</variable>
+	<variable name="AllCities" class="java.lang.String" calculation="System"/>
+	<group name="CityGroup" minHeightToStartNewPage="60">
+		<groupExpression><![CDATA[$F{City}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement style="detail_number" mode="Opaque" x="0" y="4" width="515" height="15" backcolor="#C0C0C0" uuid="2de1e435-6c6c-4918-b05a-ff7d721dc405"/>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA["  " + String.valueOf($V{CityNumber}) + ". " + String.valueOf($F{City})]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="19" width="515" height="1" uuid="f41a5c31-95db-452d-b885-742224f9b405"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<line>
+					<reportElement x="0" y="-1" width="515" height="1" uuid="7b823845-aa5f-448f-9203-09b05c92c35c"/>
+				</line>
+				<staticText>
+					<reportElement style="Times_Bold" x="400" y="0" width="60" height="15" uuid="83aa936f-1fd1-4790-b5de-ec7126c85ad4"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Count : ]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="Times_Bold" x="460" y="0" width="30" height="15" uuid="8d015f9f-634e-4a67-982c-437ac00746c0"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{CityGroup_COUNT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="50">
+			<line>
+				<reportElement x="0" y="0" width="515" height="1" uuid="eedf03db-0138-4ffd-b871-14e259dcfc17"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Times_Normal" x="0" y="10" width="515" height="30" uuid="4ff976ad-0656-4651-b6bf-363e0dd175e0"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="5" width="515" height="15" forecolor="#333333" backcolor="#333333" uuid="799994b1-934f-4f39-a935-74373f3343cb"/>
+				<staticText>
+					<reportElement style="Times_Bold" mode="Opaque" x="0" y="0" width="55" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="b9f96dbd-a40a-4dad-a225-7a2bb2b5e762"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Times_Bold" mode="Opaque" x="55" y="0" width="205" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="25320642-f0f4-4370-b1bb-31294c338180"/>
+					<text><![CDATA[Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Times_Bold" mode="Opaque" x="260" y="0" width="255" height="15" forecolor="#FFFFFF" backcolor="#333333" uuid="1fbbe3e2-38c1-4923-a926-afde39133277"/>
+					<text><![CDATA[Street]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement style="Times_Normal" x="0" y="4" width="50" height="15" uuid="6848ac8f-8505-4a68-b1a8-208f8a1dde50"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Times_Normal" positionType="Float" x="55" y="4" width="200" height="15" uuid="58b8a5dc-0105-4b91-a830-4c1ff75d04f9"/>
+				<textFieldExpression><![CDATA[$F{FirstName} + " " + $F{LastName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Times_Normal" positionType="Float" x="260" y="4" width="255" height="15" uuid="65247e54-75e5-493c-9242-de5223673129"/>
+				<textFieldExpression><![CDATA[$F{Street}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="19" width="515" height="1" forecolor="#808080" uuid="02d10638-5f48-4834-af3d-9bc29a1e09de"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -25,54 +25,54 @@ public class AppUserMember extends DataRow implements IAppUserMember {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idusuariomiembro")
-    private Long idusuariomiembro;
+    private Long idusermember;
     
     @JoinColumn(name = "idmiembro", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
-    private AppUser usuarioMiembro;
+    private AppUser usermember;
 
     @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
-    private AppUser usuarioGrupo;
+    private AppUser usergroup;
     
     public AppUserMember() {
     }
 
     @Override
     public Long getIdusermember() {
-        return idusuariomiembro;
+        return idusermember;
     }
 
     @Override
     public void setIdusermember(Long idusuariomiembro) {
-        this.idusuariomiembro = idusuariomiembro;
+        this.idusermember = idusuariomiembro;
     }
 
     @Override
     public IAppUser getUserMember() {
-        return usuarioMiembro;
+        return usermember;
     }
 
     @Override
     public void setUserMember(IAppUser usuarioMiembro) {
-        this.usuarioMiembro = (AppUser)usuarioMiembro;
+        this.usermember = (AppUser)usuarioMiembro;
     }
 
     @Override
     public IAppUser getUserGroup() {
-        return usuarioGrupo;
+        return usergroup;
     }
 
     @Override
     public void setUserGroup(IAppUser usuarioGrupo) {
-        this.usuarioGrupo = (AppUser)usuarioGrupo;
+        this.usergroup = (AppUser)usuarioGrupo;
     }
 
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.idusuariomiembro);
+        hash = 71 * hash + Objects.hashCode(this.idusermember);
         return hash;
     }
 
@@ -85,12 +85,12 @@ public class AppUserMember extends DataRow implements IAppUserMember {
             return false;
         }
         final AppUserMember other = (AppUserMember) obj;
-        return Objects.equals(this.idusuariomiembro, other.idusuariomiembro);
+        return Objects.equals(this.idusermember, other.idusermember);
     }
 
     @Override
     public String toString() {
-        return "UsuarioMiembro{" + "idusuariomiembro=" + idusuariomiembro + "}";
+        return "UsuarioMiembro{" + "idusuariomiembro=" + idusermember + "}";
     }
 
     @Override
@@ -99,7 +99,7 @@ public class AppUserMember extends DataRow implements IAppUserMember {
             return false;
         }
         AppUserMember obj = (AppUserMember) o;
-        return (this.idusuariomiembro.equals(obj.getIdusermember())); 
+        return (this.idusermember.equals(obj.getIdusermember())); 
     }
     
 }
