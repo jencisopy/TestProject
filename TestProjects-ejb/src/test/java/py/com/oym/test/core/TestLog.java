@@ -5,50 +5,29 @@
  */
 package py.com.oym.test.core;
 
-import java.util.Properties;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
-import org.javabeanstack.security.ISecManager;
-import org.javabeanstack.security.IUserSession;
 
 import py.com.oym.model.tables.DicLog;
 import org.javabeanstack.model.IAppLogRecord;
 import org.javabeanstack.log.ILogManager;
+import py.com.oym.test.data.TestClass;
 
 
 /**
  *
  * @author Jorge Enciso
  */
-public class TestLog {
+public class TestLog extends TestClass {
 
-    static Context context;
-    static IUserSession userSession;
 
     public TestLog() {
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-        Properties p = new Properties();
-        p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-        p.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
-        p.put(Context.SECURITY_PRINCIPAL, "jenciso");
-        p.put(Context.SECURITY_CREDENTIALS, "Oym1282873");
-        p.put("jboss.naming.client.ejb.context", true);
-        context = new InitialContext(p);
-
-        ISecManager secMngr = (ISecManager) context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");
-
-        userSession = secMngr.createSession("J", "", 98L, null);
-    }
 
 
     @Test
@@ -58,24 +37,17 @@ public class TestLog {
     }
 
     @Test
-    public void test2() throws NamingException {
-        ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
-        IErrorReg errorReg = new ErrorReg("PRUEBA DE ERROR", 10, "prueba");
-        assertTrue(logManager.dbWrite(DicLog.class, errorReg, userSession));
-    }
-
-    @Test
     public void test3() throws NamingException {
         ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
         IErrorReg errorReg = new ErrorReg("PRUEBA DE ERROR2", 10, "prueba");
-        assertTrue(logManager.dbWrite(DicLog.class, errorReg, userSession.getSessionId()));
+        assertTrue(logManager.dbWrite(DicLog.class, sessionId, errorReg));
     }
 
     @Test
     public void test4() throws NamingException {
         ILogManager logManager = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!org.javabeanstack.log.ILogManagerRemote");
         boolean result
-                = logManager.dbWrite(DicLog.class, userSession.getSessionId(),
+                = logManager.dbWrite(DicLog.class, sessionId,
                         "PRUEBA DE MENSAJE 3", "PRUEBA DE MENSAJE INFO",
                         100, IAppLogRecord.CATEGORY_APP, IAppLogRecord.LEVEL_ERROR, "xx", "xx1",
                         0, 0);
@@ -91,7 +63,7 @@ public class TestLog {
         dicLog.setMessage("PRUEBA MENSAJE 4");
         dicLog.setMessageInfo("PRUEBA MENSAJE INFO");
 
-        boolean result = logManager.dbWrite(dicLog, userSession);
+        boolean result = logManager.dbWrite(dicLog, sessionId);
         assertTrue(result);
     }
 
