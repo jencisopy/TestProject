@@ -57,13 +57,14 @@
             <artifactId>jbs-core</artifactId>
             <version>${javabeanstack.frame}</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.javabeanstack</groupId>
             <artifactId>jbs-core</artifactId>
             <version>${javabeanstack.frame}</version>
             <classifier>javadoc</classifier>
         </dependency>
-        
+        -->
         <dependency>
             <groupId>org.javabeanstack</groupId>
             <artifactId>jbs-business</artifactId>
