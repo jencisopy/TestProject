@@ -26,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import py.com.oym.frame.data.DataObject;
+import org.javabeanstack.datactrl.DataObject;
 import static py.com.oym.test.data.TestClass.context;
 
 /**

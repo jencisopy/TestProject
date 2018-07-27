@@ -32,8 +32,7 @@ import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.IUserSession;
 import org.javabeanstack.data.IGenericDAO;
-
-import py.com.oym.frame.data.DataObject;
+import org.javabeanstack.datactrl.DataObject;
 
 /**
  *
