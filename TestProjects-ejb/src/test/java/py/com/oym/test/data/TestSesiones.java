@@ -34,7 +34,7 @@ public class TestSesiones extends TestClass{
     }
     
   
-    //@Test
+    @Test
     public void testLogin() throws Exception {
         ISecManagerRemote sesiones  = 
                 (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
@@ -47,7 +47,7 @@ public class TestSesiones extends TestClass{
         //assertEquals(true, login); 
     }
     
-    //@Test
+    @Test
     public void testCreateSession() throws Exception {
         ISecManagerRemote sesiones  = 
                 (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
@@ -59,9 +59,12 @@ public class TestSesiones extends TestClass{
         assertNotNull(userSesion.getSessionId());
         assertTrue(sesiones.isSesionIdValid(userSesion.getSessionId()));
         System.out.println(sesiones.getUserRol("J"));
+        
+        sesiones.logout(userSesion.getSessionId());
+        assertFalse(sesiones.isSesionIdValid(userSesion.getSessionId()));
     }    
 
-    //@Test
+    @Test
     public void testSesionExpirada() throws Exception {
         ISecManagerRemote sesiones  = 
                 (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
