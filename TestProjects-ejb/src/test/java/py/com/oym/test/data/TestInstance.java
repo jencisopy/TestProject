@@ -6,7 +6,7 @@
 package py.com.oym.test.data;
 
 
-import net.makerapp.model.tables.Pais;
+import org.javabeanstack.model.tables.Pais;
 import org.junit.Test;
 import org.javabeanstack.data.DataRow;
 import static org.junit.Assert.*;

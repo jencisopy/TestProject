@@ -15,10 +15,10 @@ import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.services.IDataServiceRemote;
 import org.javabeanstack.services.IDataService;
 import org.javabeanstack.error.IErrorReg;
-import net.makerapp.model.tables.Pais;
-import net.makerapp.model.tables.AppUser;
-import net.makerapp.model.tables.AppUserMember;
-import net.makerapp.model.tables.Moneda;
+import org.javabeanstack.model.tables.Pais;
+import org.javabeanstack.model.tables.AppUser;
+import org.javabeanstack.model.tables.AppUserMember;
+import org.javabeanstack.model.tables.Moneda;
 import org.javabeanstack.data.IDBLinkInfo;
 import org.junit.Test;
 

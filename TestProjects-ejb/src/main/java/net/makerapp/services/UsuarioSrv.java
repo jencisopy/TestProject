@@ -14,7 +14,7 @@ import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.services.DataService;
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
-import net.makerapp.model.tables.AppUser;
+import org.javabeanstack.model.tables.AppUser;
 
 
 /**

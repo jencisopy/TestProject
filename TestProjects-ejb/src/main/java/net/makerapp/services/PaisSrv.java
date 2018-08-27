@@ -16,7 +16,7 @@ import org.javabeanstack.error.IErrorReg;
 import org.javabeanstack.services.DataService;
 import org.javabeanstack.services.IDataServiceLocal;
 import org.javabeanstack.services.IDataServiceRemote;
-import net.makerapp.model.tables.AppUser;
+import org.javabeanstack.model.tables.AppUser;
 
 /**
  *

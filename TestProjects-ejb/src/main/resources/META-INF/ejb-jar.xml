@@ -60,8 +60,7 @@
         <session>
             <ejb-name>Sessions</ejb-name>
             <ejb-class>py.com.oym.frame.security.Sessions</ejb-class>
-            <business-local>org.javabeanstack.security.ISessionsLocal</business-local>
-            <business-remote>org.javabeanstack.security.ISessionsRemote</business-remote>
+            <business-local>org.javabeanstack.security.ISessions</business-local>
             <session-type>Singleton</session-type>
         </session>
         <session>

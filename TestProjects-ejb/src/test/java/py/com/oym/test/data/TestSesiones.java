@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.security.ISecManagerRemote;
-import org.javabeanstack.security.ISessionsRemote;
 import org.javabeanstack.security.IUserSession;
 import org.javabeanstack.data.IGenericDAO;
 
@@ -22,15 +21,6 @@ import org.javabeanstack.data.IGenericDAO;
 public class TestSesiones extends TestClass{
    
     public TestSesiones() {
-    }
-    
-    @Test
-    public void test() throws Exception {
-        ISessionsRemote sesiones  = 
-                (ISessionsRemote) context.lookup(jndiProject+"Sessions!org.javabeanstack.security.ISessionsRemote");
-        
-        IUserSession userSession = sesiones.login("J", "");
-        assertNotNull(userSession);
     }
     
   
