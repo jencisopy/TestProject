@@ -70,7 +70,7 @@ public class TestDomW3c {
         System.out.println(DomW3cParser.getXmlText(document.getDocumentElement()));
     }
     
-    //@Test
+    @Test
     public void test2() throws Exception {
         IXmlDom document = new XmlDomW3c();
         Map<String, String> params = new HashMap();
@@ -114,7 +114,7 @@ public class TestDomW3c {
     //@Test
     // Test convertir file a objeto DOM
     public void test3() throws ParserConfigurationException, IOException, FileNotFoundException, SAXException, TransformerException {
-        File file = new File("/proyectos/java/oym/TestProjects/clasemaker.xml");
+        File file = new File("/proyectos/java/TestProjects/clasemaker.xml");
         Document dom = DomW3cParser.loadXml(file);
         assertNotNull(dom);
         System.out.println(DomW3cParser.getXmlText(dom));
@@ -124,7 +124,7 @@ public class TestDomW3c {
     // Test convertir a objeto DOM a partir de un pathfile
     public void testDocumentPath() throws ParserConfigurationException, IOException, FileNotFoundException, SAXException, TransformerException {
         IXmlDom xmlDom = new XmlDomW3c();
-        boolean obj = xmlDom.config("file:///proyectos/java/oym/TestProjects/clasemaker.xml", "", "", true);
+        boolean obj = xmlDom.config("file:///proyectos/java/TestProjects/clasemaker.xml", "", "", true);
         assertTrue(obj);
         System.out.println(xmlDom.getXml());
     }
@@ -241,7 +241,7 @@ public class TestDomW3c {
     
     //@Test
     public void test10() {
-        File file = new File("/proyectos/java/oym/TestProjects/clasemaker.xml");
+        File file = new File("/proyectos/java/TestProjects/clasemaker.xml");
         IXmlDom document = new XmlDomW3c();
         boolean obj = document.config(file, "XML/THEMES", true, null);
         assertTrue(obj);
@@ -250,7 +250,7 @@ public class TestDomW3c {
     
     //@Test
     public void test11() {
-        File file = new File("/proyectos/java/oym/TestProjects/clasemaker.xml");
+        File file = new File("/proyectos/java/TestProjects/clasemaker.xml");
         IXmlDom document = new XmlDomW3c();
         boolean obj = document.config(file, "XML/THEMES", true, null);
         assertTrue(obj);
@@ -263,7 +263,7 @@ public class TestDomW3c {
 
     //@Test
     public void test12() {
-        File file = new File("/proyectos/java/oym/TestProjects/clasemaker.xml");
+        File file = new File("/proyectos/java/TestProjects/clasemaker.xml");
         IXmlDom document = new XmlDomW3c();
         boolean obj = document.config(file, "XML/THEMES", true, null);
         assertTrue(obj);
@@ -366,7 +366,7 @@ public class TestDomW3c {
 
     //@Test
     public void testCache() {
-        File file = new File("/proyectos/java/oym/TestProjects/clasemaker.xml");
+        File file = new File("/proyectos/java/TestProjects/clasemaker.xml");
         IXmlDom document = new XmlDomW3c();
         boolean obj = document.config(file, "XML/THEMES", true, null);
         assertTrue(obj);
@@ -377,9 +377,9 @@ public class TestDomW3c {
     
     //@Test
     public void testCache2() {
-        String documentPath = "file:///proyectos/java/oym/TestProjects/dic_ag_log.xml";
+        String documentPath = "file:///proyectos/java/TestProjects/dic_ag_log.xml";
         IXmlDom document = new XmlDomW3c();
-        document.addConfigParam("path", "/proyectos/java/oym/TestProjects/");
+        document.addConfigParam("path", "/proyectos/java/TestProjects/");
         document.addConfigParam("pathtype", "FILE");
         boolean obj = document.config(documentPath, "", "/XML/AG_LOG_VIEW", false, null);
         System.out.println(document.toString());
@@ -422,9 +422,9 @@ public class TestDomW3c {
     
     //@Test
     public void testHerencia() {
-        String documentPath = "file:///proyectos/java/oym/TestProjects/dic_ag_log.xml";
+        String documentPath = "file:///proyectos/java/TestProjects/dic_ag_log.xml";
         IXmlDom document = new XmlDomW3c();
-        document.addConfigParam("path", "/proyectos/java/oym/TestProjects/");
+        document.addConfigParam("path", "/proyectos/java/TestProjects/");
         document.addConfigParam("pathtype", "FILE");
         boolean obj = document.config(documentPath, "", "/XML/AG_LOG_VIEW", false);
         System.out.println(document.toString());
@@ -453,9 +453,9 @@ public class TestDomW3c {
 
     @Test
     public void testHerencia3() {
-        String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
+        String documentPath = "file://C:/proyectos/java/TestProjects/itemventa_fechanro_operativo.xml";
         IXmlDom document = new XmlDomW3c();
-        document.addConfigParam("path", "C:/proyectos/java/oym/TestProjects/");
+        document.addConfigParam("path", "C:/proyectos/java/TestProjects/");
         document.addConfigParam("pathtype", "FILE");
         document.addConfigParam("encoding","UTF-8");
 
@@ -466,10 +466,10 @@ public class TestDomW3c {
 
     //@Test
     public void testGetElements() throws Exception {
-        String documentPath = "file://C:/proyectos/java/oym/TestProjects/itemventa_fechanro_operativo.xml";
+        String documentPath = "file://C:/proyectos/java/TestProjects/itemventa_fechanro_operativo.xml";
         IXmlDom document = new XmlDomW3c();
         
-        document.addConfigParam("path", "C:/proyectos/java/oym/TestProjects/");
+        document.addConfigParam("path", "C:/proyectos/java/TestProjects/");
         document.addConfigParam("pathtype", "FILE");
         document.addConfigParam("encoding","UTF-8");
 

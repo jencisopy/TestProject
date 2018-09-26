@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package py.com.oym.test.varios;
+package py.com.oym.test.security;
 
 import java.security.KeyFactory;
 import java.security.KeyPairGenerator;
