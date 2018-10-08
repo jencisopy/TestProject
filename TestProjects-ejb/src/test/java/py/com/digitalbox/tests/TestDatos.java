@@ -24,7 +24,7 @@ import org.javabeanstack.data.IDataNativeQuery;
 import org.javabeanstack.data.IDataQueryModel;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.exceptions.SessionError;
-import org.javabeanstack.data.DataSet;
+import org.javabeanstack.data.model.DataSet;
 import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.data.IDataSet;
 import org.javabeanstack.data.IGenericDAO;

@@ -21,7 +21,7 @@ import org.junit.runners.MethodSorters;
 import py.com.digitalbox.model.tables.BxCampo;
 
 import org.javabeanstack.data.DataLink;
-import org.javabeanstack.data.IDataObject;
+import org.javabeanstack.datactrl.IDataObject;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.IUserSession;

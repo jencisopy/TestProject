@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.javabeanstack.data.DataQueryModel;
+import org.javabeanstack.data.model.DataQueryModel;
 import org.javabeanstack.data.IDataQueryModel;
 
 /**

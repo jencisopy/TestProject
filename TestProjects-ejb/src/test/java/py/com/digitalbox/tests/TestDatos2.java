@@ -29,7 +29,7 @@ import py.com.digitalbox.model.tables.BxPlantilladetalle;
 import py.com.digitalbox.model.tables.BxRepositorio;
 
 import org.javabeanstack.data.DataLink;
-import org.javabeanstack.data.DataSet;
+import org.javabeanstack.data.model.DataSet;
 import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.data.IDataSet;
 import org.javabeanstack.exceptions.SessionError;
