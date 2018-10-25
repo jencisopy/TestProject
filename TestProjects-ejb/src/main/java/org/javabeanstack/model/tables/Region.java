@@ -117,7 +117,7 @@ public class Region extends DataRow implements Serializable {
     public void setIdempresa(Long idempresa) {
         this.idempresa = idempresa;
     }
-  
+
     
     @PrePersist
     public void prePersist() {

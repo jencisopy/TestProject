@@ -31,7 +31,7 @@ import org.javabeanstack.util.Dates;
         uniqueConstraints = { @UniqueConstraint(columnNames = {"codigo"})})
 public class AppUser extends DataRow implements IAppUser {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 0L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -141,6 +141,10 @@ public class AppUser extends DataRow implements IAppUser {
         }
         return code;
     }
+    
+    public String getCodigo() {
+        return getCode();
+    }    
 
     @Override
     public void setCode(String code) {

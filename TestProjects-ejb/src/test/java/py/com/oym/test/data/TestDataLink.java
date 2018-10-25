@@ -11,7 +11,7 @@ import javax.naming.NamingException;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import net.makerapp.services.IUsuarioSrv;
+import org.javabeanstack.services.IUsuarioSrv;
 
 import org.javabeanstack.data.IDataNativeQuery;
 import org.javabeanstack.data.IDataQueryModel;

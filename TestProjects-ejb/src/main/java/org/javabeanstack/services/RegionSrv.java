@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package net.makerapp.services;
+package org.javabeanstack.services;
 
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
@@ -11,26 +6,25 @@ import org.apache.log4j.Logger;
 import org.javabeanstack.annotation.CheckMethod;
 import org.javabeanstack.data.DBManager;
 import org.javabeanstack.data.IDataRow;
-import org.javabeanstack.services.DataService;
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
-import org.javabeanstack.model.tables.AppUser;
+import org.javabeanstack.model.tables.Region;
 
 
 /**
  *
- * @author jenci_000
+ * @author Jorge Enciso
  */
 @TransactionManagement(value=TransactionManagementType.CONTAINER)
-public class UsuarioSrv extends DataService implements IUsuarioSrv {
-    private static final Logger LOGGER = Logger.getLogger(UsuarioSrv.class);
+public class RegionSrv extends DataService implements IRegionSrv {
+    private static final Logger LOGGER = Logger.getLogger(RegionSrv.class);
     
     @CheckMethod(fieldName = "codigo",
                  action   = {IDataRow.AGREGAR,
                              IDataRow.MODIFICAR,
                              IDataRow.BORRAR}) 
     @Override
-    public IErrorReg checkCodigo(AppUser row, String sessionId){
+    public IErrorReg checkCodigo(String sessionId, Region row){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo");
         return errorReg;
@@ -39,15 +33,15 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
     @CheckMethod(fieldName = "codigo",
                  action = {IDataRow.BORRAR}) 
     @Override
-    public IErrorReg checkCodigo2(AppUser row, String sessionId){
+    public IErrorReg checkCodigo2(String sessionId, Region row){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo2");
         return errorReg;
     }
     
-    @CheckMethod(fieldName = "nombre")     
+    @CheckMethod(fieldName = "nombre", action = {IDataRow.AGREGAR, IDataRow.MODIFICAR})
     @Override
-    public IErrorReg checkNombre(AppUser row, String sessionId){
+    public IErrorReg checkNombre(String sessionId, Region row){
         IErrorReg errorReg = new ErrorReg();
         LOGGER.info("IN checkNombre");
         //errorReg.setMessage("prueba de error");
@@ -60,7 +54,7 @@ public class UsuarioSrv extends DataService implements IUsuarioSrv {
     }
     
     public String hello(){
-        return "UsuarioSrv";
+        return "RegionSrv";
     }
 
 //    @PostConstruct

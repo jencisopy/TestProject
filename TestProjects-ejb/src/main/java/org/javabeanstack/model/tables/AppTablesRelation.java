@@ -187,11 +187,12 @@ public class AppTablesRelation extends DataRow implements IAppTablesRelation {
         this.fechareplicacion = fechareplicacion;
     }
 
+
     @Override
     public String toString() {
         return "net.makerapp.model.tables.DicTablarelacion[ dicTablarelacionPK= ]";
     }
-    
+
     @Override
     public boolean equivalent(Object o) {
         return super.equals(o);

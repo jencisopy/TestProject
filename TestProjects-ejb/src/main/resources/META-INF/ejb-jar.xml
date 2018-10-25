@@ -43,15 +43,23 @@
         </session>
         <session>
             <ejb-name>UsuarioSrv</ejb-name>
-            <ejb-class>net.makerapp.services.UsuarioSrv</ejb-class>                                                
-            <business-local>net.makerapp.services.IUsuarioSrv</business-local>
-            <business-remote>net.makerapp.services.IUsuarioSrvRemote</business-remote>
+            <ejb-class>org.javabeanstack.services.UsuarioSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.services.IUsuarioSrv</business-local>
+            <business-remote>org.javabeanstack.services.IUsuarioSrvRemote</business-remote>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session>
+        <session>
+            <ejb-name>RegionSrv</ejb-name>
+            <ejb-class>org.javabeanstack.services.RegionSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.services.IRegionSrv</business-local>
+            <business-remote>org.javabeanstack.services.IRegionSrvRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>UsuarioMiembroSrv</ejb-name>
-            <ejb-class>net.makerapp.services.UsuarioMiembroSrv</ejb-class>                                                
+            <ejb-class>org.javabeanstack.services.UsuarioMiembroSrv</ejb-class>                                                
             <business-local>org.javabeanstack.services.IDataService</business-local>
             <business-remote>org.javabeanstack.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
