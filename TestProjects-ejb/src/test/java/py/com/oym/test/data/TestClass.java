@@ -41,8 +41,7 @@ public class TestClass {
     public static void setUpClass() throws NamingException, Exception {
         Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-        //p.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
-        p.put(Context.PROVIDER_URL, "http-remoting://52.179.164.3:8080");
+        p.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
         //TODO cambiar credenciales
         p.put(Context.SECURITY_PRINCIPAL, "test");
         p.put(Context.SECURITY_CREDENTIALS, "test");
@@ -51,8 +50,7 @@ public class TestClass {
 
         ISecManager secMngr = (ISecManager) context.lookup(jndiProject + "SecManager!org.javabeanstack.security.ISecManagerRemote");
         //TODO cambiar a empresas tests
-        IUserSession userSession = secMngr.createSession("test1", "test1", 2L, null);
-        //IUserSession userSession = secMngr.createSession("J", "", 2L, null);        
+        IUserSession userSession = secMngr.createSession("J", "", 2L, null);        
         sessionId = userSession.getSessionId();
 
         IGenericDAO dao = (IGenericDAO) context.lookup(jndiProject + "GenericDAO!org.javabeanstack.data.IGenericDAORemote");
