@@ -9,6 +9,7 @@ import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
 import org.javabeanstack.model.tables.Region;
+import org.javabeanstack.util.Strings;
 
 
 /**
@@ -27,11 +28,14 @@ public class RegionSrv extends DataService implements IRegionSrv {
     public IErrorReg checkCodigo(String sessionId, Region row){
         IErrorReg errorReg = new ErrorReg(); 
         LOGGER.info("IN validCodigo");
+        if (Strings.isNullorEmpty(row.getCodigo())){
+            LOGGER.info("validCodigo error");
+            errorReg.setMessage("No deje en blanco el campo código");
+        }
         return errorReg;
     }
 
-    @CheckMethod(fieldName = "codigo",
-                 action = {IDataRow.BORRAR}) 
+    @CheckMethod(fieldName = "codigo", action = {IDataRow.BORRAR}) 
     @Override
     public IErrorReg checkCodigo2(String sessionId, Region row){
         IErrorReg errorReg = new ErrorReg(); 
@@ -44,13 +48,10 @@ public class RegionSrv extends DataService implements IRegionSrv {
     public IErrorReg checkNombre(String sessionId, Region row){
         IErrorReg errorReg = new ErrorReg();
         LOGGER.info("IN checkNombre");
-        //errorReg.setMessage("prueba de error");
+        if (Strings.isNullorEmpty(row.getNombre())){
+            errorReg.setMessage("No deje en blanco el campo nombre");
+        }
         return errorReg;
-    }
-    
-    @Override
-    protected String getPersistentUnit(String sessionId){
-        return DBManager.CATALOGO;
     }
     
     public String hello(){
