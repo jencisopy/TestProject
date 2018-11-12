@@ -8,6 +8,7 @@
         <session>
             <ejb-name>DBManager</ejb-name>
             <ejb-class>org.javabeanstack.data.DBManager</ejb-class>
+            <business-local>org.javabeanstack.data.IDBManager</business-local>
             <session-type>Singleton</session-type>
 
             <persistence-context-ref>
