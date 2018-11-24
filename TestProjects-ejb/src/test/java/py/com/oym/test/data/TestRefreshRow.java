@@ -7,7 +7,7 @@ package py.com.oym.test.data;
 
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-import org.javabeanstack.model.tables.AppUser;
+import org.javabeanstack.model.appcatalog.AppUser;
 import org.javabeanstack.data.IGenericDAO;
 
 /**

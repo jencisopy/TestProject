@@ -19,7 +19,7 @@ import org.javabeanstack.data.DataLink;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.data.IGenericDAO;
 
-import org.javabeanstack.model.tables.AppUser;
+import org.javabeanstack.model.appcatalog.AppUser;
 
 
 /**
