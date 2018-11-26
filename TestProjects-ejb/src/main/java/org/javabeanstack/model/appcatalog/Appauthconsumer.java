@@ -42,12 +42,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IAppAuthConsumer;
+import org.javabeanstack.data.DataRow;
 
 /**
  *
- * @author JORGE
+ * @author Jorge Enciso
  */
 @Entity
 @Table(name = "appauthconsumer")
@@ -115,7 +115,7 @@ public class Appauthconsumer extends DataRow implements IAppAuthConsumer {
     @Size(max = 32)
     @Column(name = "appuser")
     private String appuser;
-    @OneToMany(mappedBy = "idappauthconsumer")
+    @OneToMany(mappedBy = "appAuthConsumer")
     private List<Appauthconsumertoken> appauthconsumertokenList;
 
     public Appauthconsumer() {
@@ -288,5 +288,6 @@ public class Appauthconsumer extends DataRow implements IAppAuthConsumer {
     public String toString() {
         return "org.javabeanstack.data.Appauthconsumer[ idappauthconsumer=" + idappauthconsumer + " ]";
     }
+    
     
 }

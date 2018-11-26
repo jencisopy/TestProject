@@ -47,7 +47,7 @@ import org.javabeanstack.model.IAppAuthConsumerToken;
 
 /**
  *
- * @author JORGE
+ * @author Jorge Enciso
  */
 @Entity
 @Table(name = "appauthconsumertoken")
@@ -235,5 +235,4 @@ public class Appauthconsumertoken extends DataRow implements IAppAuthConsumerTok
     public String toString() {
         return "org.javabeanstack.data.Appauthconsumertoken[ idappauthconsumertoken=" + idappauthconsumertoken + " ]";
     }
-    
 }
