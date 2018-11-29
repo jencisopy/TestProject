@@ -20,7 +20,7 @@ import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.IUserSession;
-import org.javabeanstack.services.IDataService;
+import org.javabeanstack.data.services.IDataService;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
 import org.junit.FixMethodOrder;
@@ -158,7 +158,7 @@ public class TestDataObject extends TestClass {
     public void test7getData() throws NamingException, SessionError, Exception {
         System.out.println("7");
         IDataService dataservice
-                = (IDataService) context.lookup(jndiProject + "DataService!org.javabeanstack.services.IDataServiceRemote");
+                = (IDataService) context.lookup(jndiProject + "DataService!org.javabeanstack.data.services.IDataServiceRemote");
 
         //Region
         dataLink.setDao(dataservice);

@@ -36,33 +36,33 @@
         </session>
         <session>
             <ejb-name>DataService</ejb-name>
-            <ejb-class>org.javabeanstack.services.DataService</ejb-class>                                                
-            <business-local>org.javabeanstack.services.IDataService</business-local>
-            <business-remote>org.javabeanstack.services.IDataServiceRemote</business-remote>
+            <ejb-class>org.javabeanstack.data.services.DataService</ejb-class>                                                
+            <business-local>org.javabeanstack.data.services.IDataService</business-local>
+            <business-remote>org.javabeanstack.data.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>UsuarioSrv</ejb-name>
-            <ejb-class>org.javabeanstack.services.UsuarioSrv</ejb-class>                                                
-            <business-local>org.javabeanstack.services.IUsuarioSrv</business-local>
-            <business-remote>org.javabeanstack.services.IUsuarioSrvRemote</business-remote>
+            <ejb-class>org.javabeanstack.data.services.UsuarioSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.data.services.IUsuarioSrv</business-local>
+            <business-remote>org.javabeanstack.data.services.IUsuarioSrvRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>RegionSrv</ejb-name>
-            <ejb-class>org.javabeanstack.services.RegionSrv</ejb-class>                                                
-            <business-local>org.javabeanstack.services.IRegionSrv</business-local>
-            <business-remote>org.javabeanstack.services.IRegionSrvRemote</business-remote>
+            <ejb-class>org.javabeanstack.data.services.RegionSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.data.services.IRegionSrv</business-local>
+            <business-remote>org.javabeanstack.data.services.IRegionSrvRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
         <session>
             <ejb-name>UsuarioMiembroSrv</ejb-name>
-            <ejb-class>org.javabeanstack.services.UsuarioMiembroSrv</ejb-class>                                                
-            <business-local>org.javabeanstack.services.IDataService</business-local>
-            <business-remote>org.javabeanstack.services.IDataServiceRemote</business-remote>
+            <ejb-class>org.javabeanstack.data.services.UsuarioMiembroSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.data.services.IDataService</business-local>
+            <business-remote>org.javabeanstack.data.services.IDataServiceRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>

@@ -12,8 +12,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import org.javabeanstack.data.IDataRow;
-import org.javabeanstack.services.IDataServiceRemote;
-import org.javabeanstack.services.IDataService;
+import org.javabeanstack.data.services.IDataServiceRemote;
+import org.javabeanstack.data.services.IDataService;
 import org.javabeanstack.error.IErrorReg;
 import org.javabeanstack.model.tables.Pais;
 import org.javabeanstack.model.appcatalog.AppUser;
@@ -33,7 +33,7 @@ public class TestDataService extends TestClass{
     //@Test
     public void testInstance() throws Exception {
         IDataServiceRemote instance  = 
-                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
+                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.data.services.IDataServiceRemote");
         assertNotNull(instance);
     }
 
@@ -54,7 +54,7 @@ public class TestDataService extends TestClass{
     //@Test    
     public void testCheckUnique2() throws Exception {
         IDataServiceRemote dataService  = 
-                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
+                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.data.services.IDataServiceRemote");
         
         Moneda row = dataService.findById(Moneda.class,sessionId ,234L);
         //dataService.checkDataRow(row,"");
@@ -127,7 +127,7 @@ public class TestDataService extends TestClass{
     //@Test    
     public void testCheckForeignkey() throws Exception {
         IDataServiceRemote dataService  = 
-                (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
+                (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.data.services.IDataServiceRemote");
         
         List<AppUserMember> rows = dataService.findAll(AppUserMember.class,null);
         assertTrue(dataService.checkForeignKey("",rows.get(0),"usuariogrupo"));
@@ -140,7 +140,7 @@ public class TestDataService extends TestClass{
     //@Test    
     public void testCheckForeignKey2() throws Exception {
         IDataServiceRemote dataService  = 
-                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.services.IDataServiceRemote");
+                (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.data.services.IDataServiceRemote");
         
         Map<String, IErrorReg> errors;        
         List<Pais> rows = dataService.find(Pais.class,sessionId);
@@ -155,7 +155,7 @@ public class TestDataService extends TestClass{
      * @throws java.lang.Exception */
     public void testCheckForeignKey3() throws Exception {
         IDataServiceRemote dataService  = 
-                (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.services.IDataServiceRemote");
+                (IDataServiceRemote) context.lookup(jndiProject+"UsuarioMiembroSrv!org.javabeanstack.data.services.IDataServiceRemote");
         
         List<AppUserMember> rows = dataService.findAll(AppUserMember.class,null);
         AppUserMember usuarioMiembro = rows.get(0);
@@ -170,7 +170,7 @@ public class TestDataService extends TestClass{
     //@Test    
     public void testCheckForeignKey4() throws Exception {
         IDataServiceRemote dataService  = 
-                (IDataServiceRemote) context.lookup(jndiProject+"PaisSrv!org.javabeanstack.services.IDataServiceRemote");
+                (IDataServiceRemote) context.lookup(jndiProject+"PaisSrv!org.javabeanstack.data.services.IDataServiceRemote");
         
         List<Pais> rows = dataService.find(Pais.class, sessionId);
         Pais pais = rows.get(0);

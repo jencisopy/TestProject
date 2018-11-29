@@ -13,9 +13,9 @@ import org.javabeanstack.annotation.CheckMethod;
 import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.error.ErrorReg;
 import org.javabeanstack.error.IErrorReg;
-import org.javabeanstack.services.DataService;
-import org.javabeanstack.services.IDataServiceLocal;
-import org.javabeanstack.services.IDataServiceRemote;
+import org.javabeanstack.data.services.DataService;
+import org.javabeanstack.data.services.IDataServiceLocal;
+import org.javabeanstack.data.services.IDataServiceRemote;
 import org.javabeanstack.model.appcatalog.AppUser;
 
 /**
