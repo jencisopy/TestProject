@@ -21,6 +21,7 @@ import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IAppCompany;
 
 
+
 /**
  *
  * @author Jorge Enciso
