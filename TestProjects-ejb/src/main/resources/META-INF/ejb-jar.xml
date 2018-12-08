@@ -61,8 +61,8 @@
         <session>
             <ejb-name>UsuarioMiembroSrv</ejb-name>
             <ejb-class>org.javabeanstack.data.services.UsuarioMiembroSrv</ejb-class>                                                
-            <business-local>org.javabeanstack.data.services.IDataService</business-local>
-            <business-remote>org.javabeanstack.data.services.IDataServiceRemote</business-remote>
+            <business-local>org.javabeanstack.data.services.IUsuarioMiembroSrv</business-local>
+            <business-remote>org.javabeanstack.data.services.IUsuarioMiembroSrvRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
@@ -116,6 +116,13 @@
             <ejb-name>AppResource</ejb-name>
             <ejb-class>org.javabeanstack.resources.AppResource</ejb-class>                                                
             <business-remote>org.javabeanstack.resources.IAppResource</business-remote>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session>                                                        
+        <session>
+            <ejb-name>OAuthConsumerImpl</ejb-name>
+            <ejb-class>org.javabeanstack.security.OAuthConsumerImpl</ejb-class>                                                
+            <business-local>org.javabeanstack.security.IOAuthConsumer</business-local>            
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>                                                        
