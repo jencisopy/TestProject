@@ -12,7 +12,7 @@ import org.javabeanstack.model.IAppAuthConsumerToken;
  *
  * @author Jorge Enciso
  */
-public class OAuthConsumerImpl extends OAuthConsumer{
+public class OAuthConsumerImpl extends OAuthConsumerBase{
         @Override
         public Class<IAppAuthConsumer> getAuthConsumerClass() {
             try {
