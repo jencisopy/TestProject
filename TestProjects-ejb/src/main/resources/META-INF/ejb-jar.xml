@@ -122,7 +122,7 @@
         <session>
             <ejb-name>AppCompanySrv</ejb-name>
             <ejb-class>py.com.oym.frame.services.AppCompanySrv</ejb-class>                                                
-            <business-local>org.javabeanstack.data.services.IAppCompanySrv</business-local>
+            <business-remote>org.javabeanstack.data.services.IAppCompanySrv</business-remote>            
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>  
