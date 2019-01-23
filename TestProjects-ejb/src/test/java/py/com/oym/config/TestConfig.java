@@ -49,7 +49,7 @@ public class TestConfig extends TestClass {
         IAppSystemParam param = appConfig.getSystemParam("Passwordminchar");
         System.out.println(param.getId());
         
-        param = appConfig.getSystemParam(param.getIdsystemparam());
+        param = appConfig.getSystemParam(param.getIdAppSystemParam());
         System.out.println(param.getParam());
         
         List<IAppSystemParam> params = appConfig.getSystemParams();
