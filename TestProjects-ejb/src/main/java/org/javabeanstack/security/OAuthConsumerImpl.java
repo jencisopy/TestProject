@@ -5,6 +5,7 @@
  */
 package org.javabeanstack.security;
 
+import org.javabeanstack.config.IAppConfig;
 import org.javabeanstack.data.services.IAppCompanySrv;
 import org.javabeanstack.model.IAppAuthConsumer;
 import org.javabeanstack.model.IAppAuthConsumerToken;
