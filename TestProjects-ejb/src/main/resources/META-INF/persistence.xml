@@ -2,7 +2,7 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="PU1" transaction-type="JTA">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <jta-data-source>jdbc/Maker95Test1DS</jta-data-source>
+    <jta-data-source>jdbc/Maker950DS_1</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"/>
@@ -19,7 +19,7 @@
 
   <persistence-unit name="PU2" transaction-type="JTA">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <jta-data-source>jdbc/Maker95Test2DS</jta-data-source>
+    <jta-data-source>jdbc/Maker950DS_2</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"/>
@@ -37,7 +37,7 @@
 
   <persistence-unit name="PU3" transaction-type="JTA">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <jta-data-source>jdbc/Maker95Test3DS</jta-data-source>
+    <jta-data-source>jdbc/Maker950DS_3</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect"/>
