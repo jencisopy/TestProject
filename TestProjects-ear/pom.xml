@@ -4,7 +4,7 @@
     <parent>
         <artifactId>TestProjects</artifactId>
         <groupId>py.com.oym</groupId>
-        <version>1.3.0</version>
+        <version>1.4.0-SNAPSHOT</version>
     </parent>
 
     <groupId>py.com.oym</groupId>
