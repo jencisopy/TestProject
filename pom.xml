@@ -43,7 +43,7 @@
         <repository>
             <id>oym-snapshots</id>
             <name>OyM Maven Repository</name>
-            <url>http://agente.oym.com.py:8001/nexus/content/repositories/snapshots/</url>
+            <url>http://serverapps.oym.com.py:8081/repository/maven-snapshots/</url>
             <layout>default</layout>            
             <snapshots>
                 <enabled>true</enabled>
@@ -55,7 +55,7 @@
         <repository>
             <id>oym-releases</id>
             <name>OyM Maven Repository</name>
-            <url>http://agente.oym.com.py:8001/nexus/content/repositories/releases/</url>
+            <url>http://serverapps.oym.com.py:8081/repository/maven-releases/</url>
             <layout>default</layout>                        
             <snapshots>
                 <enabled>false</enabled>
