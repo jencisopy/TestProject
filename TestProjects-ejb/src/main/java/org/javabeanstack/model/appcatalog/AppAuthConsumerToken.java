@@ -87,6 +87,19 @@ public class AppAuthConsumerToken extends DataRow implements IAppAuthConsumerTok
     @NotNull
     @Column(name = "blocked")
     private boolean blocked;
+
+    @Size(max = 100)
+    @Column(name = "userName")
+    private String userName;
+
+    @Size(max = 100)
+    @Column(name = "userEmail")
+    private String userEmail;
+    
+    @Column(name = "lastUsed")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUsed;
+
     
     @Transient
     @Basic(optional = false)
@@ -186,6 +199,36 @@ public class AppAuthConsumerToken extends DataRow implements IAppAuthConsumerTok
         this.blocked = blocked;
     }
 
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Override
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    @Override
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    @Override
+    public Date getLastUsed() {
+        return lastUsed;
+    }
+
+    @Override
+    public void setLastUsed(Date lastUsed) {
+        this.lastUsed = lastUsed;
+    }
+
     public Date getFechacreacion() {
         return fechacreacion;
     }
@@ -243,7 +286,6 @@ public class AppAuthConsumerToken extends DataRow implements IAppAuthConsumerTok
         
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AppAuthConsumerToken)) {
             return false;
         }
