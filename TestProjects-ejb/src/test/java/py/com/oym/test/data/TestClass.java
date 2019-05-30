@@ -17,7 +17,7 @@ import org.javabeanstack.data.DataLink;
 import org.javabeanstack.data.IDataLink;
 import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.security.ISecManager;
-import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.security.model.IUserSession;
 
 import static py.com.oym.test.data.TestDataService.sessionId;
 

@@ -16,7 +16,7 @@ import org.javabeanstack.data.IDataExpression;
 import org.javabeanstack.data.IDataNativeQuery;
 import org.javabeanstack.data.IDataQueryModel;
 import org.javabeanstack.security.ISecManager;
-import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.security.model.IUserSession;
 import py.com.oym.frame.data.DataUtil;
 
 import static py.com.oym.test.data.TestClass.context;

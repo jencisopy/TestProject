@@ -70,7 +70,7 @@ public class TestDataLink  extends TestClass{
                 (IGenericDAO) context.lookup(jndiProject+"GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         
         DataLink dataLinkTest = new DataLink(dao);
-        AppUser usuario = dataLinkTest.find(AppUser.class, 3L);
+        AppUser usuario = dataLinkTest.findById(AppUser.class, 3L);
         System.out.println(usuario.getValue("idempresa"));
         assertNotNull(usuario.getValue("idempresa"));
     }

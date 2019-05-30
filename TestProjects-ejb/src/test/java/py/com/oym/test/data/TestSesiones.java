@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.security.ISecManagerRemote;
-import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.security.model.IUserSession;
 import org.javabeanstack.data.IGenericDAO;
 
 

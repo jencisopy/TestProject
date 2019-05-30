@@ -30,7 +30,7 @@ import org.javabeanstack.datactrl.IDataObject;
 import org.javabeanstack.data.IDataSet;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
-import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.security.model.IUserSession;
 import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.datactrl.DataObject;
 

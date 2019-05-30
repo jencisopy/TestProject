@@ -7,7 +7,7 @@ package py.com.oym.test.data;
 
 import java.util.List;
 import org.javabeanstack.security.ISecManager;
-import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.security.model.IUserSession;
 import org.junit.Test;
 import py.com.oym.frame.data.DataUtil;
 import static py.com.oym.test.data.TestClass.sessionId;

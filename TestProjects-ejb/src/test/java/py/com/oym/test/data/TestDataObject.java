@@ -19,7 +19,7 @@ import org.javabeanstack.data.IDataSet;
 import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
-import org.javabeanstack.security.IUserSession;
+import org.javabeanstack.security.model.IUserSession;
 import org.javabeanstack.data.services.IDataService;
 import org.junit.Assert;
 import static org.junit.Assert.assertTrue;
