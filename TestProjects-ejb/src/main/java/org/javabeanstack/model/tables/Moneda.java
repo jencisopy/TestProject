@@ -252,7 +252,7 @@ public class Moneda extends DataRow {
             return false;
         }
         Moneda obj = (Moneda) o;
-        return (this.codigo.trim().equals(obj.getCodigo().trim())
+        return (Objects.equals(this.codigo.trim(),obj.getCodigo().trim())
                 && Objects.equals(this.idempresa, obj.getIdempresa()));
     }
 
