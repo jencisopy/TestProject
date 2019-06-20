@@ -1,13 +1,13 @@
 package org.javabeanstack.model.appcatalog;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity; 
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,47 +15,38 @@ import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IAppCompanyAllowed;
 
 @Entity
-@Table(name = "dic_permisoempresa")
+@Table(name = "appcompanyallowed")
 public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idusuario")
+    @Column(name = "iduser")
     private Long iduser;
 
     @Id
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "idempresa")
+    @Column(name = "idcompany")
     private Long idcompany;
     
     @Basic(optional = false)
     @NotNull
-    @Column(name = "permitir")
+    @Column(name = "allow")
     private boolean allow;
     
     @Basic(optional = false)
     @NotNull
-    @Column(name = "negar")
+    @Column(name = "denied")
     private boolean deny;
     
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fechacreacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechacreacion;
     
     @Basic(optional = false)
-    @NotNull
     @Column(name = "fechamodificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechamodificacion;
+    private LocalDateTime fechamodificacion;
     
     @Size(max = 32)
     @Column(name = "appuser")
     private String appuser;
     
-
+    
     public AppCompanyAllowed() {
     }
 
@@ -100,19 +91,11 @@ public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
         this.deny = negar;
     }
 
-    public Date getFechacreacion() {
-        return fechacreacion;
-    }
-
-    public void setFechacreacion(Date fechacreacion) {
-        this.fechacreacion = fechacreacion;
-    }
-
-    public Date getFechamodificacion() {
+    public LocalDateTime getFechamodificacion() {
         return fechamodificacion;
     }
 
-    public void setFechamodificacion(Date fechamodificacion) {
+    public void setFechamodificacion(LocalDateTime fechamodificacion) {
         this.fechamodificacion = fechamodificacion;
     }
 
@@ -126,6 +109,11 @@ public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
         this.appuser = appuser;
     }
     
+    @PreUpdate
+    @PrePersist
+    public void preUpdate() {
+        fechamodificacion = LocalDateTime.now();
+    }   
     /**
      * Si se aplica o no el filtro por defecto en la selección de datos.
      * Este metodo se modifica en las clases derivadas si se debe cambiar el 
@@ -136,5 +124,15 @@ public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
     @Override
     public boolean isApplyDBFilter() {
         return false;
+    }   
+
+    @Override
+    public boolean equivalent(Object o) {
+        return equals(o);
     }
-}
+    
+    @Override
+    public boolean isRowChecked() {
+        return true;
+    }    
+ }

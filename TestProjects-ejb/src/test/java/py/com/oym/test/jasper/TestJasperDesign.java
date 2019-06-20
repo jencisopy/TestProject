@@ -7,7 +7,7 @@ package py.com.oym.test.jasper;
 
 import java.awt.Color;
 import java.io.File;
-import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRException; 
 import net.sf.jasperreports.engine.JRReportTemplate;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.design.JRDesignBand;
@@ -265,7 +265,7 @@ public class TestJasperDesign {
         staticText = new JRDesignStaticText();
         staticText.setX(0);
         staticText.setY(0);
-        staticText.setWidth(55);
+        staticText.setWidth(55); 
         staticText.setHeight(15);
         staticText.setForecolor(Color.white);
         staticText.setBackcolor(new Color(0x33, 0x33, 0x33));

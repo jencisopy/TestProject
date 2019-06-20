@@ -81,7 +81,7 @@
         </dependency>  
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Oym-frame-web1</artifactId>
+            <artifactId>Oym-frame-web</artifactId>
             <version>${oym.frame.version}</version>
         </dependency>        
     </dependencies>  

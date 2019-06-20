@@ -5,7 +5,7 @@
  */
 package py.com.oym.test.data;
 
-import com.ibm.icu.math.BigDecimal;
+import java.math.BigDecimal;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.javabeanstack.data.model.DataQueryModel;
