@@ -29,11 +29,11 @@ public class AppUserMember extends DataRow implements IAppUserMember {
     @Column(name = "idusermember")
     private Long idusermember;
     
-    @JoinColumn(name = "idmember", referencedColumnName = "iduser")
+    @JoinColumn(name = "idmember", referencedColumnName = "iduser", nullable = false)
     @ManyToOne(optional = false)
     private AppUser usermember;
 
-    @JoinColumn(name = "idusergroup", referencedColumnName = "iduser")
+    @JoinColumn(name = "idusergroup", referencedColumnName = "iduser", nullable = false)
     @ManyToOne(optional = false)
     private AppUser usergroup;
     
