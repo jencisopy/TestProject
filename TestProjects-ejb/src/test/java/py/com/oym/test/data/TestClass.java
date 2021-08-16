@@ -32,7 +32,7 @@ public class TestClass {
     static protected IDataLink dataLinkCat;
     static protected String sessionId;
     static protected String error;
-    static String jndiProject = "/TestProjects-ear/TestProjects-ejb/";
+    static public    String jndiProject = "/TestProjects-ear/TestProjects-ejb/";
 
     public TestClass() {
     }
