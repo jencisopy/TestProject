@@ -20,7 +20,7 @@ public class TestDataUtil extends TestClass {
     @Test
     public void testEmpresaList() throws Exception{
         ISecManager secMngr = (ISecManager)context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
-        IUserSession userSession = secMngr.createSession("J", "", 50L, null);        
+        IUserSession userSession = secMngr.createSession("J", "", 50L, null, null);        
         sessionId = userSession.getSessionId();
         List<Long> empresaList = DataUtil.getEmpresaList(userSession);
         empresaList.forEach((idempresa) -> {

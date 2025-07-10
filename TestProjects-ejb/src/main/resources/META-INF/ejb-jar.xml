@@ -28,7 +28,7 @@
         </session>
         <session>
             <ejb-name>GenericDAO</ejb-name>
-            <ejb-class>org.javabeanstack.data.GenericDAO</ejb-class>                                                
+            <ejb-class>py.com.oym.frame.data.GenericDAO</ejb-class>                                                
             <business-local>org.javabeanstack.data.IGenericDAO</business-local>
             <business-remote>org.javabeanstack.data.IGenericDAORemote</business-remote>
             <session-type>Stateless</session-type>                        
@@ -42,6 +42,7 @@
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
+        <!--
         <session>
             <ejb-name>UsuarioSrv</ejb-name>
             <ejb-class>org.javabeanstack.data.services.UsuarioSrv</ejb-class>                                                
@@ -66,6 +67,7 @@
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
+        -->
         <session>
             <ejb-name>Sessions</ejb-name>
             <ejb-class>py.com.oym.frame.security.Sessions</ejb-class>
@@ -87,7 +89,23 @@
             <business-remote>org.javabeanstack.log.ILogManagerRemote</business-remote>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
-        </session>      
+        </session>         
+        <session>
+            <ejb-name>LogMngrSecurity</ejb-name>
+            <ejb-class>org.javabeanstack.log.LogMngrSecurity</ejb-class>                                                
+            <business-local>org.javabeanstack.log.ILogManagerSecurity</business-local>
+            <business-remote>org.javabeanstack.log.ILogManagerRemote</business-remote>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session>                
+        <session>
+            <ejb-name>LogMngrData</ejb-name>
+            <ejb-class>org.javabeanstack.log.LogMngrData</ejb-class>                                                
+            <business-local>org.javabeanstack.log.ILogManagerData</business-local>
+            <business-remote>org.javabeanstack.log.ILogManagerRemote</business-remote>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session>                
         <session>
             <ejb-name>XmlManager</ejb-name>
             <ejb-class>org.javabeanstack.xml.XmlManager</ejb-class>
@@ -109,13 +127,14 @@
         <session>
             <ejb-name>AppConfig</ejb-name>
             <ejb-class>net.makerapp.config.AppConfig</ejb-class>
-            <business-remote>org.javabeanstack.config.IAppConfig</business-remote>
+            <business-local>org.javabeanstack.config.IAppConfig</business-local>                        
+           <!-- <business-remote>org.javabeanstack.config.IAppConfigRemote</business-remote> -->
             <session-type>Singleton</session-type>
         </session>
         <session>
             <ejb-name>AppResource</ejb-name>
             <ejb-class>org.javabeanstack.resources.AppResource</ejb-class>                                                
-            <business-remote>org.javabeanstack.resources.IAppResource</business-remote>
+            <business-local>org.javabeanstack.resources.IAppResource</business-local>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>                                                        
@@ -127,11 +146,32 @@
             <transaction-type>Container</transaction-type>                                                
         </session>  
         <session>
-            <ejb-name>OAuthConsumerImpl</ejb-name>
-            <ejb-class>org.javabeanstack.security.OAuthConsumerImpl</ejb-class>                                                
-            <business-local>org.javabeanstack.security.IOAuthConsumer</business-local>            
+            <ejb-name>OAuthConsumer</ejb-name>
+            <ejb-class>py.com.oym.frame.security.OAuthConsumer</ejb-class>                                                
+            <business-local>org.javabeanstack.security.IOAuthConsumer</business-local>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
-        </session>                                                        
+        </session>   
+        <session>
+            <ejb-name>AppUserSrv</ejb-name>
+            <ejb-class>py.com.oym.frame.services.AppUserSrv</ejb-class>                                                
+            <business-local>py.com.oym.frame.services.IAppUserSrv</business-local>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session> 
+        <session>
+            <ejb-name>AppUserPwdLogSrv</ejb-name>
+            <ejb-class>py.com.oym.frame.security.AppUserPwdLogSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.security.IAppUserPwdLogSrv</business-local>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session> 
+        <session>
+            <ejb-name>AppObjectAuthSrv</ejb-name>
+            <ejb-class>py.com.oym.frame.security.AppObjectAuthSrv</ejb-class>                                                
+            <business-local>org.javabeanstack.security.IAppObjectAuthSrv</business-local>
+            <session-type>Stateless</session-type>                        
+            <transaction-type>Container</transaction-type>                                                
+        </session> 
     </enterprise-beans>
 </ejb-jar>

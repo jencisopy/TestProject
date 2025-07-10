@@ -364,10 +364,10 @@ public class TestDataNativeQuery extends TestClass{
         ISecManager secMngr = 
                 (ISecManager)context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
         
-        IUserSession userSession = secMngr.createSession("J", "", 6L, null);        
+        IUserSession userSession = secMngr.createSession("J", "", 6L, null, null);        
         System.out.println(DataUtil.getEmpresaFilter(userSession,"a"));
         System.out.println(DataUtil.getEmpresaAndPeriodoFilter(userSession));
-        userSession = secMngr.createSession("J", "", 1L, null);                
+        userSession = secMngr.createSession("J", "", 1L, null, null);                
         System.out.println(DataUtil.getEmpresaFilter(userSession,"a"));        
         System.out.println(DataUtil.getEmpresaAndPeriodoFilter(userSession,"a"));        
     }

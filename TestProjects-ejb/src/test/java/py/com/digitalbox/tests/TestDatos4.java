@@ -60,7 +60,7 @@ public class TestDatos4 {
 //        dao.sqlExec("PU2", "remove from {schema}.bx_repositorio where codigo = '002';", null);                        
 //        dao.sqlExec("PU2", "remove from {schema}.bx_campo where codigo = '002';", null);        
         
-        IUserSession userSession = secMngr.createSession("J", "", 10L, null);
+        IUserSession userSession = secMngr.createSession("J", "", 10L, null, null);
         dataLink = new DataLink(dao);
         dataLink.setUserSession(userSession);
     }

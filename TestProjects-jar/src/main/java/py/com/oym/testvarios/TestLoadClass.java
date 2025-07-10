@@ -21,7 +21,7 @@ public class TestLoadClass {
         String folder="/proyectos/java/oym/TestProjects/TestProjects-jar/varios";
         String classPath = "clases.TestLoadClass";
         Class clazz = loadClass(folder,classPath);
-        ITestLoadClass obj = (ITestLoadClass) clazz.newInstance();
+        ITestLoadClass obj = (ITestLoadClass) clazz.getConstructor().newInstance();
         obj.holaMundo();
     }
 

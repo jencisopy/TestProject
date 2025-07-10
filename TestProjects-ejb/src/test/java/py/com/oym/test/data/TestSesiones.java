@@ -30,10 +30,10 @@ public class TestSesiones extends TestClass{
                 (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
         
         assertNotNull(sesiones);                
-        IUserSession userSession = sesiones.login2("webuser", "123456");
+        IUserSession userSession = sesiones.login2("webuser", "123456", null);
         assertNotNull(userSession);        
         //boolean login = sesiones.login("webuser", "123456");
-        //boolean login = sesiones.isSesionIdValid("xx");
+        //boolean login = sesiones.isSessionIdValid("xx");
         //assertEquals(true, login); 
     }
     
@@ -42,16 +42,16 @@ public class TestSesiones extends TestClass{
         ISecManagerRemote sesiones  = 
                 (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
         
-        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, null);
+        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, null, null);
         if (userSesion.getError() != null){
             System.out.println(userSesion.getError().getMessage());
         }
         assertNotNull(userSesion.getSessionId());
-        assertTrue(sesiones.isSesionIdValid(userSesion.getSessionId()));
+        assertTrue(sesiones.isSessionIdValid(userSesion.getSessionId()));
         System.out.println(sesiones.getUserRol("J"));
         
         sesiones.logout(userSesion.getSessionId());
-        assertFalse(sesiones.isSesionIdValid(userSesion.getSessionId()));
+        assertFalse(sesiones.isSessionIdValid(userSesion.getSessionId()));
     }    
 
     @Test
@@ -59,11 +59,11 @@ public class TestSesiones extends TestClass{
         ISecManagerRemote sesiones  = 
                 (ISecManagerRemote) context.lookup(jndiProject+"SecManager!org.javabeanstack.security.ISecManagerRemote");
         
-        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, 0);
+        IUserSession userSesion = sesiones.createSession("webuser", "123456",98L, 0, null);
         if (userSesion.getError() != null){
             System.out.println(userSesion.getError().getMessage());
         }
-        assertFalse(sesiones.isSesionIdValid(userSesion.getSessionId()));
+        assertFalse(sesiones.isSessionIdValid(userSesion.getSessionId()));
     }    
     
     //@Test
@@ -89,12 +89,12 @@ public class TestSesiones extends TestClass{
         
         DataLink dataLink1 = new DataLink(dao); 
         
-        IUserSession userSession = sesiones.createSession("webuser", "123456",98L, null);
+        IUserSession userSession = sesiones.createSession("webuser", "123456",98L, null, null);
         if (userSession.getError() != null){
             System.out.println(userSession.getError().getMessage());
         }
         assertNotNull(userSession.getSessionId());
-        assertTrue(sesiones.isSesionIdValid(userSession.getSessionId()));
+        assertTrue(sesiones.isSessionIdValid(userSession.getSessionId()));
 
         dataLink1.setUserSession(userSession);
         

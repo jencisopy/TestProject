@@ -463,9 +463,30 @@ public class AppUser extends DataRow implements IAppUser {
     public boolean isApplyDBFilter() {
         return false;
     }
+
+    @Override
+    public final boolean isSuperUser(){
+        return getRol().contains(ANALISTA)
+                || getRol().contains(SUPERUSER);
+    }
+    
+   @Override
+    public final boolean isSysAdmin(){
+        return getAllRoles().contains(ADMINISTRADOR) 
+                || getRol().contains(ANALISTA)
+                || getRol().contains(SUPERUSER);
+    }
+
+    @Override
+     public final boolean isCompanyAdmin(){
+        return getAllRoles().contains(ADMINISTRADOR) 
+                || getAllRoles().contains(ADMINCOMPANY)
+                || getRol().contains(ANALISTA)
+                || getRol().contains(SUPERUSER);
+    }
     
     @Override
-    public final boolean isAdministrator(){
-        return getAllRoles().contains("20") || getRol().contains("00");
+    public String getPassBackup() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

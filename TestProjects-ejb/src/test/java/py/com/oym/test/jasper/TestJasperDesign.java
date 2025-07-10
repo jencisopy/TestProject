@@ -26,6 +26,7 @@ import net.sf.jasperreports.engine.design.JRDesignVariable;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.type.CalculationEnum;
 import net.sf.jasperreports.engine.type.HorizontalAlignEnum;
+import net.sf.jasperreports.engine.type.HorizontalTextAlignEnum;
 import net.sf.jasperreports.engine.type.ModeEnum;
 import net.sf.jasperreports.engine.type.PositionTypeEnum;
 import net.sf.jasperreports.engine.type.ResetTypeEnum;
@@ -77,20 +78,20 @@ public class TestJasperDesign {
         normalStyle.setName("Times_Normal");
         normalStyle.setDefault(true);
         normalStyle.setFontName("Times New Roman");
-        normalStyle.setFontSize(12);
+        normalStyle.setFontSize(12F);
         jasperDesign.addStyle(normalStyle);
 
         JRDesignStyle boldStyle = new JRDesignStyle();
         boldStyle.setName("Times_Bold");
         boldStyle.setFontName("Times New Roman");
-        boldStyle.setFontSize(12);
+        boldStyle.setFontSize(12F);
         boldStyle.setBold(true);
         jasperDesign.addStyle(boldStyle);
 
         JRDesignStyle italicStyle = new JRDesignStyle();
         italicStyle.setName("Times_Italic");
         italicStyle.setFontName("Times New Roman");
-        italicStyle.setFontSize(12);
+        italicStyle.setFontSize(12F);
         italicStyle.setItalic(true);
         jasperDesign.addStyle(italicStyle);
 
@@ -176,7 +177,7 @@ public class TestJasperDesign {
         textField.setHeight(15);
         textField.setBackcolor(new Color(0xC0, 0xC0, 0xC0));
         textField.setMode(ModeEnum.OPAQUE);
-        textField.setHorizontalAlignment(HorizontalAlignEnum.LEFT);
+        textField.setHorizontalTextAlign(HorizontalTextAlignEnum.LEFT);
         textField.setStyleNameReference("detail_number");
         //textField.setStyle(boldStyle);
         expression = new JRDesignExpression();
@@ -205,7 +206,7 @@ public class TestJasperDesign {
         staticText.setY(0);
         staticText.setWidth(60);
         staticText.setHeight(15);
-        staticText.setHorizontalAlignment(HorizontalAlignEnum.RIGHT);
+        textField.setHorizontalTextAlign(HorizontalTextAlignEnum.RIGHT);        
         staticText.setStyle(boldStyle);
         staticText.setText("Count : ");
         band.addElement(staticText);
@@ -214,7 +215,7 @@ public class TestJasperDesign {
         textField.setY(0);
         textField.setWidth(30);
         textField.setHeight(15);
-        textField.setHorizontalAlignment(HorizontalAlignEnum.RIGHT);
+        textField.setHorizontalTextAlign(HorizontalTextAlignEnum.RIGHT);                
         textField.setStyle(boldStyle);
         expression = new JRDesignExpression();
         expression.setValueClass(java.lang.Integer.class);
@@ -240,9 +241,9 @@ public class TestJasperDesign {
         textField.setY(10);
         textField.setWidth(515);
         textField.setHeight(30);
-        textField.setHorizontalAlignment(HorizontalAlignEnum.CENTER);
+        textField.setHorizontalTextAlign(HorizontalTextAlignEnum.CENTER);                
         textField.setStyle(normalStyle);
-        textField.setFontSize(22);
+        textField.setFontSize(22F);
         expression = new JRDesignExpression();
         expression.setValueClass(java.lang.String.class);
         expression.setText("$P{ReportTitle}");
@@ -270,7 +271,7 @@ public class TestJasperDesign {
         staticText.setForecolor(Color.white);
         staticText.setBackcolor(new Color(0x33, 0x33, 0x33));
         staticText.setMode(ModeEnum.OPAQUE);
-        staticText.setHorizontalAlignment(HorizontalAlignEnum.CENTER);
+        textField.setHorizontalTextAlign(HorizontalTextAlignEnum.CENTER);                
         staticText.setStyle(boldStyle);
         staticText.setText("ID");
         frame.addElement(staticText);
@@ -310,7 +311,7 @@ public class TestJasperDesign {
         textField.setY(4);
         textField.setWidth(50);
         textField.setHeight(15);
-        textField.setHorizontalAlignment(HorizontalAlignEnum.RIGHT);
+        textField.setHorizontalTextAlign(HorizontalTextAlignEnum.RIGHT);                
         textField.setStyle(normalStyle);
         expression = new JRDesignExpression();
         expression.setValueClass(java.lang.Integer.class);

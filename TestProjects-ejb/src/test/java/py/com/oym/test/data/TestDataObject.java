@@ -141,7 +141,7 @@ public class TestDataObject extends TestClass {
         System.out.println("6");
 
         ISecManager secMngr = (ISecManager) context.lookup(jndiProject + "SecManager!org.javabeanstack.security.ISecManagerRemote");
-        IUserSession userSession = secMngr.createSession("J", "", 50L, null);
+        IUserSession userSession = secMngr.createSession("J", "", 50L, null, null);
         sessionId = userSession.getSessionId();
         IGenericDAO dao = (IGenericDAO) context.lookup(jndiProject + "GenericDAO!org.javabeanstack.data.IGenericDAORemote");
         dataLink = new DataLink(dao);

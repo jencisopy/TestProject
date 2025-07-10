@@ -10,9 +10,11 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.model.IAppCompanyAllowed;
+import org.javabeanstack.util.LocalDateTimeAdapter;
 
 @Entity
 @Table(name = "appcompanyallowed")
@@ -40,6 +42,7 @@ public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
     
     @Basic(optional = false)
     @Column(name = "fechamodificacion")
+    @XmlJavaTypeAdapter(type=LocalDateTime.class,  value=LocalDateTimeAdapter.class)                
     private LocalDateTime fechamodificacion;
     
     @Size(max = 32)
@@ -56,8 +59,8 @@ public class AppCompanyAllowed extends DataRow implements IAppCompanyAllowed {
     }
 
     @Override
-    public void setIduser(Long idusuario) {
-        this.iduser = idusuario;
+    public void setIduser(Long iduser) {
+        this.iduser = iduser;
     }
 
     @Override

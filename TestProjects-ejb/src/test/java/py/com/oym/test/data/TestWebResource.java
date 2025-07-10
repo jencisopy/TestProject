@@ -35,7 +35,7 @@ public class TestWebResource extends TestClass {
         IWebResource webResource = new WebResource();        
         ISecManager secManager = 
               (ISecManager)webResource.getSecManager("ejb:TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");
-        IUserSession userSession = secManager.createSession("J", "", 98L, null);
+        IUserSession userSession = secManager.createSession("J", "", 98L, null, null);
         assertNotNull(userSession);
         secManager.logout(userSession);
     }

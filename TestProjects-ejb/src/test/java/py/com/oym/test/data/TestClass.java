@@ -50,7 +50,7 @@ public class TestClass {
 
         ISecManager secMngr = (ISecManager) context.lookup(jndiProject + "SecManager!org.javabeanstack.security.ISecManagerRemote");
         //TODO cambiar a empresas tests
-        IUserSession userSession = secMngr.createSession("J", "", 2L, null);        
+        IUserSession userSession = secMngr.createSession("J", "", 2L, null, null);        
         sessionId = userSession.getSessionId();
 
         IGenericDAO dao = (IGenericDAO) context.lookup(jndiProject + "GenericDAO!org.javabeanstack.data.IGenericDAORemote");

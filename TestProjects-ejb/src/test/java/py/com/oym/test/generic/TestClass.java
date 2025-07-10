@@ -43,7 +43,7 @@ public class TestClass {
         context = new InitialContext(p);
         
         ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");
-        IUserSession userSession = secMngr.createSession("J", "", 98L, null);        
+        IUserSession userSession = secMngr.createSession("J", "", 98L, null, null);        
         sessionId = userSession.getSessionId();
         
         IGenericDAO dao  = (IGenericDAO) context.lookup("/TestProjects-ear/TestProjects-ejb/GenericDAO!py.com.oym.frame.data.IGenericDAORemote");

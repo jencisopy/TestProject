@@ -22,9 +22,9 @@ import org.javabeanstack.model.appcatalog.AppUser;
  *
  * @author Jorge Enciso
  */
-@Stateless
-@Remote(IDataServiceRemote.class)
-@Local(IDataServiceLocal.class)
+//@Stateless
+//@Remote(IDataServiceRemote.class)
+//@Local(IDataServiceLocal.class)
 public class PaisSrv extends DataService{
     private static final Logger LOGGER = Logger.getLogger(PaisSrv.class);
     
