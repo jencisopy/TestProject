@@ -15,9 +15,10 @@
 package py.com.oym.frame.security;
 
 import java.util.Map;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import org.apache.log4j.Logger;
+import jakarta.ejb.TransactionAttribute;
+import jakarta.ejb.TransactionAttributeType;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.javabeanstack.data.DataNativeQuery;
 import org.javabeanstack.data.IDataNativeQuery;
 import org.javabeanstack.data.IDataQueryModel;
@@ -40,7 +41,7 @@ import static org.javabeanstack.model.IAppObjectAuth.*;
 
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class AppObjectAuthSrv extends DataService implements IAppObjectAuthSrv {
-    private static final Logger LOGGER = Logger.getLogger(AppObjectAuthSrv.class);
+    private static final Logger LOGGER = LogManager.getLogger(AppObjectAuthSrv.class);
 
 
     private final String XMLDEF = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";

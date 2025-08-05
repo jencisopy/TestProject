@@ -5,9 +5,9 @@
  */
 package net.makerapp.services;
 
-import javax.ejb.Local;
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
+import jakarta.ejb.Local;
+import jakarta.ejb.Remote;
+import jakarta.ejb.Stateless;
 import org.apache.log4j.Logger;
 import org.javabeanstack.annotation.CheckMethod;
 import org.javabeanstack.data.IDataRow;

@@ -4,21 +4,21 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.error.ErrorManager;
 import org.javabeanstack.model.IAppCompanyAllowed;
@@ -27,16 +27,19 @@ import org.javabeanstack.model.IAppUserMember;
 import org.javabeanstack.util.Fn;
 import org.javabeanstack.util.LocalDates;
 import org.javabeanstack.util.Strings;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
+@DynamicUpdate
 @Table(name = "appuser", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"code"})})
 @SequenceGenerator(name = "APPUSER_SEQ", allocationSize = 1, sequenceName = "APPUSER_SEQ")
 public class AppUser extends DataRow implements IAppUser {
-    private static final Logger LOGGER = Logger.getLogger(AppUser.class);
-    private static final long serialVersionUID = 1L;
-
+    private static final Logger LOGGER = LogManager.getLogger(AppUser.class);
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "APPUSER_SEQ")
     @Basic(optional = false)
@@ -58,6 +61,9 @@ public class AppUser extends DataRow implements IAppUser {
     @Column(name = "pass")
     private String pass;
 
+    @Column(name = "pass", insertable = false, updatable = false)
+    private String passBackup;
+    
     @Transient
     private String passConfirm = Strings.replicate("*", 20);
 
@@ -112,6 +118,7 @@ public class AppUser extends DataRow implements IAppUser {
 
     @Column(name = "idcompany")
     private Long idcompany;
+    
 
     public AppUser() {
         queryUK = "select o from AppUser o where code = :code";
@@ -172,6 +179,14 @@ public class AppUser extends DataRow implements IAppUser {
             pass = pass.trim();
         }
         return pass;
+    }
+
+    @Override
+    public String getPassBackup() {
+        if (passBackup != null) {
+            passBackup = passBackup.trim();
+        }
+        return passBackup;
     }
 
     @Override
@@ -240,27 +255,28 @@ public class AppUser extends DataRow implements IAppUser {
 
     @Override
     public String getRol() {
-        return Fn.nvl(rol,"30").trim().toUpperCase();
+        return Fn.nvl(rol,USUARIO).trim().toUpperCase();
     }
+
 
     @Override
     public String getHighRol() {
         // Este es el valor del usuario normal
-        String result="30";    
+        String result=USUARIO;    
         try{
             if (this.getUserMemberList() == null || this.getUserMemberList().isEmpty()){
-                return Fn.nvl(rol,"30").trim();
+                return Fn.nvl(rol,USUARIO).trim();
             }
             for (IAppUserMember userMember: this.getUserMemberList()){
-                String role = Fn.nvl(userMember.getUserGroup().getRol(),"30").trim();
+                String role = Fn.nvl(userMember.getUserGroup().getRol(),USUARIO).trim();
                 if (Integer.parseInt(role) < Integer.parseInt(result)){
                     result = role;
                 }
             }
         }
-        catch (Exception exp)    {
-            ErrorManager.showError(exp, LOGGER);
-            result = Fn.nvl(rol,"30").trim();
+        catch (Exception e)    {
+            ErrorManager.showError(e, LOGGER);
+            result = Fn.nvl(rol,USUARIO).trim();
         }
         return result.toUpperCase();
     }    
@@ -268,25 +284,25 @@ public class AppUser extends DataRow implements IAppUser {
     @Override
     public String getAllRoles() {
         // Este es el valor del usuario normal
-        String result = "30";
+        String result = USUARIO;
         try {
             // Si es grupo
             if (this.getType() == 2) {
-                result = Fn.nvl(rol, "30").trim();
+                result = Fn.nvl(rol, USUARIO).trim();
             } else {
                 // Si es usuario
                 if (this.getUserMemberList() == null || this.getUserMemberList().isEmpty()) {
-                    return Fn.nvl(rol, "30").trim();
+                    return Fn.nvl(rol, USUARIO).trim();
                 }
                 String roles = "";
                 for (IAppUserMember userMember : this.getUserMemberList()) {
-                    roles += Fn.nvl(userMember.getUserGroup().getRol(), "30").trim()+",";                                    
+                    roles += Fn.nvl(userMember.getUserGroup().getRol(), USUARIO).trim()+",";                                    
                 }
                 result = roles;                
             }
-        } catch (Exception exp) {
-            ErrorManager.showError(exp, LOGGER);
-            result = Fn.nvl(rol, "30").trim();
+        } catch (Exception e) {
+            ErrorManager.showError(e, LOGGER);
+            result = Fn.nvl(rol, USUARIO).trim();
         }
         return result.toUpperCase();
     }
@@ -406,12 +422,6 @@ public class AppUser extends DataRow implements IAppUser {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -423,10 +433,7 @@ public class AppUser extends DataRow implements IAppUser {
             return false;
         }
         final AppUser other = (AppUser) obj;
-        if (!Objects.equals(this.iduser, other.iduser)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.iduser, other.iduser);
     }
 
     @Override
@@ -436,11 +443,6 @@ public class AppUser extends DataRow implements IAppUser {
         }
         AppUser obj = (AppUser) o;
         return (this.code.trim().equals(obj.getLogin().trim()));
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "idusuario=" + iduser + ", codigo=" + code + ", nombre=" + fullName + ", descripcion=" + description + ", disable=" + disabled + ", expira=" + expiredDate + ", rol=" + rol + ", tipo=" + type + '}';
     }
 
     @PreUpdate
@@ -470,7 +472,7 @@ public class AppUser extends DataRow implements IAppUser {
                 || getRol().contains(SUPERUSER);
     }
     
-   @Override
+    @Override
     public final boolean isSysAdmin(){
         return getAllRoles().contains(ADMINISTRADOR) 
                 || getRol().contains(ANALISTA)
@@ -478,7 +480,7 @@ public class AppUser extends DataRow implements IAppUser {
     }
 
     @Override
-     public final boolean isCompanyAdmin(){
+    public final boolean isCompanyAdmin(){
         return getAllRoles().contains(ADMINISTRADOR) 
                 || getAllRoles().contains(ADMINCOMPANY)
                 || getRol().contains(ANALISTA)
@@ -486,7 +488,7 @@ public class AppUser extends DataRow implements IAppUser {
     }
     
     @Override
-    public String getPassBackup() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public String toString() {
+        return "org.javabeanstack.model.appcatalog.AppUser{" + "iduser=" + iduser + ", code=" + code + ", fullName=" + fullName + ", description=" + description + ", disabled=" + disabled + ", expiredDate=" + expiredDate + ", rol=" + rol + ", type=" + type + '}';
+    }        
 }

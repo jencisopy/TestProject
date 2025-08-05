@@ -18,10 +18,10 @@
         <maven.min.version>3.0.0</maven.min.version>
         <version.junit>4.11</version.junit>
         <version.javaee_api>7.0</version.javaee_api>
-        <oym.frame.version>6.5.8-SNAPSHOT</oym.frame.version>
-        <javabeanstack.version>1.5.9-SNAPSHOT</javabeanstack.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <oym.frame.version>7.0.0-SNAPSHOT</oym.frame.version>
+        <javabeanstack.version>2.0.0-SNAPSHOT</javabeanstack.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <prerequisites>
         <maven>${maven.min.version}</maven>

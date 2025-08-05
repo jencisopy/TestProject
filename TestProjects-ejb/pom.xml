@@ -20,9 +20,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>8.0</version>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -77,9 +77,9 @@
                 
         <!-- Hibernate -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.24.Final</version>
+            <version>6.6.18.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>dom4j</groupId>
@@ -88,33 +88,12 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-infinispan</artifactId>
-            <version>5.3.24.Final</version>
-            <scope>provided</scope>
-        </dependency> 
-        <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>27.0.0.Final</version>            
+            <version>36.0.1.Final</version>
             <scope>test</scope>
             <type>pom</type>
         </dependency>
-       
-        <!-- Para log de Hibernate -->
-        <!--
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-infinispan</artifactId>
-            <version>4.3.6.Final</version>
-        </dependency>        
-
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
-            <version>4.0</version>
-        </dependency>        
-        -->        
     </dependencies>
 
     <build>
@@ -124,8 +103,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>

@@ -5,8 +5,8 @@
  */
 package org.javabeanstack.data.services;
 
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
+import jakarta.ejb.TransactionManagement;
+import jakarta.ejb.TransactionManagementType;
 import org.apache.log4j.Logger;
 import org.javabeanstack.annotation.CheckMethod;
 import org.javabeanstack.data.DBManager;
