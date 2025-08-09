@@ -40,7 +40,7 @@ import static org.junit.Assert.*;
  * @author Jorge Enciso
  */
 public class TestDomW3c {
-    private String xml = "<?xml version=\"1.0\" encoding=\"Windows-1252\" standalone=\"yes\" ?>\n"
+    private final String xml = "<?xml version=\"1.0\" encoding=\"Windows-1252\" standalone=\"yes\" ?>\n"
                 + "         <productos>\n"
                 + "                textnode"
                 + "                <prueba  prop1='test1'/>\n"
