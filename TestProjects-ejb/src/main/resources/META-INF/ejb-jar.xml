@@ -20,7 +20,7 @@
                 <persistence-context-ref-name>persistence/pu2</persistence-context-ref-name>
                 <persistence-unit-name>PU2</persistence-unit-name>
             </persistence-context-ref>
-            <!--
+            <!--  
             <persistence-context-ref>
                 <persistence-context-ref-name>persistence/webresource</persistence-context-ref-name>
                 <persistence-unit-name>WEBRESOURCE</persistence-unit-name>
