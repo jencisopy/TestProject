@@ -29,16 +29,17 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.apache.log4j.Logger;
 import org.javabeanstack.data.DataRow;
 import org.javabeanstack.util.Dates;
 import org.javabeanstack.model.IAppCompanyAllowed;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Entity
 @Table(name = "bx_usuario_view")
 public class BxUsuario extends DataRow  {
     private static final long serialVersionUID = 1L;
-    static Logger logger = Logger.getLogger(BxUsuario.class);
+    static Logger logger = LogManager.getLogger(BxUsuario.class);
     
     @Id
     @Basic(optional = false)

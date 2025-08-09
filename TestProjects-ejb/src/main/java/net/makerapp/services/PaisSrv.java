@@ -8,7 +8,6 @@ package net.makerapp.services;
 import jakarta.ejb.Local;
 import jakarta.ejb.Remote;
 import jakarta.ejb.Stateless;
-import org.apache.log4j.Logger;
 import org.javabeanstack.annotation.CheckMethod;
 import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.error.ErrorReg;
@@ -17,6 +16,9 @@ import org.javabeanstack.data.services.DataService;
 import org.javabeanstack.data.services.IDataServiceLocal;
 import org.javabeanstack.data.services.IDataServiceRemote;
 import org.javabeanstack.model.appcatalog.AppUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  *
@@ -26,7 +28,7 @@ import org.javabeanstack.model.appcatalog.AppUser;
 //@Remote(IDataServiceRemote.class)
 //@Local(IDataServiceLocal.class)
 public class PaisSrv extends DataService{
-    private static final Logger LOGGER = Logger.getLogger(PaisSrv.class);
+    private static final Logger LOGGER = LogManager.getLogger(PaisSrv.class);
     
     @CheckMethod(fieldName = "region",
                  action    = {IDataRow.AGREGAR,
