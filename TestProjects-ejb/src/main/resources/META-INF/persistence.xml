@@ -54,6 +54,7 @@
         </properties>
     </persistence-unit>
     
+    <!--
     <persistence-unit name="WEBRESOURCE" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>jdbc/Maker95DS</jta-data-source>
@@ -70,7 +71,7 @@
             <property name="jbs.dbengine" value="SQLSERVER"/>
         </properties>
     </persistence-unit>
-  
+  -->
     <!--
     <persistence-unit name="TestProject-ejbPU" transaction-type="JTA">
       <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
