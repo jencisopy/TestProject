@@ -25,6 +25,44 @@
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--JavaBeanStack FrameWork-->        
+        <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>jbs-interfaces</artifactId>
+            <version>${javabeanstack.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>jbs-core</artifactId>
+            <version>${javabeanstack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javabeanstack</groupId>
+            <artifactId>jbs-business</artifactId>
+            <version>${javabeanstack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Oym-frame-business</artifactId>
+            <version>${oym.frame.version}</version>
+        </dependency>   
+                
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.24.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-ejb-client-bom</artifactId>
+            <version>36.0.1.Final</version>
+            <scope>test</scope>
+            <type>pom</type>
+        </dependency>
+        <!-- Test -->
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
@@ -44,56 +82,6 @@
             <version>2.12.2</version>
             <scope>test</scope>            
         </dependency>
-        <!--JavaBeanStack FrameWork-->        
-        <dependency>
-            <groupId>org.javabeanstack</groupId>
-            <artifactId>jbs-interfaces</artifactId>
-            <version>${javabeanstack.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.javabeanstack</groupId>
-            <artifactId>jbs-core</artifactId>
-            <version>${javabeanstack.version}</version>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>org.javabeanstack</groupId>
-            <artifactId>jbs-core</artifactId>
-            <version>${javabeanstack.frame}</version>
-            <classifier>javadoc</classifier>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>org.javabeanstack</groupId>
-            <artifactId>jbs-business</artifactId>
-            <version>${javabeanstack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>Oym-frame-business</artifactId>
-            <version>${oym.frame.version}</version>
-        </dependency>   
-                
-        <!-- Hibernate -->
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.6.18.Final</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>dom4j</groupId>
-                    <artifactId>dom4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>36.0.1.Final</version>
-            <scope>test</scope>
-            <type>pom</type>
-        </dependency>
     </dependencies>
 
     <build>
@@ -101,47 +89,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
-                </configuration>
+                <version>3.14.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.2.1</version>
                 <configuration>
-                    <ejbVersion>3.1</ejbVersion>
+                    <ejbVersion>4.0</ejbVersion> <!-- SessionBean version 4.0 jakarta 10 -->
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
