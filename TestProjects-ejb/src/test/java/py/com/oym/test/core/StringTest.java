@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 import org.javabeanstack.util.Strings;
 import org.javabeanstack.util.Dates;
@@ -24,6 +22,10 @@ import static org.javabeanstack.util.Strings.isNullorEmpty;
 import static org.javabeanstack.util.Strings.left;
 import static org.javabeanstack.util.Strings.substring;
 import static org.javabeanstack.util.Fn.iif;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *

@@ -8,13 +8,14 @@ package py.com.oym.test.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static org.junit.Assert.*;
-import org.junit.Test;
 import org.javabeanstack.data.DataNativeQuery;
 import org.javabeanstack.data.IDataLink;
 import org.javabeanstack.data.IDataQueryModel;
 import org.javabeanstack.model.IAppTablesRelation;
 import static org.javabeanstack.util.Strings.isNullorEmpty;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *

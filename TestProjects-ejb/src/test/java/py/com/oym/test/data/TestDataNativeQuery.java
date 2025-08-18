@@ -8,7 +8,6 @@ package py.com.oym.test.data;
 import java.util.List;
 import java.util.Map;
 import javax.naming.NamingException;
-import org.junit.Test;
 
 import org.javabeanstack.data.DataExpression;
 import org.javabeanstack.data.DataNativeQuery;
@@ -20,6 +19,7 @@ import org.javabeanstack.security.model.IUserSession;
 import py.com.oym.frame.data.DataUtil;
 
 import static py.com.oym.test.data.TestClass.context;
+import org.junit.jupiter.api.Test;
 
 /**
  *

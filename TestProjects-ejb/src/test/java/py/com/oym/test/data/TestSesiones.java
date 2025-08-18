@@ -6,12 +6,13 @@
 package py.com.oym.test.data;
 
 import java.util.List;
-import static org.junit.Assert.*;
-import org.junit.Test;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.security.ISecManagerRemote;
 import org.javabeanstack.security.model.IUserSession;
 import org.javabeanstack.data.IGenericDAO;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 
 /**

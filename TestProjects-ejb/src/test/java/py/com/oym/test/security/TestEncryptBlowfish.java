@@ -7,7 +7,9 @@ package py.com.oym.test.security;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
 
 /**
  *

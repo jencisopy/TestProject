@@ -5,13 +5,14 @@
  */
 package py.com.oym.test.data;
 
-import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
-
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.model.IUserSession;
 import org.javabeanstack.ws.resources.IWebResource;
 import py.com.oym.frame.ws.resources.remote.WebResource;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *

@@ -11,8 +11,9 @@ import org.javabeanstack.data.DBFilter;
 import org.javabeanstack.data.DBFilterElement;
 import org.javabeanstack.data.IDBFilter;
 import org.javabeanstack.data.IDBFilterElement;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *

@@ -12,14 +12,6 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 import org.javabeanstack.data.IDataNativeQuery;
 import org.javabeanstack.data.IDataQueryModel;
 import org.javabeanstack.data.DataLink;
@@ -37,12 +29,17 @@ import py.com.digitalbox.model.tables.BxPlantilla;
 import py.com.digitalbox.model.tables.BxPlantilladetalle;
 import py.com.digitalbox.model.tables.BxRepositorio;
 
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 /**
  *
  * @author Jorge Enciso
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 public class TestDatos {
     static Context context;
     static DataLink dataLink;
@@ -52,7 +49,7 @@ public class TestDatos {
     }
 }    
 /*    
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws Exception {
         Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
@@ -74,15 +71,15 @@ public class TestDatos {
         System.out.println("borrado de datos");
     }
     
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
     
-    @Before
+    @BeforeEach
     public void setUp() {
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
     }
 

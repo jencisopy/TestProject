@@ -11,14 +11,6 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 
 import py.com.digitalbox.model.tables.BxCampo;
 import py.com.digitalbox.model.tables.BxDocumentotipo;
@@ -34,12 +26,14 @@ import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.data.IDataSet;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.data.IGenericDAO;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 
 /**
  *
  * @author Jorge Enciso
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 public class TestDatos2 {
     static Context context;
     static DataLink dataLink;

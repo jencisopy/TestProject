@@ -6,14 +6,15 @@
 package py.com.oym.test.xml;
 
 import javax.naming.NamingException;
-import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
 
 import org.javabeanstack.xml.IXmlDom;
 import org.javabeanstack.xml.IXmlManager;
 import org.javabeanstack.xml.IXmlSearcher;
 import org.javabeanstack.xml.XmlDomW3c;
 import py.com.oym.test.data.TestClass;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -64,7 +65,7 @@ public class TestFileSearcher extends TestClass {
                     System.out.println(Thread.currentThread().getName() + "-" + i);
                     Thread.sleep(100);
                 }
-            } catch (Exception exp) {
+            } catch (InterruptedException exp) {
                 Thread.currentThread().interrupt();
             }
 

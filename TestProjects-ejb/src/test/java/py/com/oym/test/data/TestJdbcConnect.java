@@ -8,10 +8,13 @@ package py.com.oym.test.data;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -24,7 +27,7 @@ public class TestJdbcConnect {
         
     }
     
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws Exception {
         Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
@@ -35,15 +38,15 @@ public class TestJdbcConnect {
         context = new InitialContext(p);           
     }
     
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
     
-    @Before
+    @BeforeEach
     public void setUp() {
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
     }
 

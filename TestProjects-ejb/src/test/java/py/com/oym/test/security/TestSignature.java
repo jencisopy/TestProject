@@ -15,8 +15,9 @@ import java.security.PublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import org.javabeanstack.util.Fn;
-import org.junit.Assert;
-import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -43,7 +44,7 @@ public class TestSignature {
         Signature signature2 = Signature.getInstance("SHA256WithDSA");
         signature2.initVerify(keyPair.getPublic());        
         signature2.update(data2);
-        Assert.assertTrue(signature2.verify(digitalSignature));        
+        assertTrue(signature2.verify(digitalSignature));        
         
         System.out.println(keyPair.getPublic().toString());
     }
@@ -67,21 +68,21 @@ public class TestSignature {
         byte[] digitalSignature = signature.sign();
         String digitalSignature64 = Fn.bytesToBase64(digitalSignature);
         byte[] digitalSignature2 = Fn.base64ToBytes(digitalSignature64);        
-        Assert.assertArrayEquals(digitalSignature, digitalSignature2);
+        assertArrayEquals(digitalSignature, digitalSignature2);
         
         // Verificar
         byte[] data2 = "abcdefghijklmnopqrstuvxyz".getBytes("UTF-8");        
         Signature signature2 = Signature.getInstance("SHA512WithRSA");
         signature2.initVerify(keyPair.getPublic());        
         signature2.update(data2);
-        Assert.assertTrue(signature2.verify(digitalSignature));        
+        assertTrue(signature2.verify(digitalSignature));        
         
         // solo para probar 
         byte[] keyPrivate = keyPair.getPrivate().getEncoded();
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyPrivate);
         KeyFactory kf = KeyFactory.getInstance("RSA");
         PrivateKey keyPrivate2 = kf.generatePrivate(spec);
-        Assert.assertEquals(keyPair.getPrivate(), keyPrivate2);
+        assertEquals(keyPair.getPrivate(), keyPrivate2);
         
         // Verificar         
         String keyPublic = Fn.bytesToBase64(keyPair.getPublic().getEncoded());
@@ -92,7 +93,7 @@ public class TestSignature {
         signature3.initVerify(keyPublic2);        
         signature3.update(data3);
         
-        Assert.assertTrue(signature3.verify(digitalSignature2));                
+        assertTrue(signature3.verify(digitalSignature2));                
         //Assert.assertTrue(signature3.verify(digitalSignature));        
 
     }

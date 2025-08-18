@@ -6,12 +6,15 @@
 package py.com.oym.test.data;
 
 import javax.naming.Context;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.javabeanstack.data.IGenericDAORemote;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *
@@ -20,7 +23,7 @@ import org.javabeanstack.data.IGenericDAORemote;
 public class TestEjbApi1 {
     private static Context context;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws Exception {
 //        Properties jndiProperties = new Properties();
 //        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
@@ -44,15 +47,15 @@ public class TestEjbApi1 {
 //        
     }
     
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
     
-    @Before
+    @BeforeEach
     public void setUp() {
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
     }
 

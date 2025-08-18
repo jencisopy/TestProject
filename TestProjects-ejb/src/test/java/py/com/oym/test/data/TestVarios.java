@@ -7,9 +7,10 @@ package py.com.oym.test.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.Test;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.data.IGenericDAORemote;
+
+import org.junit.jupiter.api.Test;
 
 
 /**

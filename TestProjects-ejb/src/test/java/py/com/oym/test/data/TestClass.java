@@ -9,17 +9,18 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.data.IDataLink;
 import org.javabeanstack.data.IGenericDAO;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.model.IUserSession;
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import static py.com.oym.test.data.TestDataService.sessionId;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+
 
 /**
  *
@@ -37,7 +38,7 @@ public class TestClass {
     public TestClass() {
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws NamingException, Exception {
         String server = (System.getenv("SERVER_TEST") != null) ? System.getenv("SERVER_TEST") : "localhost";
         String port = (System.getenv("SERVER_TEST_PORT") != null) ? System.getenv("SERVER_TEST_PORT") : "8080";
@@ -70,15 +71,15 @@ public class TestClass {
         //dataLink.getUserSession().getDBFilter().setModelPackagePath("net.makerapp.model.tables;net.makerapp.model.views");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
     }
 

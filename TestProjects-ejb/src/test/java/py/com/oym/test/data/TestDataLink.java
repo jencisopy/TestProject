@@ -8,18 +8,16 @@ package py.com.oym.test.data;
 import java.util.List;
 import java.util.Map;
 import javax.naming.NamingException;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.javabeanstack.data.services.IUsuarioSrv;
-
 import org.javabeanstack.data.IDataNativeQuery;
 import org.javabeanstack.data.IDataQueryModel;
 import org.javabeanstack.data.DataLink;
 import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.data.IGenericDAO;
-
 import org.javabeanstack.model.appcatalog.AppUser;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 
 /**

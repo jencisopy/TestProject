@@ -7,9 +7,10 @@ package py.com.oym.test.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.Test;
-import org.junit.Ignore;
 import org.javabeanstack.data.DataExpression;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -21,7 +22,7 @@ public class TextDataExpression {
     }
     
     @Test
-    @Ignore    
+    @Disabled
     public void test() {
         DataExpression sentence = new DataExpression();
         Map<String, String> params = new HashMap<>();
@@ -35,7 +36,7 @@ public class TextDataExpression {
     }
     
     @Test
-    @Ignore
+    @Disabled
     public void test2() {
         DataExpression sentence = new DataExpression();
         sentence.addExpression("pedro = {var1}", "var1","pp2");
@@ -45,7 +46,7 @@ public class TextDataExpression {
     }    
     
     @Test
-    @Ignore
+    @Disabled
     public void test3() {
         DataExpression sentence = new DataExpression();
         sentence.openParenthesis();                
@@ -66,7 +67,7 @@ public class TextDataExpression {
     }        
 
     @Test
-    @Ignore
+    @Disabled
     public void test3b() {
         DataExpression sentence = new DataExpression();
         sentence.openParenthesis();                

@@ -7,9 +7,10 @@ package py.com.oym.test.dataclass;
 
 import java.util.Date;
 import org.javabeanstack.util.Dates;
-import org.junit.Test;
 
 import static org.javabeanstack.util.Strings.textMerge;
+
+import org.junit.jupiter.api.Test;
 
 /**
  *

@@ -8,12 +8,14 @@ package py.com.oym.test.data;
 import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.javabeanstack.data.IDataLink;
 import org.javabeanstack.data.IGenericDAORemote;
 import py.com.oym.frame.web.remote.EjbApiRemote;
 import org.javabeanstack.data.IGenericDAO;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -23,7 +25,7 @@ public class TestEjbApi {
 
     private static Context context;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws Exception {
         Properties props = new Properties();
         props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");

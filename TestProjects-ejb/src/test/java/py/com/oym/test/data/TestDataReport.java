@@ -1,11 +1,11 @@
 package py.com.oym.test.data;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 import org.javabeanstack.data.DataExpression;
 import org.javabeanstack.data.IDataExpression;
 import org.javabeanstack.report.DataReport;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 
 /**

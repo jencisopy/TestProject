@@ -7,11 +7,13 @@ package py.com.oym.test.resources;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import org.junit.Test;
 import org.javabeanstack.resources.IAppResource;
 import org.javabeanstack.xml.IXmlDom;
 import py.com.oym.test.generic.TestClass;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *

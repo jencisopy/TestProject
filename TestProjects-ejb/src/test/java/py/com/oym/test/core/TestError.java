@@ -9,11 +9,12 @@ import java.util.Properties;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.javabeanstack.error.ErrorManager;
 import org.javabeanstack.log.ILogManager;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -25,7 +26,7 @@ public class TestError {
     public TestError() {
     }
     
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws Exception {
         Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");

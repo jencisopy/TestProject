@@ -8,12 +8,10 @@ package py.com.oym.test.dataclass;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import org.javabeanstack.util.Dates;
 import org.javabeanstack.util.Strings;
 import static org.javabeanstack.util.Strings.isNullorEmpty;
-import org.junit.Test;
 
-import static org.javabeanstack.util.Strings.textMerge;
+import org.junit.jupiter.api.Test;
 
 /**
  *

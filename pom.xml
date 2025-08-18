@@ -16,7 +16,7 @@
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.junit>4.11</version.junit>
+        <version.junit>5.13.1</version.junit>
         <oym.frame.version>7.0.0-SNAPSHOT</oym.frame.version>
         <javabeanstack.version>2.0.0-SNAPSHOT</javabeanstack.version>
     </properties>
@@ -62,11 +62,11 @@
     
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.13.1</version>
             <scope>test</scope>
-        </dependency>     
+        </dependency>        
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>

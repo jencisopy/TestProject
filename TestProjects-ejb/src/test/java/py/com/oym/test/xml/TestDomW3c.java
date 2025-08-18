@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.Test;
 import org.w3c.dom.Document;
 import org.javabeanstack.xml.DomW3cParser;
 import javax.xml.transform.TransformerException;
@@ -31,8 +30,8 @@ import org.javabeanstack.xml.XmlCache;
 import org.javabeanstack.xml.XmlCacheKey;
 import org.javabeanstack.xml.XmlDomW3c;
 
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 
 /**

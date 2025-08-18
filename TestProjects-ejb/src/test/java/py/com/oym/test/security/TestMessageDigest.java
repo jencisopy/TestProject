@@ -8,7 +8,9 @@ package py.com.oym.test.security;
 import java.security.MessageDigest;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
 
 /**
  *

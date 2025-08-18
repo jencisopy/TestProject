@@ -10,8 +10,9 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *

@@ -21,19 +21,20 @@ import org.javabeanstack.exceptions.SessionError;
 import org.javabeanstack.security.ISecManager;
 import org.javabeanstack.security.model.IUserSession;
 import org.javabeanstack.data.services.IDataService;
-import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.javabeanstack.datactrl.DataObject;
 import static py.com.oym.test.data.TestClass.context;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
 
 /**
  *
  * @author Jorge Enciso
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 public class TestDataObject extends TestClass {
 
     //@Test
@@ -164,12 +165,12 @@ public class TestDataObject extends TestClass {
         dataLink.setDao(dataservice);
         IDataObject region = new DataObject(Region.class, null, dataLink, null);
         region.open();
-        Assert.assertNotNull(region.getDataRows());
+        assertNotNull(region.getDataRows());
 
         region.setOrder("codigo desc");
         region.setFilter("codigo = '01'");
         region.requery();
-        Assert.assertNotNull(region.getDataRows());
+        assertNotNull(region.getDataRows());
     }
 
     @Test

@@ -7,10 +7,12 @@ package py.com.oym.test.data;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.javabeanstack.data.model.DataQueryModel;
 import org.javabeanstack.data.IDataQueryModel;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *

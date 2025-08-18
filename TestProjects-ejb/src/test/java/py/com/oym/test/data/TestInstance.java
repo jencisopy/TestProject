@@ -7,9 +7,12 @@ package py.com.oym.test.data;
 
 
 import org.javabeanstack.model.tables.Pais;
-import org.junit.Test;
 import org.javabeanstack.data.DataRow;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+
 
 /**
  *
