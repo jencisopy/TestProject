@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+ <application xmlns="https://jakarta.ee/xml/ns/jakartaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/jakartaee_10.xsd"
+             version="10">
     <display-name>TestProjects-ear</display-name>
     <application-name>TestProjects-ear</application-name>
     <module>
         <ejb>TestProjects-ejb-2.0.0-SNAPSHOT.jar</ejb>
     </module>
     <library-directory>lib</library-directory>
-</application> 
+</application>
