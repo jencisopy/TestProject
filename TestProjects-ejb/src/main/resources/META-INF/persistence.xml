@@ -59,7 +59,30 @@
             <property name="jboss.entity.manager.factory.jndi.name" value="java:app/emf/PU3"/>
         </properties>
     </persistence-unit>
-    
+
+    <!--PLANTILLA de las unidades de persistencia dinámicas. Está deshabilitada
+        (comentada) a propósito: el contenedor no la arranca, pero DBManagerV21
+        (si se lo elige en ejb-jar.xml) la parsea de este archivo y de acá lee
+        toda la configuración para fabricar en runtime las unidades listadas en
+        jbs.dynamic.units. El DBManager clásico la ignora por completo.
+    <persistence-unit name="DINAMIC_PU" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="jbs.dynamic.units" value="*"/>
+            <property name="jbs.dynamic.static.units" value="PU1,PU2"/>
+            <property name="jbs.dynamic.datasource.pattern" value="jdbc/Maker950DS_{n}"/>
+            <property name="jbs.dynamic.metamodel.pu" value="PU2"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
+            <property name="hibernate.default_schema" value="datos"/>
+            <property name="jbs.dbengine" value="SQLSERVER"/>
+        </properties>
+    </persistence-unit>
+    -->
+
     <!--
     <persistence-unit name="WEBRESOURCE" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
