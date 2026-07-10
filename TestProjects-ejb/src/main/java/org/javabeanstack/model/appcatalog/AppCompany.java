@@ -34,6 +34,7 @@ import org.javabeanstack.util.Strings;
 @Table(name = "appcompany", uniqueConstraints = {@UniqueConstraint(columnNames = {"idcompany"})})
 @XmlRootElement
 public class AppCompany extends DataRow implements IAppCompany {
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
@@ -388,5 +389,15 @@ public class AppCompany extends DataRow implements IAppCompany {
     @Override
     public String toString() {
         return "org.javabeanstack.model.appcatalog.AppCompany{ idempresa=" + idcompany + " }";
+    }
+
+    @Override
+    public String getInformation() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setInformation(String information) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

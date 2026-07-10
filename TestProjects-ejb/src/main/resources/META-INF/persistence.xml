@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="3.0" 
+<persistence version="3.2"
              xmlns="https://jakarta.ee/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd">
     <persistence-unit name="PU1" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>jdbc/Maker950DS_1</jta-data-source>
@@ -13,10 +13,12 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.archive.autodetection" value="class,hbm"/>
-            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
             <property name="wildfly.jpa.twophasebootstrap" value="false"/>
             <property name="hibernate.default_schema" value="catalogo"/>
             <property name="jbs.dbengine" value="SQLSERVER"/>
+            <property name="jboss.entity.manager.jndi.name" value="java:app/em/PU1"/>
+            <property name="jboss.entity.manager.factory.jndi.name" value="java:app/emf/PU1"/>
         </properties>
     </persistence-unit>
 
@@ -30,10 +32,12 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.archive.autodetection" value="class,hbm"/>
-            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
             <property name="wildfly.jpa.twophasebootstrap" value="false"/>
             <property name="hibernate.default_schema" value="datos"/>
             <property name="jbs.dbengine" value="SQLSERVER"/>
+            <property name="jboss.entity.manager.jndi.name" value="java:app/em/PU2"/>
+            <property name="jboss.entity.manager.factory.jndi.name" value="java:app/emf/PU2"/>
         </properties>
     </persistence-unit>
 
@@ -47,10 +51,12 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.archive.autodetection" value="class,hbm"/>
-            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
             <property name="wildfly.jpa.twophasebootstrap" value="false"/>
             <property name="hibernate.default_schema" value="datos"/>
             <property name="jbs.dbengine" value="SQLSERVER"/>
+            <property name="jboss.entity.manager.jndi.name" value="java:app/em/PU3"/>
+            <property name="jboss.entity.manager.factory.jndi.name" value="java:app/emf/PU3"/>
         </properties>
     </persistence-unit>
     
@@ -65,7 +71,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.archive.autodetection" value="class,hbm"/>
-            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
             <property name="wildfly.jpa.twophasebootstrap" value="false"/>
             <property name="hibernate.default_schema" value="datos"/>
             <property name="jbs.dbengine" value="SQLSERVER"/>

@@ -46,6 +46,7 @@ import org.javabeanstack.util.LocalDateTimeAdapter;
 @XmlRootElement
 @SequenceGenerator(name = "APPSYSTEMPARAM_SEQ", allocationSize = 1, sequenceName = "APPSYSTEMPARAM_SEQ")
 public class AppSystemParam extends DataRow implements IAppSystemParam {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "APPSYSTEMPARAM_SEQ")

@@ -38,6 +38,7 @@ import org.hibernate.annotations.DynamicUpdate;
     @UniqueConstraint(columnNames = {"code"})})
 @SequenceGenerator(name = "APPUSER_SEQ", allocationSize = 1, sequenceName = "APPUSER_SEQ")
 public class AppUser extends DataRow implements IAppUser {
+    private static final long serialVersionUID = 1L;
     private static final Logger LOGGER = LogManager.getLogger(AppUser.class);
     
     @Id

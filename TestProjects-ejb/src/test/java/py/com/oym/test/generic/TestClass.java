@@ -35,11 +35,10 @@ public class TestClass {
     @BeforeAll
     public static void setUpClass() throws NamingException, Exception {
         Properties p = new Properties();
-        p.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-        p.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
+        p.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
+        p.put(Context.PROVIDER_URL, "remote+http://localhost:8080");
         p.put(Context.SECURITY_PRINCIPAL, "jenciso");
         p.put(Context.SECURITY_CREDENTIALS, "Oym1282873");
-        p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
         
         ISecManager secMngr = (ISecManager)context.lookup("/TestProjects-ear/TestProjects-ejb/SecManager!org.javabeanstack.security.ISecManagerRemote");

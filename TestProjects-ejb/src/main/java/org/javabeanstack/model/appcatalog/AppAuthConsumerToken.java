@@ -39,7 +39,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -60,6 +59,7 @@ import org.javabeanstack.util.LocalDateTimeAdapter;
 @XmlRootElement
 @SequenceGenerator(name = "APPAUTHCONSUMERTOKEN_SEQ", allocationSize = 1, sequenceName = "APPAUTHCONSUMERTOKEN_SEQ")
 public class AppAuthConsumerToken extends DataRow implements IAppAuthConsumerToken {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "APPAUTHCONSUMERTOKEN_SEQ")

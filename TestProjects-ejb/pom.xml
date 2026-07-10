@@ -22,7 +22,7 @@
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>10.0.0</version>
+            <version>11.0.0</version>
             <scope>provided</scope>
         </dependency>
         <!--JavaBeanStack FrameWork-->        
@@ -52,13 +52,13 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>6.6.24.Final</version>
+            <version>7.3.2.Final</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>36.0.1.Final</version>
+            <version>40.0.1.Final</version>
             <scope>test</scope>
             <type>pom</type>
         </dependency>

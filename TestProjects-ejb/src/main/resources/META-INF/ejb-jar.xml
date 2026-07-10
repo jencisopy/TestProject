@@ -43,7 +43,6 @@
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                
         </session>
-        <!--
         <session>
             <ejb-name>UsuarioSrv</ejb-name>
             <ejb-class>org.javabeanstack.data.services.UsuarioSrv</ejb-class>                                                
@@ -65,10 +64,9 @@
             <ejb-class>org.javabeanstack.data.services.UsuarioMiembroSrv</ejb-class>                                                
             <business-local>org.javabeanstack.data.services.IUsuarioMiembroSrv</business-local>
             <business-remote>org.javabeanstack.data.services.IUsuarioMiembroSrvRemote</business-remote>
-            <session-type>Stateless</session-type>                        
-            <transaction-type>Container</transaction-type>                                                
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
         </session>
-        -->
         <session>
             <ejb-name>Sessions</ejb-name>
             <ejb-class>py.com.oym.frame.security.Sessions</ejb-class>

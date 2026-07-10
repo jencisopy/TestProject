@@ -40,7 +40,11 @@
                 <version>3.4.0</version>
                 <configuration>
                     <version>10</version>  <!-- jakarta version -->
+                    <!--Nombre de aplicación fijo (sin versión) para que el JNDI remoto sea /TestProjects-ear/...-->
+                    <applicationName>TestProjects-ear</applicationName>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <!--Conserva el nombre histórico de los jars (sin prefijo de groupId)-->
+                    <outputFileNameMapping>@{artifactId}@-@{version}@.@{extension}@</outputFileNameMapping>
                 </configuration>
             </plugin>
         </plugins>

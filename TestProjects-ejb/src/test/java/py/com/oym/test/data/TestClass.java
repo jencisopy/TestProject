@@ -51,12 +51,11 @@ public class TestClass {
 
         Properties p = new Properties();
         p.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
-        p.put(Context.PROVIDER_URL, "http-remoting://" + server + ":" + port);
+        p.put(Context.PROVIDER_URL, "remote+http://" + server + ":" + port);
         if (!user.isEmpty()) {
             p.put(Context.SECURITY_PRINCIPAL, user);
             p.put(Context.SECURITY_CREDENTIALS, password);
         }
-        p.put("jboss.naming.client.ejb.context", true);
         context = new InitialContext(p);
 
         ISecManager secMngr = (ISecManager) context.lookup(jndiProject + "SecManager!org.javabeanstack.security.ISecManagerRemote");
