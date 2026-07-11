@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Unidades de persistencia DINÁMICAS (las lee DBManagerV30 si se lo elige en
+    ejb-jar.xml). Mismo esquema que persistence.xml, pero este archivo no lo
+    escanea el contenedor: nada bootea, los EntityManagerFactory se fabrican en
+    runtime con PersistenceConfiguration (Jakarta Persistence 3.2).
+    Cada unidad puede tener su propia configuración (datasource, dialecto,
+    schema, etc.). Una unidad listada acá se resuelve dinámicamente aunque
+    también esté declarada en persistence.xml (dinámico-primero). La unidad
+    plantilla DEFAULT (datasource con placeholder {n}) fabrica cualquier unidad
+    no definida explícitamente: permite el alta de empresas sin redeploy.
+    PU1 y PU2 son siempre estáticas: si figuran acá se ignoran.
+    Las clases del modelo se toman del metamodelo de la unidad declarada
+    jbs.dynamic.metamodel.pu (default PU2); los elementos <class> se agregan
+    como extras (converters, etc.).-->
+<persistence version="3.2"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd">
+    <persistence-unit name="PU3" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/Maker950DS_3</jta-data-source>
+        <properties>
+            <property name="jbs.dynamic.metamodel.pu" value="PU2"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
+            <property name="hibernate.default_schema" value="datos"/>
+            <property name="jbs.dbengine" value="SQLSERVER"/>
+        </properties>
+    </persistence-unit>
+
+    <!--Plantilla de las unidades no definidas explícitamente: {n} se sustituye
+        con el número de la unidad (PU4 -> jdbc/Maker950DS_4)-->
+    <persistence-unit name="DEFAULT" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/Maker950DS_{n}</jta-data-source>
+        <properties>
+            <property name="jbs.dynamic.metamodel.pu" value="PU2"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.jpa.compliance.global_id_generators" value="false"/>
+            <property name="hibernate.default_schema" value="datos"/>
+            <property name="jbs.dbengine" value="SQLSERVER"/>
+        </properties>
+    </persistence-unit>
+</persistence>

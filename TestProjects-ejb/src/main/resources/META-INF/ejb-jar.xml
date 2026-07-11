@@ -8,10 +8,12 @@
         <session>
             <ejb-name>DBManager</ejb-name>
             <!--Elegir la implementación: DBManager (clásico, solo PUs declaradas
-                en persistence.xml) o DBManagerV21 (agrega PUs dinámicas según la
-                plantilla DINAMIC_PU de persistence.xml)-->
+                en persistence.xml), DBManagerV21 (PUs dinámicas según la plantilla
+                DINAMIC_PU de persistence.xml) o DBManagerV30 (PUs dinámicas según
+                el archivo META-INF/dynamic_persistence.xml, una spec por unidad)-->
             <!--<ejb-class>org.javabeanstack.data.DBManager</ejb-class>-->
-            <ejb-class>org.javabeanstack.data.DBManagerV21</ejb-class>
+            <!--<ejb-class>org.javabeanstack.data.DBManagerV21</ejb-class>-->
+            <ejb-class>org.javabeanstack.data.DBManagerV30</ejb-class>
             <business-local>org.javabeanstack.data.IDBManager</business-local>
             <session-type>Singleton</session-type>
 
