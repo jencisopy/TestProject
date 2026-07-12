@@ -60,34 +60,49 @@
         </repository>
     </repositories>
     
+    <dependencyManagement>
+        <dependencies>
+            <!--
+                BOM de JavaBeanStack: fuente única de versiones de los
+                artefactos jbs-* y de las dependencias de terceros del
+                framework (jakartaee-api, hibernate, wildfly-ejb-client-bom,
+                log4j, junit).
+            -->
+            <dependency>
+                <groupId>org.javabeanstack</groupId>
+                <artifactId>jbs-bom</artifactId>
+                <version>${javabeanstack.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.13.1</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.25.0</version>         
-        </dependency>  
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.25.0</version>            
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Oym-frame-web</artifactId>
             <version>${oym.frame.version}</version>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Oym-frame-business</artifactId>
             <version>${oym.frame.version}</version>
-        </dependency>        
-    </dependencies>  
+        </dependency>
+    </dependencies>
 
 
     <build>

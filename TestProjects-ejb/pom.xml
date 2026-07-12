@@ -19,46 +19,40 @@
     </properties>
 
     <dependencies>
+        <!-- Versiones de jakartaee-api, jbs-*, hibernate y wildfly gestionadas por jbs-bom -->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>11.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <!--JavaBeanStack FrameWork-->        
+        <!--JavaBeanStack FrameWork-->
         <dependency>
             <groupId>org.javabeanstack</groupId>
             <artifactId>jbs-interfaces</artifactId>
-            <version>${javabeanstack.version}</version>
         </dependency>
-        
         <dependency>
             <groupId>org.javabeanstack</groupId>
             <artifactId>jbs-core</artifactId>
-            <version>${javabeanstack.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javabeanstack</groupId>
             <artifactId>jbs-business</artifactId>
-            <version>${javabeanstack.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>Oym-frame-business</artifactId>
             <version>${oym.frame.version}</version>
-        </dependency>   
-                
+        </dependency>
+
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>7.3.2.Final</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>40.0.1.Final</version>
             <scope>test</scope>
             <type>pom</type>
         </dependency>
