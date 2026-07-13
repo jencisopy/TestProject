@@ -171,7 +171,7 @@
         </session> 
         <session>
             <ejb-name>AppObjectAuthSrv</ejb-name>
-            <ejb-class>py.com.oym.frame.security.AppObjectAuthSrv</ejb-class>                                                
+            <ejb-class>net.makerapp.security.AppObjectAuthSrv</ejb-class>                                                
             <business-local>org.javabeanstack.security.IAppObjectAuthSrv</business-local>
             <session-type>Stateless</session-type>                        
             <transaction-type>Container</transaction-type>                                                

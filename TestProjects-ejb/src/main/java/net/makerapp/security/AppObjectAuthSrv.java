@@ -12,7 +12,7 @@
 * is strictly forbidden unless prior written permission is obtained
 * from OyM System Group S.A.
  */
-package py.com.oym.frame.security;
+package net.makerapp.security;
 
 import java.util.Map;
 import jakarta.ejb.TransactionAttribute;
