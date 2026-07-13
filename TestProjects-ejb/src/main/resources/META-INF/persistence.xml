@@ -85,7 +85,7 @@
       <jta-data-source>java:/jdbc/PostgresDS</jta-data-source>
       <properties>
         <property name="javax.persistence.validation.mode" value="NONE"/>
-        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
         <property name="hibernate.format_sql" value="true"/>
         <property name="hibernate.show_sql" value="false"/>
         <property name="hibernate.archive.autodetection" value="class, hbm"/>
