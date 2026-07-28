@@ -105,6 +105,13 @@ public class AppAuthConsumerToken extends DataRow implements IAppAuthConsumerTok
     @Column(name = "userEmail")
     private String userEmail;
 
+    @Column(name = "idcompany")
+    private Long idcompany;
+
+    @Size(max = 30)
+    @Column(name = "usercode")
+    private String usercode;
+
     @Column(name = "lastUsed")
     @XmlJavaTypeAdapter(type = LocalDateTime.class, value = LocalDateTimeAdapter.class)
     private LocalDateTime lastUsed;
@@ -239,6 +246,29 @@ public class AppAuthConsumerToken extends DataRow implements IAppAuthConsumerTok
     @Override
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    @Override
+    public Long getIdcompany() {
+        return idcompany;
+    }
+
+    @Override
+    public void setIdcompany(Long idcompany) {
+        this.idcompany = idcompany;
+    }
+
+    @Override
+    public String getUserCode() {
+        if (usercode != null) {
+            usercode = usercode.trim();
+        }
+        return usercode;
+    }
+
+    @Override
+    public void setUserCode(String userCode) {
+        this.usercode = userCode;
     }
 
     @Override
