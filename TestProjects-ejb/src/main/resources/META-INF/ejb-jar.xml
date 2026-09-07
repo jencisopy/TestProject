@@ -149,6 +149,13 @@
             <transaction-type>Container</transaction-type>                                                
         </session>  
         <session>
+            <ejb-name>AppAuthConsumerTokenSrv</ejb-name>
+            <ejb-class>py.com.oym.frame.services.AppAuthConsumerTokenSrv</ejb-class>
+            <business-local>org.javabeanstack.data.services.IAppAuthConsumerTokenSrv</business-local>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+        </session>
+        <session>
             <ejb-name>OAuthConsumer</ejb-name>
             <ejb-class>py.com.oym.frame.security.OAuthConsumer</ejb-class>                                                
             <business-local>org.javabeanstack.security.IOAuthConsumer</business-local>
