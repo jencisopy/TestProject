@@ -9,6 +9,10 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <!-- DELHIJA 2026-10-09: igual que maker (Maker-model/persistence.xml). Sin esta
+                 propiedad el arnes NO reproduce el defecto de borrado de hijas: con join fetch
+                 el perfil interno "merge" no llega a cargar la coleccion del padre. -->
+            <property name="hibernate.max_fetch_depth" value="0"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
@@ -28,6 +32,10 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <!-- DELHIJA 2026-10-09: igual que maker (Maker-model/persistence.xml). Sin esta
+                 propiedad el arnes NO reproduce el defecto de borrado de hijas: con join fetch
+                 el perfil interno "merge" no llega a cargar la coleccion del padre. -->
+            <property name="hibernate.max_fetch_depth" value="0"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
@@ -47,6 +55,10 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <!-- DELHIJA 2026-10-09: igual que maker (Maker-model/persistence.xml). Sin esta
+                 propiedad el arnes NO reproduce el defecto de borrado de hijas: con join fetch
+                 el perfil interno "merge" no llega a cargar la coleccion del padre. -->
+            <property name="hibernate.max_fetch_depth" value="0"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>

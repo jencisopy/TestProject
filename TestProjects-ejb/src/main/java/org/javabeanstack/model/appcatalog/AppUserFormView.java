@@ -29,6 +29,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.javabeanstack.data.DataRow;
@@ -65,8 +66,11 @@ public class AppUserFormView extends DataRow {
     @Column(name = "iduser")
     private Long iduser;
     
+    //DELHIJA 2026-10-09: la columna "filtertext" no existe en catalogo.appuserformview
+    //de maker95; mapeada rompia todo insert sobre la tabla. Se deja el campo como
+    //transitorio para no cambiar la forma de serializacion de la entidad.
+    @Transient
     @Size(max = 2147483647)
-    @Column(name = "filtertext")
     private String filtertext;
     
     
