@@ -50,7 +50,7 @@ public class TestDataObject extends TestClass {
         IDataSet dataSet = new DataSet();
         dataSet.addDataObject("region", region);
 
-        boolean result = dataLink.update(dataSet).isSuccessFul();
+        boolean result = dataLink.save(dataSet).isSuccessFul();
         assertTrue(result);
     }
 
@@ -93,7 +93,7 @@ public class TestDataObject extends TestClass {
         dataSet.addDataObject("region", region);
         dataSet.addDataObject("pais", pais);
 
-        boolean result = dataLink.update(dataSet).isSuccessFul();
+        boolean result = dataLink.save(dataSet).isSuccessFul();
         assertTrue(result);
     }
 

@@ -17,8 +17,8 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.junit>5.13.1</version.junit>
-        <oym.frame.version>7.0.0-SNAPSHOT</oym.frame.version>
-        <javabeanstack.version>2.0.0-SNAPSHOT</javabeanstack.version>
+        <oym.frame.version>7.1.0-SNAPSHOT</oym.frame.version>
+        <javabeanstack.version>2.1.0-SNAPSHOT</javabeanstack.version>
     </properties>
 
     <repositories>

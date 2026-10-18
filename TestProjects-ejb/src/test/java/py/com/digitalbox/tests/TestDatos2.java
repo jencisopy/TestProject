@@ -98,7 +98,7 @@ public class TestDatos2 {
         dataSet.add("bxcampo", bxCampo);
         dataSet.add("bxrepositorio", bxRepositorio);        
         
-        boolean result = dao.update("PU2", dataSet,"").isSuccessFul();
+        boolean result = dao.save("PU2", dataSet,"").isSuccessFul();
         assertTrue(result);        
     }
 
@@ -137,7 +137,7 @@ public class TestDatos2 {
         dataSet.add("bxplantilla", bxPlantilla);
         dataSet.add("bxplantilladetalle", bxPlantilla.getBxPlantilladetalle());        
 
-        boolean result = dao.update("PU2", dataSet,"").isSuccessFul();
+        boolean result = dao.save("PU2", dataSet,"").isSuccessFul();
         assertTrue(result);        
     }
         
@@ -235,7 +235,7 @@ public class TestDatos2 {
         dataSet.add("bxdocumentotipo", bxDoc);
         dataSet.add("bxindex", bxIndex);        
 
-        dao.update("PU2", dataSet,"");
+        dao.save("PU2", dataSet,"");
     }
     */
 }

@@ -10,8 +10,8 @@ import jakarta.ejb.Remote;
 import jakarta.ejb.Stateless;
 import org.javabeanstack.annotation.CheckMethod;
 import org.javabeanstack.data.IDataRow;
-import org.javabeanstack.error.ErrorReg;
-import org.javabeanstack.error.IErrorReg;
+import org.javabeanstack.error.ErrorInfo;
+import org.javabeanstack.error.IErrorInfo;
 import org.javabeanstack.data.services.DataService;
 import org.javabeanstack.data.services.IDataServiceLocal;
 import org.javabeanstack.data.services.IDataServiceRemote;
@@ -34,9 +34,9 @@ public class PaisSrv extends DataService{
                  action    = {IDataRow.AGREGAR,
                               IDataRow.MODIFICAR,
                               IDataRow.BORRAR}) 
-    public IErrorReg checkRegion(AppUser row, String sessionId){
-        IErrorReg errorReg = new ErrorReg(); 
+    public IErrorInfo checkRegion(AppUser row, String sessionId){
+        IErrorInfo errorInfo = new ErrorInfo(); 
         LOGGER.info("IN validCodigo");
-        return errorReg;
+        return errorInfo;
     }
 }

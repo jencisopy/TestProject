@@ -144,7 +144,7 @@ public class TestDatos3 {
         dataSet.addDataObject("bxcampo", campo);
         dataSet.addDataObject("bxrepositorio", repositorio);        
         
-        boolean result = dataLink.update(dataSet).isSuccessFul();
+        boolean result = dataLink.save(dataSet).isSuccessFul();
         assertTrue(result);        
     }
 
@@ -186,7 +186,7 @@ public class TestDatos3 {
         dataSet.addDataObject("bxplantilla", plantilla);
         dataSet.addDataObject("bxplantilladetalle", plantillaDet);        
         
-        boolean result = dataLink.update(dataSet).isSuccessFul();
+        boolean result = dataLink.save(dataSet).isSuccessFul();
         assertTrue(result);        
     }
 }

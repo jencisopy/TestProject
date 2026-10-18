@@ -48,6 +48,6 @@ public class TestError {
     public void test2() throws NamingException{
         ILogManager logManager  = (ILogManager) context.lookup("/TestProjects-ear/TestProjects-ejb/LogManager!py.com.oym.frame.log.ILogManagerRemote");
         ErrorManager errorMngr = new ErrorManager();
-        assertNotNull(errorMngr.getErrorReg(50001,"", logManager));
+        assertNotNull(errorMngr.getErrorInfo(50001,"", logManager));
     } 
 }

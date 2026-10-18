@@ -11,7 +11,7 @@ import java.util.Map;
 import org.javabeanstack.data.IDataRow;
 import org.javabeanstack.data.services.IDataServiceRemote;
 import org.javabeanstack.data.services.IDataService;
-import org.javabeanstack.error.IErrorReg;
+import org.javabeanstack.error.IErrorInfo;
 import org.javabeanstack.model.tables.Pais;
 import org.javabeanstack.model.appcatalog.AppUser;
 import org.javabeanstack.model.appcatalog.AppUserMember;
@@ -71,7 +71,7 @@ public class TestDataService extends TestClass{
         List<AppUser> rows = usuarioSrv.find(AppUser.class,null);
         AppUser usuario = rows.get(0);
         usuario.setIduser(0L);
-        Map<String, IErrorReg> errors;
+        Map<String, IErrorInfo> errors;
 
         usuario.setAction(IDataRow.MODIFICAR);
         errors = usuarioSrv.checkDataRow("", usuario);
@@ -141,7 +141,7 @@ public class TestDataService extends TestClass{
         IDataServiceRemote dataService  = 
                 (IDataServiceRemote) context.lookup(jndiProject+"DataService!org.javabeanstack.data.services.IDataServiceRemote");
         
-        Map<String, IErrorReg> errors;        
+        Map<String, IErrorInfo> errors;        
         List<Pais> rows = dataService.find(Pais.class,sessionId);
         rows.get(0).setAction(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado        
@@ -160,7 +160,7 @@ public class TestDataService extends TestClass{
         AppUserMember usuarioMiembro = rows.get(0);
         usuarioMiembro.setAction(IDataRow.MODIFICAR);
         
-        Map<String, IErrorReg> errors = dataService.checkDataRow(sessionId, rows.get(0));
+        Map<String, IErrorInfo> errors = dataService.checkDataRow(sessionId, rows.get(0));
         assertTrue(errors.isEmpty());
     }
     
@@ -176,7 +176,7 @@ public class TestDataService extends TestClass{
         //pais.setRegion(null);
         pais.setAction(IDataRow.MODIFICAR);
         // Necesita del parametro sessionId para acceder a la unidad de persistencia adecuado                
-        Map<String, IErrorReg> errors = dataService.checkDataRow(sessionId, pais);
+        Map<String, IErrorInfo> errors = dataService.checkDataRow(sessionId, pais);
         assertTrue(errors.isEmpty());
     }    
  }

@@ -110,7 +110,7 @@ public class TestDatos {
         IDataSet dataSet = new DataSet();
         dataSet.add("bxcampo", bxCampo);
 
-        assertTrue(dao.update("PU2", bxCampo,"").isSuccessFul());
+        assertTrue(dao.save("PU2", bxCampo,"").isSuccessFul());
     }
     
     @Test
@@ -128,7 +128,7 @@ public class TestDatos {
         bxRepositorio.setPath2("/servidor/path2");
         bxRepositorio.setOperation(IDataRow.AGREGAR);
         
-        assertTrue(dao.update("PU2", bxRepositorio,"").isSuccessFul());
+        assertTrue(dao.save("PU2", bxRepositorio,"").isSuccessFul());
     }
     
 //    @Test
@@ -148,7 +148,7 @@ public class TestDatos {
 //        bxPlantilla.setFechamodificacion(new java.util.Date());
 //        bxPlantilla.setOperation((Integer)1);
 //        String queryString = "select o from BxPlantilla o where idempresa = 10 and codigo = '001'";
-//        dao.update("PU2", bxPlantilla);
+//        dao.save("PU2", bxPlantilla);
 //        bxPlantilla = dao.findByQuery(BxPlantilla.class, "PU2", queryString, null);
 //        
 //        queryString = "select o from BxCampo o where idempresa = 10 and codigo = '001'";
@@ -163,7 +163,7 @@ public class TestDatos {
 //        bxPlantillaDetalle.setOperation(1);
 //
 //        
-//        dao.update("PU2", bxPlantillaDetalle);
+//        dao.save("PU2", bxPlantillaDetalle);
 //    }
 
     @Test
@@ -201,14 +201,14 @@ public class TestDatos {
         list.add(bxPlantillaDetalle2);        
 
         bxPlantilla.setBxPlantilladetalle(list);
-        assertTrue(dao.update("PU2", bxPlantilla,"").isSuccessFul());        
+        assertTrue(dao.save("PU2", bxPlantilla,"").isSuccessFul());        
         
         queryString = "select o from BxPlantilla o where idempresa = 10 and codigo = '001'";
         bxPlantilla = dao.findByQuery(BxPlantilla.class, "PU2", queryString, null);
         bxPlantillaDetalle.setBxPlantilla(bxPlantilla);
         bxPlantillaDetalle2.setBxPlantilla(bxPlantilla);
                 
-        assertTrue(dao.update("PU2", list,"").isSuccessFul());        
+        assertTrue(dao.save("PU2", list,"").isSuccessFul());        
     }
 
     @Test
@@ -230,7 +230,7 @@ public class TestDatos {
         BxRepositorio bxRepositorio = dao.findByQuery(BxRepositorio.class, "PU2", queryString, null);
         bxDoc.setBxRepositorio(bxRepositorio);
         
-        assertTrue(dao.update("PU2", bxDoc,"").isSuccessFul());
+        assertTrue(dao.save("PU2", bxDoc,"").isSuccessFul());
     }
     
     @Test
@@ -265,7 +265,7 @@ public class TestDatos {
         list.add(bxIndexDet);
         bxIndex.setBxDocumentodetalle(list);
                 
-        assertTrue(dao.update("PU2", bxIndex,"").isSuccessFul());
+        assertTrue(dao.save("PU2", bxIndex,"").isSuccessFul());
     }
 }
 */
