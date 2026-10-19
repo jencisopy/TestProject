@@ -94,6 +94,14 @@
             <transaction-type>Container</transaction-type>                                                
         </session>         
         <session>
+            <!-- Auditoria de las grabaciones (jbs, plan AUDMGR): AbstractDAO la inyecta. Sin esta declaracion el modulo no despliega. -->
+            <ejb-name>AuditManager</ejb-name>
+            <ejb-class>org.javabeanstack.data.AuditManager</ejb-class>
+            <business-local>org.javabeanstack.data.IAuditManager</business-local>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+        </session>
+        <session>
             <ejb-name>LogMngrSecurity</ejb-name>
             <ejb-class>org.javabeanstack.log.LogMngrSecurity</ejb-class>                                                
             <business-local>org.javabeanstack.log.ILogManagerSecurity</business-local>
